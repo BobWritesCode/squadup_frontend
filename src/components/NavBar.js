@@ -9,7 +9,6 @@ import styles from '../styles/NavBar.module.css';
 const NavBar = () => {
   const homeLink = (
     <NavLink
-      exact
       to="/"
       className={(el) => (el.isActive ? styles.active : '')}
     >
@@ -19,7 +18,6 @@ const NavBar = () => {
 
   const signInLink = (
     <NavLink
-      exact
       to="/signin"
       className={(el) => (el.isActive ? styles.active : '')}
     >
@@ -29,7 +27,6 @@ const NavBar = () => {
 
   const signUpLink = (
     <NavLink
-      exact
       to="/signup"
       className={(el) => (el.isActive ? styles.active : '')}
     >
