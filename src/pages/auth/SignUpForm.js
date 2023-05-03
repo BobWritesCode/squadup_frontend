@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { axiosDefaultsBaseUrl } from '../api/axiosDefaults';
+import { axiosDefaultsBaseUrl } from '../../api/axiosDefaults';
 // React BootStrap
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import styles from './App.module.css';
 import logo from './assets/logo-white-text-no-bg.png';
 import { Route, Routes } from 'react-router-dom';
-import SignUpForm from './pages/SignUpForm';
+import SignUpForm from './pages/auth/SignUpForm';
 
 function App() {
   return (
