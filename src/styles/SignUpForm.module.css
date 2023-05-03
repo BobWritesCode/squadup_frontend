@@ -1,0 +1,13 @@
+.Form input, .Form input:focus {
+  color: #b78f1d;
+  background: none;
+  border-radius: 0;
+  border-top: None;
+  border-left: None;
+  border-right: None;
+}
+
+.Form {
+  border: 1px solid #3f6974;
+  padding: 20px;
+}

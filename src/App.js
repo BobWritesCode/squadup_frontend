@@ -1,11 +1,11 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import NavBar from './components/NavBar';
 import styles from './App.module.css';
 import logo from './assets/logo-white-text-no-bg.png';
 import { Route, Routes } from 'react-router-dom';
+import SignUpForm from './pages/SignUpForm';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
                 }
               />
               <Route path="/signin" element={<h1>Sign In</h1>} />
-              <Route path="/signup" element={<h1>Sign Up</h1>} />
+              <Route path="/signup" element={<SignUpForm />} />
               <Route path="*" element={<h1>404 Page Not Found</h1>} />
             </Routes>
           </Col>

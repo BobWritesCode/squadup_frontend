@@ -1,0 +1,17 @@
+.Register {
+  background-color: transparent;
+  color: #fafafa;
+  border: 1px solid #3f6974;
+}
+
+.Register:hover {
+  background-color: #3f6974;
+  color: #fafafa;
+  border: 1px solid #3f6974;
+}
+
+.Register:active {
+  background-color: #63b1c4 !important;
+  color: #fafafa;
+  border: 1px solid #63b1c4 !important;
+}
