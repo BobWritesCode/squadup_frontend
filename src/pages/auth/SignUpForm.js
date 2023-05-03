@@ -10,8 +10,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 // css
-import styles from '../styles/SignUpForm.module.css';
-import btnStyles from '../styles/Buttons.module.css';
+import styles from '../../styles/SignUpForm.module.css';
+import btnStyles from '../../styles/Buttons.module.css';
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
