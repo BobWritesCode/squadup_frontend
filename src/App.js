@@ -6,6 +6,7 @@ import styles from './App.module.css';
 import logo from './assets/logo-white-text-no-bg.png';
 import { Route, Routes } from 'react-router-dom';
 import SignUpForm from './pages/auth/SignUpForm';
+import SignInForm from './pages/auth/SignInForm';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
                   <img src={logo} alt="Squad Up logo" className="mx-auto" />
                 }
               />
-              <Route path="/signin" element={<h1>Sign In</h1>} />
+              <Route path="/signin" element={<SignInForm />} />
               <Route path="/signup" element={<SignUpForm />} />
               <Route path="*" element={<h1>404 Page Not Found</h1>} />
             </Routes>
