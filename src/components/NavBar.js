@@ -53,12 +53,32 @@ const NavBar = () => {
 
   const logoutLink = (
     <>
-      <NavLink
-        to="/"
-        onClick={handleSignOut}>
+      <NavLink to="/" onClick={handleSignOut}>
         Sign Out
       </NavLink>
-      {currentUser?.username}
+    </>
+  );
+
+    const lfgLink = (
+    <>
+      <NavLink
+        to="/lfg"
+        className={(el) => (el.isActive ? styles.active : '')}
+      >
+        LFG
+      </NavLink>
+    </>
+  );
+
+  const profileLink = (
+    <>
+      <NavLink
+        to={`/profile/${currentUser?.profile_id}`}
+        className={(el) => (el.isActive ? styles.active : '')}
+        onClick={()=>{}}
+      >
+        Profile
+      </NavLink>
     </>
   );
 
@@ -76,8 +96,11 @@ const NavBar = () => {
             navbarScroll
           >
             {homeLink}
-            {currentUser ? logoutLink : signInLink}
-            {currentUser ? '' : signUpLink }
+            {currentUser ? '' : signInLink}
+            {currentUser ? '' : signUpLink}
+            {currentUser ? lfgLink : ''}
+            {currentUser ? profileLink : ''}
+            {currentUser ? logoutLink : ''}
           </Nav>
         </Navbar.Collapse>
       </Container>
