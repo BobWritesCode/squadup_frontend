@@ -20,7 +20,6 @@ const SignUpForm = () => {
     password1: '',
     password2: '',
   });
-
   const { username, email, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
@@ -129,7 +128,11 @@ const SignUpForm = () => {
                   {m}
                 </Alert>
               ))}
-
+              {errors.non_field_errors?.map((message, idx) => (
+                <Alert key={idx} variant="warning" className="mt-3">
+                  {message}
+                </Alert>
+              ))}
               <div className="d-flex flex-row-reverse">
                 <Button type="submit" className={btnStyles.Register}>
                   Register Account
