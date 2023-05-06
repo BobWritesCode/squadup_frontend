@@ -14,6 +14,7 @@ import {
   useSetProfileData,
 } from '../../contexts/ProfileDataContext';
 import Avatar from '../../components/Avatar';
+import EmailUpdate from '../../components/profile/EmailUpdate';
 import UsernameUpdate from '../../components/profile/UsernameUpdate';
 import TrackerUpdate from '../../components/profile/TrackerUpdate';
 import AvatarUpdate from '../../components/profile/AvatarUpdate';
@@ -21,6 +22,7 @@ import AvatarUpdate from '../../components/profile/AvatarUpdate';
 const Profile = (props) => {
   const [username, setUsername] = useState('');
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [email, setEmail] = useState('');
   const [tracker, setTracker] = useState('');
   const [avatar, setAvatar] = useState('');
 
@@ -46,6 +48,7 @@ const Profile = (props) => {
           pageProfile: { results: [pageProfile] },
         }));
         setAvatar(pageProfile.image);
+        setEmail(details.email);
         setUsername(pageProfile.owner);
         setTracker(pageProfile.tracker);
         setHasLoaded(true);
@@ -59,6 +62,11 @@ const Profile = (props) => {
   // function to update the username state
   const handleUsernameChange = (newUsername) => {
     setUsername(newUsername);
+  };
+
+  // function to update the email state
+  const handleEmailChange = (newEmail) => {
+    setEmail(newEmail);
   };
 
   // function to tracker the email state
@@ -95,22 +103,28 @@ const Profile = (props) => {
         </span>
       </p>
       {is_owner ? (
-        <p>
-          Email:
-          <span className={`${appStyles.OrangeText} ms-2`}>
-            {profile?.email ? profile?.email : 'Please add'}
-          </span>{' '}
-          <p className={appStyles.SecondaryText}>(only visible to you)</p>
-        </p>
+        <>
+          <div>
+            <p className="mb-0">
+              Email:
+              <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
+                {email ? email : 'Please add'}
+              </span>
+              <EmailUpdate onEmailChange={handleEmailChange} />
+            </p>
+            <p className={appStyles.SecondaryText}>(only visible to you)</p>
+          </div>
+
+          <p>
+            Email verified:
+            <span className={`${appStyles.OrangeText} ms-2`}>
+              {profile?.email_verified ? 'Yes' : 'No'}
+            </span>
+          </p>
+        </>
       ) : (
         ''
       )}
-      <p>
-        Email verified:
-        <span className={`${appStyles.OrangeText} ms-2`}>
-          {profile?.email_verified ? 'Yes' : 'No'}
-        </span>
-      </p>
       <p>
         Tracker:
         <span className={`${appStyles.OrangeText} ms-2 text-break`}>
