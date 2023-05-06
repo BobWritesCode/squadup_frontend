@@ -13,6 +13,7 @@ import { setTokenTimestamp } from '../../utils/utils';
 import { axiosDefaultsBaseUrl } from '../../api/axiosDefaults';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 // css imports
+import appStyles from '../../App.module.css';
 import styles from '../../styles/SignUpForm.module.css';
 import btnStyles from '../../styles/Buttons.module.css';
 
@@ -57,7 +58,7 @@ function SignInForm() {
     <Container fluid className={styles}>
       <Row className="justify-content-center">
         <Col xs="10" className="d-flex flex-column">
-          <h2 className={styles.Header}>Sign In</h2>
+          <h2 className={appStyles.PageHeader}>Sign In</h2>
 
           <Form onSubmit={handleSubmit} className={styles.Form}>
             <Form.Group controlId="username">
