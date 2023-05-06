@@ -15,3 +15,21 @@
   color: #fafafa;
   border: 1px solid #63b1c4 !important;
 }
+
+.Icon {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  border: 0;
+}
+
+.Icon:hover {
+  background-color: transparent;
+  color: #b78f1d;
+}
+
+.Icon:active {
+  background-color: transparent !important;
+  color: #fafafa;
+}
