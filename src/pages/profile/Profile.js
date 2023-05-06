@@ -14,9 +14,11 @@ import {
   useSetProfileData,
 } from '../../contexts/ProfileDataContext';
 import Avatar from '../../components/Avatar';
+import UsernameUpdate from '../../components/profile/UsernameUpdate';
 import TrackerUpdate from '../../components/profile/TrackerUpdate';
 
 const Profile = (props) => {
+  const [username, setUsername] = useState('');
   const [hasLoaded, setHasLoaded] = useState(false);
   const [tracker, setTracker] = useState('');
 
@@ -33,13 +35,15 @@ const Profile = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }] = await Promise.all([
+        const [{ data: pageProfile }, { data: details }] = await Promise.all([
           axiosReq.get(`/profiles/${id}/`),
+          axiosReq.get(`/profiles/details/${id}`),
         ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+        setUsername(pageProfile.owner);
         setTracker(pageProfile.tracker);
         setHasLoaded(true);
       } catch (err) {
@@ -47,7 +51,12 @@ const Profile = (props) => {
       }
     };
     fetchData();
-  }, [id, setProfileData]);
+  }, [id, avatar, username, setProfileData]);
+
+  // function to update the username state
+  const handleUsernameChange = (newUsername) => {
+    setUsername(newUsername);
+  };
 
   // function to tracker the email state
   const handleTrackerChange = (newTracker) => {
@@ -56,7 +65,14 @@ const Profile = (props) => {
 
   const Profile = (
     <>
-      <h3 className="">{profile?.owner}</h3>
+      <div className="d-flex">
+        <h3 className="text-break">{username}</h3>
+        {is_owner ? (
+          <UsernameUpdate onUsernameChange={handleUsernameChange} />
+        ) : (
+          ''
+        )}
+      </div>
 
       <Avatar src={profile?.image} text="" width={'100%'} />
       <p>
