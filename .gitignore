@@ -24,3 +24,5 @@ yarn-error.log*
 
 # Virtual environment
 /venv
+
+.vscode
