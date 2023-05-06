@@ -16,11 +16,13 @@ import {
 import Avatar from '../../components/Avatar';
 import UsernameUpdate from '../../components/profile/UsernameUpdate';
 import TrackerUpdate from '../../components/profile/TrackerUpdate';
+import AvatarUpdate from '../../components/profile/AvatarUpdate';
 
 const Profile = (props) => {
   const [username, setUsername] = useState('');
   const [hasLoaded, setHasLoaded] = useState(false);
   const [tracker, setTracker] = useState('');
+  const [avatar, setAvatar] = useState('');
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -43,6 +45,7 @@ const Profile = (props) => {
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+        setAvatar(pageProfile.image);
         setUsername(pageProfile.owner);
         setTracker(pageProfile.tracker);
         setHasLoaded(true);
@@ -63,6 +66,11 @@ const Profile = (props) => {
     setTracker(newTracker);
   };
 
+  // function to avatar the email state
+  const handleAvatarChange = (newAvatar) => {
+    setAvatar(newAvatar);
+  };
+
   const Profile = (
     <>
       <div className="d-flex">
@@ -74,7 +82,12 @@ const Profile = (props) => {
         )}
       </div>
 
-      <Avatar src={profile?.image} text="" width={'100%'} />
+      {is_owner ? (
+        <AvatarUpdate onAvatarChange={handleAvatarChange} avatar={avatar} />
+      ) : (
+        <Avatar src={avatar} text="" width={'100%'} />
+      )}
+
       <p>
         Member since:
         <span className={`${appStyles.OrangeText} ms-2`}>
