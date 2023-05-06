@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 // Bootstrap
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Image from 'react-bootstrap/Image';
 //css
 import appStyles from '../../App.module.css';
 // app imports
@@ -20,18 +19,16 @@ import TrackerUpdate from '../../components/profile/TrackerUpdate';
 import AvatarUpdate from '../../components/profile/AvatarUpdate';
 
 const Profile = (props) => {
-  const [username, setUsername] = useState('');
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [tracker, setTracker] = useState('');
   const [avatar, setAvatar] = useState('');
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
-
   const { setProfileData } = useSetProfileData();
   const { pageProfile } = useProfileData();
-
   const [profile] = pageProfile.results;
   // Check to see if viewing user is profile owner.
   const is_owner = currentUser?.username === profile?.owner;
@@ -129,7 +126,11 @@ const Profile = (props) => {
         Tracker:
         <span className={`${appStyles.OrangeText} ms-2 text-break`}>
           {tracker ? (
-            <a href={`https://tracker.gg/valorant/profile/riot/${tracker}`} target="blank" className={appStyles.Link}>
+            <a
+              href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
+              target="blank"
+              className={appStyles.Link}
+            >
               Click here to view
             </a>
           ) : (
@@ -150,7 +151,9 @@ const Profile = (props) => {
       <Col>
         <Row className="d-flex justify-content-between">
           <Col xs="7" className={appStyles.Box}>
-            {Posts}
+            <>
+              <h3>Timeline</h3>
+            </>
           </Col>
           <Col xs="4" className={appStyles.Box}>
             {Profile}
