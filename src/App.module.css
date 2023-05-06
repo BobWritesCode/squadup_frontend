@@ -30,3 +30,11 @@
 .SecondaryText {
   color: #3f6974;
 }
+
+.Link {
+  color: #b78f1d;
+}
+
+.Link:hover {
+  color: #fafafa;
+}
