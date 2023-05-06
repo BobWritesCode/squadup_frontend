@@ -14,9 +14,11 @@ import {
   useSetProfileData,
 } from '../../contexts/ProfileDataContext';
 import Avatar from '../../components/Avatar';
+import TrackerUpdate from '../../components/profile/TrackerUpdate';
 
 const Profile = (props) => {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [tracker, setTracker] = useState('');
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -38,7 +40,7 @@ const Profile = (props) => {
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
-        // console.log(pageProfile);
+        setTracker(pageProfile.tracker);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -47,11 +49,10 @@ const Profile = (props) => {
     fetchData();
   }, [id, setProfileData]);
 
-  const Posts = (
-    <>
-      <h3>Timeline</h3>
-    </>
-  );
+  // function to tracker the email state
+  const handleTrackerChange = (newTracker) => {
+    setTracker(newTracker);
+  };
 
   const Profile = (
     <>
@@ -83,11 +84,21 @@ const Profile = (props) => {
       </p>
       <p>
         Tracker:
-        <span className={`${appStyles.OrangeText} ms-2`}>
-          {profile?.tracker ? profile?.tracker : 'Please add'}
+        <span className={`${appStyles.OrangeText} ms-2 text-break`}>
+          {tracker ? (
+            <a href={`https://tracker.gg/valorant/profile/riot/${tracker}`} target="blank" className={appStyles.Link}>
+              Click here to view
+            </a>
+          ) : (
+            ''
+          )}
         </span>
+        {is_owner ? (
+          <TrackerUpdate onTrackerChange={handleTrackerChange} />
+        ) : (
+          ''
+        )}
       </p>
-      <p>{profile?.tracker}</p>
     </>
   );
 
