@@ -17,6 +17,7 @@ import EmailUpdate from '../../components/profile/EmailUpdate';
 import UsernameUpdate from '../../components/profile/UsernameUpdate';
 import TrackerUpdate from '../../components/profile/TrackerUpdate';
 import AvatarUpdate from '../../components/profile/AvatarUpdate';
+import PasswordUpdate from '../../components/profile/PasswordUpdate';
 
 const Profile = (props) => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -99,6 +100,23 @@ const Profile = (props) => {
           {profile?.created_at ? profile?.created_at : ''}
         </span>
       </p>
+
+      {is_owner ? (
+        <>
+          <div>
+            <p className="">
+              Password:
+              <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
+                *************
+              </span>
+              <PasswordUpdate />
+            </p>
+          </div>
+        </>
+      ) : (
+        ''
+      )}
+
       {is_owner ? (
         <>
           <div>
