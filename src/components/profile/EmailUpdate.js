@@ -11,7 +11,10 @@ const EmailUpdate = (props) => {
   const { onEmailChange } = props;
   // Modal functions
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setErrors({});
+    setShow(false);
+  }
   const handleShow = () => {
     setFormData({ email: '' });
     setShow(true);
@@ -40,6 +43,7 @@ const EmailUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors({});
     try {
       await axiosRes.put(`/profiles/email/${id}`, email);
       // update the email in the other component

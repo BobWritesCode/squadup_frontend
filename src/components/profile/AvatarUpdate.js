@@ -18,7 +18,10 @@ const AvatarUpdate = (props) => {
   const [imageFile, setImageFile] = useState('');
   // Modal functions
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setErrors({});
+    setShow(false);
+  }
   const handleShow = () => {
     setImageFile('');
     setShow(true);
@@ -33,6 +36,7 @@ const AvatarUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors({});
     const formData = new FormData();
     formData.append('objective', 'Update avatar');
     formData.append('image', imageFile);

@@ -16,7 +16,10 @@ const UsernameUpdate = (props) => {
 
   // Modal functions
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setErrors({});
+    setShow(false);
+  }
   const handleShow = () => setShow(true);
 
   // get current user
@@ -57,6 +60,7 @@ const UsernameUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors({});
     const formData = new FormData();
     formData.append('username', username);
     try {
@@ -99,13 +103,13 @@ const UsernameUpdate = (props) => {
             </Form.Group>
 
             {errors.username?.map((m, idx) => (
-              <Alert variant="warning" key={idx} dismissible>
+              <Alert variant="warning" key={idx}>
                 {m}
               </Alert>
             ))}
 
             {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3" dismissible>
+              <Alert key={idx} variant="warning" className="mt-3">
                 {message}
               </Alert>
             ))}

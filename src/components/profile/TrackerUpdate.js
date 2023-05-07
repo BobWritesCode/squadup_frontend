@@ -11,7 +11,10 @@ const TrackerUpdate = (props) => {
   const { onTrackerChange } = props;
   // Modal functions
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setErrors({});
+    setShow(false);
+  }
   const handleShow = () => {
     setFormData({ tracker: '' });
     setShow(true);
@@ -40,6 +43,7 @@ const TrackerUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors({});
     try {
       const { data } = await axiosRes.put(`/profiles/${id}`, {'tracker': tracker});
       // update the username in the other component
