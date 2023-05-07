@@ -18,6 +18,7 @@ import UsernameUpdate from '../../components/profile/UsernameUpdate';
 import TrackerUpdate from '../../components/profile/TrackerUpdate';
 import AvatarUpdate from '../../components/profile/AvatarUpdate';
 import PasswordUpdate from '../../components/profile/PasswordUpdate';
+import UserNoteUpdate from '../../components/profile/UserNoteUpdate';
 
 const Profile = (props) => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -25,6 +26,7 @@ const Profile = (props) => {
   const [email, setEmail] = useState('');
   const [tracker, setTracker] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [userNote, setUserNote] = useState('');
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -37,18 +39,24 @@ const Profile = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: details }] = await Promise.all([
+        const [
+          { data: r_pageProfile },
+          { data: r_userNote },
+          { data: r_details },
+        ] = await Promise.all([
           axiosReq.get(`/profiles/${id}/`),
+          axiosReq.get(`/usernotes/${id}`),
           axiosReq.get(`/profiles/details/${id}`),
         ]);
         setProfileData((prevState) => ({
           ...prevState,
-          pageProfile: { results: [pageProfile] },
+          pageProfile: { results: [r_pageProfile] },
         }));
-        setAvatar(pageProfile.image);
-        setEmail(details.email);
-        setUsername(pageProfile.owner);
-        setTracker(pageProfile.tracker);
+        setUserNote(r_userNote.user_note);
+        setAvatar(r_pageProfile.image);
+        setEmail(r_details.email);
+        setUsername(r_pageProfile.owner);
+        setTracker(r_pageProfile.tracker);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -77,90 +85,115 @@ const Profile = (props) => {
     setAvatar(newAvatar);
   };
 
+  // function to avatar the email state
+  const handleUserNoteChange = (newUserNote) => {
+    setUserNote(newUserNote);
+  };
+
   const Profile = (
     <>
-      <div className="d-flex">
-        <h3 className="text-break">{username}</h3>
-        {is_owner ? (
-          <UsernameUpdate onUsernameChange={handleUsernameChange} />
-        ) : (
-          ''
-        )}
-      </div>
-
-      {is_owner ? (
-        <AvatarUpdate onAvatarChange={handleAvatarChange} avatar={avatar} />
-      ) : (
-        <Avatar src={avatar} text="" width={'100%'} />
-      )}
-
-      <p>
-        Member since:
-        <span className={`${appStyles.OrangeText} ms-2`}>
-          {profile?.created_at ? profile?.created_at : ''}
-        </span>
-      </p>
-
-      {is_owner ? (
-        <>
-          <div>
-            <p className="">
-              Password:
-              <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
-                *************
-              </span>
-              <PasswordUpdate />
-            </p>
-          </div>
-        </>
-      ) : (
-        ''
-      )}
-
-      {is_owner ? (
-        <>
-          <div>
-            <p className="mb-0">
-              Email:
-              <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
-                {email ? email : 'Please add'}
-              </span>
-              <EmailUpdate onEmailChange={handleEmailChange} />
-            </p>
-            <p className={appStyles.SecondaryText}>(only visible to you)</p>
-          </div>
-
-          <p>
-            Email verified:
-            <span className={`${appStyles.OrangeText} ms-2`}>
-              {profile?.email_verified ? 'Yes' : 'No'}
-            </span>
-          </p>
-        </>
-      ) : (
-        ''
-      )}
-      <p>
-        Tracker:
-        <span className={`${appStyles.OrangeText} ms-2 text-break`}>
-          {tracker ? (
-            <a
-              href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
-              target="blank"
-              className={appStyles.Link}
-            >
-              Click here to view
-            </a>
+      <div className={` ${appStyles.Box}`}>
+        <div className="d-flex">
+          <h3 className="text-break">{username}</h3>
+          {is_owner ? (
+            <UsernameUpdate onUsernameChange={handleUsernameChange} />
           ) : (
             ''
           )}
-        </span>
+        </div>
+
         {is_owner ? (
-          <TrackerUpdate onTrackerChange={handleTrackerChange} />
+          <AvatarUpdate onAvatarChange={handleAvatarChange} avatar={avatar} />
+        ) : (
+          <Avatar src={avatar} text="" width={'100%'} />
+        )}
+
+        <p>
+          Member since:
+          <span className={`${appStyles.OrangeText} ms-2`}>
+            {profile?.created_at ? profile?.created_at : ''}
+          </span>
+        </p>
+
+        {is_owner ? (
+          <>
+            <div>
+              <p className="">
+                Password:
+                <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
+                  *************
+                </span>
+                <PasswordUpdate />
+              </p>
+            </div>
+          </>
         ) : (
           ''
         )}
-      </p>
+
+        {is_owner ? (
+          <>
+            <div>
+              <p className="mb-0">
+                Email:
+                <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
+                  {email ? email : 'Please add'}
+                </span>
+                <EmailUpdate onEmailChange={handleEmailChange} />
+              </p>
+              <p className={appStyles.SecondaryText}>(only visible to you)</p>
+            </div>
+
+            <p>
+              Email verified:
+              <span className={`${appStyles.OrangeText} ms-2`}>
+                {profile?.email_verified ? 'Yes' : 'No'}
+              </span>
+            </p>
+          </>
+        ) : (
+          ''
+        )}
+
+        <p>
+          Tracker:
+          <span className={`${appStyles.OrangeText} ms-2 text-break`}>
+            {tracker ? (
+              <a
+                href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
+                target="blank"
+                className={appStyles.Link}
+              >
+                Click here to view
+              </a>
+            ) : (
+              ''
+            )}
+          </span>
+          {is_owner ? (
+            <TrackerUpdate onTrackerChange={handleTrackerChange} />
+          ) : (
+            ''
+          )}
+        </p>
+      </div>
+    </>
+  );
+
+  const userNoteBlock = (
+    <>
+      <div className={` ${appStyles.Box}`}>
+        <div className="d-flex flex-column">
+          <div className="d-flex flex-row">
+            <h4 className="text-break">Note</h4>
+            <UserNoteUpdate
+              onUserNoteChange={handleUserNoteChange}
+              userNote={userNote}
+            />
+          </div>
+          <p className={`${appStyles.OrangeText} text-break`}>{userNote}</p>
+        </div>
+      </div>
     </>
   );
 
@@ -173,8 +206,10 @@ const Profile = (props) => {
               <h3>Timeline</h3>
             </>
           </Col>
-          <Col xs="4" className={appStyles.Box}>
+          <Col xs="5">
             {Profile}
+            <p></p>
+            {userNoteBlock}
           </Col>
         </Row>
       </Col>
