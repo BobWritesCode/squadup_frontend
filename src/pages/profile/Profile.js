@@ -20,6 +20,7 @@ import AvatarUpdate from '../../components/profile/AvatarUpdate';
 import PasswordUpdate from '../../components/profile/PasswordUpdate';
 import UserNoteUpdate from '../../components/profile/UserNoteUpdate';
 import NewPost from '../../components/posts/NewPost';
+import LoadSpinner from '../../components/Spinner';
 
 const Profile = (props) => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -58,9 +59,10 @@ const Profile = (props) => {
         setEmail(r_details.email);
         setUsername(r_pageProfile.owner);
         setTracker(r_pageProfile.tracker);
-        setHasLoaded(true);
       } catch (err) {
         console.log(err);
+      } finally {
+        setHasLoaded(true);
       }
     };
     fetchData();
@@ -93,6 +95,7 @@ const Profile = (props) => {
 
   const Profile = (
     <>
+      { hasLoaded ? (
       <div className={` ${appStyles.Box}`}>
         <div className="d-flex">
           <h3 className="text-break">{username}</h3>
@@ -178,6 +181,7 @@ const Profile = (props) => {
           )}
         </p>
       </div>
+      ) : (<LoadSpinner/>)}
     </>
   );
 
@@ -227,7 +231,7 @@ const Profile = (props) => {
   return (
     <Row>
       <Col className="">
-        {hasLoaded ? <>{mainProfile}</> : <p>Loading...</p>}
+        {hasLoaded ? <>{mainProfile}</> : <LoadSpinner/>}
       </Col>
     </Row>
   );
