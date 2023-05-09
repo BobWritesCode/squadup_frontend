@@ -19,6 +19,7 @@ import TrackerUpdate from '../../components/profile/TrackerUpdate';
 import AvatarUpdate from '../../components/profile/AvatarUpdate';
 import PasswordUpdate from '../../components/profile/PasswordUpdate';
 import UserNoteUpdate from '../../components/profile/UserNoteUpdate';
+import NewPost from '../../components/posts/NewPost';
 
 const Profile = (props) => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -197,21 +198,27 @@ const Profile = (props) => {
     </>
   );
 
+  const postsBlock = (
+    <>
+      <Row className="d-flex justify-content-between">
+        <Col className={appStyles.Box}>
+          <div className="d-flex flex-row"></div>
+          <h3>Posts</h3>
+          <NewPost />
+        </Col>
+      </Row>
+    </>
+  );
+
   const mainProfile = (
     <Row>
-      <Col>
-        <Row className="d-flex justify-content-between">
-          <Col xs="7" className={appStyles.Box}>
-            <>
-              <h3>Timeline</h3>
-            </>
-          </Col>
-          <Col xs="5">
-            {Profile}
-            <p></p>
-            {userNoteBlock}
-          </Col>
-        </Row>
+      <Col  xs="7">
+        {postsBlock}
+      </Col>
+      <Col xs="5">
+        {Profile}
+        <p></p>
+        {userNoteBlock}
       </Col>
       {profile?.content && <Col className="p-3">{profile.content}</Col>}
     </Row>
