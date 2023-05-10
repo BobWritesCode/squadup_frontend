@@ -38,7 +38,7 @@ const UserPosts = (props) => {
     const fetchData = async () => {
       try {
         // Get posts for user.
-        const { data } = await axiosReq.get(`/posts/?${profileId}`);
+        const { data } = await axiosReq.get(`/posts/?owner=${profileId}`);
         // Set received api data to variable.
         setPosts(data);
       } catch {
