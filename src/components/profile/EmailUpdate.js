@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { axiosRes } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Buttons.module.css';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 
 const EmailUpdate = (props) => {
   const { onEmailChange } = props;
@@ -45,7 +45,7 @@ const EmailUpdate = (props) => {
     event.preventDefault();
     setErrors({});
     try {
-      await axiosRes.put(`/profiles/email/${id}`, email);
+      await axiosReq.put(`/profiles/email/${id}`, email);
       // update the email in the other component
       onEmailChange(email);
       handleClose();

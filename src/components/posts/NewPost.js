@@ -4,9 +4,10 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { axiosReq } from '../../api/axiosDefaults';
+// import { axiosReq } from '../../api/axiosDefaults';
 import { useParams } from 'react-router-dom';
 import LoadSpinner from '../Spinner';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 
 const NewPost = (props) => {
   const { onNewPost } = props;

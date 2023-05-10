@@ -3,9 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { axiosReq } from '../../api/axiosDefaults';
+// import { axiosReq } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Buttons.module.css';
 import { useParams } from 'react-router-dom';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 
 const UserNoteUpdate = (props) => {
   const { onUserNoteChange, userNote } = props;

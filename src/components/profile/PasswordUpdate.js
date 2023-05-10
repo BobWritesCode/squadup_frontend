@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { axiosRes } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Buttons.module.css';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 
 const PasswordUpdate = () => {
 
@@ -51,7 +51,7 @@ const PasswordUpdate = () => {
     formData.append('new_password1', new_password1);
     formData.append('new_password2', new_password2);
     try {
-      await axiosRes.post(`/dj-rest-auth/password/change/`, formData);
+      await axiosReq.post(`/dj-rest-auth/password/change/`, formData);
       handleClose()
     } catch (err) {
       setErrors(err.response?.data);
