@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { axiosRes } from '../../api/axiosDefaults';
 import {
+  axiosReq,
   useCurrentUser,
   useSetCurrentUser,
 } from '../../contexts/CurrentUserContext';
@@ -64,7 +64,7 @@ const UsernameUpdate = (props) => {
     const formData = new FormData();
     formData.append('username', username);
     try {
-      await axiosRes.put(`/dj-rest-auth/user/`, formData);
+      await axiosReq.put(`/dj-rest-auth/user/`, formData);
       setCurrentUser((prevUser) => ({
         ...prevUser,
         username,

@@ -6,8 +6,7 @@ import Row from 'react-bootstrap/Row';
 //css
 import appStyles from '../../App.module.css';
 // app imports
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { axiosReq } from '../../api/axiosDefaults';
+import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
 import {
   useProfileData,
   useSetProfileData,

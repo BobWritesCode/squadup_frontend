@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LoadSpinner from '../Spinner';
-import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import Post from './Post';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 
 const UserPosts = (props) => {
   const { profileId, latestNewPost } = props;
@@ -14,7 +14,7 @@ const UserPosts = (props) => {
       const fetchData = async () => {
         try {
           // Get latest post for user from server.
-          const { data } = await axiosRes.get(`/posts/${latestNewPost}`);
+          const { data } = await axiosReq.get(`/posts/${latestNewPost}`);
           // Convert json string into obj.
           const jsonPost = JSON.parse(data.post);
           const newPost = jsonPost[0].fields;

@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { axiosRes } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Buttons.module.css';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 
 const TrackerUpdate = (props) => {
   const { onTrackerChange } = props;
@@ -45,7 +45,7 @@ const TrackerUpdate = (props) => {
     event.preventDefault();
     setErrors({});
     try {
-      const { data } = await axiosRes.put(`/profiles/${id}`, {'tracker': tracker});
+      const { data } = await axiosReq.put(`/profiles/${id}`, {'tracker': tracker});
       // update the username in the other component
       onTrackerChange(data.response);
       handleClose()

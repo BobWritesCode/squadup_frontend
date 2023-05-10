@@ -13,8 +13,8 @@ axios.defaults.headers.post['Content-Type'] =
   axiosDefaultsHeadersPostContentType;
 axios.defaults.withCredentials = axiosDefaultsWithCredentials;
 
-const axiosReq = axios.create();
-const axiosRes = axios.create();
+export const axiosReq = axios.create();
+export const axiosRes = axios.create();
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();

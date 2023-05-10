@@ -4,11 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { axiosReq } from '../../api/axiosDefaults';
+// import { axiosReq } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Buttons.module.css';
 import styles from '../../styles/Profile.module.css';
 import Avatar from '../Avatar';
 import { Image } from 'react-bootstrap';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 
 const AvatarUpdate = (props) => {
   const { onAvatarChange, avatar } = props;
