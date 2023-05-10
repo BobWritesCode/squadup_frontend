@@ -213,7 +213,7 @@ const Profile = (props) => {
       <Row className="d-flex justify-content-between">
         <Col className={appStyles.Box}>
           <h3>Posts</h3>
-          <NewPost onNewPost={handleNewPost} />
+          {is_owner && <NewPost onNewPost={handleNewPost} /> }
           <div className="mb-3"></div>
           <UserPosts profileId={id} latestNewPost={latestPost} />
         </Col>
