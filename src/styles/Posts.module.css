@@ -1,0 +1,15 @@
+.Container {
+  border-top: 1px solid #3f6974;
+}
+
+.Post {
+  background-color: transparent;
+  border: 1px solid #b78f1d;
+  color: #fafafa;
+}
+
+.Created {
+  font-size: smaller;
+  color: #b78f1d;
+  margin-top: 10px;
+}

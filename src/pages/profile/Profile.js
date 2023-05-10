@@ -21,6 +21,7 @@ import PasswordUpdate from '../../components/profile/PasswordUpdate';
 import UserNoteUpdate from '../../components/profile/UserNoteUpdate';
 import NewPost from '../../components/posts/NewPost';
 import LoadSpinner from '../../components/Spinner';
+import UserPosts from '../../components/posts/UserPosts';
 
 const Profile = (props) => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -29,6 +30,7 @@ const Profile = (props) => {
   const [tracker, setTracker] = useState('');
   const [avatar, setAvatar] = useState('');
   const [userNote, setUserNote] = useState('');
+  const [latestPost, setLatestPost] = useState('');
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -91,6 +93,11 @@ const Profile = (props) => {
   // function to avatar the email state
   const handleUserNoteChange = (newUserNote) => {
     setUserNote(newUserNote);
+  };
+
+  // function to avatar the email state
+  const handleNewPost = (newNewPostID) => {
+    setLatestPost(newNewPostID);
   };
 
   const Profile = (
@@ -206,9 +213,10 @@ const Profile = (props) => {
     <>
       <Row className="d-flex justify-content-between">
         <Col className={appStyles.Box}>
-          <div className="d-flex flex-row"></div>
           <h3>Posts</h3>
-          <NewPost />
+          <NewPost onNewPost={handleNewPost} />
+          <div className="mb-3"></div>
+          <UserPosts profileId={id} latestNewPost={latestPost} />
         </Col>
       </Row>
     </>
@@ -216,9 +224,7 @@ const Profile = (props) => {
 
   const mainProfile = (
     <Row>
-      <Col  xs="7">
-        {postsBlock}
-      </Col>
+      <Col xs="7">{postsBlock}</Col>
       <Col xs="5">
         {Profile}
         <p></p>

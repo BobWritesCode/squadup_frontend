@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import LoadSpinner from '../Spinner';
 
 const NewPost = (props) => {
+  const { onNewPost } = props;
   const imageFile = useRef();
 
   const [hasLoaded, setHasLoaded] = useState(true);
@@ -68,6 +69,7 @@ const NewPost = (props) => {
         textbox: '',
         imagePath: '',
       });
+      onNewPost(data.postID);
       imageFile.current = undefined;
       // Show any success messages received from API.
       setSuccess(data);
