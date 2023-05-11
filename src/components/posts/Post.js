@@ -5,6 +5,7 @@ import appStyles from '../../App.module.css';
 import Image from 'react-bootstrap/Image';
 import ReactTimeago from 'react-timeago';
 import PostEdit from './PostEdit';
+import PostDelete from './PostDelete';
 
 const Post = (props) => {
   const { id, created_at, updated_at, content, image } = props;
@@ -28,19 +29,25 @@ const Post = (props) => {
   };
 
   // remove target post from dom
-  const handleDeletePost = (editedPost) => {}
+  const handleDeletePost = () => {
+    document.getElementById(`post-${id}`).style.display = 'none';
+  };
 
   const postButtons = (
     <div
       className={`d-flex flex-row m-2 position-absolute top-0 end-0 ${btnStyles.Panel}`}
     >
       <PostEdit onEditPost={handleEditPost} post={post} />
+      <PostDelete onDeletePost={handleDeletePost} post={post} />
     </div>
   );
 
   return (
     <>
-      <div className={`${postStyles.Container} position-relative`}>
+      <div
+        className={`${postStyles.Container} position-relative`}
+        id={`post-${id}`}
+      >
         {postButtons}
         <div>
           <p className={`${postStyles.Created}`}>
