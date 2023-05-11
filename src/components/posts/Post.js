@@ -40,22 +40,40 @@ const Post = (props) => {
 
   return (
     <>
-      <div className={`${postStyles.Container}`}>
+      <div className={`${postStyles.Container} position-relative`}>
+        {postButtons}
         <div>
-        <p className={`${postStyles.Created}`}>
-              <span>Posted: </span><ReactTimeago date={created_at} minPeriod={10}/>
-              {created_at !== updated_at ? updated_at : ''}
-            </p>
+          <p className={`${postStyles.Created}`}>
+            <span className={appStyles.SecondaryText}>Posted: </span>
+            <ReactTimeago
+              date={created_at}
+              minPeriod={10}
+              className={appStyles.SecondaryText}
+            />
+
+            {created_at !== updated_at ? (
+              <>
+                <span className={appStyles.SecondaryText}> - Edited: </span>
+                <ReactTimeago
+                  date={post.updated_at}
+                  minPeriod={10}
+                  className={appStyles.SecondaryText}
+                />
+              </>
+            ) : (
+              ''
+            )}
+          </p>
         </div>
         <div>
-        <p>{content}</p>
+          <p className='text-break'>{post.content}</p>
         </div>
-        <div className='d-flex justify-content-center mb-3'>
-          <Image src={image} fluid rounded />
+        <div className="d-flex justify-content-center mb-3">
+          <Image src={post.image} fluid rounded />
         </div>
       </div>
-  </>
-  )
-}
+    </>
+  );
+};
 
 export default Post;
