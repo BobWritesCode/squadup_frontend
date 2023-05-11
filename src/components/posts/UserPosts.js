@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import LoadSpinner from '../Spinner';
 import Post from './Post';
 import { axiosReq } from '../../contexts/CurrentUserContext';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
+import appStyles from '../../App.module.css';
 
 const UserPosts = (props) => {
   const { profileId, latestNewPost } = props;
@@ -51,11 +54,17 @@ const UserPosts = (props) => {
   }, [profileId]);
 
   const main = (
-    <>
-      {posts.results.map((p) => (
+    <InfiniteScroll
+      className={appStyles.NoScrollBars}
+      children={posts.results.map((p) => (
         <Post key={p.id} {...p} setPosts={setPosts} />
       ))}
-    </>
+      dataLength={posts.results.length}
+      loader={<LoadSpinner />}
+      hasMore={!!posts.next}
+      next={() => fetchMoreData(posts, setPosts)}
+      endMessage={<p style={{ textAlign: 'center' }}>No more posts to see.</p>}
+    />
   );
 
   // Render, show spinner until form loaded.
