@@ -1,0 +1,23 @@
+.Header {
+  background-color: #222831;
+  border-top: 1px solid #b78f1d;
+  border-left: 1px solid #b78f1d;
+  border-right: 1px solid #b78f1d;
+}
+
+.Body {
+  background-color: #222831;
+  border-left: 1px solid #b78f1d;
+  border-right: 1px solid #b78f1d;
+}
+
+.Footer {
+  background-color: #222831;
+  border-bottom: 1px solid #b78f1d;
+  border-left: 1px solid #b78f1d;
+  border-right: 1px solid #b78f1d;
+}
+
+* {
+  color: #fafafa;
+}
