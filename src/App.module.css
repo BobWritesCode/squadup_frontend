@@ -38,3 +38,8 @@
 .Link:hover {
   color: #fafafa;
 }
+
+.NoScrollBars * {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
