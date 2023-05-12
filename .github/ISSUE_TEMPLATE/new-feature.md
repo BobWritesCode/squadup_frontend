@@ -1,8 +1,8 @@
 ---
 name: New Feature
 about: Describe this issue template's purpose here.
-title: "[NEW FEAT] "
-labels: new feature
+title: "[NEW FEAT FE] "
+labels: new feature, frontend
 assignees: ''
 
 ---

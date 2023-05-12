@@ -1,8 +1,8 @@
 ---
 name: Improvement
 about: Describe this issue template's purpose here.
-title: "[IMPROVE] "
-labels: improvement
+title: "[IMPROVE FE] "
+labels: improvement, frontend
 assignees: ''
 
 ---
