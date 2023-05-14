@@ -22,7 +22,7 @@ const AvatarUpdate = (props) => {
   const handleClose = () => {
     setErrors({});
     setShow(false);
-  }
+  };
   const handleShow = () => {
     setImageFile('');
     setShow(true);
@@ -44,7 +44,6 @@ const AvatarUpdate = (props) => {
     try {
       const { data } = await axiosReq.put(`/profiles/${id}`, formData);
       // update the username in the other component
-      console.log(data);
       onAvatarChange(data.url);
       handleClose();
     } catch (err) {
