@@ -23,6 +23,12 @@ import LoadSpinner from '../../components/Spinner';
 import UserPosts from '../../components/posts/UserPosts';
 
 const Profile = (props) => {
+  const { id } = useParams();
+
+  const { setProfileData } = useSetProfileData();
+  const { pageProfile } = useProfileData();
+  const currentUser = useCurrentUser();
+
   const [hasLoaded, setHasLoaded] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -31,11 +37,8 @@ const Profile = (props) => {
   const [userNote, setUserNote] = useState('');
   const [latestPost, setLatestPost] = useState('');
 
-  const currentUser = useCurrentUser();
-  const { id } = useParams();
-  const { setProfileData } = useSetProfileData();
-  const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
+
   // Check to see if viewing user is profile owner.
   const is_owner = currentUser?.username === profile?.owner;
 
@@ -101,93 +104,95 @@ const Profile = (props) => {
 
   const Profile = (
     <>
-      { hasLoaded ? (
-      <div className={` ${appStyles.Box}`}>
-        <div className="d-flex">
-          <h3 className="text-break">{username}</h3>
-          {is_owner ? (
-            <UsernameUpdate onUsernameChange={handleUsernameChange} />
-          ) : (
-            ''
-          )}
-        </div>
-
-        {is_owner ? (
-          <AvatarUpdate onAvatarChange={handleAvatarChange} avatar={avatar} />
-        ) : (
-          <Avatar src={avatar} text="" width={'100%'} />
-        )}
-
-        <p>
-          Member since:
-          <span className={`${appStyles.OrangeText} ms-2`}>
-            {profile?.created_at ? profile?.created_at : ''}
-          </span>
-        </p>
-
-        {is_owner ? (
-          <>
-            <div>
-              <p className="">
-                Password:
-                <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
-                  *************
-                </span>
-                <PasswordUpdate />
-              </p>
-            </div>
-          </>
-        ) : (
-          ''
-        )}
-
-        {is_owner ? (
-          <>
-            <div>
-              <p className="mb-0">
-                Email:
-                <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
-                  {email ? email : 'Please add'}
-                </span>
-                <EmailUpdate onEmailChange={handleEmailChange} />
-              </p>
-              <p className={appStyles.SecondaryText}>(only visible to you)</p>
-            </div>
-
-            <p>
-              Email verified:
-              <span className={`${appStyles.OrangeText} ms-2`}>
-                {profile?.email_verified ? 'Yes' : 'No'}
-              </span>
-            </p>
-          </>
-        ) : (
-          ''
-        )}
-
-        <p>
-          Tracker:
-          <span className={`${appStyles.OrangeText} ms-2 text-break`}>
-            {tracker ? (
-              <a
-                href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
-                target="blank"
-                className={appStyles.Link}
-              >
-                Click here to view
-              </a>
+      {hasLoaded ? (
+        <div className={` ${appStyles.Box}`}>
+          <div className="d-flex">
+            <h3 className="text-break">{username}</h3>
+            {is_owner ? (
+              <UsernameUpdate onUsernameChange={handleUsernameChange} />
             ) : (
               ''
             )}
-          </span>
+          </div>
+
           {is_owner ? (
-            <TrackerUpdate onTrackerChange={handleTrackerChange} />
+            <AvatarUpdate onAvatarChange={handleAvatarChange} avatar={avatar} />
+          ) : (
+            <Avatar src={avatar} text="" width={'100%'} />
+          )}
+
+          <p>
+            Member since:
+            <span className={`${appStyles.OrangeText} ms-2`}>
+              {profile?.created_at ? profile?.created_at : ''}
+            </span>
+          </p>
+
+          {is_owner ? (
+            <>
+              <div>
+                <p className="">
+                  Password:
+                  <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
+                    *************
+                  </span>
+                  <PasswordUpdate />
+                </p>
+              </div>
+            </>
           ) : (
             ''
           )}
-        </p>
-      </div>
-      ) : (<LoadSpinner/>)}
+
+          {is_owner ? (
+            <>
+              <div>
+                <p className="mb-0">
+                  Email:
+                  <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
+                    {email ? email : 'Please add'}
+                  </span>
+                  <EmailUpdate onEmailChange={handleEmailChange} />
+                </p>
+                <p className={appStyles.SecondaryText}>(only visible to you)</p>
+              </div>
+
+              <p>
+                Email verified:
+                <span className={`${appStyles.OrangeText} ms-2`}>
+                  {profile?.email_verified ? 'Yes' : 'No'}
+                </span>
+              </p>
+            </>
+          ) : (
+            ''
+          )}
+
+          <p>
+            Tracker:
+            <span className={`${appStyles.OrangeText} ms-2 text-break`}>
+              {tracker ? (
+                <a
+                  href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
+                  target="blank"
+                  className={appStyles.Link}
+                >
+                  Click here to view
+                </a>
+              ) : (
+                ''
+              )}
+            </span>
+            {is_owner ? (
+              <TrackerUpdate onTrackerChange={handleTrackerChange} />
+            ) : (
+              ''
+            )}
+          </p>
+        </div>
+      ) : (
+        <LoadSpinner />
+      )}
     </>
   );
 
@@ -213,7 +218,7 @@ const Profile = (props) => {
       <Row className="d-flex justify-content-between">
         <Col className={appStyles.Box}>
           <h3>Posts</h3>
-          {is_owner && <NewPost onNewPost={handleNewPost} /> }
+          {is_owner && <NewPost onNewPost={handleNewPost} />}
           <div className="mb-3"></div>
           <UserPosts profileId={id} latestNewPost={latestPost} />
         </Col>
@@ -235,9 +240,7 @@ const Profile = (props) => {
 
   return (
     <Row>
-      <Col className="">
-        {hasLoaded ? <>{mainProfile}</> : <LoadSpinner/>}
-      </Col>
+      <Col className="">{hasLoaded ? <>{mainProfile}</> : <LoadSpinner />}</Col>
     </Row>
   );
 };
