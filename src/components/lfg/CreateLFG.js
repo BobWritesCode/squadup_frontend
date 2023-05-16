@@ -3,11 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-// import { axiosReq } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Buttons.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 import { LfgSlot } from './LfgSlot';
+import { axiosReq } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
 
 const CreateLFG = () => {
@@ -29,8 +29,9 @@ const CreateLFG = () => {
     lowest_rank: 1,
     highest_rank: 1,
     content: '',
+    slots: {},
   });
-  const { content, max_team_size } = formData;
+  const { content, max_team_size, current_team_size } = formData;
   const [currentTeamSize, setCurrentTeamSize] = useState(2);
 
   // Used to display character count under note input
@@ -50,13 +51,13 @@ const CreateLFG = () => {
   // Update character count on change.
   useEffect(() => {
     setCharCount(String(content).length);
-    // Makes sure add slot buttons appears when it should
-    setCurrentTeamSize(max_team_size - slots.length);
     // Remove slots if a lower max team size is picked then slots minus one.
     while (slots.length >= max_team_size) {
       slots.pop();
     }
-  }, [content, max_team_size, slots]);
+    // Set current team size to the correct amount.
+    setCurrentTeamSize(max_team_size - slots.length);
+  }, [content, max_team_size, slots, current_team_size]);
 
   // Allow user to edit form.
   const handleChange = (e) => {
@@ -70,7 +71,11 @@ const CreateLFG = () => {
 
   // Add a player slot to the form
   const handleAddSlot = (e) => {
-    const newSlot = 'slot';
+    const newSlot = {
+      id: slots.length,
+      role: 'Any',
+      content: '',
+    };
     setSlots((prevSlots) => [...prevSlots, newSlot]);
     setCurrentTeamSize(formData.max_team_size - slots.length);
   };
@@ -80,6 +85,15 @@ const CreateLFG = () => {
     slots.pop();
     setSlots(slots);
     setCurrentTeamSize(formData.max_team_size - slots.length);
+  };
+
+  const handleSlotChange = (e) => {
+    // update slots with changes from child component LfgSlot
+    const id = e.id;
+    const index = slots.findIndex((obj) => obj.id === id);
+    if (index !== -1) {
+      slots[index] = e;
+    }
   };
 
   // Switch inputs to disabled or active
@@ -107,7 +121,24 @@ const CreateLFG = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setAwaitingResponse(true);
+    // make sure current team size is correct in formData
+    formData.current_team_size = currentTeamSize;
+    // Remove error messages in showing.
+    setErrors({});
+    disableInputs(true);
+    const ctx = {
+      formData: formData,
+      slots: slots,
+    };
+    try {
+      await axiosReq.post(`/lfg/`, JSON.stringify(ctx));
       setSuccessMessage('Group created.');
+      // handleClose();
+    } catch (err) {
+      setErrors(err.response?.data);
+      disableInputs(false);
+    }
+    document.getElementById('close-modal-btn').disabled = false;
     setAwaitingResponse(false);
   };
 
@@ -173,7 +204,7 @@ const CreateLFG = () => {
             <Form.Group className="mb-2 d-flex" controlId="lowest_rank">
               <Form.Label>Minimum rank:</Form.Label>
               <Form.Select
-                aria-label="Default select example"
+                aria-label="Select minimum player rank"
                 name="lowest_rank"
                 value={formData.lowest_rank}
                 onChange={handleChange}
@@ -200,7 +231,7 @@ const CreateLFG = () => {
               <Form.Label>Maximum rank:</Form.Label>
               <div className="d-flex flex-column">
                 <Form.Select
-                  aria-label="Default select example"
+                  aria-label="Select maximum player rank"
                   name="highest_rank"
                   value={formData.highest_rank}
                   onChange={handleChange}
@@ -239,9 +270,7 @@ const CreateLFG = () => {
                   value={content}
                   onChange={handleChange}
                 />
-                <Form.Text className='ms-auto'>
-                  ({charCount}/200)
-                </Form.Text>
+                <Form.Text className="ms-auto">({charCount}/200)</Form.Text>
               </div>
             </Form.Group>
 
@@ -254,7 +283,13 @@ const CreateLFG = () => {
             <Form.Group className="d-flex flex-column">
               <Form.Label>Player slots:</Form.Label>
               {slots.map((slot, i) => (
-                <LfgSlot key={`slot-${i}`} {...slot} slotValue={slot} />
+                <LfgSlot
+                  key={`slot-${i}`}
+                  {...slot}
+                  id={i}
+                  slotValue={slot}
+                  onSlotChange={handleSlotChange}
+                />
               ))}
 
               {
@@ -272,13 +307,18 @@ const CreateLFG = () => {
                 // Show button as long there are open slots
                 slots.length > 0 && (
                   <Button
-                    className={` ${btnStyles.Single} ${btnStyles.Danger}`}
+                    className={` ${btnStyles.Single} ${btnStyles.Danger} mb-2`}
                     onClick={handleRemoveSlot}
                   >
                     <i className="bi bi-person-dash-fill"></i>
                   </Button>
                 )
               }
+              {errors.slots?.map((m, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {m}
+                </Alert>
+              ))}
             </Form.Group>
 
             {errors.non_field_errors?.map((m, idx) => (
@@ -302,7 +342,11 @@ const CreateLFG = () => {
         </Modal.Body>
 
         <Modal.Footer className={modalStyles.Footer}>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button
+            variant="secondary"
+            onClick={handleClose}
+            id="close-modal-btn"
+          >
             Close
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
