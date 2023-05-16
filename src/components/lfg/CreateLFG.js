@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
-import { LfgSlot } from './LfgSlot';
+import { CreateLfgSlot } from './CreateLfgSlot';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
 
@@ -139,14 +139,14 @@ const CreateLFG = (props) => {
   return (
     <>
       <Button
-        className={`${btnStyles.Single} mb-2`}
+        className={`${btnStyles.Success} mb-2 w-100`}
         onClick={handleShow}
         id="modalBtnForCreateLfg"
       >
         Create a group
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="lfgModal">
         <Modal.Header closeButton className={modalStyles.Header}>
           <Modal.Title>Create a group</Modal.Title>
         </Modal.Header>
@@ -277,7 +277,7 @@ const CreateLFG = (props) => {
             <Form.Group className="d-flex flex-column">
               <Form.Label>Player slots:</Form.Label>
               {slots.map((slot, i) => (
-                <LfgSlot
+                <CreateLfgSlot
                   key={`slot-${i}`}
                   {...slot}
                   id={i}

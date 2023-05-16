@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import appStyles from '../../App.module.css';
 import Form from 'react-bootstrap/Form';
 
-export const LfgSlot = (props) => {
+export const CreateLfgSlot = (props) => {
   const { onSlotChange, slotValue, id } = props;
 
   const [role, setRole] = useState(slotValue.role);
