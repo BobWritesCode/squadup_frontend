@@ -10,7 +10,8 @@ import { LfgSlot } from './LfgSlot';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
 
-const CreateLFG = () => {
+const CreateLFG = (props) => {
+  const { onNewGroup } = props;
   // Show spinner while waiting for API result
   const [awaitingResponse, setAwaitingResponse] = useState(false);
   // set up key for slots components
@@ -124,15 +125,15 @@ const CreateLFG = () => {
       slots: slots,
     };
     try {
-      await axiosReq.post(`/lfg/`, JSON.stringify(ctx));
+      const { data } = await axiosReq.post(`/lfg/`, JSON.stringify(ctx));
       setSuccessMessage('Group created.');
-      // handleClose();
+      onNewGroup(data.slot_id);
     } catch (err) {
       setErrors(err.response?.data);
       disableInputs(false);
+    } finally {
+      setAwaitingResponse(false);
     }
-    document.getElementById('close-modal-btn').disabled = false;
-    setAwaitingResponse(false);
   };
 
   return (
