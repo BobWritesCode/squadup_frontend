@@ -40,6 +40,7 @@ const CreateLFG = () => {
   // close modal function
   const handleClose = () => {
     setErrors({});
+    disableInputs(false);
     setShow(false);
   };
 
@@ -98,23 +99,15 @@ const CreateLFG = () => {
 
   // Switch inputs to disabled or active
   const disableInputs = (toggle) => {
-    const inputs = document.getElementsByTagName('select');
+    const modal = document.getElementById('lfgModal');
+    const inputs = modal.querySelectorAll('select, textarea, button, input');
     for (let i = 0; i < inputs.length; i++) {
       inputs[i].disabled = toggle;
     }
-    const selects = document.getElementsByTagName('select');
-    for (let i = 0; i < selects.length; i++) {
-      selects[i].disabled = toggle;
+    const closeModalBtn = modal.querySelector('#close-modal-btn');
+    if (closeModalBtn) {
+      closeModalBtn.disabled = false;
     }
-    const textAreas = document.getElementsByTagName('textarea');
-    for (let i = 0; i < textAreas.length; i++) {
-      textAreas[i].disabled = toggle;
-    }
-    const buttons = document.getElementsByTagName('button');
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].disabled = toggle;
-    }
-    document.getElementById('modalBtnForCreateLfg').disabled = false;
   };
 
   // Handle submit on button press
