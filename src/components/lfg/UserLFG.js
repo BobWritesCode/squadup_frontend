@@ -7,7 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import LoadSpinner from '../Spinner';
 
-const UserLFGSlot = (props) => {
+const UserLFG = (props) => {
   const { onDelete, group } = props;
 
   // Show spinner while waiting for API result
@@ -112,4 +112,4 @@ const UserLFGSlot = (props) => {
   );
 };
 
-export default UserLFGSlot;
+export default UserLFG;

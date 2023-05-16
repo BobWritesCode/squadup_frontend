@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
-import UserLFGSlot from './UserLFGSlot';
+import UserLFG from './UserLFG';
 import CreateLFG from '../../components/lfg/CreateLFG';
 
 const UserLFGs = () => {
@@ -76,7 +76,7 @@ const UserLFGs = () => {
       }
       {groups.results.length > 0 &&
         groups.results.map((group, index) => (
-          <UserLFGSlot
+          <UserLFG
             key={group.id}
             group={group}
             onDelete={() => handleDeleteGroup(group.id)}
