@@ -15,9 +15,10 @@ const CreateLFG = () => {
   const [awaitingResponse, setAwaitingResponse] = useState(false);
   // set up key for slots components
   const [slots, setSlots] = useState([]);
-
   // set up variables for errors from request.
   const [errors, setErrors] = useState({});
+  // set up variables for success message.
+  const [successMessage, setSuccessMessage] = useState('');
   // set up modal state
   const [show, setShow] = useState(false);
   // set up variables for fields used in this component
@@ -41,7 +42,10 @@ const CreateLFG = () => {
     setShow(false);
   };
 
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setSuccessMessage('');
+    setShow(true);
+  };
 
   // Update character count on change.
   useEffect(() => {
@@ -103,6 +107,7 @@ const CreateLFG = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setAwaitingResponse(true);
+      setSuccessMessage('Group created.');
     setAwaitingResponse(false);
   };
 
@@ -287,6 +292,12 @@ const CreateLFG = () => {
               awaitingResponse && <LoadSpinner className="mt-3" />
             }
 
+            {successMessage && (
+              // Show success message if get 20x from server response.
+              <Alert variant="success" key={9999} className="mt-3">
+                {successMessage}
+              </Alert>
+            )}
           </Form>
         </Modal.Body>
 
