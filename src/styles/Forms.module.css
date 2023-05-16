@@ -29,3 +29,18 @@
   min-width: 30%;
   max-width: 30%;
 }
+
+.Form select:disabled,
+.Form option:disabled,
+.Form textarea:disabled,
+.Form textarea:disabled {
+  color: rgba(183, 143, 29, 0.7) !important;
+  background: none;
+  border-radius: 0;
+  border-top: None;
+  border-left: None;
+  border-right: None;
+  margin-bottom: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
