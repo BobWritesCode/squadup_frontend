@@ -8,8 +8,11 @@ import btnStyles from '../../styles/Buttons.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 import { LfgSlot } from './LfgSlot';
+import LoadSpinner from '../Spinner';
 
 const CreateLFG = () => {
+  // Show spinner while waiting for API result
+  const [awaitingResponse, setAwaitingResponse] = useState(false);
   // set up key for slots components
   const [slots, setSlots] = useState([]);
 
@@ -99,19 +102,8 @@ const CreateLFG = () => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    console.log(currentTeamSize);
-    // setErrors({});
-    // disableInputs(true);
-    // try {
-    //   const { data } = await axiosReq.post(`/lfg/`, formData);
-    //   console.log(data);
-    //   handleClose();
-    // } catch (err) {
-    //   console.log(err);
-    //   setErrors(err.response?.data);
-    //   disableInputs(false);
-    // }
+    setAwaitingResponse(true);
+    setAwaitingResponse(false);
   };
 
   return (
@@ -289,6 +281,12 @@ const CreateLFG = () => {
                 {m}
               </Alert>
             ))}
+
+            {
+              // Show spinner while waiting for API response
+              awaitingResponse && <LoadSpinner className="mt-3" />
+            }
+
           </Form>
         </Modal.Body>
 
