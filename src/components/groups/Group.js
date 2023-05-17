@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { axiosReq } from '../../contexts/CurrentUserContext';
+import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
 import RankBadge from '../utils/RankBadge';
 import appStyles from '../../App.module.css';
 import btnStyles from '../../styles/Buttons.module.css';
@@ -7,15 +7,21 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import LoadSpinner from '../Spinner';
 import GroupSlot from './GroupSlot';
+import { Table } from 'react-bootstrap';
 
 const Group = (props) => {
   const { onDelete, group } = props;
-  const [ slots, setSlots] = useState({})
-  const [ hasLoaded, setHasLoaded] = useState(false)
+
+  const currentUser = useCurrentUser();
+
+  const [slots, setSlots] = useState({});
   // Show spinner while waiting for API result
   const [showSpinner, setShowSpinner] = useState(false);
   // Show group deleted messaged if deleted
   const [showGroupDeleted, setShowGroupDeleted] = useState(false);
+
+  // Check to see if viewing user is profile owner.
+  const is_owner = currentUser?.username === group?.owner;
 
   const GameType = (gameType) => {
     switch (gameType) {
@@ -51,16 +57,12 @@ const Group = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-
-        // get Lfg slots for this group
+        // Get slots for this group
         const { data } = await axiosReq.get(`/lfg_slots/?lfg=${group.id}`);
-        console.log(data.results);
         // Set received api data to variable.
         setSlots(data);
       } catch {
       } finally {
-
-        setHasLoaded(true);
       }
     };
     fetchData();
@@ -96,7 +98,7 @@ const Group = (props) => {
               </tr>
               {group.content && (
                 <tr>
-                  <td colspan="6">{group.content}</td>
+                  <td colSpan="6">{group.content}</td>
                 </tr>
               )}
             </tbody>
@@ -128,10 +130,10 @@ const Group = (props) => {
           )}
         </div>
       </div>
-      <div className="w-100">
+      <div className="d-flex w-100">
         {!showSpinner ? (
-          <Button
-            className={`${btnStyles.Single} ${btnStyles.Danger} mb-0 w-100`}
+          is_owner && <Button
+            className={`${btnStyles.Single} ${btnStyles.Danger} mb-0 ms-auto`}
             onClick={() => handleDisbandGroup(group.id)}
           >
             <i className="bi bi-trash"></i> Disband

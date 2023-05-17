@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import appStyles from '../../App.module.css';
 import MyGroups from '../../components/groups/MyGroups';
+import GroupList from '../../components/groups/GroupList';
 
 const LFGPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -21,6 +22,7 @@ const LFGPage = () => {
   const listings = (
     <div className={` ${appStyles.Box}`}>
       <h3>Group listings</h3>
+      <GroupList />
     </div>
   );
 
