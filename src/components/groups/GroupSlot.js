@@ -1,28 +1,33 @@
-import React from 'react'
+import React from 'react';
+import Badge from 'react-bootstrap/Badge';
 
+const GroupSlot = (props) => {
+  const { slotData } = props;
 
-// useEffect(() => {
-//   const fetchData = async () => {
-//     try {
-//       // Get posts for user.
-//       const { data } = await axiosReq.get(`/posts/?owner=${profileId}`);
-//       // Set received api data to variable.
-//       setPosts(data);
-//     } catch {
-//     } finally {
-//       // Remove spinner from DOM.
-//       setHasLoaded(true);
-//     }
-//   };
-//   fetchData();
-// }, []);
+  const Status = () => {
+    if (slotData.status === 'Open') {
+      return (
+        <Badge bg="success">
+          Open
+        </Badge>
+      );
+    } else {
+      return (
+        <Badge bg="danger">
+          Closed
+        </Badge>
+      );
+    }
+  };
 
-const GroupSlot = () => {
   return (
-    <div>
+    <tr>
+      <td>{Status()}</td>
+      <td>{slotData.role}</td>
+      <td>{slotData.content ? slotData.content : <em>No extra info given.</em>}</td>
+      <td></td>
+    </tr>
+  );
+};
 
-    </div>
-  )
-}
-
-export default GroupSlot
+export default GroupSlot;
