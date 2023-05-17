@@ -95,7 +95,7 @@ const NewPost = (props) => {
       {
         // Text input for user.
       }
-      <Form.Group className="mb-3" controlId="textbox">
+      <Form.Group className="mb-0" controlId="textbox">
         <Form.Control
           as="textarea"
           placeholder=""
@@ -119,15 +119,9 @@ const NewPost = (props) => {
         // Only show if image has been selected by the user
         imagePath && (
           <Form.Group>
-            <figure>
+            <figure className="d-flex justify-content-center mt-1 mb-0">
               <Image src={imagePath} fluid />
             </figure>
-            {
-              // Button to remove image.
-            }
-            <Button variant="warning" type="button" onClick={handleRemoveImage}>
-              Remove image
-            </Button>
           </Form.Group>
         )
       }
@@ -149,7 +143,8 @@ const NewPost = (props) => {
           }}
           style={{ display: 'none' }}
         />
-
+      </InputGroup>
+      <div className={`d-flex justify-content-between`}>
         {
           // Button to add an image.
         }
@@ -159,7 +154,23 @@ const NewPost = (props) => {
         >
           Choose File
         </Button>
-      </InputGroup>
+
+        {
+          // Button to remove image.
+          imagePath && (
+            <Button variant="warning" type="button" onClick={handleRemoveImage}>
+              Remove image
+            </Button>
+          )
+        }
+
+        {
+          // Submit post button.
+        }
+        <Button variant="primary" type="submit">
+          Post
+        </Button>
+      </div>
 
       {
         // Error messages not connected image field.
@@ -187,13 +198,6 @@ const NewPost = (props) => {
           </Alert>
         ))
       }
-
-      {
-        // Submit post button.
-      }
-      <Button variant="primary" type="submit">
-        Post
-      </Button>
     </Form>
   );
 
