@@ -64,7 +64,7 @@ const NewPost = (props) => {
     apiData.append('image', apiImageFile);
     // Try block to submit form to api and get response
     try {
-      const { data } = await axiosReq.put(`/posts/${id}`, apiData);
+      const { data } = await axiosReq.post(`/posts/`, apiData);
       setFormData({
         textbox: '',
         imagePath: '',

@@ -62,7 +62,7 @@ const PostEdit = (props) => {
     event.preventDefault();
     setErrors({});
     try {
-      const { data } = await axiosReq.patch(`/posts/${id}`, formData);
+      const { data } = await axiosReq.patch(`/posts/${id}/`, formData);
       onEditPost(data.post);
       handleClose();
     } catch (err) {
