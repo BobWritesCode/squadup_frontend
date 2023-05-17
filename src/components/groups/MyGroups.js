@@ -4,13 +4,11 @@ import LoadSpinner from '../Spinner';
 import Group from './Group';
 import CreateGroup from './CreateGroup';
 
-const Groups = () => {
+const MyGroups = () => {
   const currentUser = useCurrentUser();
   // Show spinner while waiting for API result
   const [hasLoaded, setHasLoaded] = useState(false);
   const [groups, setGroups] = useState({ results: [] });
-  // set up variables for errors from request.
-  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +18,7 @@ const Groups = () => {
         // Set received api data to variable.
         setGroups(data);
       } catch (err) {
-        setErrors(err);
+        console.log('Error: Unexpected error.');
       } finally {
         // Remove spinner
         setHasLoaded(true);
@@ -86,4 +84,4 @@ const Groups = () => {
   );
 };
 
-export default Groups;
+export default MyGroups;

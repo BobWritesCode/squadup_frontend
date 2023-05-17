@@ -3,7 +3,7 @@ import LoadSpinner from '../../components/Spinner';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import appStyles from '../../App.module.css';
-import Groups from '../../components/groups/Groups';
+import MyGroups from '../../components/groups/MyGroups';
 
 const LFGPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -15,7 +15,7 @@ const LFGPage = () => {
   const myGroups = (
     <div className={`${appStyles.Box}`}>
       <h3>My Groups</h3>
-      <Groups />
+      <MyGroups />
     </div>
   );
   const listings = (
