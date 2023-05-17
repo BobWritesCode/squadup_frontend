@@ -6,11 +6,11 @@ import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
-import { CreateLfgSlot } from './CreateLfgSlot';
+import { CreateGroupSlot } from './CreateGroupSlot';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
 
-const CreateLFG = (props) => {
+const CreateGroup = (props) => {
   const { onNewGroup } = props;
   // Show spinner while waiting for API result
   const [awaitingResponse, setAwaitingResponse] = useState(false);
@@ -277,7 +277,7 @@ const CreateLFG = (props) => {
             <Form.Group className="d-flex flex-column">
               <Form.Label>Player slots:</Form.Label>
               {slots.map((slot, i) => (
-                <CreateLfgSlot
+                <CreateGroupSlot
                   key={`slot-${i}`}
                   {...slot}
                   id={i}
@@ -352,4 +352,4 @@ const CreateLFG = (props) => {
   );
 };
 
-export default CreateLFG;
+export default CreateGroup;

@@ -10,7 +10,7 @@ import logo from './assets/logo-white-text-no-bg.png';
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import Profile from './pages/profile/Profile';
-import LFG from './pages/lfg/LFG';
+import LFGPage from './pages/lfg/LFGPage';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
               <Route path="/signin" element={<SignInForm />} />
               <Route path="/signup" element={<SignUpForm />} />
               <Route path="/profile/:id" element={<Profile />} />
-              <Route path="/lfg" element={<LFG />} />
+              <Route path="/lfg" element={<LFGPage />} />
               <Route path="*" element={<h1>404 Page Not Found</h1>} />
             </Routes>
           </Col>

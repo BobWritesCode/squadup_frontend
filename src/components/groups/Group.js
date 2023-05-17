@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import RankBadge from '../utils/RankBadge';
 import appStyles from '../../App.module.css';
@@ -6,10 +6,12 @@ import btnStyles from '../../styles/Buttons.module.css';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import LoadSpinner from '../Spinner';
+import GroupSlot from './GroupSlot';
 
-const UserLFG = (props) => {
+const Group = (props) => {
   const { onDelete, group } = props;
-
+  const [ slots, setSlots] = useState({})
+  const [ hasLoaded, setHasLoaded] = useState(false)
   // Show spinner while waiting for API result
   const [showSpinner, setShowSpinner] = useState(false);
   // Show group deleted messaged if deleted
@@ -46,7 +48,26 @@ const UserLFG = (props) => {
     }
   };
 
-  const ShowSlot = (group) => (
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+
+        // get Lfg slots for this group
+        const { data } = await axiosReq.get(`/lfg_slots/?lfg=${group.id}`);
+        console.log(data.results);
+        // Set received api data to variable.
+        setSlots(data);
+      } catch {
+      } finally {
+
+        setHasLoaded(true);
+      }
+    };
+    fetchData();
+  }, [group]);
+
+
+  const ShowGroup = (group) => (
     <>
       <div>
         <div className="d-flex">
@@ -75,6 +96,9 @@ const UserLFG = (props) => {
         </div>
         <div>
           <p>{group.content}</p>
+        </div>
+        <div>
+          <GroupSlot />
         </div>
       </div>
       <div className="w-100">
@@ -105,11 +129,11 @@ const UserLFG = (props) => {
             Group deleted.
           </Alert>
         ) : (
-          ShowSlot(group)
+          ShowGroup(group)
         )
       }
     </div>
   );
 };
 
-export default UserLFG;
+export default Group;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
-import UserLFG from './UserLFG';
-import CreateLFG from '../../components/lfg/CreateLFG';
+import Group from './Group';
+import CreateGroup from './CreateGroup';
 
-const UserLFGs = () => {
+const Groups = () => {
   const currentUser = useCurrentUser();
   // Show spinner while waiting for API result
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -69,14 +69,14 @@ const UserLFGs = () => {
           <LoadSpinner />
         ) : // Check user has no more than 5 groups
         groups.results?.length < 5 ? (
-          <CreateLFG onNewGroup={handleNewGroup} />
+          <CreateGroup onNewGroup={handleNewGroup} />
         ) : (
           <p>You have reached the maximum number of allowed groups.</p>
         )
       }
       {groups.results.length > 0 &&
         groups.results.map((group, index) => (
-          <UserLFG
+          <Group
             key={group.id}
             group={group}
             onDelete={() => handleDeleteGroup(group.id)}
@@ -86,4 +86,4 @@ const UserLFGs = () => {
   );
 };
 
-export default UserLFGs;
+export default Groups;

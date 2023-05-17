@@ -3,9 +3,9 @@ import LoadSpinner from '../../components/Spinner';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import appStyles from '../../App.module.css';
-import UserLFGs from '../../components/lfg/UserLFGs';
+import Groups from '../../components/groups/Groups';
 
-const LFG = () => {
+const LFGPage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const LFG = () => {
   const myGroups = (
     <div className={`${appStyles.Box}`}>
       <h3>My Groups</h3>
-      <UserLFGs />
+      <Groups />
     </div>
   );
   const listings = (
@@ -35,4 +35,4 @@ const LFG = () => {
   );
 };
 
-export default LFG;
+export default LFGPage;
