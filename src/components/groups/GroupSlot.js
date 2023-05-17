@@ -1,5 +1,6 @@
 import React from 'react';
 import Badge from 'react-bootstrap/Badge';
+import SlotApply from './SlotApply';
 
 const GroupSlot = (props) => {
   const { slotData } = props;
@@ -24,8 +25,12 @@ const GroupSlot = (props) => {
     <tr>
       <td>{Status()}</td>
       <td>{slotData.role}</td>
-      <td>{slotData.content ? slotData.content : <em>No extra info given.</em>}</td>
-      <td></td>
+      <td>
+        {slotData.content ? slotData.content : <em>No extra info given.</em>}
+      </td>
+      <td>
+        <SlotApply slotData={slotData} />
+      </td>
     </tr>
   );
 };
