@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
+import modalStyles from '../../styles/Modal.module.css';
+import formStyles from '../../styles/Forms.module.css';
 
 const TrackerUpdate = (props) => {
   const { onTrackerChange } = props;
@@ -62,13 +64,16 @@ const TrackerUpdate = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Update tracker ID</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Modal.Body className={modalStyles.Body}>
+          <Form className={formStyles.Form}>
             <Form.Group className="mb-3" controlId="tracker">
-              <Form.Label>Please enter your player name and hashtag number as it is on tracker.gg.</Form.Label>
+              <Form.Label>
+                Please enter your player name and hashtag number as it is on
+                tracker.gg.
+              </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="example: Player Name#1234"
@@ -77,7 +82,9 @@ const TrackerUpdate = (props) => {
                 onChange={handleChange}
                 autoComplete="tracker"
               />
-              <Form.Text>Your tracker.gg profile must be set to public for people to see.</Form.Text>
+              <Form.Text>
+                Your tracker.gg profile must be set to public for people to see.
+              </Form.Text>
             </Form.Group>
 
             {errors.tracker?.map((m, idx) => (
@@ -93,12 +100,12 @@ const TrackerUpdate = (props) => {
             ))}
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={modalStyles.Footer}>
+          <Button variant="success" onClick={handleSubmit}>
+            Save Changes
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

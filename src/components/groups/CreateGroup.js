@@ -147,7 +147,7 @@ const CreateGroup = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose} id="lfgModal">
-        <Modal.Header closeButton className={modalStyles.Header}>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Create a group</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>

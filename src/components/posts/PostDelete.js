@@ -7,6 +7,7 @@ import btnStyles from '../../styles/Buttons.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import { Image } from 'react-bootstrap';
+import formStyles from '../../styles/Forms.module.css';
 
 const PostDelete = (props) => {
   const { onDeletePost, post } = props;
@@ -57,11 +58,11 @@ const PostDelete = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className={modalStyles.Header}>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Delete post</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form>
+          <Form className={formStyles.Form}>
             <Form.Group className="mb-3" controlId="content">
               <Form.Control
                 as="textarea"
@@ -91,11 +92,11 @@ const PostDelete = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer className={modalStyles.Footer}>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
           <Button variant="danger" onClick={handleSubmit}>
             <i className="bi bi-trash"></i> Delete Post
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
           </Button>
         </Modal.Footer>
       </Modal>

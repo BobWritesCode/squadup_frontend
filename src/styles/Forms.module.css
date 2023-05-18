@@ -1,6 +1,8 @@
 .Form select,
 .Form option,
 .Form textarea,
+.Form input,
+.Form input:focus,
 .Form textarea:focus {
   color: #b78f1d !important;
   background: none;
@@ -15,24 +17,19 @@
 
 .Form textarea,
 .Form textarea:focus {
-  border-top: 1px solid rgba(250, 250, 250, .1);
-  border-left: 1px solid rgba(250, 250, 250, .1);
-  border-right: 1px solid rgba(250, 250, 250, .1);
+  border-top: 1px solid rgba(250, 250, 250, 0.1);
+  border-left: 1px solid rgba(250, 250, 250, 0.1);
+  border-right: 1px solid rgba(250, 250, 250, 0.1);
 }
 
 .Form option {
   background: #222831;
-
-}
-
-.Form label {
-  min-width: 30%;
-  max-width: 30%;
 }
 
 .Form select:disabled,
 .Form option:disabled,
 .Form textarea:disabled,
+.Form input:disabled,
 .Form textarea:disabled {
   color: rgba(183, 143, 29, 0.7) !important;
   background: none;

@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
+import modalStyles from '../../styles/Modal.module.css';
+import formStyles from '../../styles/Forms.module.css';
 
 const EmailUpdate = (props) => {
   const { onEmailChange } = props;
@@ -62,11 +64,11 @@ const EmailUpdate = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Update Email</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Modal.Body className={modalStyles.Body}>
+          <Form className={formStyles.Form}>
             <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email new address</Form.Label>
               <Form.Control
@@ -92,15 +94,14 @@ const EmailUpdate = (props) => {
                 {message}
               </Alert>
             ))}
-
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={modalStyles.Footer}>
+          <Button variant="success" onClick={handleSubmit}>
+            Save Changes
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

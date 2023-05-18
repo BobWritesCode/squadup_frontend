@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
+import modalStyles from '../../styles/Modal.module.css';
+import formStyles from '../../styles/Forms.module.css';
 
 const PasswordUpdate = () => {
 
@@ -66,13 +68,12 @@ const PasswordUpdate = () => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Update Password</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
-
-          <Form.Group className="mb-3" controlId="old_password">
+        <Modal.Body className={modalStyles.Body}>
+          <Form className={formStyles.Form}>
+            <Form.Group className="mb-3" controlId="old_password">
               <Form.Label>Current password:</Form.Label>
               <Form.Control
                 type="password"
@@ -128,15 +129,15 @@ const PasswordUpdate = () => {
                 {message}
               </Alert>
             ))}
-
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+
+        <Modal.Footer className={modalStyles.Footer}>
+          <Button variant="success" onClick={handleSubmit}>
+            Save Changes
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

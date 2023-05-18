@@ -10,6 +10,8 @@ import styles from '../../styles/Profile.module.css';
 import Avatar from '../Avatar';
 import { Image } from 'react-bootstrap';
 import { axiosReq } from '../../contexts/CurrentUserContext';
+import modalStyles from '../../styles/Modal.module.css';
+import formStyles from '../../styles/Forms.module.css';
 
 const AvatarUpdate = (props) => {
   const { onAvatarChange, avatar } = props;
@@ -67,29 +69,30 @@ const AvatarUpdate = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Update avatar</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Modal.Body className={modalStyles.Body}>
+          <Form className={formStyles.Form}>
             <Form.Group>
               {avatar && (
-                <figure>
+                <figure className="d-flex justify-content-center">
                   <Image src={myAvatar} fluid />
                 </figure>
               )}
-              <div>
+              <div className="d-flex justify-content-center">
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
-                  htmlFor="image-upload"
+                  className={`${btnStyles.Button} ${btnStyles.Single} btn my-auto`}
+                  htmlFor="avatar-upload"
                 >
                   Change the image
                 </Form.Label>
               </div>
 
               <Form.Control
+                className="d-none"
                 type="file"
-                id="image-upload"
+                id="avatar-upload"
                 ref={avatarFile}
                 accept="image/*"
                 onChange={(e) => {
@@ -114,12 +117,12 @@ const AvatarUpdate = (props) => {
             ))}
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={modalStyles.Footer}>
+          <Button variant="success" onClick={handleSubmit}>
+            Save Changes
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

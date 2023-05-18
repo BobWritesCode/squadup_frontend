@@ -3,13 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-// import { axiosReq } from '../../api/axiosDefaults';
 import btnStyles from '../../styles/Buttons.module.css';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../contexts/CurrentUserContext';
+import modalStyles from '../../styles/Modal.module.css';
+import formStyles from '../../styles/Forms.module.css';
 
 const UserNoteUpdate = (props) => {
-  const { onUserNoteChange, userNote } = props;
+  const { onUserNoteChange, userNote = {} } = props;
 
   // set up variables for errors from request.
   const [errors, setErrors] = useState({});
@@ -74,11 +75,11 @@ const UserNoteUpdate = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Leave a note</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Modal.Body className={modalStyles.Body}>
+          <Form className={formStyles.Form}>
             <Form.Group className="mb-3" controlId="userNote">
               <Form.Label>Note:</Form.Label>
               <Form.Control
@@ -109,12 +110,12 @@ const UserNoteUpdate = (props) => {
             ))}
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={modalStyles.Footer}>
+          <Button variant="success" onClick={handleSubmit}>
+            Save Changes
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

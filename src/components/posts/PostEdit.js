@@ -4,10 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
-import modalStyles from '../../styles/Modal.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import { Image } from 'react-bootstrap';
 import appStyles from '../../App.module.css';
+import modalStyles from '../../styles/Modal.module.css';
+import formStyles from '../../styles/Forms.module.css';
 
 const PostEdit = (props) => {
   const { onEditPost, post } = props;
@@ -78,11 +79,11 @@ const PostEdit = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className={modalStyles.Header}>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Update post</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form>
+          <Form className={formStyles.Form}>
             <Form.Group className="mb-3" controlId="content">
               <Form.Control
                 as="textarea"
@@ -115,11 +116,11 @@ const PostEdit = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer className={modalStyles.Footer}>
+          <Button variant="success" onClick={handleSubmit}>
+            <i className="bi bi-save"></i> Save
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            <i className="bi bi-save"></i> Save
           </Button>
         </Modal.Footer>
       </Modal>
