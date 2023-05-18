@@ -34,6 +34,18 @@ const SlotApply = (props) => {
   });
   const { role, content } = formData;
 
+  const Status = (s) => {
+    switch (s) {
+      case 'Awaiting':
+        return <Badge bg="warning">Awaiting</Badge>;
+      case 'Accepted':
+        return <Badge bg="success">Accepted</Badge>;
+      case 'Rejected':
+        return <Badge bg="danger">Rejected</Badge>;
+      default:
+    }
+  };
+
   const handleClose = () => {
     // Send refresh signal to update MyApplications
     setMyApplicationsSignal(!myApplicationsSignal);
@@ -128,7 +140,7 @@ const SlotApply = (props) => {
         <tbody>
           <tr>
             <th>Status</th>
-            <td>{appliedData.status}</td>
+            <td>{Status(formData.status)}</td>
           </tr>
 
           <tr>
