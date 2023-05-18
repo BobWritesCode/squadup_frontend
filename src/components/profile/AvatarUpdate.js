@@ -43,7 +43,7 @@ const AvatarUpdate = (props) => {
     formData.append('objective', 'Update avatar');
     formData.append('image', imageFile);
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}`, formData);
+      const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
       // update the username in the other component
       onAvatarChange(data.url);
       handleClose();
