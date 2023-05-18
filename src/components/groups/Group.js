@@ -118,7 +118,7 @@ const Group = (props) => {
                   <th>Status</th>
                   <th>Role</th>
                   <th>Info</th>
-                  <th>Apply</th>
+                  <th>{is_owner ? 'Applications' : 'Apply'}</th>
                 </tr>
               </thead>
               <tbody>
