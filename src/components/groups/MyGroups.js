@@ -78,7 +78,7 @@ const MyGroups = () => {
         )
       }
       {groups.results.length > 0 &&
-        groups.results.map((group, index) => (
+        groups.results.map((group) => (
           <Group
             key={group.id}
             group={group}
