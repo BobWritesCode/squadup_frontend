@@ -11,9 +11,11 @@ import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
 import Table from 'react-bootstrap/Table';
 import RankBadge from '../utils/RankBadge';
 import appStyles from '../../App.module.css';
+import Badge from 'react-bootstrap/Badge';
 import myApplicationsSignalContext from '../../contexts/myApplicationsSignalContext';
 
 const SlotApply = (props) => {
+  const { slotData, slotID, onUpdate } = props;
   // Context to force refresh when signal received.
   const { myApplicationsSignal, setMyApplicationsSignal } = useContext(
     myApplicationsSignalContext,
@@ -21,16 +23,19 @@ const SlotApply = (props) => {
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [deleted, setDeleted] = useState(false);
-  const [appliedData, setAppliedData] = useState({});
   const [show, setShow] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
   const [successMessage, setSuccessMessage] = useState(false);
   const [errors, setErrors] = useState({});
   // Used to display character count under note input
   const [charCount, setCharCount] = useState(0);
   const [formData, setFormData] = useState({
+    id: 0,
+    slot: slotData?.id || slotID,
     role: 'Any',
     rank: 0,
     content: '',
+    status: '',
   });
   const { role, content } = formData;
 
@@ -49,13 +54,20 @@ const SlotApply = (props) => {
   const handleClose = () => {
     // Send refresh signal to update MyApplications
     setMyApplicationsSignal(!myApplicationsSignal);
-    setHasLoaded(false);
     setShow(false);
-  };
-  const handleShow = () => {
+    setHasLoaded(false);
+    setShowEditForm(false);
+    setErrors({});
     setSuccessMessage(false);
     setDeleted(false);
-    setAppliedData({});
+    // reset status back to blank, so correct modal view is shown.
+    setFormData({
+      ...formData,
+      status: '',
+    });
+  };
+
+  const handleShow = () => {
     CheckForApplication();
     setShow(true);
   };
@@ -89,10 +101,18 @@ const SlotApply = (props) => {
   const CheckForApplication = async () => {
     try {
       const { data } = await axiosReq.get(
-        `/lfg_slots_apply/?slot=${slotData.id}&owner=${currentUser.pk}`,
+        `/lfg_slots_apply/?slot=${formData.slot}&owner=${currentUser.pk}`,
       );
       if (data.count > 0) {
-        setAppliedData(data.results[0]);
+        setFormData({
+          ...formData,
+          id: data.results[0].id,
+          role: data.results[0].role,
+          rank: data.results[0].rank,
+          content: data.results[0].content,
+          status: data.results[0].status,
+          created_at: data.results[0].created_at,
+        });
       }
       setHasLoaded(true);
     } catch (err) {
@@ -102,7 +122,7 @@ const SlotApply = (props) => {
     }
   };
 
-  // Handle submit on button press
+  // Handle submit button press
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrors({});
@@ -110,6 +130,7 @@ const SlotApply = (props) => {
     try {
       await axiosReq.post(`/lfg_slots_apply/`, formData);
       setSuccessMessage('Application submitted.');
+      onUpdate();
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -117,13 +138,43 @@ const SlotApply = (props) => {
     }
   };
 
+  // Handle delete button press
   const handleDelete = async (event) => {
     event.preventDefault();
     setErrors({});
     disableInputs(true);
     try {
-      await axiosReq.delete(`/lfg_slots_apply/${appliedData.id}`);
+      await axiosReq.delete(`/lfg_slots_apply/${formData.id}`);
       setDeleted(true);
+      onUpdate();
+    } catch (err) {
+      console.log(err);
+      setErrors(err.response?.data);
+      disableInputs(false);
+    }
+  };
+
+  // Handle edit button press
+  const handleEdit = (event) => {
+    event.preventDefault();
+    setShowEditForm(true);
+  };
+
+  // Handle save edit button press
+  const handleSaveEdit = async (event) => {
+    event.preventDefault();
+    setErrors({});
+    disableInputs(true);
+    // Create new FormData object and append correct data to be patched.
+    const updateForm = new FormData();
+    updateForm.append('content', formData.content);
+    updateForm.append('role', formData.role);
+    updateForm.append('rank', formData.rank);
+    try {
+      await axiosReq.patch(`/lfg_slots_apply/${formData.id}/`, updateForm);
+      setShowEditForm(false);
+      disableInputs(false);
+      onUpdate();
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -133,9 +184,7 @@ const SlotApply = (props) => {
 
   const ShowApplied = (
     <>
-      <h3 className={`${appStyles.YellowText}`}>
-        You have already applied for this role in this group.
-      </h3>
+      <h3 className={`${appStyles.YellowText}`}>Request status.</h3>
       <Table striped bordered hover variant="dark">
         <tbody>
           <tr>
@@ -145,27 +194,23 @@ const SlotApply = (props) => {
 
           <tr>
             <th>Role</th>
-            <td>{appliedData.role}</td>
+            <td>{formData.role}</td>
           </tr>
           <tr>
             <th>Rank</th>
             <td>
-              <RankBadge rank={appliedData.rank} />
+              <RankBadge rank={formData.rank} />
             </td>
           </tr>
           <tr>
             <th>Info</th>
-            <td>
-              {appliedData.content ? (
-                appliedData.content
-              ) : (
-                <em>No info provided.</em>
-              )}
+            <td className="text-break">
+              {formData.content ? formData.content : <em>No info provided.</em>}
             </td>
           </tr>
           <tr>
             <th>Applied when</th>
-            <td>{appliedData.created_at}</td>
+            <td>{formData.created_at}</td>
           </tr>
         </tbody>
       </Table>
@@ -190,7 +235,7 @@ const SlotApply = (props) => {
         </Form.Select>
       </Form.Group>
 
-      {errors.game_type?.map((m, idx) => (
+      {errors.role?.map((m, idx) => (
         <Alert variant="warning" key={idx}>
           {m}
         </Alert>
@@ -267,7 +312,19 @@ const SlotApply = (props) => {
 
   const ShowDeleteButton = (
     <Button variant="danger" onClick={handleDelete}>
-      Delete Application
+      Delete
+    </Button>
+  );
+
+  const ShowEditButton = (
+    <Button variant="success" onClick={handleEdit}>
+      Edit
+    </Button>
+  );
+
+  const ShowSaveEditButton = (
+    <Button variant="success" onClick={handleSaveEdit}>
+      Save Update
     </Button>
   );
 
@@ -294,15 +351,48 @@ const SlotApply = (props) => {
         <Modal.Body className={modalStyles.Body}>
           {!hasLoaded && <LoadSpinner />}
           {hasLoaded && deleted && ShowDeleted}
-          {hasLoaded && appliedData.status && !deleted && ShowApplied}
-          {hasLoaded && !appliedData.status && !deleted && ShowMyForm}
+          {
+            // Check to see if should show request summary if already requested to join role.
+            hasLoaded &&
+              formData.status &&
+              !showEditForm &&
+              !deleted &&
+              ShowApplied
+          }
+
+          {
+            // Show form if not already requested to join or editing a request to join.
+            hasLoaded &&
+              (!formData.status || showEditForm) &&
+              !deleted &&
+              ShowMyForm
+          }
         </Modal.Body>
         <Modal.Footer className={modalStyles.Footer}>
-          {hasLoaded
-            ? appliedData.status
-              ? !deleted && ShowDeleteButton
-              : ShowApplyButton
-            : null}
+          {
+            // Show Delete or Apply Button
+            hasLoaded
+              ? formData.status
+                ? !deleted && ShowDeleteButton
+                : ShowApplyButton
+              : null
+          }
+          {
+            // Show Edit Button
+            hasLoaded
+              ? formData.status
+                ? !deleted && !showEditForm && ShowEditButton
+                : null
+              : null
+          }
+          {
+            // Show Save Edit Button
+            hasLoaded
+              ? formData.status
+                ? !deleted && showEditForm && ShowSaveEditButton
+                : null
+              : null
+          }
           <Button
             variant="secondary"
             onClick={handleClose}
