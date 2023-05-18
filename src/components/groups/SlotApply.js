@@ -24,8 +24,7 @@ const SlotApply = (props) => {
   // Used to display character count under note input
   const [charCount, setCharCount] = useState(0);
   const [formData, setFormData] = useState({
-    slot: slotData.id,
-    role: 0,
+    role: 'Any',
     rank: 0,
     content: '',
   });
