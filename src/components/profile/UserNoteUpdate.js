@@ -101,7 +101,7 @@ const UserNoteUpdate = (props) => {
               </p>
             </Form.Group>
 
-            {errors.userNote?.map((m, idx) => (
+            {errors.content?.map((m, idx) => (
               <Alert variant="warning" key={idx}>
                 {m}
               </Alert>

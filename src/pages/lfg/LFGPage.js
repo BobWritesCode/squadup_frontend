@@ -7,18 +7,24 @@ import MyApplications from '../../components/groups/MyApplications';
 
 const LFGPage = () => {
   return (
-    <Row>
-      <Col className="">
+    <>
+      <Row>
         <h2>Look for group</h2>
-        <div className="d-flex d-row">
+      </Row>
+      <Row>
+        <Col>
           <MyGroups />
+        </Col>
+        <Col>
           <MyApplications />
-        </div>
-        <div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <GroupList />
-        </div>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+    </>
   );
 };
 
