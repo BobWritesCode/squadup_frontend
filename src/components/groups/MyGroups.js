@@ -3,6 +3,7 @@ import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
 import Group from './Group';
 import CreateGroup from './CreateGroup';
+import appStyles from '../../App.module.css';
 
 const MyGroups = () => {
   const currentUser = useCurrentUser();
@@ -63,6 +64,8 @@ const MyGroups = () => {
 
   return (
     <>
+    <div className={`${appStyles.Box}`}>
+      <h3>My Groups</h3>
       {
         // Show spinner while waiting for results
         !hasLoaded ? (
@@ -82,6 +85,7 @@ const MyGroups = () => {
             onDelete={() => handleDeleteGroup(group.id)}
           />
         ))}
+        </div>
     </>
   );
 };

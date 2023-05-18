@@ -68,10 +68,16 @@ const GroupList = () => {
 
   return (
     <>
-      {
-        // Show spinner while waiting for results
-        !hasLoaded ? <LoadSpinner /> : FullGroupList()
-      }
+      <div className={` ${appStyles.Box}`}>
+        <h3>Open Groups</h3>
+        <p>
+          <em>excludes any groups you own.</em>
+        </p>
+        {
+          // Show spinner while waiting for results
+          !hasLoaded ? <LoadSpinner /> : FullGroupList()
+        }
+      </div>
     </>
   );
 };
