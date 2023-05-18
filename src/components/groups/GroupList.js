@@ -68,7 +68,7 @@ const GroupList = () => {
 
   return (
     <>
-      <div className={` ${appStyles.Box}`}>
+      <div className={`${appStyles.Box}`}>
         <h3>Open Groups</h3>
         <p>
           <em>excludes any groups you own.</em>

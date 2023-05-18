@@ -21,7 +21,7 @@ const GroupSlot = (props) => {
         {slotData.content ? slotData.content : <em>No extra info given.</em>}
       </td>
       <td>
-        <SlotApply slotData={slotData} onUpdate={()=>{}} />
+        <SlotApply slotData={slotData} onUpdate={() => {}} />
       </td>
     </tr>
   );

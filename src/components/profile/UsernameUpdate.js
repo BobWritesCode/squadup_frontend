@@ -19,7 +19,7 @@ const UsernameUpdate = (props) => {
   const handleClose = () => {
     setErrors({});
     setShow(false);
-  }
+  };
   const handleShow = () => setShow(true);
 
   // get current user
@@ -71,7 +71,7 @@ const UsernameUpdate = (props) => {
       }));
       // update the username in the other component
       onUsernameChange(username);
-      handleClose()
+      handleClose();
     } catch (err) {
       setErrors(err.response?.data);
     }

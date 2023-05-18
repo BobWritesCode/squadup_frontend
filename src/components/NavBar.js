@@ -59,12 +59,9 @@ const NavBar = () => {
     </>
   );
 
-    const lfgLink = (
+  const lfgLink = (
     <>
-      <NavLink
-        to="/lfg"
-        className={(el) => (el.isActive ? styles.active : '')}
-      >
+      <NavLink to="/lfg" className={(el) => (el.isActive ? styles.active : '')}>
         LFG
       </NavLink>
     </>
@@ -75,7 +72,7 @@ const NavBar = () => {
       <NavLink
         to={`/profile/${currentUser?.profile_id}`}
         className={(el) => (el.isActive ? styles.active : '')}
-        onClick={()=>{}}
+        onClick={() => {}}
       >
         Profile
       </NavLink>

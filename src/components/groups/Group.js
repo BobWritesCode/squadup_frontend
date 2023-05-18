@@ -132,12 +132,14 @@ const Group = (props) => {
       </div>
       <div className="d-flex w-100">
         {!showSpinner ? (
-          is_owner && <Button
-            className={`${btnStyles.Single} ${btnStyles.Danger} mb-0 ms-auto`}
-            onClick={() => handleDisbandGroup(group.id)}
-          >
-            <i className="bi bi-trash"></i> Disband
-          </Button>
+          is_owner && (
+            <Button
+              className={`${btnStyles.Single} ${btnStyles.Danger} mb-0 ms-auto`}
+              onClick={() => handleDisbandGroup(group.id)}
+            >
+              <i className="bi bi-trash"></i> Disband
+            </Button>
+          )
         ) : (
           <LoadSpinner />
         )}

@@ -6,20 +6,21 @@ import ApplicationTable from './ApplicationTable';
 import myApplicationsSignalContext from '../../contexts/myApplicationsSignalContext';
 
 const MyApplications = () => {
-
   // Context to force refresh when signal received.
-  const { myApplicationsSignal, setMyApplicationsSignal } = useContext(myApplicationsSignalContext);
+  const { myApplicationsSignal, setMyApplicationsSignal } = useContext(
+    myApplicationsSignalContext,
+  );
 
   const currentUser = useCurrentUser();
   // Show spinner while waiting for API result
   const [hasLoaded, setHasLoaded] = useState(false);
   const [applications, setApplications] = useState({ results: [] });
 
-  const [update, setUpdate] = useState(true)
+  const [update, setUpdate] = useState(true);
   const handleOnUpdate = () => {
-    setUpdate(!update)
+    setUpdate(!update);
     setMyApplicationsSignal(!myApplicationsSignal);
-  }
+  };
 
   useEffect(() => {
     if (currentUser) {
@@ -44,14 +45,16 @@ const MyApplications = () => {
 
   const ShowApplications = (
     <>
-      {!applications.results?.length === 0  ? (
+      {!applications.results?.length === 0 ? (
         <p>
           <em>No current applications to show.</em>
         </p>
       ) : (
-          <ApplicationTable applications={applications.results} onUpdate={handleOnUpdate} />
-        )
-      }
+        <ApplicationTable
+          applications={applications.results}
+          onUpdate={handleOnUpdate}
+        />
+      )}
     </>
   );
 

@@ -1,4 +1,5 @@
-.Form input, .Form input:focus {
+.Form input,
+.Form input:focus {
   color: #b78f1d;
   background: none;
   border-radius: 0;

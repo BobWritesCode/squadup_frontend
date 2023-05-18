@@ -64,28 +64,28 @@ const MyGroups = () => {
 
   return (
     <>
-    <div className={`${appStyles.Box}`}>
-      <h3>My Groups</h3>
-      {
-        // Show spinner while waiting for results
-        !hasLoaded ? (
-          <LoadSpinner />
-        ) : // Check user has only one group open
-        groups.results?.length < 1 ? (
-          <CreateGroup onNewGroup={handleNewGroup} />
-        ) : (
-          <p>You can have one open group at a time.</p>
-        )
-      }
-      {groups.results.length > 0 &&
-        groups.results.map((group) => (
-          <Group
-            key={group.id}
-            group={group}
-            onDelete={() => handleDeleteGroup(group.id)}
-          />
-        ))}
-        </div>
+      <div className={`${appStyles.Box}`}>
+        <h3>My Groups</h3>
+        {
+          // Show spinner while waiting for results
+          !hasLoaded ? (
+            <LoadSpinner />
+          ) : // Check user has only one group open
+          groups.results?.length < 1 ? (
+            <CreateGroup onNewGroup={handleNewGroup} />
+          ) : (
+            <p>You can have one open group at a time.</p>
+          )
+        }
+        {groups.results.length > 0 &&
+          groups.results.map((group) => (
+            <Group
+              key={group.id}
+              group={group}
+              onDelete={() => handleDeleteGroup(group.id)}
+            />
+          ))}
+      </div>
     </>
   );
 };

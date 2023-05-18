@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useParams } from 'react-router-dom';
 import LoadSpinner from '../Spinner';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 
@@ -20,8 +19,6 @@ const NewPost = (props) => {
     imagePath: '',
   });
   const { textbox, imagePath } = formData;
-  // get current user id
-  const { id } = useParams();
 
   // Used to display character count under note input
   const [charCount, setCharCount] = useState('');

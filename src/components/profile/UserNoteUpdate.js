@@ -11,9 +11,9 @@ import formStyles from '../../styles/Forms.module.css';
 const UserNoteUpdate = (props) => {
   const { onUserNoteChange, userNote } = props;
   const { id, content } = userNote;
+
   // set up variables for errors from request.
   const [errors, setErrors] = useState({});
-
   // Modal functions
   const [show, setShow] = useState(false);
 
