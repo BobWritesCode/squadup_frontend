@@ -77,30 +77,49 @@
   border: 1px solid #3f6974 !important;
 }
 
+.Single:disabled {
+  background-color: rgba(250, 250, 250, 0.3) !important;
+  border: 1px solid #3f6974 !important;
+}
+
 .Success {
-  background-color: rgba(48, 161, 4, 0.1);
+  background-color: transparent;
+  border: 1px solid #284933 !important;
 }
 
 .Success:hover {
   background-color: rgba(48, 161, 4, 0.2);
+  border: 1px solid #284933 !important;
 }
 
 .Success:active {
-  background-color: rgba(48, 161, 4, 0.3) !important;
-  border: 1px solid #3f6974 !important;
+  border: 1px solid #284933 !important;
+  color: #fafafa  !important;
+}
+
+.Success:disabled {
+  border: 1px solid #284933 !important;
   color: #fafafa  !important;
 }
 
 .Danger {
-  background-color: rgba(161, 4, 4, 0.1);
+  background-color: #222831;
+  border: 1px solid #492828 !important;
 }
 
 .Danger:hover {
   background-color: rgba(161, 4, 4, 0.2);
+  border: 1px solid #492828 !important;
 }
 
 .Danger:active {
   background-color: rgba(161, 4, 4, 0.3) !important;
-  border: 1px solid #3f6974 !important;
+  border: 1px solid #492828 !important;
+  color: #fafafa  !important;
+}
+
+.Danger:disabled {
+  background-color: rgba(161, 4, 4, 0.1) !important;
+  border: 1px solid #492828 !important;
   color: #fafafa  !important;
 }
