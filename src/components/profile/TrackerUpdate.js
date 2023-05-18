@@ -16,11 +16,11 @@ const TrackerUpdate = (props) => {
   const handleClose = () => {
     setErrors({});
     setShow(false);
-  }
+  };
   const handleShow = () => {
     setFormData({ tracker: '' });
     setShow(true);
-  }
+  };
 
   // get current user id
   const { id } = useParams();
@@ -47,10 +47,12 @@ const TrackerUpdate = (props) => {
     event.preventDefault();
     setErrors({});
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}`, {'tracker': tracker});
+      const { data } = await axiosReq.put(`/profiles/${id}`, {
+        tracker: tracker,
+      });
       // update the username in the other component
       onTrackerChange(data.response);
-      handleClose()
+      handleClose();
     } catch (err) {
       setErrors(err.response?.data);
     }

@@ -8,7 +8,6 @@ import { fetchMoreData } from '../../utils/utils';
 
 const GroupList = () => {
   const currentUser = useCurrentUser();
-  console.log(currentUser);
   // Show spinner while waiting for API result
   const [hasLoaded, setHasLoaded] = useState(false);
   const [groups, setGroups] = useState({ results: [] });

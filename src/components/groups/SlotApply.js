@@ -158,7 +158,7 @@ const SlotApply = (props) => {
   const ShowMyForm = (
     <Form className={formStyles.Form}>
       <Form.Group className="mb-2 d-flex" controlId="role">
-        <Form.Label>Role type:</Form.Label>
+        <Form.Label className="w-25">Role type:</Form.Label>
         <Form.Select
           aria-label="Select desired player role"
           name="role"
@@ -180,7 +180,7 @@ const SlotApply = (props) => {
       ))}
 
       <Form.Group className="mb-2 d-flex" controlId="rank">
-        <Form.Label>Your rank:</Form.Label>
+        <Form.Label className="w-25">Your rank:</Form.Label>
         <Form.Select
           aria-label="Select your current rank"
           name="rank"

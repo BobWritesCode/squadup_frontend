@@ -27,7 +27,7 @@ const UserNoteUpdate = (props) => {
   // set up variables for fields used in this component
   const [formData, setFormData] = useState({
     userNote: userNote,
-    userNoteLength: userNote[0].length,
+    userNoteLength: userNote.length,
   });
 
   // Used to display character count under note input
@@ -35,7 +35,10 @@ const UserNoteUpdate = (props) => {
 
   // Update character count on load
   useEffect(() => {
-    setFormData({ userNote: userNote, userNoteLength: userNote[0].length });
+    setFormData({
+      userNote: userNote,
+      userNoteLength: userNote.length,
+    });
   }, [userNote]);
 
   // Update character as user changes value of input

@@ -10,7 +10,6 @@ import PostDelete from './PostDelete';
 const Post = (props) => {
   const { id, created_at, updated_at, content, image } = props;
 
-
   const [post, setPost] = useState({
     id: id,
     updated_at: updated_at,
@@ -34,11 +33,11 @@ const Post = (props) => {
   };
 
   const postButtons = (
-    <div
-      className={`d-flex flex-row m-2 position-absolute top-0 end-0 ${btnStyles.Panel}`}
-    >
-      <PostEdit onEditPost={handleEditPost} post={post} />
-      <PostDelete onDeletePost={handleDeletePost} post={post} />
+    <div className={`d-flex flex-row-reverse`}>
+      <div className={`d-inline-flex mb-2 w-0 ${btnStyles.Panel}`}>
+        <PostEdit onEditPost={handleEditPost} post={post} />
+        <PostDelete onDeletePost={handleDeletePost} post={post} />
+      </div>
     </div>
   );
 
@@ -48,7 +47,6 @@ const Post = (props) => {
         className={`${postStyles.Container} position-relative`}
         id={`post-${id}`}
       >
-        {postButtons}
         <div>
           <p className={`${postStyles.Created}`}>
             <span className={appStyles.SecondaryText}>Posted: </span>
@@ -73,11 +71,12 @@ const Post = (props) => {
           </p>
         </div>
         <div>
-          <p className='text-break'>{post.content}</p>
+          <p className="text-break">{post.content}</p>
         </div>
         <div className="d-flex justify-content-center mb-3">
           <Image src={post.image} fluid rounded />
         </div>
+        {postButtons}
       </div>
     </>
   );

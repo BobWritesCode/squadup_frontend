@@ -16,11 +16,11 @@ const EmailUpdate = (props) => {
   const handleClose = () => {
     setErrors({});
     setShow(false);
-  }
+  };
   const handleShow = () => {
     setFormData({ email: '' });
     setShow(true);
-  }
+  };
 
   // get current user id
   const { id } = useParams();

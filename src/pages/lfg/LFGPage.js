@@ -21,7 +21,10 @@ const LFGPage = () => {
   );
   const listings = (
     <div className={` ${appStyles.Box}`}>
-      <h3>Group listings</h3>
+      <h3>Open Groups</h3>
+      <p>
+        <em>excludes any groups you own.</em>
+      </p>
       <GroupList />
     </div>
   );

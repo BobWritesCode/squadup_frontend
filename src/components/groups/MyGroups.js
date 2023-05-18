@@ -11,20 +11,22 @@ const MyGroups = () => {
   const [groups, setGroups] = useState({ results: [] });
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Get posts for user.
-        const { data } = await axiosReq.get(`/lfg/?owner=${currentUser.pk}`);
-        // Set received api data to variable.
-        setGroups(data);
-      } catch (err) {
-        console.log('Error: Unexpected error.');
-      } finally {
-        // Remove spinner
-        setHasLoaded(true);
-      }
-    };
-    fetchData();
+    if (currentUser) {
+      const fetchData = async () => {
+        try {
+          // Get groups for user.
+          const { data } = await axiosReq.get(`/lfg/?owner=${currentUser.pk}`);
+          // Set received api data to variable.
+          setGroups(data);
+        } catch (err) {
+          console.log('Error: Unexpected error.');
+        } finally {
+          // Remove spinner
+          setHasLoaded(true);
+        }
+      };
+      fetchData();
+    }
   }, [currentUser]);
 
   // Add new group to list when created.
@@ -52,7 +54,7 @@ const MyGroups = () => {
     // first create a copy
     const copyOfGroup = { ...groups };
     // find index of item to be removed
-    const index = copyOfGroup.results.findIndex(obj => obj.id === groupId);
+    const index = copyOfGroup.results.findIndex((obj) => obj.id === groupId);
     // remove it
     copyOfGroup.results.splice(index, 1);
     // set new group
@@ -65,11 +67,11 @@ const MyGroups = () => {
         // Show spinner while waiting for results
         !hasLoaded ? (
           <LoadSpinner />
-        ) : // Check user has no more than 5 groups
-        groups.results?.length < 5 ? (
+        ) : // Check user has only one group open
+        groups.results?.length < 1 ? (
           <CreateGroup onNewGroup={handleNewGroup} />
         ) : (
-          <p>You have reached the maximum number of allowed groups.</p>
+          <p>You can have one open group at a time.</p>
         )
       }
       {groups.results.length > 0 &&

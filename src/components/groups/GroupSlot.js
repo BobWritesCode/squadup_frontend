@@ -7,17 +7,9 @@ const GroupSlot = (props) => {
 
   const Status = () => {
     if (slotData.status === 'Open') {
-      return (
-        <Badge bg="success">
-          Open
-        </Badge>
-      );
+      return <Badge bg="success">Open</Badge>;
     } else {
-      return (
-        <Badge bg="danger">
-          Closed
-        </Badge>
-      );
+      return <Badge bg="danger">Closed</Badge>;
     }
   };
 

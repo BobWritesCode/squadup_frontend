@@ -9,13 +9,12 @@ import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 
 const PasswordUpdate = () => {
-
   // Modal functions
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setErrors({});
     setShow(false);
-  }
+  };
   const handleShow = () => {
     setFormData({
       old_password: '',
@@ -23,7 +22,7 @@ const PasswordUpdate = () => {
       new_password2: '',
     });
     setShow(true);
-  }
+  };
 
   // set up variables for fields used in this component
   const [formData, setFormData] = useState({
@@ -54,7 +53,7 @@ const PasswordUpdate = () => {
     formData.append('new_password2', new_password2);
     try {
       await axiosReq.post(`/dj-rest-auth/password/change/`, formData);
-      handleClose()
+      handleClose();
     } catch (err) {
       setErrors(err.response?.data);
     }
