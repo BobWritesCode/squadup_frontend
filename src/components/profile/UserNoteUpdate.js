@@ -4,14 +4,13 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
-import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 
 const UserNoteUpdate = (props) => {
-  const { onUserNoteChange, userNote = {} } = props;
-
+  const { onUserNoteChange, userNote } = props;
+  const { id, content } = userNote;
   // set up variables for errors from request.
   const [errors, setErrors] = useState({});
 
@@ -26,8 +25,9 @@ const UserNoteUpdate = (props) => {
 
   // set up variables for fields used in this component
   const [formData, setFormData] = useState({
-    userNote: userNote,
-    userNoteLength: userNote.length,
+    id: id,
+    content: content,
+    contentLength: String(content).length,
   });
 
   // Used to display character count under note input
@@ -36,15 +36,16 @@ const UserNoteUpdate = (props) => {
   // Update character count on load
   useEffect(() => {
     setFormData({
-      userNote: userNote,
-      userNoteLength: userNote.length,
+      id: id,
+      content: content,
+      contentLength: String(content).length,
     });
-  }, [userNote]);
+  }, [id, content]);
 
   // Update character as user changes value of input
   useEffect(() => {
-    setCharCount(String(formData.userNote).length);
-  }, [formData.userNote]);
+    setCharCount(String(formData.content).length);
+  }, [formData.content]);
 
   // Allow user to edit form.
   const handleChange = (e) => {
@@ -54,16 +55,16 @@ const UserNoteUpdate = (props) => {
     });
   };
 
-  // get current user id
-  const { id } = useParams();
-
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrors({});
     try {
-      const { data } = await axiosReq.put(`/usernotes/${id}`, formData);
-      onUserNoteChange(data.user_note);
+      const { data } = await axiosReq.patch(
+        `/usernotes/${formData.id}/`,
+        formData,
+      );
+      onUserNoteChange(data.post);
       handleClose();
     } catch (err) {
       console.log(err);
@@ -83,15 +84,15 @@ const UserNoteUpdate = (props) => {
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
           <Form className={formStyles.Form}>
-            <Form.Group className="mb-3" controlId="userNote">
+            <Form.Group className="mb-3" controlId="content">
               <Form.Label>Note:</Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Enter desired note"
-                name="userNote"
-                value={formData.userNote}
+                name="content"
+                value={formData.content}
                 onChange={handleChange}
-                autoComplete="userNote"
+                autoComplete="content"
               />
               <p>
                 <Form.Text>

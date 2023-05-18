@@ -17,12 +17,12 @@ import UsernameUpdate from '../../components/profile/UsernameUpdate';
 import TrackerUpdate from '../../components/profile/TrackerUpdate';
 import AvatarUpdate from '../../components/profile/AvatarUpdate';
 import PasswordUpdate from '../../components/profile/PasswordUpdate';
-import UserNoteUpdate from '../../components/profile/UserNoteUpdate';
 import NewPost from '../../components/posts/NewPost';
 import LoadSpinner from '../../components/Spinner';
 import UserPosts from '../../components/posts/UserPosts';
+import UserNote from '../../components/profile/UserNote';
 
-const Profile = (props) => {
+const Profile = () => {
   const { id } = useParams();
 
   const { setProfileData } = useSetProfileData();
@@ -34,7 +34,6 @@ const Profile = (props) => {
   const [email, setEmail] = useState('');
   const [tracker, setTracker] = useState('');
   const [avatar, setAvatar] = useState('');
-  const [userNote, setUserNote] = useState('');
   const [latestPost, setLatestPost] = useState('');
 
   const [profile] = pageProfile.results;
@@ -45,20 +44,15 @@ const Profile = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [
-          { data: r_pageProfile },
-          { data: r_userNote },
-          { data: r_details },
-        ] = await Promise.all([
-          axiosReq.get(`/profiles/${id}/`),
-          axiosReq.get(`/usernotes/${id}`),
-          axiosReq.get(`/profiles/details/${id}`),
-        ]);
+        const [{ data: r_pageProfile }, { data: r_details }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/${id}/`),
+            axiosReq.get(`/profiles/details/${id}`),
+          ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [r_pageProfile] },
         }));
-        setUserNote(r_userNote.user_note);
         setAvatar(r_pageProfile.image);
         setEmail(r_details.email);
         setUsername(r_pageProfile.owner);
@@ -90,11 +84,6 @@ const Profile = (props) => {
   // function to avatar the email state
   const handleAvatarChange = (newAvatar) => {
     setAvatar(newAvatar);
-  };
-
-  // function to avatar the email state
-  const handleUserNoteChange = (newUserNote) => {
-    setUserNote(newUserNote);
   };
 
   // function to avatar the email state
@@ -196,52 +185,46 @@ const Profile = (props) => {
     </>
   );
 
-  const userNoteBlock = (
+  const postsBlock = (
     <>
-      <div className={` ${appStyles.Box}`}>
-        <div className="d-flex flex-column">
-          <div className="d-flex flex-row">
-            <h4 className="text-break">Note</h4>
-            <UserNoteUpdate
-              onUserNoteChange={handleUserNoteChange}
-              userNote={userNote}
-            />
-          </div>
-          <p className={`${appStyles.OrangeText} text-break`}>{userNote}</p>
-        </div>
+      <div className={appStyles.Box}>
+        <h3>Posts</h3>
+        {is_owner && <NewPost onNewPost={handleNewPost} />}
+        <div className="mb-3"></div>
+        <UserPosts profileId={id} latestNewPost={latestPost} />
       </div>
     </>
   );
 
-  const postsBlock = (
+  const mainProfile = (
     <>
-      <Row className="d-flex justify-content-between">
-        <Col className={appStyles.Box}>
-          <h3>Posts</h3>
-          {is_owner && <NewPost onNewPost={handleNewPost} />}
-          <div className="mb-3"></div>
-          <UserPosts profileId={id} latestNewPost={latestPost} />
+      <Row>
+        <Col xs={{ order: 'first' }} md={{ order: 'last' }}>
+          <Row>
+            <Col>{Profile}</Col>
+          </Row>
+          <Row>
+            <Col>
+              <UserNote />
+            </Col>
+          </Row>
+        </Col>
+
+        <Col xs={{ order: 'last' }} md={{ order: 'first' }}>
+          <Row>
+            <Col>{postsBlock}</Col>
+          </Row>
         </Col>
       </Row>
     </>
   );
 
-  const mainProfile = (
-    <Row>
-      <Col xs="7">{postsBlock}</Col>
-      <Col xs="5">
-        {Profile}
-        <p></p>
-        {userNoteBlock}
-      </Col>
-      {profile?.content && <Col className="p-3">{profile.content}</Col>}
-    </Row>
-  );
-
   return (
-    <Row>
-      <Col className="">{hasLoaded ? <>{mainProfile}</> : <LoadSpinner />}</Col>
-    </Row>
+    <>
+      <Row>
+        <Col>{hasLoaded ? <>{mainProfile}</> : <LoadSpinner />}</Col>
+      </Row>
+    </>
   );
 };
 
