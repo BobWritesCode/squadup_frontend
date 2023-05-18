@@ -4,7 +4,7 @@
 } */
 
 .App {
-  background-color: #222831;
+  background-color: rgb(33, 39, 48);
   min-height: 100vh;
 }
 
@@ -19,12 +19,19 @@
 }
 
 .Box {
-  border: 1px solid #3f6974;
+  border: 1px solid rgb(183, 143, 29);
   padding: 20px;
+  margin-bottom: 20px;
+}
+
+.InnerBox {
+  background-color: rgba(63, 105, 116, 0.2);
+  border: none;
+  padding: 10px;
 }
 
 .OrangeText {
-  color: #b78f1d;
+  color: rgb(183, 143, 29);
 }
 
 .YellowText {
