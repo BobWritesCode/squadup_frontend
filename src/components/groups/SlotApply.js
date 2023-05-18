@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import btnStyles from '../../styles/Buttons.module.css';
@@ -11,9 +11,13 @@ import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
 import Table from 'react-bootstrap/Table';
 import RankBadge from '../utils/RankBadge';
 import appStyles from '../../App.module.css';
+import myApplicationsSignalContext from '../../contexts/myApplicationsSignalContext';
 
 const SlotApply = (props) => {
-  const { slotData } = props;
+  // Context to force refresh when signal received.
+  const { myApplicationsSignal, setMyApplicationsSignal } = useContext(
+    myApplicationsSignalContext,
+  );
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [deleted, setDeleted] = useState(false);
@@ -31,6 +35,8 @@ const SlotApply = (props) => {
   const { role, content } = formData;
 
   const handleClose = () => {
+    // Send refresh signal to update MyApplications
+    setMyApplicationsSignal(!myApplicationsSignal);
     setHasLoaded(false);
     setShow(false);
   };
