@@ -1,0 +1,19 @@
+.Page {
+  color: #b78f1d;
+}
+
+.Page a {
+  background-color: rgba(250, 250, 250, 0.1);
+  color: #b78f1d;
+  border: none;
+}
+
+.Page > li > span {
+  background-color: rgba(250, 250, 250, 0.1) !important;
+  color: #b78f1d;
+  border: none;
+}
+
+.Page > li > a > span {
+  color: #b78f1d;
+}

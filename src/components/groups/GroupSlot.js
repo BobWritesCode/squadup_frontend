@@ -1,9 +1,15 @@
 import React from 'react';
 import Badge from 'react-bootstrap/Badge';
 import SlotApply from './SlotApply';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import ApplicationReviews from './ApplicationReviews';
 
 const GroupSlot = (props) => {
   const { slotData } = props;
+
+  const currentUser = useCurrentUser();
+  // Check to see if viewing user is profile owner.
+  const is_owner = currentUser?.username === slotData?.owner;
 
   const Status = () => {
     if (slotData.status === 'Open') {
@@ -21,7 +27,11 @@ const GroupSlot = (props) => {
         {slotData.content ? slotData.content : <em>No extra info given.</em>}
       </td>
       <td>
-        <SlotApply slotData={slotData} onUpdate={() => {}} />
+        {is_owner ? (
+          <ApplicationReviews slotData={slotData} />
+        ) : (
+          <SlotApply slotData={slotData} onUpdate={() => {}} />
+        )}
       </td>
     </tr>
   );
