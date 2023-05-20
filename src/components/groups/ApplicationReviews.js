@@ -504,13 +504,16 @@ const ApplicationReviews = (props) => {
   /**
    * JSX to show accepted alert once user has confirmed acceptance of a request.
    */
-  const ShowAcceptedAlert =
-    /*Success messages received from API.*/
-    showSuccessMsg && (
-      <Alert variant="success" className="mt-3 mb-0">
-        Accepted
-      </Alert>
-    );
+  const ShowAcceptedAlert = (
+    <>
+      {/*Success messages received from API.*/}
+      {showSuccessMsg && (
+        <Alert variant="success" className="mt-3 mb-0">
+          Accepted
+        </Alert>
+      )}
+    </>
+  );
 
   /**
    * JSX to show request to join group.
