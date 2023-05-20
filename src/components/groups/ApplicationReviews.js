@@ -166,6 +166,8 @@ const ApplicationReviews = (props) => {
     setShowAccRejSpinner(false);
     // disable inputs until api response.
     disableInputs(true);
+    // remove any error messages from DOM.
+    setErrors({});
 
     try {
       // create new form to control data being sent to API
