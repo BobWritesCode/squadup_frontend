@@ -12,6 +12,9 @@ import Pagination from 'react-bootstrap/Pagination';
 import paginationStyles from '../../styles/Pagination.module.css';
 import { Link } from 'react-router-dom';
 import tableStyles from '../../styles/Table.module.css';
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+import formStyles from '../../styles/Forms.module.css';
 
 const ApplicationReviews = (props) => {
   const { slotData } = props;
@@ -25,8 +28,20 @@ const ApplicationReviews = (props) => {
   const [show, setShow] = useState(false);
   const [page, setPage] = useState(0);
   const [pageData, setPageData] = useState({});
+  // Use to display character count under note input
+  const [charCount, setCharCount] = useState('');
+  // Use to toggle success alert on confirmed request accept.
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
+  // Use to toggle show accept form
+  const [showProcessing, setShowProcessing] = useState(false);
+  // Use to toggle showing spinner instead of Accept & Reject buttons.
+  const [showAccRejSpinner, setShowAccRejSpinner] = useState(true);
   const [errors, setErrors] = useState({});
-  const [formData, setFormData] = useState({});
+  // Use to control formData in form.
+  const [formData, setFormData] = useState({
+    reply_content: '',
+  });
+  const { reply_content } = formData;
 
   // function to  close modal
   const handleClose = () => {
@@ -38,7 +53,9 @@ const ApplicationReviews = (props) => {
     // reset status back to blank, so correct modal view is shown.
     setFormData({
       ...formData,
+      reply_content: '',
     });
+    setShowProcessing(false);
   };
 
   // function to show modal
@@ -74,7 +91,10 @@ const ApplicationReviews = (props) => {
     if (currentUser) {
       const fetchData = async () => {
         setErrors({});
-        setPageDataHasLoaded(false);
+        // remove success message from DOM.
+        setShowSuccessMsg(false);
+        // remove accept form from DOM.
+        setShowProcessing(false);
         try {
           const { data } = await axiosReq.get(
             `/lfg_slots_apply_pagination/?limit=1&offset=${page}`,
@@ -88,35 +108,94 @@ const ApplicationReviews = (props) => {
       };
       fetchData();
     }
-  }, [currentUser, page]);
-
-  // Handle accept button press
-  const handleAccept = async (event) => {
-    event.preventDefault();
-    setHasLoaded2(false);
-    setErrors({});
-    // disableInputs(true);
-    try {
-      const apiData = new FormData();
-      apiData.append('status', 'Accepted');
-      await axiosReq.patch(`/lfg_slots_apply_update/${pageData.id}/`, apiData);
-      setPageData({
-        ...pageData,
-        status: 'Rejected',
-      });
-    } catch (err) {
-      console.log(err);
-      setErrors(err.response?.data);
-      // disableInputs(false);
-    } finally {
-      setHasLoaded2(true);
+  /**
+   * Disables/Enables form controls through arg toggle.
+   * @param {boolean} toggle
+   */
+  const disableInputs = (toggle) => {
+    // disable all inputs and buttons in modal.
+    const modal = document.getElementById('my-modal');
+    const inputs = modal.querySelectorAll('select, textarea, button, input');
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].disabled = toggle;
+    }
+    // Keep close button enabled.
+    const closeModalBtn = modal.querySelector('#close-modal-btn');
+    if (closeModalBtn) {
+      closeModalBtn.disabled = false;
     }
   };
 
-  // Handle reject button press
+  /**
+   * Submits form to API, and waits for a response.
+   *
+   * If error, then show expected error messages.
+   *
+   * If success, show success message to user.
+   * @param {*} event
+   */
+  const handleConfirmAccept = async (event) => {
+    event.preventDefault();
+    // show spinner until api response.
+    setShowAccRejSpinner(false);
+    // disable inputs until api response.
+    disableInputs(true);
+
+    try {
+      // create new form to control data being sent to API
+      const apiData = new FormData();
+      apiData.append('status', 'Accepted');
+      apiData.append('reply_content', reply_content);
+      // contact API with apiData form.
+      await axiosReq.patch(`/lfg_slots_apply_update/${pageData.id}/`, apiData);
+      // if status:ok, update pageData.status to accepted.
+      setPageData({
+        ...pageData,
+        status: 'Accepted',
+      });
+
+      // hide form
+      setShowProcessing(false);
+      // show alert to user.
+      setShowSuccessMsg(true);
+      // hide pagination
+      setShowPagination(false);
+    } catch (err) {
+      // log errors to console.
+      console.log(err);
+      // show any expected errors to user.
+      setErrors(err.response?.data);
+      // reenable user form controls.
+      disableInputs(false);
+    } finally {
+      // remove spinner.
+      setShowAccRejSpinner(true);
+    }
+  };
+
+  /**
+   * Handles the first accept button.
+   *
+   * Removes any displayed error message, updates status, shows confirmation form to the user.
+   * @param {*} event
+   */
+  const handleAccept = async (event) => {
+    event.preventDefault();
+    // remove any shown errors.
+    setErrors({});
+    // update status shown to user with new instruction.
+    setPageData({
+      ...pageData,
+      status: 'Complete form below',
+    });
+    // display form to user to complete to confirm accept request.
+    setShowProcessing(true);
+  };
+
   const handleReject = async (event) => {
     event.preventDefault();
-    setHasLoaded2(false);
+    // show spinner until receive api response.
+    setShowAccRejSpinner(false);
     setErrors({});
     // disableInputs(true);
     try {
@@ -132,7 +211,8 @@ const ApplicationReviews = (props) => {
       setErrors(err.response?.data);
       // disableInputs(false);
     } finally {
-      setHasLoaded2(true);
+      // remove spinner.
+      setShowAccRejSpinner(true);
     }
   };
 
@@ -269,9 +349,12 @@ const ApplicationReviews = (props) => {
     </Pagination>
   );
 
+  /**
+   * JSX for Accept and Reject button under each request in modal.
+   */
   const ShowAcceptRejectBtns = (
     <>
-      {!hasLoaded2 ? (
+      {!showAccRejSpinner ? (
         <LoadSpinner />
       ) : (
         <>
@@ -286,17 +369,83 @@ const ApplicationReviews = (props) => {
     </>
   );
 
+  /**
+   * JSX status badge for each request in modal..
+   */
   const ShowStatus = (
     <>
       {pageData.status === 'Rejected' ? (
         <Badge bg="danger">{pageData.status}</Badge>
+      ) : pageData.status === 'Complete form below' ? (
+        <Badge bg="warning">Complete form below</Badge>
       ) : (
         <Badge bg="success">{pageData.status}</Badge>
       )}
     </>
   );
 
-  const ShowGroup = (
+  /**
+   * JSX to show form and button if user clicks accept to a request.
+   */
+  const ShowProcessing = (
+    <>
+      <Form className={`${formStyles.Form} mt-3 w-100`}>
+        <Form.Group
+          className="mb-2 d-flex flex-column"
+          controlId="reply_content"
+        >
+          <Form.Label>Provide instruction to join your group:</Form.Label>
+          <div className="d-flex flex-column w-100">
+            <Form.Control
+              className={`${formStyles.Form} mb-0`}
+              as="textarea"
+              placeholder="Example: Join our discord server: discord.gg/000000."
+              name="reply_content"
+              value={reply_content}
+              onChange={handleChange}
+            />
+            <Form.Text className="ms-auto">({charCount}/100)</Form.Text>
+          </div>
+        </Form.Group>
+
+        {/* Error messages for content field*/}
+        {errors.content?.map((message, idx) => (
+          <Alert key={idx} variant="warning" className="mt-3">
+            {message}
+          </Alert>
+        ))}
+
+        {/* Error messages for no fields.*/}
+        {errors.non_field_errors?.map((message, idx) => (
+          <Alert key={idx} variant="warning" className="mt-3">
+            {message}
+          </Alert>
+        ))}
+
+        <Form.Group className="d-flex justify-content-center">
+          <Button variant="success" onClick={handleConfirmAccept}>
+            Confirm Accept
+          </Button>
+        </Form.Group>
+      </Form>
+    </>
+  );
+
+  /**
+   * JSX to show accepted alert once user has confirmed acceptance of a request.
+   */
+  const ShowAcceptedAlert =
+    /*Success messages received from API.*/
+    showSuccessMsg && (
+      <Alert variant="success" className="mt-3 mb-0">
+        Accepted
+      </Alert>
+    );
+
+  /**
+   * JSX to show request to join group.
+   */
+  const ShowRequest = (
     <>
       <Table
         bordered
