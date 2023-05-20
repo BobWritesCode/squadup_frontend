@@ -345,13 +345,23 @@ const ApplicationReviews = (props) => {
 
   return (
     <>
-      <Button
-        variant="light"
-        className={`${btnStyles.Single} w-100`}
-        onClick={handleShow}
-      >
-        <Badge bg="danger">{applications.count}</Badge>
-      </Button>
+      {applications.count === 0 ? (
+        <Button
+          variant="light"
+          className={`${btnStyles.Single} w-100`}
+          disabled
+        >
+          <Badge bg="danger">{applications.count}</Badge>
+        </Button>
+      ) : (
+        <Button
+          variant="light"
+          className={`${btnStyles.Single} w-100`}
+          onClick={handleShow}
+        >
+          <Badge bg="danger">{applications.count}</Badge>
+        </Button>
+      )}
 
       <Modal show={show} onHide={handleClose} id={'my-modal'}>
         <Modal.Header className={modalStyles.Header}>
