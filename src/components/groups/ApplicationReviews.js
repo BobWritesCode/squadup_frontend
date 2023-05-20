@@ -18,24 +18,29 @@ import formStyles from '../../styles/Forms.module.css';
 
 const ApplicationReviews = (props) => {
   const { slotData } = props;
-
+  // Get current user.
   const currentUser = useCurrentUser();
-
+  // object of all requests to join group for this slot.
   const [applications, setApplications] = useState({ results: [] });
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const [hasLoaded2, setHasLoaded2] = useState(true);
-  const [pageDataHasLoaded, setPageDataHasLoaded] = useState(false);
-  const [show, setShow] = useState(false);
-  const [page, setPage] = useState(0);
+  // object for current request to be shown.
   const [pageData, setPageData] = useState({});
+  // integer: Which page is to be shown for the pagination.
+  const [pageNumber, setPageNumber] = useState(0);
   // Use to display character count under note input
   const [charCount, setCharCount] = useState('');
   // Use to toggle success alert on confirmed request accept.
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
   // Use to toggle show accept form
   const [showProcessing, setShowProcessing] = useState(false);
+  // Use to toggle showing pagination.
+  const [showPagination, setShowPagination] = useState(true);
   // Use to toggle showing spinner instead of Accept & Reject buttons.
   const [showAccRejSpinner, setShowAccRejSpinner] = useState(true);
+  // Use to toggle showing spinner when waiting for data from API for request.
+  const [showRequestSpinner, setShowRequestSpinner] = useState(false);
+  // Use to toggle showing modal.
+  const [show, setShow] = useState(false);
+  // Use to any expected errors as alerts.
   const [errors, setErrors] = useState({});
   // Use to control formData in form.
   const [formData, setFormData] = useState({
@@ -43,26 +48,32 @@ const ApplicationReviews = (props) => {
   });
   const { reply_content } = formData;
 
-  // function to  close modal
+  /**
+   * Handle closing modal.
+   */
   const handleClose = () => {
     setShow(false);
-    setHasLoaded(false);
     GetSlotData();
-    setPage(0);
+    setPageNumber(0);
     setErrors({});
-    // reset status back to blank, so correct modal view is shown.
     setFormData({
       ...formData,
       reply_content: '',
     });
+    setShowSuccessMsg(false);
     setShowProcessing(false);
   };
 
-  // function to show modal
+  /**
+   * Handle opening modal.
+   */
   const handleShow = () => {
     setShow(true);
   };
 
+  /**
+   * Calls API to get all requests for this slot in this group.
+   */
   const GetSlotData = useCallback(() => {
     const fetchData = async () => {
       try {
@@ -73,41 +84,56 @@ const ApplicationReviews = (props) => {
         // Set received api data to variable.
         setApplications(list);
       } catch (err) {
+        // show errors in console.
         console.log(err);
       } finally {
-        setHasLoaded(true);
       }
     };
     fetchData();
-  }, [slotData.id, setApplications, setHasLoaded]);
+  }, [slotData.id, setApplications]);
 
+  /**
+   * On component mount run GetSlotData().
+   */
   useEffect(() => {
     if (currentUser) {
       GetSlotData();
     }
   }, [currentUser, GetSlotData]);
 
+  /**
+   * On pageNumber update.
+   */
   useEffect(() => {
     if (currentUser) {
       const fetchData = async () => {
+        // remove any error messages from DOM.
         setErrors({});
+        // show spinner until api resolved.
+        setShowRequestSpinner(true);
         // remove success message from DOM.
         setShowSuccessMsg(false);
         // remove accept form from DOM.
         setShowProcessing(false);
         try {
           const { data } = await axiosReq.get(
-            `/lfg_slots_apply_pagination/?limit=1&offset=${page}`,
+            `/lfg_slots_apply_pagination/?limit=1&offset=${pageNumber}`,
           );
           setPageData(data.results[0]);
         } catch (err) {
+          // display any errors in console.
+          console.log(err);
+          // show expected errors in DOM.
           setErrors(err.response?.data);
         } finally {
-          setPageDataHasLoaded(true);
+          // remove spinner from DOM.
+          setShowRequestSpinner(false);
         }
       };
       fetchData();
     }
+  }, [currentUser, pageNumber]);
+
   /**
    * Disables/Enables form controls through arg toggle.
    * @param {boolean} toggle
@@ -192,12 +218,20 @@ const ApplicationReviews = (props) => {
     setShowProcessing(true);
   };
 
+  /**
+   * Handles the reject button.
+   *
+   * Removes any displayed error message, updates status, shows confirmation form to the user.
+   * @param {*} event
+   */
   const handleReject = async (event) => {
     event.preventDefault();
     // show spinner until receive api response.
     setShowAccRejSpinner(false);
+    // remove any shown errors.
     setErrors({});
-    // disableInputs(true);
+    // disable form inputs until receive api response.
+    disableInputs(true);
     try {
       const apiData = new FormData();
       apiData.append('status', 'Rejected');
@@ -207,102 +241,133 @@ const ApplicationReviews = (props) => {
         status: 'Rejected',
       });
     } catch (err) {
+      // log errors to console.
       console.log(err);
+      // show any expected errors to user.
       setErrors(err.response?.data);
-      // disableInputs(false);
+      // reenable user controls.
+      disableInputs(false);
     } finally {
       // remove spinner.
       setShowAccRejSpinner(true);
     }
   };
 
-  const Pages10 = applications.results?.length > 0 && (
+  /**
+   * Update character as user changes value of input
+   */
+  useEffect(() => {
+    setCharCount(String(reply_content).length);
+  }, [reply_content]);
+
+  /**
+   * Allow user to edit form.
+   * @param {*} e
+   */
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  /**
+   * JSX Pagination to show is application count is 10 or less.
+   */
+  const ShowPages10 = applications.results?.length > 0 && (
     <Pagination className="mt-2">
-      {page === 0 ? (
+      {pageNumber === 0 ? (
         <Pagination.Prev disabled onClick={() => {}} />
       ) : (
-        <Pagination.Prev onClick={() => setPage(page - 1)} />
+        <Pagination.Prev onClick={() => setPageNumber(pageNumber - 1)} />
       )}
       {Array(applications.results.length)
         .fill()
         .map((_, i) =>
-          page === i ? (
-            <Pagination.Item key={i} active onClick={() => setPage(i)}>
+          pageNumber === i ? (
+            <Pagination.Item key={i} active onClick={() => setPageNumber(i)}>
               {i + 1}
             </Pagination.Item>
           ) : (
-            <Pagination.Item key={i} onClick={() => setPage(i)}>
+            <Pagination.Item key={i} onClick={() => setPageNumber(i)}>
               {i + 1}
             </Pagination.Item>
           ),
         )}
-      {page === applications.results.length - 1 ? (
-        <Pagination.Next disabled onClick={() => setPage(() => {})} />
+      {pageNumber === applications.results.length - 1 ? (
+        <Pagination.Next disabled onClick={() => setPageNumber(() => {})} />
       ) : (
-        <Pagination.Next onClick={() => setPage(page + 1)} />
+        <Pagination.Next onClick={() => setPageNumber(pageNumber + 1)} />
       )}
     </Pagination>
   );
 
-  const Pages11Up = (
+  /**
+   * JSX Pagination to show is application count is 11 or more.
+   */
+  const ShowPages11Up = (
     <Pagination className={`mt-4 ${paginationStyles.Page}`}>
       {/* Prev page */}
-      {page <= 0 ? (
+      {pageNumber <= 0 ? (
         <Pagination.Prev disabled onClick={() => {}} />
       ) : (
-        <Pagination.Prev onClick={() => setPage(page - 1)} />
+        <Pagination.Prev onClick={() => setPageNumber(pageNumber - 1)} />
       )}
 
       {/* First page number */}
-      {page === 0 ? (
-        <Pagination.Item active onClick={() => setPage(0)}>
+      {pageNumber === 0 ? (
+        <Pagination.Item active onClick={() => setPageNumber(0)}>
           {1}
         </Pagination.Item>
       ) : (
-        <Pagination.Item onClick={() => setPage(0)}>{1}</Pagination.Item>
+        <Pagination.Item onClick={() => setPageNumber(0)}>{1}</Pagination.Item>
       )}
 
       <Pagination.Ellipsis disabled />
 
-      {page >= 0 && page <= 3 ? (
+      {pageNumber >= 0 && pageNumber <= 3 ? (
         <>
           {/* Set up pagination 2-6, if the current page is 4 or less */}
           {Array(5)
             .fill()
             .map((_, i) =>
-              page === i + 1 ? (
+              pageNumber === i + 1 ? (
                 <Pagination.Item
                   key={i + 1}
                   active
-                  onClick={() => setPage(i + 1)}
+                  onClick={() => setPageNumber(i + 1)}
                 >
                   {i + 2}
                 </Pagination.Item>
               ) : (
-                <Pagination.Item key={i + 1} onClick={() => setPage(i + 1)}>
+                <Pagination.Item
+                  key={i + 1}
+                  onClick={() => setPageNumber(i + 1)}
+                >
                   {i + 2}
                 </Pagination.Item>
               ),
             )}
         </>
-      ) : page >= applications.count - 3 && page <= applications.count ? (
+      ) : pageNumber >= applications.count - 3 &&
+        pageNumber <= applications.count ? (
         <>
           {/* Set up pagination last-5 to last-1, if the page is within 3 of the end */}
           {Array(5)
             .fill()
             .map((_, i) =>
-              page === applications.count - 6 + i ? (
+              pageNumber === applications.count - 6 + i ? (
                 <Pagination.Item
                   key={applications.count - 6 + i}
                   active
-                  onClick={() => setPage(applications.count - 6 + i)}
+                  onClick={() => setPageNumber(applications.count - 6 + i)}
                 >
                   {applications.count - 5 + i}
                 </Pagination.Item>
               ) : (
                 <Pagination.Item
                   key={applications.count - 6 + i}
-                  onClick={() => setPage(applications.count - 6 + i)}
+                  onClick={() => setPageNumber(applications.count - 6 + i)}
                 >
                   {applications.count - 5 + i}
                 </Pagination.Item>
@@ -311,18 +376,18 @@ const ApplicationReviews = (props) => {
         </>
       ) : (
         <>
-          <Pagination.Item onClick={() => setPage(page - 2)}>
-            {page - 1}
+          <Pagination.Item onClick={() => setPageNumber(pageNumber - 2)}>
+            {pageNumber - 1}
           </Pagination.Item>
-          <Pagination.Item onClick={() => setPage(page - 1)}>
-            {page}
+          <Pagination.Item onClick={() => setPageNumber(pageNumber - 1)}>
+            {pageNumber}
           </Pagination.Item>
-          <Pagination.Item active>{page + 1}</Pagination.Item>
-          <Pagination.Item onClick={() => setPage(page + 1)}>
-            {page + 2}
+          <Pagination.Item active>{pageNumber + 1}</Pagination.Item>
+          <Pagination.Item onClick={() => setPageNumber(pageNumber + 1)}>
+            {pageNumber + 2}
           </Pagination.Item>
-          <Pagination.Item onClick={() => setPage(page + 2)}>
-            {page + 3}
+          <Pagination.Item onClick={() => setPageNumber(pageNumber + 2)}>
+            {pageNumber + 3}
           </Pagination.Item>
         </>
       )}
@@ -330,21 +395,24 @@ const ApplicationReviews = (props) => {
       <Pagination.Ellipsis disabled />
 
       {/* Final page number */}
-      {page === applications.count - 1 ? (
-        <Pagination.Item active onClick={() => setPage(applications.count - 1)}>
+      {pageNumber === applications.count - 1 ? (
+        <Pagination.Item
+          active
+          onClick={() => setPageNumber(applications.count - 1)}
+        >
           {applications.count}
         </Pagination.Item>
       ) : (
-        <Pagination.Item onClick={() => setPage(applications.count - 1)}>
+        <Pagination.Item onClick={() => setPageNumber(applications.count - 1)}>
           {applications.count}
         </Pagination.Item>
       )}
 
       {/* Next page */}
-      {page >= applications.count - 1 ? (
-        <Pagination.Next disabled onClick={() => setPage(() => {})} />
+      {pageNumber >= applications.count - 1 ? (
+        <Pagination.Next disabled onClick={() => setPageNumber(() => {})} />
       ) : (
-        <Pagination.Next onClick={() => setPage(page + 1)} />
+        <Pagination.Next onClick={() => setPageNumber(pageNumber + 1)} />
       )}
     </Pagination>
   );
@@ -498,7 +566,12 @@ const ApplicationReviews = (props) => {
 
   return (
     <>
+      {/**
+       * Open modal button, that also shows number of requests for slot.
+       * If 0 requests the button will be disabled.
+       * */}
       {applications.count === 0 ? (
+        /*Disabled Button*/
         <Button
           variant="light"
           className={`${btnStyles.Single} w-100`}
@@ -507,6 +580,7 @@ const ApplicationReviews = (props) => {
           <Badge bg="danger">{applications.count}</Badge>
         </Button>
       ) : (
+        /*Enabled Button*/
         <Button
           variant="light"
           className={`${btnStyles.Single} w-100`}
@@ -516,6 +590,7 @@ const ApplicationReviews = (props) => {
         </Button>
       )}
 
+      {/*Modal*/}
       <Modal show={show} onHide={handleClose} id={'my-modal'}>
         <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Request review</Modal.Title>
@@ -523,15 +598,18 @@ const ApplicationReviews = (props) => {
         <Modal.Body
           className={`${modalStyles.Body} d-flex flex-column align-items-center`}
         >
-          {pageDataHasLoaded ? ShowGroup : <LoadSpinner />}
-          {pageDataHasLoaded
+          {showRequestSpinner ? <LoadSpinner /> : ShowRequest}
+          {showProcessing && ShowProcessing}
+          {showSuccessMsg && ShowAcceptedAlert}
+          {!showRequestSpinner && showPagination
             ? applications.count <= 10
-              ? Pages10
-              : Pages11Up
+              ? ShowPages10
+              : ShowPages11Up
             : ''}
         </Modal.Body>
 
         <Modal.Footer className={modalStyles.Footer}>
+          {/*Close modal button*/}
           <Button
             variant="secondary"
             onClick={handleClose}
