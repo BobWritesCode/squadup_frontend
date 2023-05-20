@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import btnStyles from '../../styles/Buttons.module.css';
@@ -32,6 +32,8 @@ const ApplicationReviews = (props) => {
   const handleClose = () => {
     setShow(false);
     setHasLoaded(false);
+    GetSlotData();
+    setPage(0);
     setErrors({});
     // reset status back to blank, so correct modal view is shown.
     setFormData({
@@ -44,27 +46,29 @@ const ApplicationReviews = (props) => {
     setShow(true);
   };
 
+  const GetSlotData = useCallback(() => {
+    const fetchData = async () => {
+      try {
+        // Get applications for this slot
+        const [{ data: list }] = await Promise.all([
+          axiosReq.get(`/lfg_slots_apply/?slot=${slotData.id}`),
+        ]);
+        // Set received api data to variable.
+        setApplications(list);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setHasLoaded(true);
+      }
+    };
+    fetchData();
+  }, [slotData.id, setApplications, setHasLoaded]);
+
   useEffect(() => {
     if (currentUser) {
-      const fetchData = async () => {
-        try {
-          // Get applications for this slot
-          const [{ data: list }] = await Promise.all([
-            axiosReq.get(
-              `/lfg_slots_apply/?slot=${slotData.id}&status=Awaiting`,
-            ),
-          ]);
-          // Set received api data to variable.
-          setApplications(list);
-        } catch (err) {
-          console.log(err);
-        } finally {
-          setHasLoaded(true);
-        }
-      };
-      fetchData();
+      GetSlotData();
     }
-  }, [currentUser, slotData]);
+  }, [currentUser, GetSlotData]);
 
   useEffect(() => {
     if (currentUser) {
