@@ -20,6 +20,7 @@ const ApplicationReviews = (props) => {
 
   const [applications, setApplications] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [hasLoaded2, setHasLoaded2] = useState(true);
   const [pageDataHasLoaded, setPageDataHasLoaded] = useState(false);
   const [show, setShow] = useState(false);
   const [page, setPage] = useState(0);
@@ -88,15 +89,46 @@ const ApplicationReviews = (props) => {
   // Handle accept button press
   const handleAccept = async (event) => {
     event.preventDefault();
+    setHasLoaded2(false);
     setErrors({});
     // disableInputs(true);
     try {
-      await axiosReq.post(`/lfg_slots_apply/`, formData);
-      // setSuccessMessage('Application submitted.');
+      const apiData = new FormData();
+      apiData.append('status', 'Accepted');
+      await axiosReq.patch(`/lfg_slots_apply_update/${pageData.id}/`, apiData);
+      setPageData({
+        ...pageData,
+        status: 'Rejected',
+      });
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
       // disableInputs(false);
+    } finally {
+      setHasLoaded2(true);
+    }
+  };
+
+  // Handle reject button press
+  const handleReject = async (event) => {
+    event.preventDefault();
+    setHasLoaded2(false);
+    setErrors({});
+    // disableInputs(true);
+    try {
+      const apiData = new FormData();
+      apiData.append('status', 'Rejected');
+      await axiosReq.patch(`/lfg_slots_apply_update/${pageData.id}/`, apiData);
+      setPageData({
+        ...pageData,
+        status: 'Rejected',
+      });
+    } catch (err) {
+      console.log(err);
+      setErrors(err.response?.data);
+      // disableInputs(false);
+    } finally {
+      setHasLoaded2(true);
     }
   };
 
@@ -233,6 +265,33 @@ const ApplicationReviews = (props) => {
     </Pagination>
   );
 
+  const ShowAcceptRejectBtns = (
+    <>
+      {!hasLoaded2 ? (
+        <LoadSpinner />
+      ) : (
+        <>
+          <Button variant="danger" onClick={handleReject}>
+            Reject
+          </Button>
+          <Button variant="success" onClick={handleAccept} className="ms-3">
+            Accept
+          </Button>
+        </>
+      )}
+    </>
+  );
+
+  const ShowStatus = (
+    <>
+      {pageData.status === 'Rejected' ? (
+        <Badge bg="danger">{pageData.status}</Badge>
+      ) : (
+        <Badge bg="success">{pageData.status}</Badge>
+      )}
+    </>
+  );
+
   const ShowGroup = (
     <>
       <Table
@@ -272,16 +331,9 @@ const ApplicationReviews = (props) => {
               </tr>
               <tr>
                 <td colSpan={3} align="center">
-                  <Button variant="danger" onClick={handleAccept}>
-                    Reject
-                  </Button>
-                  <Button
-                    variant="success"
-                    onClick={handleAccept}
-                    className="ms-3"
-                  >
-                    Accept
-                  </Button>
+                  {pageData.status === 'Awaiting'
+                    ? ShowAcceptRejectBtns
+                    : ShowStatus}
                 </td>
               </tr>
             </>
