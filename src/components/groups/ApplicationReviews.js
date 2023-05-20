@@ -17,7 +17,7 @@ import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../styles/Forms.module.css';
 
 const ApplicationReviews = (props) => {
-  const { slotData } = props;
+  const { slotData, onChange } = props;
   // Get current user.
   const currentUser = useCurrentUser();
   // object of all requests to join group for this slot.
@@ -62,6 +62,10 @@ const ApplicationReviews = (props) => {
     });
     setShowSuccessMsg(false);
     setShowProcessing(false);
+    // refresh parent if request is accepted.
+    if (pageData.status === 'Accepted') {
+      onChange('Close Slot');
+    }
   };
 
   /**

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import SlotApply from './SlotApply';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -6,6 +6,8 @@ import ApplicationReviews from './ApplicationReviews';
 
 const GroupSlot = (props) => {
   const { slotData } = props;
+  // Use to refresh state on child update signal
+  const [refresh, setRefresh] = useState(true);
 
   const currentUser = useCurrentUser();
   // Check to see if viewing user is profile owner.
@@ -19,6 +21,20 @@ const GroupSlot = (props) => {
     }
   };
 
+  const handleRefresh = (e) => {
+    switch (e) {
+      case 'Close Slot':
+        slotData.status = 'Closed';
+        break;
+      case 'Open Slot':
+        slotData.status = 'Open';
+        break;
+      default:
+        break;
+    }
+    setRefresh(!refresh);
+  };
+
   return (
     <tr>
       <td>{Status()}</td>
@@ -28,7 +44,7 @@ const GroupSlot = (props) => {
       </td>
       <td>
         {is_owner ? (
-          <ApplicationReviews slotData={slotData} />
+            <ApplicationReviews slotData={slotData} onChange={handleRefresh} />
         ) : (
           <SlotApply slotData={slotData} onUpdate={() => {}} />
         )}
