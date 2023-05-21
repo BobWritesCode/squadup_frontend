@@ -37,24 +37,38 @@ const GroupSlot = (props) => {
   };
 
   return (
-    <tr>
-      <td>{Status()}</td>
-      <td>{slotData.role}</td>
-      <td>
-        {slotData.content ? slotData.content : <em>No extra info given.</em>}
-      </td>
-      <td>
-        {is_owner ? (
-          slotData.status === 'Closed' ? (
-            <SlotUser slotData={slotData} onChange={handleRefresh} />
+    <>
+      <tr>
+        <td>{Status()}</td>
+        <td>{slotData.role}</td>
+        <td>
+          {slotData.content ? slotData.content : <em>No extra info given.</em>}
+        </td>
+        <td>
+          {is_owner ? (
+            slotData.status === 'Closed' ? (
+              <SlotUser
+                key={slotData.id}
+                slotData={slotData}
+                onChange={handleRefresh}
+              />
+            ) : (
+              <ApplicationReviews
+                key={slotData.id}
+                slotData={slotData}
+                onChange={handleRefresh}
+              />
+            )
           ) : (
-            <ApplicationReviews slotData={slotData} onChange={handleRefresh} />
-          )
-        ) : (
-          <SlotApply slotData={slotData} onUpdate={() => {}} />
-        )}
-      </td>
-    </tr>
+            <SlotApply
+              key={slotData.id}
+              slotData={slotData}
+              onUpdate={() => {}}
+            />
+          )}
+        </td>
+      </tr>
+    </>
   );
 };
 
