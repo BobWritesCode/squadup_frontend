@@ -447,13 +447,15 @@ const ApplicationReviews = (props) => {
    */
   const ShowStatus = (
     <>
-      {pageData.status === 'Rejected' ? (
-        <Badge bg="danger">{pageData.status}</Badge>
-      ) : pageData.status === 'Complete form below' ? (
-        <Badge bg="warning">Complete form below</Badge>
-      ) : (
-        <Badge bg="success">{pageData.status}</Badge>
-      )}
+      {pageData ? (
+        pageData.status === 'Rejected' ? (
+          <Badge bg="danger">{pageData.status}</Badge>
+        ) : pageData.status === 'Complete form below' ? (
+          <Badge bg="warning">Complete form below</Badge>
+        ) : (
+          <Badge bg="success">{pageData.status}</Badge>
+        )
+      ) : null}
     </>
   );
 
