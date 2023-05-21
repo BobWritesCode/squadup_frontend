@@ -16,25 +16,25 @@ const RankBadge = (props) => {
 
   const Badge = () => {
     switch (rank) {
-      case '0':
+      case 0:
         return unranked;
-      case '1':
+      case 1:
         return iron;
-      case '2':
+      case 2:
         return bronze;
-      case '3':
+      case 3:
         return silver;
-      case '4':
+      case 4:
         return gold;
-      case '5':
+      case 5:
         return platinum;
-      case '6':
+      case 6:
         return diamond;
-      case '7':
+      case 7:
         return ascendant;
-      case '8':
+      case 8:
         return immortal;
-      case '9':
+      case 9:
         return radiant;
       default:
         return unranked;
