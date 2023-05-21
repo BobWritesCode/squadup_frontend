@@ -35,7 +35,7 @@ const ApplicationReviews = (props) => {
   // Use to toggle showing pagination.
   const [showPagination, setShowPagination] = useState(true);
   // Use to toggle showing spinner instead of Accept & Reject buttons.
-  const [showAccRejSpinner, setShowAccRejSpinner] = useState(true);
+  const [showAccRejSpinner, setShowAccRejSpinner] = useState(false);
   // Use to toggle showing spinner when waiting for data from API for request.
   const [showRequestSpinner, setShowRequestSpinner] = useState(false);
   // Use to toggle showing modal.
@@ -167,12 +167,11 @@ const ApplicationReviews = (props) => {
   const handleConfirmAccept = async (event) => {
     event.preventDefault();
     // show spinner until api response.
-    setShowAccRejSpinner(false);
+    setShowAccRejSpinner(true);
     // disable inputs until api response.
     disableInputs(true);
     // remove any error messages from DOM.
     setErrors({});
-
     try {
       // create new form to control data being sent to API
       const apiData = new FormData();
@@ -201,7 +200,7 @@ const ApplicationReviews = (props) => {
       disableInputs(false);
     } finally {
       // remove spinner.
-      setShowAccRejSpinner(true);
+      setShowAccRejSpinner(false);
     }
   };
 
@@ -233,7 +232,7 @@ const ApplicationReviews = (props) => {
   const handleReject = async (event) => {
     event.preventDefault();
     // show spinner until receive api response.
-    setShowAccRejSpinner(false);
+    setShowAccRejSpinner(true);
     // remove any shown errors.
     setErrors({});
     // disable form inputs until receive api response.
@@ -255,7 +254,7 @@ const ApplicationReviews = (props) => {
       disableInputs(false);
     } finally {
       // remove spinner.
-      setShowAccRejSpinner(true);
+      setShowAccRejSpinner(false);
     }
   };
 
@@ -428,7 +427,7 @@ const ApplicationReviews = (props) => {
    */
   const ShowAcceptRejectBtns = (
     <>
-      {!showAccRejSpinner ? (
+      {showAccRejSpinner ? (
         <LoadSpinner />
       ) : (
         <>
@@ -497,9 +496,13 @@ const ApplicationReviews = (props) => {
         ))}
 
         <Form.Group className="d-flex justify-content-center">
-          <Button variant="success" onClick={handleConfirmAccept}>
-            Confirm Accept
-          </Button>
+          {showAccRejSpinner ? (
+            <LoadSpinner />
+          ) : (
+            <Button variant="success" onClick={handleConfirmAccept}>
+              Confirm Accept
+            </Button>
+          )}
         </Form.Group>
       </Form>
     </>
