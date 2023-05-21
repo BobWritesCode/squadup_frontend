@@ -281,7 +281,7 @@ const ApplicationReviews = (props) => {
    * JSX Pagination to show is application count is 10 or less.
    */
   const ShowPages10 = applications.results?.length > 0 && (
-    <Pagination className="mt-2">
+    <Pagination className={`mt-4 ${paginationStyles.Page}`}>
       {pageNumber === 0 ? (
         <Pagination.Prev disabled onClick={() => {}} />
       ) : (
