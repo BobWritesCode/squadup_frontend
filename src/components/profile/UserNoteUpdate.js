@@ -7,22 +7,22 @@ import btnStyles from '../../styles/Buttons.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
+import LoadSpinner from '../Spinner';
+import { useParams } from 'react-router-dom';
 
 const UserNoteUpdate = (props) => {
   const { onUserNoteChange, userNote } = props;
-  const { id, content } = userNote;
-
-  // set up variables for errors from request.
+  const { content } = userNote;
+  // Get url params
+  const { id } = useParams();
+  // Use to show spinner while waiting for API response
+  const [showSpinner, setShowSpinner] = useState(false);
+  // Use to any expected errors as alerts.
   const [errors, setErrors] = useState({});
-  // Modal functions
+  // Use to toggle showing modal.
   const [show, setShow] = useState(false);
-
-  const handleClose = () => {
-    setErrors({});
-    setShow(false);
-  };
-  const handleShow = () => setShow(true);
-
+  // Used to display character count under note input
+  const [charCount, setCharCount] = useState('');
   // set up variables for fields used in this component
   const [formData, setFormData] = useState({
     id: id,
@@ -30,24 +30,30 @@ const UserNoteUpdate = (props) => {
     contentLength: String(content).length,
   });
 
-  // Used to display character count under note input
-  const [charCount, setCharCount] = useState('');
+  /**
+   * Handle closing modal.
+   */
+  const handleClose = () => {
+    setErrors({});
+    setShow(false);
+  };
 
-  // Update character count on load
-  useEffect(() => {
-    setFormData({
-      id: id,
-      content: content,
-      contentLength: String(content).length,
-    });
-  }, [id, content]);
+  /**
+   * Handle opening modal.
+   */
+  const handleShow = () => setShow(true);
 
-  // Update character as user changes value of input
+  /**
+   * Update character as user changes value of input
+   */
   useEffect(() => {
     setCharCount(String(formData.content).length);
   }, [formData.content]);
 
-  // Allow user to edit form.
+  /**
+   * Allow user to edit form.
+   * @param {*} e
+   */
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -55,22 +61,84 @@ const UserNoteUpdate = (props) => {
     });
   };
 
-  // Handle submit on button press
+  /**
+   * Makes API call to either post new data, or updated existing data, based on user input text field.
+   * @param {*} event
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // Clear any error messages.
     setErrors({});
+    // Show spinner while waiting for API to resolve.
+    setShowSpinner(true);
     try {
-      const { data } = await axiosReq.patch(
-        `/usernotes/${formData.id}/`,
-        formData,
-      );
-      onUserNoteChange(data.post);
+      // Create new form to send controlled data to API.
+      const apiData = new FormData();
+      apiData.append('content', formData.content);
+      apiData.append('target_user', id);
+      if (!userNote.id) {
+        // Create new object in database.
+        const { data } = await axiosReq.post(`/usernotes/`, apiData);
+        // Update parent component.
+        onUserNoteChange(data);
+      } else {
+        // Update existing object in database.
+        const { data } = await axiosReq.patch(
+          `/usernotes/${userNote.id}/`,
+          apiData,
+        );
+        // Update parent component.
+        onUserNoteChange(data);
+      }
+      // Close modal
       handleClose();
     } catch (err) {
+      // Log error messages to the console.
       console.log(err);
+      // Displayed any expected error messages
       setErrors(err.response?.data);
+    } finally {
+      // Remove spinner from display.
+      setShowSpinner(false);
     }
   };
+
+  /**
+   * JSX to show Form inside modal.
+   */
+  const ShowForm = (
+    <>
+      <Form className={formStyles.Form}>
+        <Form.Group className="mb-2 d-flex flex-column" controlId="content">
+          <Form.Label>Note:</Form.Label>
+          <div className="d-flex flex-column w-100">
+            <Form.Control
+              className={`mb-0`}
+              as="textarea"
+              placeholder="Enter desired note"
+              name="content"
+              value={formData.content}
+              onChange={handleChange}
+            />
+
+            <Form.Text className="ms-auto">({charCount}/200)</Form.Text>
+          </div>
+        </Form.Group>
+
+        {errors.content?.map((m, idx) => (
+          <Alert variant="warning" key={idx}>
+            {m}
+          </Alert>
+        ))}
+
+        {errors.non_field_errors?.map((message, idx) => (
+          <Alert key={idx} variant="warning" className="mt-3">
+            {message}
+          </Alert>
+        ))}
+      </Form>
+    </>
+  );
 
   return (
     <>
@@ -82,42 +150,19 @@ const UserNoteUpdate = (props) => {
         <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Leave a note</Modal.Title>
         </Modal.Header>
-        <Modal.Body className={modalStyles.Body}>
-          <Form className={formStyles.Form}>
-            <Form.Group className="mb-3" controlId="content">
-              <Form.Label>Note:</Form.Label>
-              <Form.Control
-                as="textarea"
-                placeholder="Enter desired note"
-                name="content"
-                value={formData.content}
-                onChange={handleChange}
-                autoComplete="content"
-              />
-              <p>
-                <Form.Text>
-                  Max length 200 characters. ({charCount}/200)
-                </Form.Text>
-              </p>
-            </Form.Group>
 
-            {errors.content?.map((m, idx) => (
-              <Alert variant="warning" key={idx}>
-                {m}
-              </Alert>
-            ))}
+        <Modal.Body className={modalStyles.Body}>{ShowForm}</Modal.Body>
 
-            {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
-                {message}
-              </Alert>
-            ))}
-          </Form>
-        </Modal.Body>
         <Modal.Footer className={modalStyles.Footer}>
-          <Button variant="success" onClick={handleSubmit}>
-            Save Changes
-          </Button>
+          {/*While API is waiting to be resolved show spinner, otherwise show button*/}
+          {showSpinner ? (
+            <LoadSpinner />
+          ) : (
+            <Button variant="success" onClick={handleSubmit}>
+              Save Changes
+            </Button>
+          )}
+
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
