@@ -45,7 +45,7 @@ const GroupList = () => {
     <InfiniteScroll
       className={appStyles.NoScrollBars}
       children={groups.results.map((g) => {
-        if (g.owner !== currentUser.username) {
+        if (g.owner !== currentUser.username && g.status) {
           return (
             <Group
               key={g.id}
