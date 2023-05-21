@@ -3,6 +3,7 @@ import Badge from 'react-bootstrap/Badge';
 import SlotApply from './SlotApply';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import ApplicationReviews from './ApplicationReviews';
+import SlotUser from './SlotUser';
 
 const GroupSlot = (props) => {
   const { slotData } = props;
@@ -44,7 +45,11 @@ const GroupSlot = (props) => {
       </td>
       <td>
         {is_owner ? (
+          slotData.status === 'Closed' ? (
+            <SlotUser slotData={slotData} onChange={handleRefresh} />
+          ) : (
             <ApplicationReviews slotData={slotData} onChange={handleRefresh} />
+          )
         ) : (
           <SlotApply slotData={slotData} onUpdate={() => {}} />
         )}
