@@ -121,7 +121,7 @@ const ApplicationReviews = (props) => {
         setShowProcessing(false);
         try {
           const { data } = await axiosReq.get(
-            `/lfg_slots_apply_pagination/?limit=1&offset=${pageNumber}`,
+            `/lfg_slots_apply_pagination/?limit=1&offset=${pageNumber}&slot=${slotData.id}`,
           );
           setPageData(data.results[0]);
         } catch (err) {
@@ -136,7 +136,7 @@ const ApplicationReviews = (props) => {
       };
       fetchData();
     }
-  }, [currentUser, pageNumber]);
+  }, [currentUser, pageNumber, slotData.id]);
 
   /**
    * Disables/Enables form controls through arg toggle.
