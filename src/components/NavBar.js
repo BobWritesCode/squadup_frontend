@@ -12,10 +12,13 @@ import {
 import axios from 'axios';
 import { removeTokenTimestamp } from '../utils/utils';
 import { axiosDefaultsBaseUrl } from '../api/axiosDefaults';
+import useClickOutsideToggle from './hooks/useClickOutsideToggle';
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -80,12 +83,21 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar className={styles.NavBar} expand="md" fixed="top">
+    <Navbar
+      expanded={expanded}
+      className={styles.NavBar}
+      expand="md"
+      fixed="top"
+    >
       <Container fluid>
         <Navbar.Brand>
           <img src={logo} alt="Squad Up logo" height="45" />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Toggle
+          aria-controls="navbarScroll"
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+        />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="justify-content-end flex-grow-1 pe-3"
