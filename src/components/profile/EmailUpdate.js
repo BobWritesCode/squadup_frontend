@@ -8,11 +8,13 @@ import btnStyles from '../../styles/Buttons.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
+import LoadSpinner from '../Spinner';
 
 const EmailUpdate = (props) => {
   const { onEmailChange } = props;
   // Modal functions
   const [show, setShow] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
   const handleClose = () => {
     setErrors({});
     setShow(false);
@@ -45,6 +47,7 @@ const EmailUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setShowSpinner(true);
     setErrors({});
     try {
       await axiosReq.put(`/profiles/email/${id}/`, email);
@@ -53,6 +56,8 @@ const EmailUpdate = (props) => {
       handleClose();
     } catch (err) {
       setErrors(err.response?.data);
+    } finally {
+      setShowSpinner(false);
     }
   };
 
@@ -97,9 +102,15 @@ const EmailUpdate = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer className={modalStyles.Footer}>
-          <Button variant="success" onClick={handleSubmit}>
-            Save Changes
-          </Button>
+          {showSpinner ? (
+            <LoadSpinner />
+          ) : (
+            <>
+              <Button variant="success" onClick={handleSubmit}>
+                Save Changes
+              </Button>
+            </>
+          )}
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
