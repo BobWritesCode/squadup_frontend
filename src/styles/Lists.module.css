@@ -1,0 +1,15 @@
+.List {
+  background: transparent !important;
+  border: 1px solid #b78f1d !important;
+}
+
+.List li {
+  background: rgba(250, 250, 250, 0.08) !important;
+  color: #fafafa;
+  border: none;
+  font-weight: 500;
+}
+
+.List li > span {
+  font-weight: 300;
+}
