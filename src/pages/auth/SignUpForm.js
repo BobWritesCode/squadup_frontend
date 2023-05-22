@@ -12,6 +12,7 @@ import Alert from 'react-bootstrap/Alert';
 // css
 import styles from '../../styles/SignUpForm.module.css';
 import btnStyles from '../../styles/Buttons.module.css';
+import LoadSpinner from '../../components/Spinner';
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -21,7 +22,7 @@ const SignUpForm = () => {
     password2: '',
   });
   const { username, email, password1, password2 } = signUpData;
-
+  const [showSpinner, setShowSpinner] = useState(false);
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const SignUpForm = () => {
   // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowSpinner(true);
     try {
       await axios.post(
         `${axiosDefaultsBaseUrl}dj-rest-auth/registration/`,
@@ -45,6 +47,8 @@ const SignUpForm = () => {
       navigate('/signin');
     } catch (err) {
       setErrors(err.response?.data);
+    } finally {
+      setShowSpinner(false);
     }
   };
 
@@ -134,9 +138,15 @@ const SignUpForm = () => {
                 </Alert>
               ))}
               <div className="d-flex flex-row-reverse">
-                <Button type="submit" className={btnStyles.Register}>
-                  Register Account
-                </Button>
+                {showSpinner ? (
+                  <LoadSpinner />
+                ) : (
+                  <>
+                    <Button type="submit" className={btnStyles.Register}>
+                      Register Account
+                    </Button>
+                  </>
+                )}
               </div>
             </Form>
           </Col>
