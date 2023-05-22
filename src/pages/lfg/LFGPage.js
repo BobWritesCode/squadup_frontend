@@ -4,8 +4,10 @@ import Col from 'react-bootstrap/Col';
 import MyGroups from '../../components/groups/MyGroups';
 import GroupList from '../../components/groups/GroupList';
 import MyApplications from '../../components/groups/MyApplications';
+import { useRedirect } from '../../components/hooks/useRedirect';
 
 const LFGPage = () => {
+  useRedirect('loggedIn')
   return (
     <>
       <Row>

@@ -21,9 +21,11 @@ import NewPost from '../../components/posts/NewPost';
 import LoadSpinner from '../../components/Spinner';
 import UserPosts from '../../components/posts/UserPosts';
 import UserNote from '../../components/profile/UserNote';
+import { useRedirect } from '../../components/hooks/useRedirect';
 
 const Profile = () => {
   const { id } = useParams();
+  useRedirect('loggedIn')
 
   const { setProfileData } = useSetProfileData();
   const { pageProfile } = useProfileData();
