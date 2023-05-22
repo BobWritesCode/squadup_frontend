@@ -14,6 +14,7 @@ import LFGPage from './pages/lfg/LFGPage';
 import myApplicationsSignalContext from './contexts/myApplicationsSignalContext';
 import { useState } from 'react';
 import HomePage from './pages/HomePage';
+import Footer from './components/Footer';
 
 function App() {
   const [myApplicationsSignal, setMyApplicationsSignal] = useState(false);
@@ -24,9 +25,9 @@ function App() {
   };
 
   return (
-    <div className={appStyles.App}>
+    <div className={`${appStyles.App} d-flex flex-column`}>
       <NavBar />
-      <Container fluid className={appStyles.Main}>
+      <Container fluid className={`${appStyles.Main} flex-fill`}>
         <Row className="justify-content-center">
           <Col xs="11" className="d-flex flex-column">
             <myApplicationsSignalContext.Provider value={contextValue}>
@@ -42,6 +43,7 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 }

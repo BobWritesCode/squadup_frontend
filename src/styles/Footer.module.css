@@ -1,0 +1,13 @@
+.Main {
+  background-color: #b3b3b3;
+  margin-top: 30px;
+}
+
+.Main * {
+  color: rgb(49, 49, 49);
+}
+
+.Main i {
+  padding: 0 10px;
+  font-size: x-large;
+}
