@@ -338,15 +338,15 @@ const CreateGroup = (props) => {
         </Modal.Body>
 
         <Modal.Footer className={modalStyles.Footer}>
+          <Button variant="success" onClick={handleSubmit}>
+            <i className="bi bi-save"></i> Create group
+          </Button>
           <Button
             variant="secondary"
             onClick={handleClose}
             id="close-modal-btn"
           >
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            <i className="bi bi-save"></i> Create group
           </Button>
         </Modal.Footer>
       </Modal>
