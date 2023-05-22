@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import LoadSpinner from '../Spinner';
 import GroupSlot from './GroupSlot';
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Group = (props) => {
   const { onDelete, group } = props;
@@ -72,7 +73,15 @@ const Group = (props) => {
             <tbody>
               <tr>
                 <td>{group.id}</td>
-                <td>{group.owner}</td>
+                <td>
+                  <Link
+                    to={`/profile/${group.owner_id}`}
+                    preventScrollReset={true}
+                    target={'_blank'}
+                  >
+                    {group.owner}
+                  </Link>
+                </td>
                 <td>{group.game_type}</td>
                 <td>{group.max_team_size}</td>
                 <td>
