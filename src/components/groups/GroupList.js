@@ -61,6 +61,24 @@ const GroupList = () => {
   }, [searchFormData.game_type, setUrl]);
 
   /**
+   * This effect creates the string for the role to use in the API URL.
+   */
+  useEffect(() => {
+    setUrl((prevUrl) => {
+      let role = '';
+      // Add role filter.
+      if (searchFormData.role !== 'Any') {
+        role = `&role=${searchFormData.role}`;
+      }
+      const newUrl = {
+        ...prevUrl,
+        role: role,
+      };
+      return newUrl;
+    });
+  }, [searchFormData.role, setUrl]);
+
+  /**
    * This effect creates the string for the highest_rank to use in the API URL.
    * The string returns groups with a min rank no lower then the highest rank
    * requested.
@@ -106,7 +124,7 @@ const GroupList = () => {
       try {
         // API call to get all groups that status is true, and fit selected user filters.
         const { data } = await axiosReq.get(
-          `${url.start}${url.game_type}${url.lowest_rank}${url.highest_rank}`,
+          `${url.start}${url.game_type}${url.lowest_rank}${url.highest_rank}${url.role}`,
         );
         // Set received api data to variable.
         setGroups(data);
