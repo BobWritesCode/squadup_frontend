@@ -15,7 +15,7 @@ const RankBadge = (props) => {
   const { rank, width = '30px' } = props;
 
   const Badge = () => {
-    switch (rank) {
+    switch (Number(rank)) {
       case 0:
         return unranked;
       case 1:
