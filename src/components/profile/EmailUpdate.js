@@ -47,7 +47,7 @@ const EmailUpdate = (props) => {
     event.preventDefault();
     setErrors({});
     try {
-      await axiosReq.put(`/profiles/email/${id}`, email);
+      await axiosReq.put(`/profiles/email/${id}/`, email);
       // update the email in the other component
       onEmailChange(email);
       handleClose();
