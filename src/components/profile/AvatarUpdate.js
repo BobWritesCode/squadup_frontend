@@ -11,13 +11,14 @@ import { Image } from 'react-bootstrap';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
+import LoadSpinner from '../Spinner';
 
 const AvatarUpdate = (props) => {
   const { onAvatarChange, avatar } = props;
-
   const avatarFile = useRef();
   const [myAvatar, setMyAvatar] = useState(avatar);
   const [imageFile, setImageFile] = useState('');
+  const [showSpinner, setShowSpinner] = useState(false);
   // Modal functions
   const [show, setShow] = useState(false);
   const handleClose = () => {
@@ -38,6 +39,7 @@ const AvatarUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setShowSpinner(true);
     setErrors({});
     const formData = new FormData();
     formData.append('objective', 'Update avatar');
@@ -50,6 +52,8 @@ const AvatarUpdate = (props) => {
     } catch (err) {
       console.log('err', err.response?.data);
       setErrors(err.response?.data);
+    } finally {
+      setShowSpinner(false);
     }
   };
 
@@ -117,9 +121,15 @@ const AvatarUpdate = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer className={modalStyles.Footer}>
-          <Button variant="success" onClick={handleSubmit}>
-            Save Changes
-          </Button>
+          {showSpinner ? (
+            <LoadSpinner />
+          ) : (
+            <>
+              <Button variant="success" onClick={handleSubmit}>
+                Save Changes
+              </Button>
+            </>
+          )}
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
