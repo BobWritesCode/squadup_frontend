@@ -61,7 +61,7 @@ const AvatarUpdate = (props) => {
           <Avatar src={avatar} text="" width={'100%'} />
           <div className={styles.AvatarHover}>
             <div className={styles.AvatarText}>
-              <i className="bi bi-pencil-square"></i>
+              <i className="bi bi-pencil-square text-dark"></i>
             </div>
           </div>
         </div>
