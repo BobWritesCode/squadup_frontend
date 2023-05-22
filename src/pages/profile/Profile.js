@@ -68,7 +68,7 @@ const Profile = () => {
     // setUsername(newUsername);
     setProfile({
       ...profile,
-      username: newUsername,
+      owner: newUsername,
     });
   };
 
