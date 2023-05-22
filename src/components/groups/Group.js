@@ -11,7 +11,6 @@ import { Table } from 'react-bootstrap';
 
 const Group = (props) => {
   const { onDelete, group } = props;
-
   const currentUser = useCurrentUser();
 
   const [slots, setSlots] = useState({});
@@ -22,19 +21,6 @@ const Group = (props) => {
 
   // Check to see if viewing user is profile owner.
   const is_owner = currentUser?.username === group?.owner;
-
-  const GameType = (gameType) => {
-    switch (gameType) {
-      case '1':
-        return 'Competitive';
-      case '2':
-        return 'Tournament';
-      case '3':
-        return 'Casual';
-      default:
-        return 'error';
-    }
-  };
 
   const handleDisbandGroup = async (groupID) => {
     setShowSpinner(true);
@@ -87,7 +73,7 @@ const Group = (props) => {
               <tr>
                 <td>{group.id}</td>
                 <td>{group.owner}</td>
-                <td>{GameType(group.game_type)}</td>
+                <td>{group.game_type}</td>
                 <td>{group.max_team_size}</td>
                 <td>
                   <RankBadge rank={group.lowest_rank} width={'30px'} />

@@ -35,15 +35,9 @@ const MyGroups = () => {
     try {
       // Get latest post for user from server.
       const { data } = await axiosReq.get(`/lfg/${slot_id}`);
-      // Convert json string into obj.
-      const jsonGroup = JSON.parse(data.LFG);
-      const newGroup = jsonGroup[0].fields;
-      // Adding missing fields to object.
-      newGroup.id = jsonGroup[0].pk;
-      // Add obj to existing obj array.
       setGroups((prevGroups) => ({
         ...prevGroups,
-        results: [newGroup, ...prevGroups.results],
+        results: [data, ...prevGroups.results],
       }));
     } catch (err) {
       console.log(err);

@@ -27,8 +27,8 @@ const CreateGroup = (props) => {
     game_type: 'Competitive',
     max_team_size: 2,
     current_team_size: 2,
-    lowest_rank: 1,
-    highest_rank: 1,
+    lowest_rank: 0,
+    highest_rank: 9,
     content: '',
     slots: {},
   });
