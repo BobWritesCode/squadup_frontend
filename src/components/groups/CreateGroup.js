@@ -203,15 +203,16 @@ const CreateGroup = (props) => {
                 value={formData.lowest_rank}
                 onChange={handleChange}
               >
-                <option value="1">Iron</option>
-                <option value="2">Bronze</option>
-                <option value="3">Silver</option>
-                <option value="4">Gold</option>
-                <option value="5">Platinum</option>
-                <option value="6">Diamond</option>
-                <option value="7">Ascendant</option>
-                <option value="8">Immortal</option>
-                <option value="9">Radiant</option>
+                <option value={0}>Unranked</option>
+                <option value={1}>Iron</option>
+                <option value={2}>Bronze</option>
+                <option value={3}>Silver</option>
+                <option value={4}>Gold</option>
+                <option value={5}>Platinum</option>
+                <option value={6}>Diamond</option>
+                <option value={7}>Ascendant</option>
+                <option value={8}>Immortal</option>
+                <option value={9}>Radiant</option>
               </Form.Select>
             </Form.Group>
 
@@ -231,15 +232,16 @@ const CreateGroup = (props) => {
                   onChange={handleChange}
                   className="mb-0"
                 >
-                  <option value="1">Iron</option>
-                  <option value="2">Bronze</option>
-                  <option value="3">Silver</option>
-                  <option value="4">Gold</option>
-                  <option value="5">Platinum</option>
-                  <option value="6">Diamond</option>
-                  <option value="7">Ascendant</option>
-                  <option value="8">Immortal</option>
-                  <option value="9">Radiant</option>
+                  <option value={0}>Unranked</option>
+                  <option value={1}>Iron</option>
+                  <option value={2}>Bronze</option>
+                  <option value={3}>Silver</option>
+                  <option value={4}>Gold</option>
+                  <option value={5}>Platinum</option>
+                  <option value={6}>Diamond</option>
+                  <option value={7}>Ascendant</option>
+                  <option value={8}>Immortal</option>
+                  <option value={9}>Radiant</option>
                 </Form.Select>
                 <Form.Text id="passwordHelpBlock" muted>
                   Must be of the same level or higher than minimum rank.
