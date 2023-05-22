@@ -24,7 +24,7 @@ const CreateGroup = (props) => {
   const [show, setShow] = useState(false);
   // set up variables for fields used in this component
   const [formData, setFormData] = useState({
-    game_type: 1,
+    game_type: 'Competitive',
     max_team_size: 2,
     current_team_size: 2,
     lowest_rank: 1,
@@ -161,9 +161,9 @@ const CreateGroup = (props) => {
                 value={formData.game_type}
                 onChange={handleChange}
               >
-                <option value={1}>Competitive</option>
-                <option value={2}>Tournament</option>
-                <option value={3}>Casual</option>
+                <option value="Competitive">Competitive</option>
+                <option value="Tournament">Tournament</option>
+                <option value="Casual">Casual</option>
               </Form.Select>
             </Form.Group>
 
