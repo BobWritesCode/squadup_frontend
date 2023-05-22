@@ -8,11 +8,13 @@ import btnStyles from '../../styles/Buttons.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
+import LoadSpinner from '../Spinner';
 
 const TrackerUpdate = (props) => {
   const { onTrackerChange } = props;
   // Modal functions
   const [show, setShow] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
   const handleClose = () => {
     setErrors({});
     setShow(false);
@@ -45,6 +47,7 @@ const TrackerUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setShowSpinner(true);
     setErrors({});
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, {
@@ -55,6 +58,8 @@ const TrackerUpdate = (props) => {
       handleClose();
     } catch (err) {
       setErrors(err.response?.data);
+    } finally {
+      setShowSpinner(false);
     }
   };
 
@@ -86,10 +91,9 @@ const TrackerUpdate = (props) => {
               />
               <Form.Text>
                 Your tracker.gg profile must be set to public for people to see.
-              </Form.Text><br/>
-              <Form.Text>
-                Example: Player Name#1234
               </Form.Text>
+              <br />
+              <Form.Text>Example: Player Name#1234</Form.Text>
             </Form.Group>
 
             {errors.tracker?.map((m, idx) => (
@@ -106,9 +110,15 @@ const TrackerUpdate = (props) => {
           </Form>
         </Modal.Body>
         <Modal.Footer className={modalStyles.Footer}>
-          <Button variant="success" onClick={handleSubmit}>
-            Save Changes
-          </Button>
+          {showSpinner ? (
+            <LoadSpinner />
+          ) : (
+            <>
+              <Button variant="success" onClick={handleSubmit}>
+                Save Changes
+              </Button>
+            </>
+          )}
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
