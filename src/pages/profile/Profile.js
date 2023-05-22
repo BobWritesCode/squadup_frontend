@@ -7,10 +7,7 @@ import Row from 'react-bootstrap/Row';
 import appStyles from '../../App.module.css';
 // app imports
 import { axiosReq, useCurrentUser } from '../../contexts/CurrentUserContext';
-import {
-  useProfileData,
-  useSetProfileData,
-} from '../../contexts/ProfileDataContext';
+import { useSetProfileData } from '../../contexts/ProfileDataContext';
 import Avatar from '../../components/Avatar';
 import EmailUpdate from '../../components/profile/EmailUpdate';
 import UsernameUpdate from '../../components/profile/UsernameUpdate';
@@ -28,17 +25,16 @@ const Profile = () => {
   useRedirect('loggedIn')
 
   const { setProfileData } = useSetProfileData();
-  const { pageProfile } = useProfileData();
   const currentUser = useCurrentUser();
-
+  const [profile, setProfile] = useState({
+    owner: '',
+    email: '',
+    tracker: '',
+    image: '',
+  });
+  const { owner, email, tracker, image } = profile;
   const [hasLoaded, setHasLoaded] = useState(false);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [tracker, setTracker] = useState('');
-  const [avatar, setAvatar] = useState('');
   const [latestPost, setLatestPost] = useState('');
-
-  const [profile] = pageProfile.results;
 
   // Check to see if viewing user is profile owner.
   const is_owner = currentUser?.username === profile?.owner;
@@ -46,19 +42,17 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: r_pageProfile }, { data: r_details }] =
-          await Promise.all([
-            axiosReq.get(`/profiles/${id}/`),
-            axiosReq.get(`/profiles/details/${id}`),
-          ]);
+        const { data } = await axiosReq.get(`/profiles/${id}/`);
+
+        setProfile((prevState) => ({
+          ...prevState,
+          ...data,
+        }));
+
         setProfileData((prevState) => ({
           ...prevState,
-          pageProfile: { results: [r_pageProfile] },
+          pageProfile: { results: [data] },
         }));
-        setAvatar(r_pageProfile.image);
-        setEmail(r_details.email);
-        setUsername(r_pageProfile.owner);
-        setTracker(r_pageProfile.tracker);
       } catch (err) {
         console.log(err);
       } finally {
@@ -66,26 +60,42 @@ const Profile = () => {
       }
     };
     fetchData();
-  }, [id, avatar, username, setProfileData]);
+  }, [id, owner, setProfileData, setProfile]);
 
   // function to update the username state
   const handleUsernameChange = (newUsername) => {
-    setUsername(newUsername);
+    // setUsername(newUsername);
+    setProfile({
+      ...profile,
+      username: newUsername,
+    });
   };
 
   // function to update the email state
   const handleEmailChange = (newEmail) => {
-    setEmail(newEmail);
+    // setEmail(newEmail);
+    setProfile({
+      ...profile,
+      email: newEmail,
+    });
   };
 
   // function to tracker the email state
   const handleTrackerChange = (newTracker) => {
-    setTracker(newTracker);
+    // setTracker(newTracker);
+    setProfile({
+      ...profile,
+      tracker: newTracker,
+    });
   };
 
   // function to avatar the email state
   const handleAvatarChange = (newAvatar) => {
-    setAvatar(newAvatar);
+    // setAvatar(newAvatar);
+    setProfile({
+      ...profile,
+      avatar: newAvatar,
+    });
   };
 
   // function to avatar the email state
@@ -100,17 +110,12 @@ const Profile = () => {
           <div className="d-flex">
             <h3 className="text-break">{username}</h3>
             {is_owner ? (
-              <UsernameUpdate onUsernameChange={handleUsernameChange} />
+                avatar={image}
             ) : (
-              ''
+              <Avatar src={image} />
             )}
           </div>
-
-          {is_owner ? (
-            <AvatarUpdate onAvatarChange={handleAvatarChange} avatar={avatar} />
-          ) : (
-            <Avatar src={avatar} text="" width={'100%'} />
-          )}
+              {owner}
 
           <p>
             Member since:
@@ -135,51 +140,11 @@ const Profile = () => {
             ''
           )}
 
-          {is_owner ? (
-            <>
-              <div>
-                <p className="mb-0">
-                  Email:
-                  <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
-                    {email ? email : 'Please add'}
-                  </span>
-                  <EmailUpdate onEmailChange={handleEmailChange} />
-                </p>
-                <p className={appStyles.SecondaryText}>(only visible to you)</p>
-              </div>
+                      {email ? email : 'Please add'}
 
-              <p>
-                Email verified:
-                <span className={`${appStyles.OrangeText} ms-2`}>
-                  {profile?.email_verified ? 'Yes' : 'No'}
-                </span>
-              </p>
-            </>
-          ) : (
-            ''
-          )}
-
-          <p>
-            Tracker:
-            <span className={`${appStyles.OrangeText} ms-2 text-break`}>
-              {tracker ? (
-                <a
-                  href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
-                  target="blank"
-                  className={appStyles.Link}
-                >
-                  Click here to view
-                </a>
-              ) : (
-                ''
-              )}
-            </span>
-            {is_owner ? (
-              <TrackerUpdate onTrackerChange={handleTrackerChange} />
-            ) : (
-              ''
-            )}
-          </p>
+                {tracker ? (
+                    href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
+                    {tracker}
         </div>
       ) : (
         <LoadSpinner />
