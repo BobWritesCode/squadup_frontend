@@ -23,7 +23,7 @@ import ReactTimeago from 'react-timeago';
 
 const Profile = () => {
   const { id } = useParams();
-  useRedirect('loggedIn')
+  useRedirect('loggedIn');
 
   const { setProfileData } = useSetProfileData();
   const currentUser = useCurrentUser();
@@ -118,7 +118,18 @@ const Profile = () => {
               <Avatar src={image} />
             )}
           </div>
+          <div className="d-flex flex-column align-items-start mt-3">
+            <h3 className="text-break">
               {owner}
+              <span>
+                {' '}
+                {is_owner ? (
+                  <UsernameUpdate onUsernameChange={handleUsernameChange} />
+                ) : (
+                  ''
+                )}
+              </span>
+            </h3>
 
             <p className="mt-3">
               Member since:
@@ -133,27 +144,62 @@ const Profile = () => {
               )}
             </p>
 
-          {is_owner ? (
-            <>
-              <div>
-                <p className="">
-                  Password:
-                  <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
-                    *************
-                  </span>
-                  <PasswordUpdate />
-                </p>
-              </div>
-            </>
-          ) : (
-            ''
-          )}
+            {is_owner ? (
+              <>
+                <div>
+                  <p className="">
+                    Password:
+                    <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
+                      *************
+                    </span>
+                    <PasswordUpdate />
+                  </p>
+                </div>
+              </>
+            ) : (
+              ''
+            )}
 
+            {is_owner ? (
+              <>
+                <div>
+                  <p className="mb-0">
+                    Email:
+                    <span className={`${appStyles.OrangeText} ms-2 mb-0`}>
                       {email ? email : 'Please add'}
+                    </span>
+                    <EmailUpdate onEmailChange={handleEmailChange} />
+                  </p>
+                  <p className={appStyles.SecondaryText}>
+                    (only visible to you)
+                  </p>
+                </div>
+              </>
+            ) : (
+              ''
+            )}
 
+            <p>
+              Tracker.gg:
+              <span className={`${appStyles.OrangeText} ms-2 text-break`}>
                 {tracker ? (
+                  <a
                     href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
+                    target="blank"
+                    className={appStyles.Link}
+                  >
                     {tracker}
+                  </a>
+                ) : (
+                  ''
+                )}
+              </span>
+              {is_owner ? (
+                <TrackerUpdate onTrackerChange={handleTrackerChange} />
+              ) : (
+                <em>No tracker ID given yet.</em>
+              )}
+            </p>
           </div>
         </div>
       ) : (
