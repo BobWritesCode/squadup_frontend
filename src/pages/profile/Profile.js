@@ -19,6 +19,7 @@ import LoadSpinner from '../../components/Spinner';
 import UserPosts from '../../components/posts/UserPosts';
 import UserNote from '../../components/profile/UserNote';
 import { useRedirect } from '../../components/hooks/useRedirect';
+import ReactTimeago from 'react-timeago';
 
 const Profile = () => {
   const { id } = useParams();
@@ -117,12 +118,18 @@ const Profile = () => {
           </div>
               {owner}
 
-          <p>
-            Member since:
-            <span className={`${appStyles.OrangeText} ms-2`}>
-              {profile?.created_at ? profile?.created_at : ''}
-            </span>
-          </p>
+            <p className="mt-3">
+              Member since:
+              {profile?.created_at ? (
+                <ReactTimeago
+                  date={profile?.created_at}
+                  minPeriod={10}
+                  className={`${appStyles.OrangeText} ms-2`}
+                />
+              ) : (
+                ''
+              )}
+            </p>
 
           {is_owner ? (
             <>
