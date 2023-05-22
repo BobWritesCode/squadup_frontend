@@ -108,10 +108,12 @@ const Profile = () => {
     <>
       {hasLoaded ? (
         <div className={` ${appStyles.Box}`}>
-          <div className="d-flex">
-            <h3 className="text-break">{username}</h3>
+          <div className="d-flex justify-content-center">
             {is_owner ? (
+              <AvatarUpdate
+                onAvatarChange={handleAvatarChange}
                 avatar={image}
+              />
             ) : (
               <Avatar src={image} />
             )}
@@ -152,6 +154,7 @@ const Profile = () => {
                 {tracker ? (
                     href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
                     {tracker}
+          </div>
         </div>
       ) : (
         <LoadSpinner />
