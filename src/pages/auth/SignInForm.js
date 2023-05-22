@@ -41,7 +41,7 @@ function SignInForm() {
       );
       setCurrentUser(data.user);
       setTokenTimestamp(data);
-      navigate(-1);
+      navigate(`/profile/${data.user.pk}`);
     } catch (err) {
       setErrors(err.response?.data);
     }
