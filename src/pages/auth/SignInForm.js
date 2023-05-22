@@ -16,6 +16,7 @@ import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 import appStyles from '../../App.module.css';
 import styles from '../../styles/SignUpForm.module.css';
 import btnStyles from '../../styles/Buttons.module.css';
+import LoadSpinner from '../../components/Spinner';
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -28,12 +29,12 @@ function SignInForm() {
   const { username, password } = signInData;
 
   const [errors, setErrors] = useState({});
-
+  const [showSpinner, setShowSpinner] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setShowSpinner(true);
     try {
       const { data } = await axios.post(
         `${axiosDefaultsBaseUrl}dj-rest-auth/login/`,
@@ -44,6 +45,8 @@ function SignInForm() {
       navigate(`/profile/${data.user.pk}`);
     } catch (err) {
       setErrors(err.response?.data);
+    } finally {
+      setShowSpinner(false);
     }
   };
 
@@ -100,9 +103,15 @@ function SignInForm() {
             ))}
 
             <div className="d-flex flex-row-reverse">
-              <Button type="submit" className={btnStyles.Register}>
-                Sign In
-              </Button>
+              {showSpinner ? (
+                <LoadSpinner />
+              ) : (
+                <>
+                  <Button type="submit" className={btnStyles.Register}>
+                    Sign In
+                  </Button>
+                </>
+              )}
             </div>
 
             <Link className={styles.Link} to="/signup">
