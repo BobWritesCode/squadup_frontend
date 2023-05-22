@@ -10,10 +10,14 @@ import {
   useSetCurrentUser,
 } from '../../contexts/CurrentUserContext';
 import btnStyles from '../../styles/Buttons.module.css';
+import modalStyles from '../../styles/Modal.module.css';
+import formStyles from '../../styles/Forms.module.css';
+import LoadSpinner from '../Spinner';
 
 const UsernameUpdate = (props) => {
   const { onUsernameChange } = props;
 
+  const [showSpinner, setShowSpinner] = useState(false);
   // Modal functions
   const [show, setShow] = useState(false);
   const handleClose = () => {
@@ -60,6 +64,7 @@ const UsernameUpdate = (props) => {
   // Handle submit on button press
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setShowSpinner(true);
     setErrors({});
     const formData = new FormData();
     formData.append('username', username);
@@ -74,6 +79,8 @@ const UsernameUpdate = (props) => {
       handleClose();
     } catch (err) {
       setErrors(err.response?.data);
+    } finally {
+      setShowSpinner(false);
     }
   };
 
@@ -85,13 +92,13 @@ const UsernameUpdate = (props) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className={modalStyles.Header}>
           <Modal.Title>Update Username</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Modal.Body className={modalStyles.Body}>
+          <Form className={formStyles.Form}>
             <Form.Group className="mb-3" controlId="username">
-              <Form.Label>New username</Form.Label>
+              <Form.Label>Update your username here.</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter desired username"
@@ -115,12 +122,18 @@ const UsernameUpdate = (props) => {
             ))}
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={modalStyles.Footer}>
+          {showSpinner ? (
+            <LoadSpinner />
+          ) : (
+            <>
+              <Button variant="success" onClick={handleSubmit}>
+                Update username
+              </Button>
+            </>
+          )}
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
