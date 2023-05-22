@@ -65,7 +65,7 @@ const NavBar = () => {
   const lfgLink = (
     <>
       <NavLink to="/lfg" className={(el) => (el.isActive ? styles.active : '')}>
-        LFG
+        Squad Finder
       </NavLink>
     </>
   );
