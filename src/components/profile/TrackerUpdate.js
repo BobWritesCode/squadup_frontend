@@ -47,7 +47,7 @@ const TrackerUpdate = (props) => {
     event.preventDefault();
     setErrors({});
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}`, {
+      const { data } = await axiosReq.put(`/profiles/${id}/`, {
         tracker: tracker,
       });
       // update the username in the other component
@@ -86,6 +86,9 @@ const TrackerUpdate = (props) => {
               />
               <Form.Text>
                 Your tracker.gg profile must be set to public for people to see.
+              </Form.Text><br/>
+              <Form.Text>
+                Example: Player Name#1234
               </Form.Text>
             </Form.Group>
 
