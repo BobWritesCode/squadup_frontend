@@ -95,7 +95,7 @@ const Profile = () => {
     // setAvatar(newAvatar);
     setProfile({
       ...profile,
-      avatar: newAvatar,
+      image: newAvatar,
     });
   };
 
