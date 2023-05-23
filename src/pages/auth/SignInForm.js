@@ -60,7 +60,7 @@ function SignInForm() {
   return (
     <Container fluid className={styles}>
       <Row className="justify-content-center">
-        <Col xs="10" className="d-flex flex-column">
+        <Col xs="12" sm="10" md="8" lg="6" className="d-flex flex-column">
           <h2 className={appStyles.PageHeader}>Sign In</h2>
 
           <Form onSubmit={handleSubmit} className={styles.Form}>
