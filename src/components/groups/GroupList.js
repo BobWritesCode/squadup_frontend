@@ -165,13 +165,16 @@ const GroupList = () => {
           children={groups.results.map((g) => {
             if (g.owner !== currentUser.username && g.status) {
               return (
-                <Group
-                  key={g.id}
-                  {...g}
-                  setGroups={setGroups}
-                  group={g}
-                  onDelete={() => handleDeleteGroup(g.id)}
-                />
+                <>
+                  <Group
+                    key={g.id}
+                    {...g}
+                    setGroups={setGroups}
+                    group={g}
+                    onDelete={() => handleDeleteGroup(g.id)}
+                  />
+                  <hr className={`${appStyles.Hr} mt-4 mb-4`} />
+                </>
               );
             }
             return null;

@@ -146,7 +146,7 @@ const Group = (props) => {
     <div
       id={`lfg-slot-${group.id}`}
       key={group.id}
-      className={`${appStyles.InnerBox} mb-3 d-flex flex-column`}
+      className={`${appStyles.InnerBox} mb-0 d-flex flex-column`}
     >
       {
         // Show message if group deleted
