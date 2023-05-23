@@ -125,6 +125,12 @@ HTML, CSS, JavaScript (React),Python (Django) and a relational database (recomme
 
 ### Squad Up - Team builder website
 
+The goals of this applications are:
+
+- to provide a hub were players can build a team.
+- group leaders will be able to create a team listing looking for players.
+- searching players will be able to search for a group by using filters.
+
 [🔝](#table-of-contents)
 
 ---
