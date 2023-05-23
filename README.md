@@ -173,19 +173,82 @@ The goals of this applications are:
 
 ### Agile design
 
+- [GitHub Issues](#github-issues)
+  - [Issue numbers](#issue-numbers)
+  - [User Story](#user-story)
+  - [Bug Report](#bug-report)
+  - [Feature Request](#feature-request)
+  - [Improvement Request](#improvement-request)
+
+When taking on any application especially large and complicated application with different moving parts, where it's easy to jump from one part of the application to another, leaving the previous part incomplete and leaving room for error. It's best to come up with a strategy. This is where agile design comes in, it can help you identify all the different parts of the application that need to be completed, in which order may be best, and if you are in a team delegate tasks to people so everyone knows what their responsibilities are.
+
+As part of the application, I heavily used GitHub Issues and GitHub Kanban board.
+
 #### GitHub issues
 
-##### Issue numbers
+I created 4 different templates for issues being raised:
 
-##### User story
+- [User story](#user-story)
+- [Bug report](#bug-report)
+- [Feature request](#feature-request)
+- [Improvement request](#improvement-request)
+
+Each issue category played a part in helping easily identify the category the issue was going to be related to, and each has a different template for myself, and other users to provide useful information that will help resolve the issue.
+
+When an issue is either being created or after. There are a few different options you can modify to help delegate the task and its priority. You can:
+
+- [Assign an assignee or assignees](#choose-assignees)
+- [Apply labels](#choose-labels)
+- [Choose the project](#choose-project)
+- [Choose the milestone](#choose-milestone)
+
+[🔝](#table-of-contents)
+
+#### Issue numbers
+
+Every issue raised will have an issue number i.e., #1, #2, #3 and so on. If you put the issue number in the commit message, then that commit will automatically by GitHub be linked to that issue.
+
+If you use certain keywords as well it will also automatically manage the issue such as 'bug: fixes #58'. This will automatically close that issue for you.
+
+#### User story
+
+[Link to user story template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/user-story.md)
+
+[Link to user story Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=USER+STORY)
+
+The user story was the first template I created, and this was basically to help start to build the idea of the application and what potential features were going to be needed.
+
+Any user story was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
 
 ##### Bug report
 
+[Link to bug report template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)
+
+[Link to bug report Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Abug+)
+
+As large and complex application, inevitably bugs came up. Bugs are very easy to get distracted by as they generally are discovered while working on an unrelated feature. When a bug comes up, I create a bug report so I can attend to it later.
+
+Bug reports are allocated the tag 'bug' to help identify them. You can also opt to allocate it the tag 'priority' to show it is something that needs to be fixed immediately as it could be application breaking or may affect many users.
+
 ##### Feature request
+
+[Link to feature request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/new-feature.md)
+
+[Link to feature request Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3A%22new+feature%22)
+
+While building the application new ideas on new features would come to mind. Some that would potentially be perfect for the first version of the application and some that potentially could be implemented later. Whenever a new feature came to mind, I would complete the feature request form.
+
+Any feature request was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
 
 ##### Improvement request
 
-##### Assign an assignee or assignees
+[Link to improvement request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/improvement.md)
+
+[Link to improvement request Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Aimprovement)
+
+Either while using the application as a user or developing the application. I would realise improvements to feature that had already been built. To separate new features to improvements I created the Improvement Request form. Improvements could mainly be left to later in the application as it was important to make sure that all the main features were implemented first.
+
+Any improvement Request was also allocated the tag 'improvement' automatically to help identify this was going to be a new feature.
 
 ##### Apply labels
 
