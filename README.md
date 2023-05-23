@@ -137,11 +137,33 @@ The goals of this applications are:
 
 ## UX - User Experience Design
 
-### Site-visitor
+### New user
 
-### Server-owner
+> *"As a new user I can register so that I can access registered user functions."*
 
-### Site-admin
+### Registered user
+
+> *"As a registered user I can login so that I can access logged in user functions."*
+>
+> *"As a logged in user I can manage my profile so that I can make sure it reflects me accurately."*
+>
+> *"As a logged in user I can create a post that appears in my profile so that other users can view the post."*
+>
+> *"As a logged in user I can leave private notes of a player's profile so that next time I come across them, I have a way to remember their behaviors'."*
+
+### Registered user - Team leader
+
+> *"As a logged in user I can create a looking for group listing so that other users looking for a group can request to join my group."*
+>
+> *"As a looking for group owner I can review requests to join my group by accept or declining the request so that the requester will know if they are successful."*
+>
+> *"As a looking for group owner I can kick a player from the group so that if they do not respond after joining, I can free the slot back up."*
+
+### Registered user - Team Recruit
+
+> *"As a user who has joined a group I can leave the group so that the slot is made available and I can join a different group."*
+>
+> *"As a logged in user I can request to join a group that is looking for a teammate so that they can review my profile and decided if to accept or reject me."*
 
 [🔝](#table-of-contents)
 
