@@ -179,12 +179,17 @@ The goals of this applications are:
   - [Bug Report](#bug-report)
   - [Feature Request](#feature-request)
   - [Improvement Request](#improvement-request)
+  - [Assign an assignee or assignees](#choose-assignees)
+  - [Apply labels](#choose-labels)
+  - [Choose the project](#choose-project)
+  - [Choose the milestone](#choose-milestone)
+- [Kanban Board](#kanban-board)
 
 When taking on any application especially large and complicated application with different moving parts, where it's easy to jump from one part of the application to another, leaving the previous part incomplete and leaving room for error. It's best to come up with a strategy. This is where agile design comes in, it can help you identify all the different parts of the application that need to be completed, in which order may be best, and if you are in a team delegate tasks to people so everyone knows what their responsibilities are.
 
 As part of the application, I heavily used GitHub Issues and GitHub Kanban board.
 
-#### GitHub issues
+### GitHub issues
 
 I created 4 different templates for issues being raised:
 
@@ -204,13 +209,13 @@ When an issue is either being created or after. There are a few different option
 
 [🔝](#table-of-contents)
 
-#### Issue numbers
+### Issue numbers
 
 Every issue raised will have an issue number i.e., #1, #2, #3 and so on. If you put the issue number in the commit message, then that commit will automatically by GitHub be linked to that issue.
 
 If you use certain keywords as well it will also automatically manage the issue such as 'bug: fixes #58'. This will automatically close that issue for you.
 
-#### User story
+### User story
 
 [Link to user story template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/user-story.md)
 
@@ -220,7 +225,7 @@ The user story was the first template I created, and this was basically to help 
 
 Any user story was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
 
-##### Bug report
+### Bug report
 
 [Link to bug report template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)
 
@@ -230,7 +235,7 @@ As large and complex application, inevitably bugs came up. Bugs are very easy to
 
 Bug reports are allocated the tag 'bug' to help identify them. You can also opt to allocate it the tag 'priority' to show it is something that needs to be fixed immediately as it could be application breaking or may affect many users.
 
-##### Feature request
+### Feature request
 
 [Link to feature request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/new-feature.md)
 
@@ -240,7 +245,7 @@ While building the application new ideas on new features would come to mind. Som
 
 Any feature request was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
 
-##### Improvement request
+### Improvement request
 
 [Link to improvement request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/improvement.md)
 
@@ -250,13 +255,48 @@ Either while using the application as a user or developing the application. I wo
 
 Any improvement Request was also allocated the tag 'improvement' automatically to help identify this was going to be a new feature.
 
-##### Apply labels
+### Choose assignees
 
-##### Choose the project
+[Link to my assigned issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=assignee%3ABobWritesCode)
 
-##### Choose the milestone
+It may come as no surprise; I am the only person assigned issues on this project. Potentially in the future if the project grows and the team grows past me, then I would be able to assign other team members to tasks.
 
-#### Kanban board
+### Choose labels
+
+[Link to Frontend label choices for this application.](https://github.com/BobWritesCode/squadup_frontend/labels)\
+[Link to Backend label choices for this application.](https://github.com/BobWritesCode/squadup_api/labels)
+
+When creating an issue from an issue report, a label is automatically allocated but the user or a person creating the issue can choose to assign labels from the option available. For example, if something needs to be tagged as 'priority'.
+
+### Choose Project
+
+It's probably obvious but all issues were assigned to this project. If you have one repository being used for several projects, it is useful to be able to choose the correct project.
+
+### Choose milestone
+
+[Link to Frontend milestones for this application.](https://github.com/BobWritesCode/squadup_frontend/milestones)\
+[Link to Backend milestones for this application.](https://github.com/BobWritesCode/squadup_api/milestones)
+
+A milestone is essentially a marker in the applications journey i.e., Alpha, Beta, Release v1, v2 and so on... For a large application where development may be over a long period, such as a year. You may decide to allocate features to different quarters of the year. The milestone option allows you to do that. This essentially prioritizes which issues need to be dealt with by when.
+
+In my application I created 3 milestones:
+
+- Launch version 1.00
+  - These are issues that 100% must be done ready for version 1.00.
+- Non-essential for v1.00
+  - These are issues that would be nice to have done but are mandatory.
+- Post v1.00
+  - These are issues that are mainly going to be features that can wait until version 1.00 has been completed and be implements into a future version.
+
+### Kanban board
+
+[Link to application Kanban board.](https://github.com/users/BobWritesCode/projects/5)
+
+A Kanban board is an agile application management tool that helps visualize tasks. It helps with the day-to-day works flow as you can easily see which tasks need to be completed. With GitHub applications you can have several views of the Kanban board. As you might want to have one for the team, and maybe views for each team member. Or different labels such as bugs or improvements.
+
+[🔝](#table-of-contents)
+
+---
 
 ### Wireframes
 
