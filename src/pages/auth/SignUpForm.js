@@ -39,10 +39,15 @@ const SignUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShowSpinner(true);
+    const apiData = new FormData();
+    apiData.append('username', username);
+    apiData.append('email', email);
+    apiData.append('password1', password1);
+    apiData.append('password2', password2);
     try {
       await axios.post(
         `${axiosDefaultsBaseUrl}dj-rest-auth/registration/`,
-        signUpData,
+        apiData,
       );
       navigate('/signin');
     } catch (err) {
@@ -56,7 +61,7 @@ const SignUpForm = () => {
     <>
       <Container fluid className={styles}>
         <Row className="justify-content-center">
-          <Col xs="10" className="d-flex flex-column">
+          <Col xs="12" sm="10" md="8" lg="6" className="d-flex flex-column">
             <h2>Registration</h2>
             <Form className={styles.Form} onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="username">
