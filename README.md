@@ -112,6 +112,15 @@ Cloudinary.
 
 ## Objective
 
+Design an interactive Full-Stack application using HTML, CSS and advanced JavaScript. The project will include a front-end repository and a backend repository.
+
+Main technologies that need to be used:
+HTML, CSS, JavaScript (React),Python (Django) and a relational database (recommending MySQL or Postgres).
+
+[🔝](#table-of-contents)
+
+---
+
 ## Brief
 
 ### Squad Up - Team builder website
