@@ -12,7 +12,7 @@ Cloudinary.
 
 ## Live site
 
-[Hosted on Heroku]()
+[Hosted on Heroku](https://squadup-frontend.herokuapp.com/)
 
 ## Repository
 
