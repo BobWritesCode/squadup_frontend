@@ -1,70 +1,311 @@
-# Getting Started with Create React App
+# Squad Up
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Full stack website
 
-## Available Scripts
+**Built using**:\
+REACT, Django Python, JavaScript, BootStrap, CSS and HTML.
 
-In the project directory, you can run:
+**Also including**:\
+Cloudinary.
 
-### `npm start`
+![Showcase of site on different screen sizes]()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Live site
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Hosted on Heroku]()
 
-### `npm test`
+## Repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [GitHub repository - FRONTEND](https://github.com/BobWritesCode/squadup_frontend)
+- [GitHub repository - BACKEND](https://github.com/BobWritesCode/SquadUp_api)
 
-### `npm run build`
+## Table of Contents
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Squad Up](#squad-up)
+  - [Live site](#live-site)
+  - [Repository](#repository)
+  - [Table of contents](#table-of-contents)
+  - [Objective](#objective)
+  - [Brief](#brief)
+    - [Squad Up - Team builder website](#squad-up---team-builder-website)
+  - [UX - User Experience Design](#ux---user-experience-design)
+    - [Site-visitor](#site-visitor)
+    - [Server-owner](#server-owner)
+    - [Site-admin](#site-admin)
+  - [Development](#development)
+    - [Agile design](#agile-design)
+      - [GitHub issues](#github-issues)
+        - [Issue numbers](#issue-numbers)
+        - [User story](#user-story)
+        - [Bug report](#bug-report)
+        - [Feature request](#feature-request)
+        - [Improvement request](#improvement-request)
+        - [Assign an assignee or assignees](#choose-assignees)
+        - [Apply labels](#choose-labels)
+        - [Choose the project](#choose-project)
+        - [Choose the milestone](#choose-milestone)
+      - [Kanban board](#kanban-board)
+    - [Wireframes](#wireframes)
+      - [Homepage design](#homepage-design)
+      - [Squad Finder design](#listings-design)
+      - [Profile design](#full-listing-design)
+    - [Colour scheme](#colour-scheme)
+    - [Typography](#typography)
+    - [Imagery](#imagery)
+  - [Features](#features)
+    - [Existing features](#existing-features)
+      - [Navbar](#navbar)
+      - [Homepage](#homepage)
+      - [Profile](#profile)
+        - [Profile Box](#profile-box)
+        - [User notes](#user-notes)
+        - [Posts](#posts)
+      - [Squad Finder](#squad-finger)
+          - [Create group](#create-group)
+            - [Create slot](#create-slot)
+          - [Review applications](#review-applications)
+          - [Find Group](#find-group)
+            -[Request to join](#request-to-join)
+          - [Review my requests](#review-my-requests)
+            - [Delete request](#delete-requests)
+      - [User authentication](#user-authentication)
+        - [Sign up](#sign-up)
+        - [Login](#login)
+        - [Change password](#forgotten-password)
+    - [Features left to implement](#features-left-to-implement)
+  - [Technologies used](#technologies-used)
+    - [Logic](#logic)
+      - [Data model](#data-model)
+      - [Django](#django)
+      - [Python](#python)
+        - [Python packages](#python-packages)
+      - [JavaScript](#javascript)
+        - [REACT](#jquery)
+      - [CSS](#css)
+        - [BootStrap](#bootstrap)
+    - [Widgets](#widgets)
+      - [Cloudinary](#cloudinary)
+  - [Testing](#testing)
+    - [HTML](#html-testing)
+    - [CSS](#css-testing)
+    - [JavaScript](#javascript-testing)
+    - [Python](#python-testing)
+      - [Linters](#python-linters)
+      - [Unit testing](#unit-testing)
+      - [Coverage](#coverage)
+    - [User testing](#user-testing)
+  - [Bugs](#bugs)
+    - [Unresolved](#unresolved)
+    - [Resolved](#resolved)
+  - [Deployment](#development)
+    - [GitHub - Cloning](#github---cloning)
+    - [Cloudinary deployment](#cloudinary-deployment)
+    - [Neon deployment](#neon)
+    - [Heroku](#hero)
+  - [Credits](#credits)
+    - [VS Code extensions](#vs-code-extensions)
+    - [Other tech](#other-tech)
+    - [Content](#content)
+    - [Acknowledgements](#acknowledgements)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Objective
 
-### `npm run eject`
+## Brief
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Squad Up - Team builder website
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[🔝](#table-of-contents)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## UX - User Experience Design
 
-## Learn More
+### Site-visitor
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Server-owner
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Site-admin
 
-### Code Splitting
+[🔝](#table-of-contents)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Agile design
 
-### Making a Progressive Web App
+#### GitHub issues
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+##### Issue numbers
 
-### Advanced Configuration
+##### User story
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+##### Bug report
 
-### Deployment
+##### Feature request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+##### Improvement request
 
-### `npm run build` fails to minify
+##### Assign an assignee or assignees
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##### Apply labels
+
+##### Choose the project
+
+##### Choose the milestone
+
+#### Kanban board
+
+### Wireframes
+
+#### Homepage design
+
+#### Squad Finder design
+
+#### Profile design
+
+### Colour scheme
+
+### Typography
+
+### Imagery
+
+[🔝](#table-of-contents)
+
+---
+
+## Features
+
+### Existing features
+
+#### Navbar
+
+#### Homepage
+
+#### Profile
+
+##### Profile Box
+
+##### User notes
+
+##### Posts
+
+#### Squad Finder
+
+##### Create group
+
+##### Create slot
+
+##### Review applications
+
+##### Find Group
+
+##### Request to join
+
+##### Review my requests
+
+##### Delete request
+
+#### User authentication
+
+##### Sign up
+
+##### Login
+
+##### Change password
+
+### Features left to implement
+
+[🔝](#table-of-contents)
+
+---
+
+## Technologies used
+
+### Logic
+
+#### Data model
+
+#### Django
+
+#### Python
+
+##### Python packages
+
+#### JavaScript
+
+##### REACT
+
+#### CSS
+
+##### BootStrap
+
+### Widgets
+
+#### Cloudinary
+
+[🔝](#table-of-contents)
+
+---
+
+## Testing
+
+### HTML
+
+### CSS
+
+### JavaScript
+
+### Python
+
+#### Linters
+
+#### Unit testing
+
+#### Coverage
+
+### User testing
+
+[🔝](#table-of-contents)
+
+---
+
+## Bugs
+
+### Unresolved
+
+### Resolved
+
+[🔝](#table-of-contents)
+
+---
+
+## Deployment
+
+### GitHub - Cloning
+
+### Cloudinary deployment
+
+### Neon deployment
+
+### Heroku
+
+[🔝](#table-of-contents)
+
+---
+
+## Credits
+
+### VS Code extensions
+
+### Other tech
+
+### Content
+
+### Acknowledgements
+
+[🔝](#table-of-contents)
+
+---
