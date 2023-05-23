@@ -336,13 +336,23 @@ const SlotApply = (props) => {
 
   return (
     <>
-      <Button
-        variant="light"
-        className={`${btnStyles.Single} w-100`}
-        onClick={handleShow}
-      >
-        <i className="bi bi-arrow-right-square text-light"></i>
-      </Button>
+      {slotData && slotData.status && slotData.status === 'Closed' ? (
+        <Button
+          disabled
+          variant="light"
+          className={`${btnStyles.Single} w-100`}
+        >
+          <i className="bi bi-arrow-right-square text-light"></i>
+        </Button>
+      ) : (
+        <Button
+          variant="light"
+          className={`${btnStyles.Single} w-100`}
+          onClick={handleShow}
+        >
+          <i className="bi bi-arrow-right-square text-light"></i>
+        </Button>
+      )}
 
       <Modal show={show} onHide={handleClose} id={'my-modal'}>
         <Modal.Header className={modalStyles.Header}>
