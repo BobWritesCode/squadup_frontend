@@ -25,7 +25,7 @@ const GroupList = () => {
   const [errors, setErrors] = useState({});
   // Use to store data and control filters.
   const [searchFormData, setSearchFormData] = useState({
-    game_type: '0',
+    game_type: 'Any',
     role: 'Any',
     lowest_rank: 0,
     highest_rank: 9,
@@ -214,10 +214,10 @@ const GroupList = () => {
                   value={searchFormData.game_type}
                   onChange={handleChange}
                 >
-                  <option value={0}>Any</option>
-                  <option value={1}>Competitive</option>
-                  <option value={2}>Tournament</option>
-                  <option value={3}>Casual</option>
+                  <option value={'Any'}>Any</option>
+                  <option value={'Competitive'}>Competitive</option>
+                  <option value={'Tournament'}>Tournament</option>
+                  <option value={'Casual'}>Casual</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group
