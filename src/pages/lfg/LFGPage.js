@@ -7,13 +7,13 @@ import MyApplications from '../../components/groups/MyApplications';
 import { useRedirect } from '../../components/hooks/useRedirect';
 
 const LFGPage = () => {
-  useRedirect('loggedIn')
+  useRedirect('loggedIn');
   return (
     <>
       <Row>
         <h2>Look for group</h2>
       </Row>
-      <Row>
+      <Row className="d-flex flex-column flex-xl-row">
         <Col>
           <MyGroups />
         </Col>

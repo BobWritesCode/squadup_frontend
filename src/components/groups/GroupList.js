@@ -173,7 +173,10 @@ const GroupList = () => {
                     group={g}
                     onDelete={() => handleDeleteGroup(g.id)}
                   />
-                  <hr className={`${appStyles.Hr} mt-4 mb-4`} />
+                  <hr
+                    key={`hr-${g.id}`}
+                    className={`${appStyles.Hr} mt-4 mb-4`}
+                  />
                 </>
               );
             }

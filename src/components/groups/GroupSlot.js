@@ -9,7 +9,6 @@ const GroupSlot = (props) => {
   const { slotData } = props;
   // Use to refresh state on child update signal
   const [refresh, setRefresh] = useState(true);
-
   const currentUser = useCurrentUser();
   // Check to see if viewing user is profile owner.
   const is_owner = currentUser?.username === slotData?.owner;
@@ -36,38 +35,73 @@ const GroupSlot = (props) => {
     setRefresh(!refresh);
   };
 
-  return (
+  const Button = (
     <>
-      <tr>
+      {is_owner ? (
+        slotData.status === 'Closed' ? (
+          <SlotUser
+            key={slotData.id}
+            slotData={slotData}
+            onChange={handleRefresh}
+          />
+        ) : (
+          <ApplicationReviews
+            key={slotData.id}
+            slotData={slotData}
+            onChange={handleRefresh}
+          />
+        )
+      ) : (
+        <SlotApply key={slotData.id} slotData={slotData} onUpdate={() => {}} />
+      )}
+    </>
+  );
+
+  const LargeScreen = (
+    <>
+      <tr className="d-none d-md-table-row">
         <td>{Status()}</td>
         <td>{slotData.role}</td>
         <td>
           {slotData.content ? slotData.content : <em>No extra info given.</em>}
         </td>
-        <td>
-          {is_owner ? (
-            slotData.status === 'Closed' ? (
-              <SlotUser
-                key={slotData.id}
-                slotData={slotData}
-                onChange={handleRefresh}
-              />
-            ) : (
-              <ApplicationReviews
-                key={slotData.id}
-                slotData={slotData}
-                onChange={handleRefresh}
-              />
-            )
-          ) : (
-            <SlotApply
-              key={slotData.id}
-              slotData={slotData}
-              onUpdate={() => {}}
-            />
-          )}
-        </td>
+        <td>{Button}</td>
       </tr>
+    </>
+  );
+
+  const SmallScreen = (
+    <tr className="d-table-row d-md-none">
+      <td>
+        <table className="w-100">
+          <tr>
+            <td className="w-25">{Status()}</td>
+            <td className="w-50">
+              <strong>Role:</strong>
+              <br className="d-sm-none" />
+              <span className="d-none d-sm-inline">{'  '}</span>
+              {slotData.role}
+            </td>
+            <td className="w-100">{Button}</td>
+          </tr>
+          <tr>
+            <td colSpan={4}>
+              {slotData.content ? (
+                slotData.content
+              ) : (
+                <em>No extra info given.</em>
+              )}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  );
+
+  return (
+    <>
+      {LargeScreen}
+      {SmallScreen}
     </>
   );
 };
