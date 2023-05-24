@@ -11,7 +11,7 @@ const LFGPage = () => {
   return (
     <>
       <Row>
-        <h2>Look for group</h2>
+        <h2>Squad Finder</h2>
       </Row>
       <Row className="d-flex flex-column flex-xl-row">
         <Col>
