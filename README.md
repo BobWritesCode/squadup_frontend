@@ -364,7 +364,13 @@ Below are  wireframe that I designed to help build and represent the design of t
 
 ### Colour scheme
 
+The 4 main colour's hex codes for this site are: B78F1D, 212731, 3F6974, FAFAFA.
+These 4 colours contrast very nicely against each other, and the white text against the other 3 colours pass WCAG contrast scores.
+
+![Colour scheme](./README_files/colours.png)
+
 ### Typography
+
 
 ### Imagery
 
