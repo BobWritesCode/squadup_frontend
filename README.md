@@ -377,6 +377,40 @@ We are using [BootStrap's](#bootstrap) native font stack. As it provides a sharp
 
 ### Imagery
 
+**This application comes with the following media:**
+
+<details><summary>Squad Up logo - Variant 1</summary> <!-- markdownlint-disable-line -->
+
+![Squad Up logo - Variant 1](./src/assets/logo-white-text-grey-bg.png)
+</details>
+
+<details><summary>Squad Up logo - Variant 2</summary> <!-- markdownlint-disable-line -->
+
+![Squad Up logo - Variant 2](./src/assets/logo-gold-text-no-bg.png)
+</details>
+
+<details><summary>Squad Up logo - Variant 3</summary> <!-- markdownlint-disable-line -->
+
+![Squad Up logo - Variant 3](./src/assets/logo-white-text-no-bg.png)
+</details>
+
+- This logo was created by myself. I tried to create a simplistic logo that could easily scaled and provided a premium look/feel.
+
+<details><summary>Fav icon</summary> <!-- markdownlint-disable-line -->
+
+![Fav icon](./public/favicon-16x16.png)
+</details>
+
+- A miniature version of the Squad Up logo but with just the letter S. Making it easily identifiable in the browser.
+
+Valorant rank badges.
+
+- Use of these are covered within the [Riot 'Legal Jibber Jabber'](https://www.riotgames.com/en/legal).
+
+**User uploaded images:**
+
+The application allows users to upload images, currently there is no way to moderate these without accessing the SQL database. Future plans are to add an admin access area that will allow staff members moderate content on the application.
+
 [🔝](#table-of-contents)
 
 ---
