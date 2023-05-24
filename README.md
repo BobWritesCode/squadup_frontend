@@ -371,6 +371,9 @@ These 4 colours contrast very nicely against each other, and the white text agai
 
 ### Typography
 
+We are using [BootStrap's](#bootstrap) native font stack. As it provides a sharp and clear font that works perfectly with the projects overall styling.
+
+[Link to BootStrap's documentation for Native font stack.](https://getbootstrap.com/docs/5.3/content/reboot/#native-font-stack)
 
 ### Imagery
 
