@@ -112,7 +112,7 @@ Cloudinary.
 
 ## Objective
 
-Design an interactive Full-Stack application using HTML, CSS and advanced JavaScript. The project will include a front-end repository and a backend repository.
+Design an interactive Full-Stack application using HTML, CSS and advanced JavaScript. The application will include a front-end repository and a backend repository.
 
 Main technologies that need to be used:
 HTML, CSS, JavaScript (React),Python (Django) and a relational database (recommending MySQL or Postgres).
@@ -367,6 +367,12 @@ A Kanban board is an agile application management tool that helps visualize task
 ### Logic
 
 #### Data model
+
+The below entity relationship diagram (ERD) is a graphical representation that depicts relationships between the different models in this project. It also shows the different attributes and their types for each class.
+
+![Entity relationship model](README_files/ERD.png)
+
+*Created using: [app.diagrams.net](https://app.diagrams.net/)*
 
 #### Django
 
