@@ -34,6 +34,8 @@ const ApplicationReviews = (props) => {
   const [showProcessing, setShowProcessing] = useState(false);
   // Use to toggle showing pagination.
   const [showPagination, setShowPagination] = useState(true);
+  // Use to toggle showing spinner instead of modal button while waiting for API to resolve.
+  const [showButtonSpinner, setButtonSpinner] = useState(false);
   // Use to toggle showing spinner instead of Accept & Reject buttons.
   const [showAccRejSpinner, setShowAccRejSpinner] = useState(false);
   // Use to toggle showing spinner when waiting for data from API for request.
@@ -81,6 +83,7 @@ const ApplicationReviews = (props) => {
   const GetSlotData = useCallback(() => {
     const fetchData = async () => {
       try {
+        setButtonSpinner(true);
         // Get applications for this slot
         const [{ data: list }] = await Promise.all([
           axiosReq.get(`/lfg_slots_apply/?slot=${slotData.id}`),
@@ -91,6 +94,7 @@ const ApplicationReviews = (props) => {
         // show errors in console.
         console.log(err);
       } finally {
+        setButtonSpinner(false);
       }
     };
     fetchData();
@@ -584,7 +588,9 @@ const ApplicationReviews = (props) => {
        * Open modal button, that also shows number of requests for slot.
        * If 0 requests the button will be disabled.
        * */}
-      {applications.count === 0 ? (
+      {showButtonSpinner ? (
+        <LoadSpinner />
+      ) : applications.count === 0 ? (
         /*Disabled Button*/
         <Button
           variant="light"
