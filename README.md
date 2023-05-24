@@ -300,11 +300,67 @@ A Kanban board is an agile application management tool that helps visualize task
 
 ### Wireframes
 
+Below are  wireframe that I designed to help build and represent the design of this application.
+
 #### Homepage design
+
+<details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
+
+![Homepage on PC / large screen](./README_files/wireframes/homepage.png)
+</details>
+
+<details><summary>Mobile / Small screen</summary> <!-- markdownlint-disable-line -->
+
+![Homepage on mobile / small screen](./README_files/wireframes/homepage_mobile.png)
+</details>
+
+#### Sign in design
+
+<details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
+
+![Sign in on PC / large screen](./README_files/wireframes/sign_in.png)
+</details>
+
+<details><summary>Mobile / Small screen</summary> <!-- markdownlint-disable-line -->
+
+![Sign in on mobile / small screen](./README_files/wireframes/sign_in_mobile.png)
+</details>
+
+#### Registration design
+
+<details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
+
+![Registration on PC / large screen](./README_files/wireframes/register.png)
+</details>
+
+<details><summary>Mobile / Small screen</summary> <!-- markdownlint-disable-line -->
+
+![Registration on mobile / small screen](./README_files/wireframes/register_mobile.png)
+</details>
+
+#### Profile design
+
+<details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
+
+![Profile on PC / large screen](./README_files/wireframes/profile.png)
+</details>
+
+<details><summary>Mobile / Small screen</summary> <!-- markdownlint-disable-line -->
+
+![Profile on mobile / small screen](./README_files/wireframes/profile_mobile.png)
+</details>
 
 #### Squad Finder design
 
-#### Profile design
+<details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
+
+![Squad Finder on PC / large screen](./README_files/wireframes/squad_finder.png)
+</details>
+
+<details><summary>Mobile / Small screen</summary> <!-- markdownlint-disable-line -->
+
+![Squad Finder on mobile / small screen](./README_files/wireframes/squad_finder_mobile.png)
+</details>
 
 ### Colour scheme
 
