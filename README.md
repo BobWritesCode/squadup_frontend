@@ -1003,7 +1003,7 @@ class LFGSerializer(serializers.ModelSerializer):
         return [group.role for group in groups]
 ```
 
-##### Find Group - List
+##### Find Group component - List
 
 [GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
@@ -1014,15 +1014,96 @@ class LFGSerializer(serializers.ModelSerializer):
 
 The group list will show every group that is 'Open' which currently means they have at least 1 slot open. If a group has a closed slot then the user will not be able to request to join that group.
 
-The group list is determined by the [filters applied](#find-group---filter).
+The group list is determined by the [filters applied](#find-group-component---filter).
 
-##### Request to join
+##### Request to join component
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+[SlotApply.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/SlotApply.js)
 
+<details><summary>Request to join - Apply button</summary> <!-- markdownlint-disable-line -->
+
+![Request to join - Apply button](README_files/Snapshots/request-to-join-buttons.png)
+</details>
+<details><summary>Request to join - Modal</summary> <!-- markdownlint-disable-line -->
+
+![Request to join - Modal](README_files/Snapshots/request-to-join-modal.png)
+</details>
+<details><summary>Request to join - Modal - Success</summary> <!-- markdownlint-disable-line -->
+
+![Request to join - Modal - Success](README_files/Snapshots/request-to-join-modal-success.png)
 </details>
 
-#### User authentication
+Allows users to request to join a group in an open slot. The requesting user can choose a role, and add some extra information via a textarea input for the group leader to see.
+
+##### Request to join component - Context signal
+
+[SlotApply.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/SlotApply.js)\
+[myApplicationsSignalContext.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/contexts/myApplicationsSignalContext.js)\
+[App.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/App.js)
+
+It's very simple to update a parent component by using props, but when you have a more distant component you need to create a signal that tells that component to refresh. I wanted it so when a user applies to join a group, that their My Applications list also updates as well. I achieved this by created a context, and then wrapped that around the components that I wanted to be able to communicate with each other.
+
+``` js
+// squadup_frontend/src/contexts/myApplicationsSignalContext.js
+import { createContext } from 'react';
+
+const myApplicationsSignalContext = createContext({
+  myApplicationsSignal: false,
+  setMyApplicationsSignal: () => {},
+});
+
+export default myApplicationsSignalContext;
+```
+
+``` js
+// squadup_frontend/src/App.js
+function App() {
+  const [myApplicationsSignal, setMyApplicationsSignal] = useState(false);
+
+  const contextValue = {
+    myApplicationsSignal,
+    setMyApplicationsSignal,
+  };
+
+  return (
+    ...
+      <myApplicationsSignalContext.Provider value={contextValue}>
+        <Routes>
+          ...
+          <Route path="/lfg" element={<LFGPage />} />
+          ...
+        </Routes>
+      </myApplicationsSignalContext.Provider>
+    ...
+  );
+}
+```
+
+```js
+// squadup_frontend/src/components/groups /MyApplications.js
+const MyApplications = () => {
+  // Context to force refresh when signal received.
+  const { myApplicationsSignal, setMyApplicationsSignal } = useContext(
+    myApplicationsSignalContext,
+  );
+  ...
+
+  const handleOnUpdate = () => {
+    ...
+    setMyApplicationsSignal(!myApplicationsSignal);
+  };
+
+  useEffect(() => {
+    ...
+    // Make API call here when myApplicationsSignal receives state change locally or from another component.
+    ...
+  }, [currentUser, update, myApplicationsSignal]);
+  ...
+}
+```
+
+##### Review my requests
+
 
 <details><summary> - PC</summary> <!-- markdownlint-disable-line -->
 
