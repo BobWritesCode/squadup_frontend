@@ -1049,7 +1049,168 @@ If the user needs to kick the player from the slow for any reason, they just cli
 
 ##### 1.9.1.7.4. Applications Review - Pagination
 
+<details><summary>Pagination</summary> <!-- markdownlint-disable-line -->
 
+![Pagination](README_files/Snapshots/pagination.png)
+</details>
+
+To assist with going through all the potential requests for a slot. I have implement pagination from the React Bootstrap library. Unfortunately the pagination doesn't come with any logic to make it work and I have had to write all the logic myself.
+
+I actually made 2 versions of the pagination depending on how many results there are.
+
+**10 of less requests pagination:**
+
+```js
+/**
+ * JSX Pagination to show is application count is 10 or less.
+ */
+const ShowPages10 = applications.results?.length > 0 && (
+  <Pagination className={`mt-4 ${paginationStyles.Page}`}>
+    {pageNumber === 0 ? (
+      <Pagination.Prev disabled onClick={() => {}} />
+    ) : (
+      <Pagination.Prev onClick={() => setPageNumber(pageNumber - 1)} />
+    )}
+    {Array(applications.results.length)
+      .fill()
+      .map((_, i) =>
+        pageNumber === i ? (
+          <Pagination.Item key={i} active onClick={() => setPageNumber(i)}>
+            {i + 1}
+          </Pagination.Item>
+        ) : (
+          <Pagination.Item key={i} onClick={() => setPageNumber(i)}>
+            {i + 1}
+          </Pagination.Item>
+        ),
+      )}
+    {pageNumber === applications.results.length - 1 ? (
+      <Pagination.Next disabled onClick={() => setPageNumber(() => {})} />
+    ) : (
+      <Pagination.Next onClick={() => setPageNumber(pageNumber + 1)} />
+    )}
+  </Pagination>
+);
+```
+
+**11 or more requests pagination:**
+
+``` js
+/**
+ * JSX Pagination to show is application count is 11 or more.
+ */
+const ShowPages11Up = (
+  <Pagination className={`mt-4 ${paginationStyles.Page}`}>
+    {/* Prev page */}
+    {pageNumber <= 0 ? (
+      <Pagination.Prev disabled onClick={() => {}} />
+    ) : (
+      <Pagination.Prev onClick={() => setPageNumber(pageNumber - 1)} />
+    )}
+
+    {/* First page number */}
+    {pageNumber === 0 ? (
+      <Pagination.Item active onClick={() => setPageNumber(0)}>
+        {1}
+      </Pagination.Item>
+    ) : (
+      <Pagination.Item onClick={() => setPageNumber(0)}>{1}</Pagination.Item>
+    )}
+
+    <Pagination.Ellipsis disabled />
+
+    {pageNumber >= 0 && pageNumber <= 3 ? (
+      <>
+        {/* Set up pagination 2-6, if the current page is 4 or less */}
+        {Array(5)
+          .fill()
+          .map((_, i) =>
+            pageNumber === i + 1 ? (
+              <Pagination.Item
+                key={i + 1}
+                active
+                onClick={() => setPageNumber(i + 1)}
+              >
+                {i + 2}
+              </Pagination.Item>
+            ) : (
+              <Pagination.Item
+                key={i + 1}
+                onClick={() => setPageNumber(i + 1)}
+              >
+                {i + 2}
+              </Pagination.Item>
+            ),
+          )}
+      </>
+    ) : pageNumber >= applications.count - 3 &&
+      pageNumber <= applications.count ? (
+      <>
+        {/* Set up pagination last-5 to last-1, if the page is within 3 of the end */}
+        {Array(5)
+          .fill()
+          .map((_, i) =>
+            pageNumber === applications.count - 6 + i ? (
+              <Pagination.Item
+                key={applications.count - 6 + i}
+                active
+                onClick={() => setPageNumber(applications.count - 6 + i)}
+              >
+                {applications.count - 5 + i}
+              </Pagination.Item>
+            ) : (
+              <Pagination.Item
+                key={applications.count - 6 + i}
+                onClick={() => setPageNumber(applications.count - 6 + i)}
+              >
+                {applications.count - 5 + i}
+              </Pagination.Item>
+            ),
+          )}
+      </>
+    ) : (
+      <>
+        <Pagination.Item onClick={() => setPageNumber(pageNumber - 2)}>
+          {pageNumber - 1}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => setPageNumber(pageNumber - 1)}>
+          {pageNumber}
+        </Pagination.Item>
+        <Pagination.Item active>{pageNumber + 1}</Pagination.Item>
+        <Pagination.Item onClick={() => setPageNumber(pageNumber + 1)}>
+          {pageNumber + 2}
+        </Pagination.Item>
+        <Pagination.Item onClick={() => setPageNumber(pageNumber + 2)}>
+          {pageNumber + 3}
+        </Pagination.Item>
+      </>
+    )}
+
+    <Pagination.Ellipsis disabled />
+
+    {/* Final page number */}
+    {pageNumber === applications.count - 1 ? (
+      <Pagination.Item
+        active
+        onClick={() => setPageNumber(applications.count - 1)}
+      >
+        {applications.count}
+      </Pagination.Item>
+    ) : (
+      <Pagination.Item onClick={() => setPageNumber(applications.count - 1)}>
+        {applications.count}
+      </Pagination.Item>
+    )}
+
+    {/* Next page */}
+    {pageNumber >= applications.count - 1 ? (
+      <Pagination.Next disabled onClick={() => setPageNumber(() => {})} />
+    ) : (
+      <Pagination.Next onClick={() => setPageNumber(pageNumber + 1)} />
+    )}
+  </Pagination>
+);
+```
 
 ##### 1.9.1.7.5. Find Group component - Filter
 
