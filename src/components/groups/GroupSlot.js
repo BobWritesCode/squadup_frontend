@@ -74,25 +74,27 @@ const GroupSlot = (props) => {
     <tr className="d-table-row d-md-none">
       <td>
         <table className="w-100">
-          <tr>
-            <td className="w-25">{Status()}</td>
-            <td className="w-50">
-              <strong>Role:</strong>
-              <br className="d-sm-none" />
-              <span className="d-none d-sm-inline">{'  '}</span>
-              {slotData.role}
-            </td>
-            <td className="w-100">{Button}</td>
-          </tr>
-          <tr>
-            <td colSpan={4}>
-              {slotData.content ? (
-                slotData.content
-              ) : (
-                <em>No extra info given.</em>
-              )}
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className="w-25">{Status()}</td>
+              <td className="w-50">
+                <strong>Role:</strong>
+                <br className="d-sm-none" />
+                <span className="d-none d-sm-inline">{'  '}</span>
+                {slotData.role}
+              </td>
+              <td className="w-100">{Button}</td>
+            </tr>
+            <tr>
+              <td colSpan={4}>
+                {slotData.content ? (
+                  slotData.content
+                ) : (
+                  <em>No extra info given.</em>
+                )}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </td>
     </tr>
