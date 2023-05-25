@@ -14,28 +14,46 @@ import { removeTokenTimestamp } from '../utils/utils';
 import { axiosDefaultsBaseUrl } from '../api/axiosDefaults';
 import useClickOutsideToggle from './hooks/useClickOutsideToggle';
 
+/**
+ * Navigation bar component.
+ * @return {JSX} Renders component.
+ */
 const NavBar = () => {
+  // Get current user.
   const currentUser = useCurrentUser();
+  // Set current user. Used here during click on logout.
   const setCurrentUser = useSetCurrentUser();
-
+  // Use to set NavBar open or closed for mobile view.
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
+  /**
+   * Calls API to sign out current user..
+   */
   const handleSignOut = async () => {
     try {
       await axios.post(`${axiosDefaultsBaseUrl}dj-rest-auth/logout/`);
+      // Clear user information from local storage.
       setCurrentUser(null);
+      // Remove token of logged in user.
       removeTokenTimestamp();
     } catch (err) {
+      // Show errors in console.
       console.log(err);
     }
   };
 
+  /**
+   * JSX of Home link.
+   */
   const homeLink = (
     <NavLink to="/" className={(el) => (el.isActive ? styles.active : '')}>
       Home
     </NavLink>
   );
 
+  /**
+   * JSX of sign in link.
+   */
   const signInLink = (
     <NavLink
       to="/signin"
@@ -45,6 +63,9 @@ const NavBar = () => {
     </NavLink>
   );
 
+  /**
+   * JSX of registration link.
+   */
   const signUpLink = (
     <NavLink
       to="/signup"
@@ -54,6 +75,9 @@ const NavBar = () => {
     </NavLink>
   );
 
+  /**
+   * JSX of log out link.
+   */
   const logoutLink = (
     <>
       <NavLink to="/" onClick={handleSignOut}>
@@ -62,6 +86,9 @@ const NavBar = () => {
     </>
   );
 
+  /**
+   * JSX of squad finder link.
+   */
   const lfgLink = (
     <>
       <NavLink to="/lfg" className={(el) => (el.isActive ? styles.active : '')}>
@@ -70,6 +97,9 @@ const NavBar = () => {
     </>
   );
 
+  /**
+   * JSX of profile link.
+   */
   const profileLink = (
     <>
       <NavLink
@@ -82,6 +112,9 @@ const NavBar = () => {
     </>
   );
 
+  /**
+   * Return JSX of component.
+   */
   return (
     <Navbar
       expanded={expanded}
