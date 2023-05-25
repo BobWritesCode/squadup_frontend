@@ -1007,10 +1007,14 @@ class LFGSerializer(serializers.ModelSerializer):
 
 [GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
-<details><summary></summary> <!-- markdownlint-disable-line -->
+<details><summary>Group list</summary> <!-- markdownlint-disable-line -->
 
-![](README_files/Snapshots)
+![Group list](README_files/Snapshots/group-list.png)
 </details>
+
+The group list will show every group that is 'Open' which currently means they have at least 1 slot open. If a group has a closed slot then the user will not be able to request to join that group.
+
+The group list is determined by the [filters applied](#find-group---filter).
 
 ##### Request to join
 
