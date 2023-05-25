@@ -1102,16 +1102,24 @@ const MyApplications = () => {
 }
 ```
 
-##### Review my requests
+##### My Applications component
 
+[MyApplications.js](squadup_frontend/src/components/groups/MyApplications.js)
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+<details><summary>My Applications list</summary> <!-- markdownlint-disable-line -->
 
-![ - PC](README_files/Snapshots/-pc.png)
+![My Applications list](README_files/Snapshots/my-applications.png)
+</details>
+<details><summary>My Applications modal</summary> <!-- markdownlint-disable-line -->
 
+![My Applications modal](README_files/Snapshots/my-applications-modal.png)
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+Allows the user to review any open applications they currently have. They can either delete or edit the application.
+
+Editing allows the user to update: Role, rank, and the extra information.
+
+##### Delete request
 
 ![ - Mobile](README_files/Snapshots/-mobile.png)
 
