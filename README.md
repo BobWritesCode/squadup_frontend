@@ -844,31 +844,32 @@ useEffect(() => {
 }, [latestNewPost]);
 ```
 
-##### Edit Post component
+##### Edit post component
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+[PostEdit.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/PostEdit.js)
 
-![ - PC](README_files/Snapshots/-pc.png)
+<details><summary>Edit post modal</summary> <!-- markdownlint-disable-line -->
+
+![Edit post modal](README_files/Snapshots/edit-post.png)
+</details>
+
+Allows the user to edit the text on a post. It currently does not allow you to edit images, I feel this is very much industry standard to not allow to change images in posts.
+
+Once updated, the change can be seem immediately in the post.
+
+#### Delete post component
+
+[PostDelete.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/PostDelete.js)
+
+<details><summary>Delete post modal</summary> <!-- markdownlint-disable-line -->
+
+![Delete post modal](README_files/Snapshots/delete-post.png)
 
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+Allows user to delete their own post.
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
-
-</details>
-
-##### Create slot
-
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
-
-![ - PC](README_files/Snapshots/-pc.png)
-
-</details>
-
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
-
-![ - Mobile](README_files/Snapshots/-mobile.png)
+#### Squad Finder
 
 </details>
 
