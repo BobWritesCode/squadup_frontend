@@ -554,21 +554,46 @@ If the user cannot be found, or password does not match the correct account they
 
 #### Profile
 
+[Profile.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/profile/Profile.js)
+
+The profile page is the place where a user can manager this profile such as username, password, email, tracker ID.
+
+It is also the place where they can make posts to their own timelines. By visiting another user's profile they will only be able to view the time line, and see restricted information in the profile box.
+
+User's can also leave a user note on a different person's profile. The user note left is only visible to the user leave the note.
+
 <details><summary>Profile - PC</summary> <!-- markdownlint-disable-line -->
 
-![Profile - PC](README_files/Snapshots/-pc.png)
+![Profile - PC](README_files/Snapshots/profile-pc.png)
 
 </details>
 
 <details><summary>Profile - Mobile</summary> <!-- markdownlint-disable-line -->
 
-![Profile - Mobile](README_files/Snapshots/-mobile.png)
+![Profile - Mobile](README_files/Snapshots/profile-mobile.png)
 
 </details>
 
 ##### Profile Box
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+[Profile.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/profile/Profile.js)
+
+The Profile Box is within the Profile.js. The profile box houses a few different components within it, including:
+
+- Avatar update
+- Username update
+- Email update
+- Password update
+- Tracker update
+- User Note
+- User Note update
+
+<details><summary>Profile Box</summary> <!-- markdownlint-disable-line -->
+
+![Profile Box](README_files/Snapshots/profile-box.png)
+
+</details>
+
 
 ![ - PC](README_files/Snapshots/-pc.png)
 
