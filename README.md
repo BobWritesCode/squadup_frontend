@@ -944,14 +944,78 @@ The two things a user can choose when creating a slot is:
 
 ##### Review applications
 
-[]()
+[ApplicationReviews.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/ApplicationReviews.js)
 
-<details><summary></summary> <!-- markdownlint-disable-line -->
+<details><summary>My Groups</summary> <!-- markdownlint-disable-line -->
 
-![](README_files/Snapshots)
+![My Groups](README_files/Snapshots/my-groups.png)
+</details>
+<details><summary>No application requests waiting</summary> <!-- markdownlint-disable-line -->
+
+![No application requests waiting](README_files/Snapshots/my-groups-app-review-button-0.png)
 </details>
 
-##### Find Group - Filter
+If the button shows 0, then it means no one currently has a request for the slot, and the button will be disabled.
+
+<details><summary>Application request waiting</summary> <!-- markdownlint-disable-line -->
+
+![Application request waiting](README_files/Snapshots/my-groups-app-review-button-13.png)
+</details>
+
+If the button shows 1 or higher, then it means one or more people currently have a request for the slot, and the button will be enabled. Clicking the button will open up the reviews modal.
+
+<details><summary>Application review modal</summary> <!-- markdownlint-disable-line -->
+
+![Application request waiting](README_files/Snapshots/my-groups-applications-review.png)
+</details>
+
+The application review allows the user to see all requests and either 'Reject' or 'Accept.
+
+<details><summary>Application review - Rejected request</summary> <!-- markdownlint-disable-line -->
+
+![Application review - Rejected request](README_files/Snapshots/my-groups-app-rejected.png)
+</details>
+
+Rejecting a request will show it as rejected in the modal.
+
+<details><summary>Application review - Accept request - Step 1</summary> <!-- markdownlint-disable-line -->
+
+![Application review - Accept request - Step 1](README_files/Snapshots/my-groups-app-accept-1.png)
+</details>
+
+Choosing 'Accept' will change the modal slight. The user will need to provide some instructions to the successful requester on how to join their in game, or how to make contact.
+
+<details><summary>Application review - Accept request - Step 2</summary> <!-- markdownlint-disable-line -->
+
+![Application review - Accept request - Step 2](README_files/Snapshots/my-groups-app-accept-2.png)
+</details>
+
+Once the user has provided and hits 'Confirm Accept', the target user will be accepted and the slot will be closed to any more requests.
+
+<details><summary>Application review - Accept request - Step 3</summary> <!-- markdownlint-disable-line -->
+
+![Application review - Accept request - Step 3](README_files/Snapshots/my-groups-app-accept-3.png)
+</details>
+
+Next in 'My Groups' the slot will be closed and the accepted user's name will show in the button instead of a number.
+
+<details><summary>Application review - Kick accepted request</summary> <!-- markdownlint-disable-line -->
+
+![Application review - Kick accepted request](README_files/Snapshots/my-groups-app-kick.png)
+</details>
+
+<details><summary>Application review - Kick confirm</summary> <!-- markdownlint-disable-line -->
+
+![Application review - Kick confirm](README_files/Snapshots/my-applications-kick-confirm.png)
+</details>
+
+If the user needs to kick the player from the slow for any reason, they just click the button with the user's name in it, and then can click 'Kick from group' in the modal. The user will then need to confirm the kick by typing kick in the input then clicking 'Confirm Kick'. This will then delete every current request, so users can re-request to join even if they were rejected previously.
+
+#### Applications Review - Pagination
+
+
+
+##### Find Group component - Filter
 
 [GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
@@ -1119,12 +1183,17 @@ Allows the user to review any open applications they currently have. They can ei
 
 Editing allows the user to update: Role, rank, and the extra information.
 
-##### Delete request
+<details><summary>My Application - Rejected</summary> <!-- markdownlint-disable-line -->
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
-
+![My Application - Rejected](README_files/Snapshots/my-applications-rejected.png)
 </details>
 
+<details><summary>My Application modal - Rejected</summary> <!-- markdownlint-disable-line -->
+
+![My Application modal - Rejected](README_files/Snapshots/my-applications-modal-rejected.png)
+</details>
+
+The above images show what the user can expect to see if their request has been rejected.
 
 
 ##### Change password
