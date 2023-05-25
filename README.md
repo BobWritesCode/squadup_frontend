@@ -680,7 +680,19 @@ const handleSubmit = async (event) => {
 };
 ```
 
-##### Email update
+##### Password update component
+
+[PasswordUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/PasswordUpdate.js)
+
+<details><summary>Password update modal</summary> <!-- markdownlint-disable-line -->
+
+![Password update modal](README_files/Snapshots/password-update-modal.png)
+
+</details>
+
+Allows the user to update their password. They are required to provide their current password, and a new password which they must type again to confirm, before submitting the change.
+
+##### Email update component
 
 [EmailUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/EmailUpdate.js)
 
