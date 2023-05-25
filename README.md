@@ -743,40 +743,108 @@ Allows users to leave an updatable note on any user's profile. The note is only 
 <details><summary>User Note update modal</summary> <!-- markdownlint-disable-line -->
 
 ![User Note update modal](README_files/Snapshots/user-note-update-modal.png)
-
 </details>
 
 Opens up a modal where the user can edit their note.
 
-##### Posts
+#### Posts
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+<details><summary>Posts container</summary> <!-- markdownlint-disable-line -->
 
-![ - PC](README_files/Snapshots/-pc.png)
-
+![Posts container](README_files/Snapshots/post-box.png)
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+A container on the [profile page](#profile) for combing [new post](#new-post-component), and [post list](#post-list-component).
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+##### New Post component
 
+[NewPost.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/NewPost.js)
+
+<details><summary>New post</summary> <!-- markdownlint-disable-line -->
+
+![Posts container](README_files/Snapshots/new-post.png)
 </details>
 
-#### Squad Finder
+Allows users to add posts to their own timeline.
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+Users can either write some text, post an image, or both.
 
-![ - PC](README_files/Snapshots/-pc.png)
+##### Post List component
 
+[UserPosts.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/UserPosts.js)
+
+<details><summary>Posts list</summary> <!-- markdownlint-disable-line -->
+
+![Posts list](README_files/Snapshots/posts-list.png)
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+Shows all user's posts in a list. As you scroll down more posts get loaded until you reach the end.
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+[Link to Infinite scroll component package](https://www.npmjs.com/package/react-infinite-scroll-component)
 
-</details>
+``` js
+/**
+ * JSX element to show posts in a list.
+ */
+const ShowMain = (
+  <>
+    {/*This Infinite Scroll components, takes the data received from the API
+    and saved to posts, and then maps the results into a JSX elements. It
+    loads 10 results at a time, and as you scroll down and get near the bottom
+    of the page it requests the next 10, and then loads them. This repeats
+    until you reach the last item. */}
+    <InfiniteScroll
+      className={appStyles.NoScrollBars}
+      children={posts.results.map((p) => (
+        <Post key={p.id} {...p} setPosts={setPosts} />
+      ))}
+      dataLength={posts.results.length}
+      loader={<LoadSpinner />}
+      hasMore={!!posts.next}
+      next={() => fetchMoreData(posts, setPosts)}
+      endMessage={
+        // Message displayed when user reaches the end of the list and no more
+        // results to be loaded.
+        <p style={{ textAlign: 'center' }}>No more posts to see.</p>
+      }
+    />
+  </>
+  );
+```
 
-##### Create group
+I also wanted to make sure when a user creates a new post that it is automatically added to the top of the list without the need of having to refresh the page.
+
+``` js
+/**
+ * This effect will add a new post created by the user to the top of the posts list.
+ */
+useEffect(() => {
+  if (latestNewPost) {
+    const fetchData = async () => {
+      try {
+        // Get latest post for user from server.
+        const { data } = await axiosReq.get(`/posts/${latestNewPost}`);
+        // Convert json string into obj.
+        const jsonPost = JSON.parse(data.post);
+        const newPost = jsonPost[0].fields;
+        // Adding missing fields to object.
+        newPost.id = jsonPost[0].pk;
+        newPost.image = data.imageURL;
+        // Add obj to existing obj array.
+        setPosts((prevPosts) => ({
+          ...prevPosts,
+          results: [newPost, ...prevPosts.results],
+        }));
+      } catch {
+        console.log('error');
+      }
+    };
+    fetchData();
+  }
+}, [latestNewPost]);
+```
+
+##### Edit Post component
 
 <details><summary> - PC</summary> <!-- markdownlint-disable-line -->
 
