@@ -943,31 +943,76 @@ The two things a user can choose when creating a slot is:
 - Extra context, via a text area.
 
 ##### Review applications
+
+[]()
+
+<details><summary></summary> <!-- markdownlint-disable-line -->
+
+![](README_files/Snapshots)
 </details>
 
-##### Review my requests
+##### Find Group - Filter
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+[GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
-![ - PC](README_files/Snapshots/-pc.png)
+<details><summary>Filters</summary> <!-- markdownlint-disable-line -->
 
+![Filters](README_files/Snapshots/group-filters.png)
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+Here the user can choose from the filters to narrow down the list as it grows. The filter choices are:
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+- Game type
+- Role
+- Minimum rank
+- Maximum rank
 
+There were two problems I needed to solved. Firstly out of the box Django Rest Framework does not have filters for less and greater than. Secondly, role is not part of the **[LFG](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg/models.py)** model that is used for the groups and sits in each slot for each group which is a different model called **[LFG_Slot](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg_slots/models.py)**.
+
+To solve this problem I have created a custom filterset located in [SquadUp_api/lfg/filters.py](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg/filters.py). Then replace the `filterset_fields = []` with `filterset_class = LFGListFilter` in [SquadUp_api/lfg/views.py](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg/views.py).
+Finally add roles to the serializer in [SquadUp_api/lfg/serializers.py](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg/serializers.py).
+
+``` py
+# SquadUp_api/lfg/filters.py
+class LFGListFilter(FilterSet):
+    lowest_rank__gte = NumberFilter(
+        field_name='lowest_rank', lookup_expr='gte')
+    lowest_rank__lte = NumberFilter(
+        field_name='lowest_rank', lookup_expr='lte')
+    highest_rank__gte = NumberFilter(
+        field_name='highest_rank', lookup_expr='gte')
+    highest_rank__lte = NumberFilter(
+        field_name='highest_rank', lookup_expr='lte')
+    role = CharFilter(field_name='lfg_slot__role', lookup_expr='contains')
+```
+
+``` py
+# SquadUp_api/lfg/serializers.py
+class LFGSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    owner_id = serializers.ReadOnlyField(source='owner.pk')
+    is_owner = serializers.SerializerMethodField()
+    roles = serializers.SerializerMethodField()
+
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
+
+    def get_roles(self, obj):
+        groups = LFG_Slot.objects.filter(lfg=obj.id)
+        return [group.role for group in groups]
+```
+
+##### Find Group - List
+
+[GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
+
+<details><summary></summary> <!-- markdownlint-disable-line -->
+
+![](README_files/Snapshots)
 </details>
 
-##### Delete request
-
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
-
-![ - PC](README_files/Snapshots/-pc.png)
-
-</details>
-
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+##### Request to join
 
 ![ - Mobile](README_files/Snapshots/-mobile.png)
 
