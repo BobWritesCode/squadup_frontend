@@ -80,12 +80,14 @@ Cloudinary.
         - [1.9.1.7.1. Create group component](#19171-create-group-component)
         - [1.9.1.7.2. Create slot component](#19172-create-slot-component)
         - [1.9.1.7.3. Review applications](#19173-review-applications)
-          - [1.9.1.7.3.1. Applications Review - Pagination](#191731-applications-review---pagination)
-        - [1.9.1.7.4. Find Group component - Filter](#19174-find-group-component---filter)
-        - [1.9.1.7.5. Find Group component - List](#19175-find-group-component---list)
-        - [1.9.1.7.6. Request to join component](#19176-request-to-join-component)
-        - [1.9.1.7.7. Request to join component - Context signal](#19177-request-to-join-component---context-signal)
-        - [1.9.1.7.8. My Applications component](#19178-my-applications-component)
+          - [1.9.1.7.3.1. Group view](#191731-group-view)
+          - [1.9.1.7.3.2. Application modal](#191732-application-modal)
+        - [1.9.1.7.4. Applications Review - Pagination](#19174-applications-review---pagination)
+        - [1.9.1.7.5. Find Group component - Filter](#19175-find-group-component---filter)
+        - [1.9.1.7.6. Find Group component - List](#19176-find-group-component---list)
+        - [1.9.1.7.7. Request to join component](#19177-request-to-join-component)
+        - [1.9.1.7.8. Request to join component - Context signal](#19178-request-to-join-component---context-signal)
+        - [1.9.1.7.9. My Applications component](#19179-my-applications-component)
     - [1.9.2. Future features](#192-future-features)
   - [1.10. Technologies used](#110-technologies-used)
     - [1.10.1. Logic](#1101-logic)
@@ -967,6 +969,8 @@ The two things a user can choose when creating a slot is:
 
 ##### 1.9.1.7.3. Review applications
 
+###### 1.9.1.7.3.1. Group view
+
 [ApplicationReviews.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/ApplicationReviews.js)
 
 <details><summary>My Groups</summary> <!-- markdownlint-disable-line -->
@@ -1043,11 +1047,11 @@ Next in 'My Groups' the slot will be closed and the accepted user's name will sh
 
 If the user needs to kick the player from the slow for any reason, they just click the button with the user's name in it, and then can click 'Kick from group' in the modal. The user will then need to confirm the kick by typing kick in the input then clicking 'Confirm Kick'. This will then delete every current request, so users can re-request to join even if they were rejected previously.
 
-###### 1.9.1.7.3.1. Applications Review - Pagination
+##### 1.9.1.7.4. Applications Review - Pagination
 
 
 
-##### 1.9.1.7.4. Find Group component - Filter
+##### 1.9.1.7.5. Find Group component - Filter
 
 [GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
@@ -1099,7 +1103,7 @@ class LFGSerializer(serializers.ModelSerializer):
         return [group.role for group in groups]
 ```
 
-##### 1.9.1.7.5. Find Group component - List
+##### 1.9.1.7.6. Find Group component - List
 
 [GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
@@ -1110,9 +1114,9 @@ class LFGSerializer(serializers.ModelSerializer):
 
 The group list will show every group that is 'Open' which currently means they have at least 1 slot open. If a group has a closed slot then the user will not be able to request to join that group.
 
-The group list is determined by the [filters applied](#19174-find-group-component---filter).
+The group list is determined by the [filters applied](#19175-find-group-component---filter).
 
-##### 1.9.1.7.6. Request to join component
+##### 1.9.1.7.7. Request to join component
 
 [SlotApply.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/SlotApply.js)
 
@@ -1131,7 +1135,7 @@ The group list is determined by the [filters applied](#19174-find-group-componen
 
 Allows users to request to join a group in an open slot. The requesting user can choose a role, and add some extra information via a textarea input for the group leader to see.
 
-##### 1.9.1.7.7. Request to join component - Context signal
+##### 1.9.1.7.8. Request to join component - Context signal
 
 [SlotApply.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/SlotApply.js)\
 [myApplicationsSignalContext.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/contexts/myApplicationsSignalContext.js)\
@@ -1198,7 +1202,7 @@ const MyApplications = () => {
 }
 ```
 
-##### 1.9.1.7.8. My Applications component
+##### 1.9.1.7.9. My Applications component
 
 [MyApplications.js](squadup_frontend/src/components/groups/MyApplications.js)
 
