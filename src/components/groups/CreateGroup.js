@@ -174,7 +174,7 @@ const CreateGroup = (props) => {
             ))}
 
             <Form.Group className="mb-2 d-flex" controlId="max_team_size">
-              <Form.Label>Time Size:</Form.Label>
+              <Form.Label>Team Size:</Form.Label>
               <Form.Select
                 aria-label="Team size:"
                 name="max_team_size"
