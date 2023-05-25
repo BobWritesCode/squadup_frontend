@@ -732,9 +732,9 @@ We will also look into if it would be possible to contact tracker.gg to check th
 
 ![User note box](README_files/Snapshots/user-note.png)
 
-Allows users to leave an updatable note on any user's profile. The note is only visible to the user leaving the note. This so user's can leave information about that player, should they come across them again. Things like if they enjoyed playing with them or noticed a specific style to their play.
-
 </details>
+
+Allows users to leave an updatable note on any user's profile. The note is only visible to the user leaving the note. This so user's can leave information about that player, should they come across them again. Things like if they enjoyed playing with them or noticed a specific style to their play.
 
 ##### User Note update component
 
