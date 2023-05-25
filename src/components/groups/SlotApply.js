@@ -36,6 +36,7 @@ const SlotApply = (props) => {
     rank: 0,
     content: '',
     status: '',
+    reply_content: '',
   });
   const { role, content } = formData;
 
@@ -112,6 +113,7 @@ const SlotApply = (props) => {
           content: data.results[0].content,
           status: data.results[0].status,
           created_at: data.results[0].created_at,
+          reply_content: data.results[0].reply_content,
         });
       }
       setHasLoaded(true);
@@ -212,6 +214,12 @@ const SlotApply = (props) => {
             <th>Applied when</th>
             <td>{formData.created_at}</td>
           </tr>
+          {formData.status === 'Accepted' && (
+            <tr>
+              <th>Message from leader</th>
+              <td>{formData.reply_content}</td>
+            </tr>
+          )}
         </tbody>
       </Table>
     </>
