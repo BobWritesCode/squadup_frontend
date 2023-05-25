@@ -726,17 +726,27 @@ We will also look into if it would be possible to contact tracker.gg to check th
 
 ##### User notes component
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+[UserNote.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UserNote.js)
 
-![ - PC](README_files/Snapshots/-pc.png)
+<details><summary>User note box</summary> <!-- markdownlint-disable-line -->
+
+![User note box](README_files/Snapshots/user-note.png)
+
+Allows users to leave an updatable note on any user's profile. The note is only visible to the user leaving the note. This so user's can leave information about that player, should they come across them again. Things like if they enjoyed playing with them or noticed a specific style to their play.
+
+</details>
+
+##### User Note update component
+
+[UserNoteUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UserNoteUpdate.js)
+
+<details><summary>User Note update modal</summary> <!-- markdownlint-disable-line -->
+
+![User Note update modal](README_files/Snapshots/user-note-update-modal.png)
 
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
-
-![ - Mobile](README_files/Snapshots/-mobile.png)
-
-</details>
+Opens up a modal where the user can edit their note.
 
 ##### Posts
 
