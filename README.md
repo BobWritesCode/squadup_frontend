@@ -869,33 +869,56 @@ Once updated, the change can be seem immediately in the post.
 
 Allows user to delete their own post.
 
-#### Squad Finder
+#### Squad Finder page
 
+<details><summary>Squad Finder page - PC</summary> <!-- markdownlint-disable-line -->
+
+![Squad Finder page - PC](README_files/Snapshots/squad-finder-pc.png)
 </details>
 
-##### Review applications
+<details><summary>Squad Finder - Mobile</summary> <!-- markdownlint-disable-line -->
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
-
-![ - PC](README_files/Snapshots/-pc.png)
-
+![Squad Finder page - Mobile](README_files/Snapshots/squad-finder-mobile.png)
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+Squad Finder is the main focus and provides the most complex functionality of this application. Within this page there are several components and those components have components within components.
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+As a user they will be able to:
 
+- Create a group.
+- Create slots within that group.
+- Disband the group.
+- Review requests of others that are looking to join their group.
+- Search for a group.
+- Request to join a another group.
+- Review their requests to join other groups.
+- Delete their requests to join other groups.
+
+##### Create group
+
+[CreateGroup.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/CreateGroup.js)
+
+<details><summary>Create Group button</summary> <!-- markdownlint-disable-line -->
+
+![Create Group button](README_files/Snapshots/create-group-button.png)
+</details>
+<details><summary>Create Group modal</summary> <!-- markdownlint-disable-line -->
+
+![Create Group modal](README_files/Snapshots/create-group-modal.png)
 </details>
 
-##### Find Group
+Allow a user to create a group to promote their team, so other players can see their team in the listings and request to join.
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+For each group the user will be able to choose:
 
-![ - PC](README_files/Snapshots/-pc.png)
+- Game type
+- Team size
+- Minimum rank
+- Maximum rank
+- Text area to provide extra content
+- Add open slots, where other users can request to join the team.
 
-</details>
-
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+##### Create slot
 
 ![ - Mobile](README_files/Snapshots/-mobile.png)
 
