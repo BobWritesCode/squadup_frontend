@@ -417,7 +417,6 @@ The application allows users to upload images, currently there is no way to mode
 
 ## Features
 
-
 ### Existing features
 
 #### Navbar
@@ -440,7 +439,7 @@ The Navbar is designed to contrast the rest of the page. This make it more easil
 
 <details><summary>Navbar snapshot - Mobile - Open</summary> <!-- markdownlint-disable-line -->
 
-![Navbar snapshot - Mobile - Opent](README_files/Snapshots/navbar-modile-open.png)
+![Navbar snapshot - Mobile - Open](README_files/Snapshots/navbar-modile-open.png)
 
 </details>
 
@@ -501,17 +500,29 @@ The homepage is designed to be simple and provide a clear understanding of what 
 
 </details>
 
-##### Sign up
+##### Registration
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+It's important that users can easily sign up, the sign-up form itself is designed to be simplistic. Asking for a username, email address, and password. Username and password will be what is required to login. Both the username and email address must be unique, and the user will be notified if they are not.
 
-![ - PC](README_files/Snapshots/-pc.png)
+Currently email address serves no purpose on this application but it is planned in future updates to have email verification and account recovery.
+
+[SignUpForm.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/auth/SignUpForm.js)
+
+<details><summary>Registration - PC</summary> <!-- markdownlint-disable-line -->
+
+![Registration - PC](README_files/Snapshots/sign-up-pc.png)
 
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+<details><summary>Registration - Mobile</summary> <!-- markdownlint-disable-line -->
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+![Registration - Mobile](README_files/Snapshots/sign-up-mobile.png)
+
+</details>
+
+<details><summary>Registration - Duplicate alert</summary> <!-- markdownlint-disable-line -->
+
+![Sign In - Alert](README_files/Snapshots/sign-up-alert.png)
 
 </details>
 
@@ -537,7 +548,7 @@ If the user cannot be found, or password does not match the correct account they
 
 <details><summary>Sign In - Bad user credentials</summary> <!-- markdownlint-disable-line -->
 
-![Sign In - Mobile](README_files/Snapshots/sign-in-alert.png)
+![Sign In - Alert](README_files/Snapshots/sign-in-alert.png)
 
 </details>
 
@@ -743,6 +754,8 @@ If the user cannot be found, or password does not match the correct account they
 
 - Admin area
 - Close/Open group
+email verification
+account recovery.
 
 [🔝](#table-of-contents)
 
