@@ -627,19 +627,70 @@ if serializer.is_valid():
             serializer.save()
 ```
 
-[AvatarUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/AvatarUpdate.js)
+##### Username update component
 
-<details><summary>Avatar - Hover</summary> <!-- markdownlint-disable-line -->
+[UsernameUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UsernameUpdate.js)
 
-![Avatar - Hover](README_files/Snapshots/avatar-hover.png)
+<details><summary>Username update modal</summary> <!-- markdownlint-disable-line -->
+
+![Username update modal](README_files/Snapshots/username-update-modal.png)
+
+</details>
+
+Allows user to update their username. Their is a validation check to make sure the user is changing to a unique name, if not the user will receive an alert information them that the new name is not unique.
+
+As this also changes the user, the user in the browser needs to be refreshed otherwise the use will be logged out and other unexpected errors can happen
+
+``` js
+/**
+ * Handle sending form data to API and handle response
+ *
+ * If successful update username in browser.
+ * If error, display any expected error message to the user.
+ *
+ * @param {*} event
+ */
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  // Show spinner while API resolves.
+  setShowSpinner(true);
+  // Clear any error alerts.
+  setErrors({});
+  // Create new form to control data sent to API.
+  const formData = new FormData();
+  formData.append('username', username);
+  try {
+    await axiosReq.put(`/dj-rest-auth/user/`, formData);
+    // If change successful update authentication in browser.
+    setCurrentUser((prevUser) => ({
+      ...prevUser,
+      username,
+    }));
+    // Update the username in parent component.
+    onUsernameChange(username);
+    // Close modal.
+    handleClose();
+  } catch (err) {
+    // Display any expected error messages.
+    setErrors(err.response?.data);
+  } finally {
+    // Remove spinner.
+    setShowSpinner(false);
+  }
+};
+```
+
+##### Email update
+
+[UsernameUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UsernameUpdate.js)
+
+<details><summary>Username update modal</summary> <!-- markdownlint-disable-line -->
+
+![Username update modal](README_files/Snapshots/username-update-modal.png)
 
 </details>
 
-<details><summary>Avatar - Modal</summary> <!-- markdownlint-disable-line -->
-
-![Avatar - Modal](README_files/Snapshots/avatar-modal.png)
-
-</details>
+Allows user to update their username. Their is a validation check to make sure the user is changing to a unique name, if not the user will receive an alert information them that the new name is not unique.
 
 ##### User notes
 
