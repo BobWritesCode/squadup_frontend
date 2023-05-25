@@ -1195,6 +1195,18 @@ Editing allows the user to update: Role, rank, and the extra information.
 
 The above images show what the user can expect to see if their request has been rejected.
 
+<details><summary>My Application - Accepted</summary> <!-- markdownlint-disable-line -->
+
+![My Application - Accepted](README_files/Snapshots/my-applications-accepted.png)
+</details>
+<details><summary>My Application modal - Accepted</summary> <!-- markdownlint-disable-line -->
+
+![My Application modal - Accepted](README_files/Snapshots/my-applications-modal-accepted.png)
+</details>
+
+If accepted by the group leader, the user will see accepted in their applications. If they click on it to open the modal they will see the message the group leader provided when the group leader accepted the request.
+
+#### User authentication
 
 ##### Change password
 
