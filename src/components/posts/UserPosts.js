@@ -12,6 +12,9 @@ const UserPosts = (props) => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [posts, setPosts] = useState({ results: [] });
 
+  /**
+   * This effect will add a new post created by the user to the top of the posts list.
+   */
   useEffect(() => {
     if (latestNewPost) {
       const fetchData = async () => {
@@ -53,22 +56,33 @@ const UserPosts = (props) => {
     fetchData();
   }, [profileId]);
 
-  const main = (
-    <InfiniteScroll
-      className={appStyles.NoScrollBars}
-      children={posts.results.map((p) => (
-        <Post key={p.id} {...p} setPosts={setPosts} />
-      ))}
-      dataLength={posts.results.length}
-      loader={<LoadSpinner />}
-      hasMore={!!posts.next}
-      next={() => fetchMoreData(posts, setPosts)}
-      endMessage={<p style={{ textAlign: 'center' }}>No more posts to see.</p>}
-    />
+  /**
+   * JSX element to show posts in a list.
+   */
+  const ShowMain = (
+    <>
+      {/*This Infinite Scroll components, takes the data received from the API and saved to posts, and then maps
+    the results into a JSX elements. It loads 10 results at a time, and as you scroll down and get near the bottom
+    of the page it requests the next 10, and then loads them. This repeats until you reach the last item. */}
+      <InfiniteScroll
+        className={appStyles.NoScrollBars}
+        children={posts.results.map((p) => (
+          <Post key={p.id} {...p} setPosts={setPosts} />
+        ))}
+        dataLength={posts.results.length}
+        loader={<LoadSpinner />}
+        hasMore={!!posts.next}
+        next={() => fetchMoreData(posts, setPosts)}
+        endMessage={
+          // Message displayed when user reaches the end of the list and no more results to be loaded.
+          <p style={{ textAlign: 'center' }}>No more posts to see.</p>
+        }
+      />
+    </>
   );
 
   // Render, show spinner until form loaded.
-  return <div>{hasLoaded ? main : <LoadSpinner />}</div>;
+  return <div>{hasLoaded ? ShowMain : <LoadSpinner />}</div>;
 };
 
 export default UserPosts;

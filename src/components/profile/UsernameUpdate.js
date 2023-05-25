@@ -61,25 +61,39 @@ const UsernameUpdate = (props) => {
     }
   }, [currentUser, navigate, id]);
 
-  // Handle submit on button press
+  /**
+   * Handle sending form data to API and handle response
+   *
+   * If successful update username in browser.
+   * If error, display any expected error message to the user.
+   *
+   * @param {*} event
+   */
   const handleSubmit = async (event) => {
     event.preventDefault();
+    // Show spinner while API resolves.
     setShowSpinner(true);
+    // Clear any error alerts.
     setErrors({});
+    // Create new form to control data sent to API.
     const formData = new FormData();
     formData.append('username', username);
     try {
       await axiosReq.put(`/dj-rest-auth/user/`, formData);
+      // If change successful update authentication in browser.
       setCurrentUser((prevUser) => ({
         ...prevUser,
         username,
       }));
-      // update the username in the other component
+      // Update the username in parent component.
       onUsernameChange(username);
+      // Close modal.
       handleClose();
     } catch (err) {
+      // Display any expected error messages.
       setErrors(err.response?.data);
     } finally {
+      // Remove spinner.
       setShowSpinner(false);
     }
   };

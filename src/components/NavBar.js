@@ -123,9 +123,11 @@ const NavBar = () => {
       fixed="top"
     >
       <Container fluid>
+        {/* Brand logo */}
         <Navbar.Brand>
           <img src={logo} alt="Squad Up logo" height="45" />
         </Navbar.Brand>
+        {/* Controls if nav is expanded or close for mobile */}
         <Navbar.Toggle
           aria-controls="navbarScroll"
           ref={ref}
@@ -137,6 +139,7 @@ const NavBar = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
+            {/* Links to show depending in user is logged in or not */}
             {homeLink}
             {currentUser ? '' : signInLink}
             {currentUser ? '' : signUpLink}
