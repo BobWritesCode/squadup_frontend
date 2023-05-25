@@ -682,15 +682,19 @@ const handleSubmit = async (event) => {
 
 ##### Email update
 
-[UsernameUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UsernameUpdate.js)
+[EmailUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/EmailUpdate.js)
 
-<details><summary>Username update modal</summary> <!-- markdownlint-disable-line -->
+<details><summary>Email update modal</summary> <!-- markdownlint-disable-line -->
 
-![Username update modal](README_files/Snapshots/username-update-modal.png)
+![Email update modal](README_files/Snapshots/email-update-modal.png)
 
 </details>
 
-Allows user to update their username. Their is a validation check to make sure the user is changing to a unique name, if not the user will receive an alert information them that the new name is not unique.
+Allows the user to update their email address.
+
+Currently email address's server no purpose in this application but it is part of future plans to use them for login, account verification and account recovery.
+
+##### Tracker update
 
 ##### User notes
 
