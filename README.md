@@ -987,6 +987,15 @@ If the button shows 0, then it means no one currently has a request for the slot
 
 If the button shows 1 or higher, then it means one or more people currently have a request for the slot, and the button will be enabled. Clicking the button will open up the reviews modal.
 
+<details><summary>User left - Reopen slot</summary> <!-- markdownlint-disable-line -->
+
+![User left - Reopen slot](README_files/Snapshots/my-applications-reopen.png)
+</details>
+
+If the leader has accepted someone, but that person leaves afterwards. The button will change to reopen, to reopen the slot.
+
+###### 1.9.1.7.3.2. Application modal
+
 <details><summary>Application review modal</summary> <!-- markdownlint-disable-line -->
 
 ![Application request waiting](README_files/Snapshots/my-groups-applications-review.png)
