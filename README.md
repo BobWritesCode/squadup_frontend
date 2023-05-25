@@ -417,45 +417,332 @@ The application allows users to upload images, currently there is no way to mode
 
 ## Features
 
+
 ### Existing features
 
 #### Navbar
 
+[Navbar.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/NavBar.js)
+
+The Navbar is designed to contrast the rest of the page. This make it more easily identifiable oppose to blending in with the page which can be confusing once you start scrolling down the page, as the NavBar sticks to the top of the browser window
+
+<details><summary>Navbar snapshot - PC</summary> <!-- markdownlint-disable-line -->
+
+![Navbar snapshot - PC](README_files/Snapshots/navbar-pc.png)
+
+</details>
+
+<details><summary>Navbar snapshot - Mobile - Closed</summary> <!-- markdownlint-disable-line -->
+
+![Navbar snapshot - Mobile - Closed](README_files/Snapshots/navar-mobile-closed.png)
+
+</details>
+
+<details><summary>Navbar snapshot - Mobile - Open</summary> <!-- markdownlint-disable-line -->
+
+![Navbar snapshot - Mobile - Opent](README_files/Snapshots/navbar-modile-open.png)
+
+</details>
+
+As you will see from the code below we use a [React Bootstrap Nav](https://react-bootstrap.github.io/components/navs/) component to create the applications' navigation bar.
+
+``` js
+<Navbar
+  expanded={expanded}
+  className={styles.NavBar}
+  expand="md"
+  fixed="top"
+>
+  <Container fluid>
+    {/* Brand logo */}
+    <Navbar.Brand>
+      <img src={logo} alt="Squad Up logo" height="45" />
+    </Navbar.Brand>
+    {/* Controls if nav is expanded or close for mobile */}
+    <Navbar.Toggle
+      aria-controls="navbarScroll"
+      ref={ref}
+      onClick={() => setExpanded(!expanded)}
+    />
+    <Navbar.Collapse id="navbarScroll">
+      <Nav
+        className="justify-content-end flex-grow-1 pe-3"
+        style={{ maxHeight: '100px' }}
+        navbarScroll
+      >
+        {/* Links to show depending in user is logged in or not */}
+        {homeLink}
+        {currentUser ? '' : signInLink}
+        {currentUser ? '' : signUpLink}
+        {currentUser ? lfgLink : ''}
+        {currentUser ? profileLink : ''}
+        {currentUser ? logoutLink : ''}
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
+```
+
 #### Homepage
 
-#### Profile
+[HomePage.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/HomePage.js)
 
-##### Profile Box
+The homepage is designed to be simple and provide a clear understanding of what the website is about when a first-time user visits. It also provides some direction on what the user should do next if they are not logged in. If the user is logged in the 'Quick links' change.
 
-##### User notes
+<details><summary>Homepage - PC</summary> <!-- markdownlint-disable-line -->
 
-##### Posts
+![Homepage - PC](README_files/Snapshots/homepage-pc.png)
 
-#### Squad Finder
+</details>
 
-##### Create group
+<details><summary>Homepage - Mobile</summary> <!-- markdownlint-disable-line -->
 
-##### Create slot
+![Homepage - Mobile](README_files/Snapshots/homepage-mobile.png)
 
-##### Review applications
-
-##### Find Group
-
-##### Request to join
-
-##### Review my requests
-
-##### Delete request
-
-#### User authentication
+</details>
 
 ##### Sign up
 
-##### Login
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Sign In
+
+[SignInForm.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/auth/SignInForm.js)
+
+The login screen as many of us would expect is a nice simple user form to input their username and password.
+
+If the user cannot be found, or password does not match the correct account they will get an notifying them so.
+
+<details><summary>Sign In - PC</summary> <!-- markdownlint-disable-line -->
+
+![Sign In - PC](README_files/Snapshots/sign-in-pc.png)
+
+</details>
+
+<details><summary>Sign In - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![Sign In - Mobile](README_files/Snapshots/sign-in-mobile.png)
+
+</details>
+
+<details><summary>Sign In - Bad user credentials</summary> <!-- markdownlint-disable-line -->
+
+![Sign In - Mobile](README_files/Snapshots/sign-in-alert.png)
+
+</details>
+
+#### Profile
+
+<details><summary>Profile - PC</summary> <!-- markdownlint-disable-line -->
+
+![Profile - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary>Profile - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![Profile - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Profile Box
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### User notes
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Posts
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+#### Squad Finder
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Create group
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Create slot
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Review applications
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Find Group
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Request to join
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Review my requests
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+##### Delete request
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+#### User authentication
+
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
+
 
 ##### Change password
 
+<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+
+![ - PC](README_files/Snapshots/-pc.png)
+
+</details>
+
+<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+
+![ - Mobile](README_files/Snapshots/-mobile.png)
+
+</details>
+
 ### Features left to implement
+
+- Admin area
+- Close/Open group
 
 [🔝](#table-of-contents)
 
