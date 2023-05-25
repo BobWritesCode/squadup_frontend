@@ -706,9 +706,25 @@ Allows the user to update their email address.
 
 Currently email address's server no purpose in this application but it is part of future plans to use them for login, account verification and account recovery.
 
-##### Tracker update
+##### Tracker update component
 
-##### User notes
+[TrackerUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/TrackerUpdate.js)
+
+<details><summary>Tracker update modal</summary> <!-- markdownlint-disable-line -->
+
+![Tracker update modal](README_files/Snapshots/tracker-update-modal.png)
+
+</details>
+
+Allows user to update their tracker ID from tracker.gg.
+
+To assist the user, clear instructions are given on the format to enter the ID.
+
+In the future the form will be split into two inputs, one for the player name and the other for the ID. This will help the user in making sure the correct input is provided.
+
+We will also look into if it would be possible to contact tracker.gg to check the input is correct, and providing feedback tot he user.
+
+##### User notes component
 
 <details><summary> - PC</summary> <!-- markdownlint-disable-line -->
 
