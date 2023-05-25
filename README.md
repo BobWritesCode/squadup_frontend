@@ -920,22 +920,29 @@ For each group the user will be able to choose:
 
 ##### Create slot
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+[CreateGroupSlot.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/CreateGroupSlot.js)
 
+<details><summary>Create slot - Buttons</summary> <!-- markdownlint-disable-line -->
+
+![Create slot buttons](README_files/Snapshots/create-slot-buttons.png)
+</details>
+<details><summary>Create slot - New slot</summary> <!-- markdownlint-disable-line -->
+
+![Create slot new slot](README_files/Snapshots/create-slot-new-slot.png)
 </details>
 
-##### Request to join
+Allows the user to add empty slots in the team. These are slots that other users can request to join.
 
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
+User is able to easily add and remove slots using the buttons.
 
-![ - PC](README_files/Snapshots/-pc.png)
+The amount of a slots a use can add is the team size minus 1.
 
-</details>
+The two things a user can choose when creating a slot is:
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+- Desired role.
+- Extra context, via a text area.
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
-
+##### Review applications
 </details>
 
 ##### Review my requests
