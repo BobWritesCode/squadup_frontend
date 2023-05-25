@@ -49,7 +49,7 @@ const GroupList = () => {
     setUrl((prevUrl) => {
       let game_type = '';
       // Add game_type filter.
-      if (searchFormData.game_type !== '0') {
+      if (searchFormData.game_type !== 'Any') {
         game_type = `&game_type=${searchFormData.game_type}`;
       }
       const newUrl = {
