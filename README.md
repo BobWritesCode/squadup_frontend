@@ -594,14 +594,50 @@ The Profile Box is within the Profile.js. The profile box houses a few different
 
 </details>
 
+##### Avatar update component
 
-![ - PC](README_files/Snapshots/-pc.png)
+[AvatarUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/AvatarUpdate.js)
+
+The avatar update component allows a user to update their avatar image. The user can hover their mouse over, and then tap/click on their current avatar which will open a modal allowing them to update.
+
+The avatar images are currently stored on Cloudinary. To make sure that the Cloudinary storage is not being filled up with users who constantly change their avatar. I have coded the server to check for a current avatar image, and delete the old one from the server before saving the new image in it's place.
+
+``` python
+# https://github.com/BobWritesCode/SquadUp_api/blob/master/profiles/views.py
+if serializer.is_valid():
+    image = serializer.validated_data.get('image')
+
+    if image:
+        if profile.image is not None and request.FILES:
+            # Delete old image from Cloudinary server
+            try:
+                uploader.destroy(str(profile.image))
+            except:
+                pass
+
+        if request.FILES:
+            # Upload new image
+            new_image = uploader.upload(
+                request.FILES['image'],
+                folder="squadup/avatars/",
+                allowed_formats=['jpg', 'png', 'jpeg'],
+                format='jpg'
+            )
+            serializer.validated_data['image'] = new_image['public_id']
+            serializer.save()
+```
+
+[AvatarUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/AvatarUpdate.js)
+
+<details><summary>Avatar - Hover</summary> <!-- markdownlint-disable-line -->
+
+![Avatar - Hover](README_files/Snapshots/avatar-hover.png)
 
 </details>
 
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
+<details><summary>Avatar - Modal</summary> <!-- markdownlint-disable-line -->
 
-![ - Mobile](README_files/Snapshots/-mobile.png)
+![Avatar - Modal](README_files/Snapshots/avatar-modal.png)
 
 </details>
 
