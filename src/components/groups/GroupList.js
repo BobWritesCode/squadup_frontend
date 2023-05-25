@@ -21,8 +21,6 @@ const GroupList = () => {
   });
   // Use to store groups returned by API.
   const [groups, setGroups] = useState({ results: [] });
-  // Use to any expected errors as alerts.
-  const [errors, setErrors] = useState({});
   // Use to store data and control filters.
   const [searchFormData, setSearchFormData] = useState({
     game_type: 'Any',
@@ -293,23 +291,11 @@ const GroupList = () => {
             </div>
           </div>
 
-          {errors.content?.map((m, idx) => (
-            <Alert variant="warning" key={idx}>
-              {m}
-            </Alert>
-          ))}
-
           {searchFormData.highest_rank < searchFormData.lowest_rank && (
             <Alert variant="warning" className="mt-3 p-2">
               Maximum rank needs to be same or higher then minimum rank.
             </Alert>
           )}
-
-          {errors.non_field_errors?.map((message, idx) => (
-            <Alert key={idx} variant="warning" className="mt-3">
-              {message}
-            </Alert>
-          ))}
         </Form>
       </div>
     </>
