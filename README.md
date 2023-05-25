@@ -1,6 +1,6 @@
-# Squad Up
+# 1. Squad Up
 
-## Full stack website
+## 1.1. Full stack website
 
 **Built using**:\
 REACT, Django Python, JavaScript, BootStrap, CSS and HTML.
@@ -10,120 +10,134 @@ Cloudinary.
 
 ![Showcase of site on different screen sizes]()
 
-## Live site
+## 1.2. Live site
 
 [Hosted on Heroku](https://squadup-frontend.herokuapp.com/)
 
-## Repository
+## 1.3. Repository
 
 - [GitHub repository - FRONTEND](https://github.com/BobWritesCode/squadup_frontend)
 - [GitHub repository - BACKEND](https://github.com/BobWritesCode/SquadUp_api)
 
-## Table of Contents
+## 1.4. Table of Contents
 
-- [Squad Up](#squad-up)
-  - [Live site](#live-site)
-  - [Repository](#repository)
-  - [Table of contents](#table-of-contents)
-  - [Objective](#objective)
-  - [Brief](#brief)
-    - [Squad Up - Team builder website](#squad-up---team-builder-website)
-  - [UX - User Experience Design](#ux---user-experience-design)
-    - [Site-visitor](#site-visitor)
-    - [Server-owner](#server-owner)
-    - [Site-admin](#site-admin)
-  - [Development](#development)
-    - [Agile design](#agile-design)
-      - [GitHub issues](#github-issues)
-        - [Issue numbers](#issue-numbers)
-        - [User story](#user-story)
-        - [Bug report](#bug-report)
-        - [Feature request](#feature-request)
-        - [Improvement request](#improvement-request)
-        - [Assign an assignee or assignees](#choose-assignees)
-        - [Apply labels](#choose-labels)
-        - [Choose the project](#choose-project)
-        - [Choose the milestone](#choose-milestone)
-      - [Kanban board](#kanban-board)
-    - [Wireframes](#wireframes)
-      - [Homepage design](#homepage-design)
-      - [Squad Finder design](#listings-design)
-      - [Profile design](#full-listing-design)
-    - [Colour scheme](#colour-scheme)
-    - [Typography](#typography)
-    - [Imagery](#imagery)
-  - [Features](#features)
-    - [Existing features](#existing-features)
-      - [Navbar](#navbar)
-      - [Homepage](#homepage)
-      - [Profile](#profile)
-        - [Profile Box](#profile-box)
-        - [User notes](#user-notes)
-        - [Posts](#posts)
-      - [Squad Finder](#squad-finger)
-          - [Create group](#create-group)
-            - [Create slot](#create-slot)
-          - [Review applications](#review-applications)
-          - [Find Group](#find-group)
-            -[Request to join](#request-to-join)
-          - [Review my requests](#review-my-requests)
-            - [Delete request](#delete-requests)
-      - [User authentication](#user-authentication)
-        - [Sign up](#sign-up)
-        - [Login](#login)
-        - [Change password](#forgotten-password)
-    - [Features left to implement](#features-left-to-implement)
-  - [Technologies used](#technologies-used)
-    - [Logic](#logic)
-      - [Data model](#data-model)
-      - [Django](#django)
-      - [Python](#python)
-        - [Python packages](#python-packages)
-      - [JavaScript](#javascript)
-        - [REACT](#jquery)
-      - [CSS](#css)
-        - [BootStrap](#bootstrap)
-    - [Widgets](#widgets)
-      - [Cloudinary](#cloudinary)
-  - [Testing](#testing)
-    - [HTML](#html-testing)
-    - [CSS](#css-testing)
-    - [JavaScript](#javascript-testing)
-    - [Python](#python-testing)
-      - [Linters](#python-linters)
-      - [Unit testing](#unit-testing)
-      - [Coverage](#coverage)
-    - [User testing](#user-testing)
-  - [Bugs](#bugs)
-    - [Unresolved](#unresolved)
-    - [Resolved](#resolved)
-  - [Deployment](#development)
-    - [GitHub - Cloning](#github---cloning)
-    - [Cloudinary deployment](#cloudinary-deployment)
-    - [Neon deployment](#neon)
-    - [Heroku](#hero)
-  - [Credits](#credits)
-    - [VS Code extensions](#vs-code-extensions)
-    - [Other tech](#other-tech)
-    - [Content](#content)
-    - [Acknowledgements](#acknowledgements)
+- [1. Squad Up](#1-squad-up)
+  - [1.1. Full stack website](#11-full-stack-website)
+  - [1.2. Live site](#12-live-site)
+  - [1.3. Repository](#13-repository)
+  - [1.4. Table of Contents](#14-table-of-contents)
+  - [1.5. Objective](#15-objective)
+  - [1.6. Brief](#16-brief)
+    - [1.6.1. Squad Up - Team builder website](#161-squad-up---team-builder-website)
+  - [1.7. UX - User Experience Design](#17-ux---user-experience-design)
+    - [1.7.1. New user](#171-new-user)
+    - [1.7.2. Registered user](#172-registered-user)
+    - [1.7.3. Registered user - Team leader](#173-registered-user---team-leader)
+    - [1.7.4. Registered user - Team Recruit](#174-registered-user---team-recruit)
+  - [1.8. Development](#18-development)
+    - [1.8.1. Agile design](#181-agile-design)
+    - [1.8.2. GitHub issues](#182-github-issues)
+    - [1.8.3. Issue numbers](#183-issue-numbers)
+    - [1.8.4. User story](#184-user-story)
+    - [1.8.5. Bug report](#185-bug-report)
+    - [1.8.6. Feature request](#186-feature-request)
+    - [1.8.7. Improvement request](#187-improvement-request)
+    - [1.8.8. Choose assignees](#188-choose-assignees)
+    - [1.8.9. Choose labels](#189-choose-labels)
+    - [1.8.10. Choose Project](#1810-choose-project)
+    - [1.8.11. Choose milestone](#1811-choose-milestone)
+    - [1.8.12. Kanban board](#1812-kanban-board)
+    - [1.8.13. Wireframes](#1813-wireframes)
+      - [1.8.13.1. Homepage design](#18131-homepage-design)
+      - [1.8.13.2. Sign in design](#18132-sign-in-design)
+      - [1.8.13.3. Registration design](#18133-registration-design)
+      - [1.8.13.4. Profile design](#18134-profile-design)
+      - [1.8.13.5. Squad Finder design](#18135-squad-finder-design)
+    - [1.8.14. Colour scheme](#1814-colour-scheme)
+    - [1.8.15. Typography](#1815-typography)
+    - [1.8.16. Imagery](#1816-imagery)
+  - [1.9. Features](#19-features)
+    - [1.9.1. Existing features](#191-existing-features)
+      - [1.9.1.1. Navbar](#1911-navbar)
+      - [1.9.1.2. Homepage](#1912-homepage)
+      - [1.9.1.3. Registration](#1913-registration)
+      - [1.9.1.4. Sign In](#1914-sign-in)
+      - [1.9.1.5. Profile](#1915-profile)
+        - [1.9.1.5.1. Profile Box](#19151-profile-box)
+        - [1.9.1.5.2. Avatar update component](#19152-avatar-update-component)
+        - [1.9.1.5.3. Username update component](#19153-username-update-component)
+        - [1.9.1.5.4. Password update component](#19154-password-update-component)
+        - [1.9.1.5.5. Email update component](#19155-email-update-component)
+        - [1.9.1.5.6. Tracker update component](#19156-tracker-update-component)
+        - [1.9.1.5.7. User notes component](#19157-user-notes-component)
+        - [1.9.1.5.8. User Note update component](#19158-user-note-update-component)
+      - [1.9.1.6. Posts](#1916-posts)
+        - [1.9.1.6.1. New Post component](#19161-new-post-component)
+        - [1.9.1.6.2. Post List component](#19162-post-list-component)
+        - [1.9.1.6.3. Edit post component](#19163-edit-post-component)
+        - [1.9.1.6.4. Delete post component](#19164-delete-post-component)
+      - [1.9.1.7. Squad Finder page](#1917-squad-finder-page)
+        - [1.9.1.7.1. Create group component](#19171-create-group-component)
+        - [1.9.1.7.2. Create slot component](#19172-create-slot-component)
+        - [1.9.1.7.3. Review applications](#19173-review-applications)
+          - [1.9.1.7.3.1. Applications Review - Pagination](#191731-applications-review---pagination)
+        - [1.9.1.7.4. Find Group component - Filter](#19174-find-group-component---filter)
+        - [1.9.1.7.5. Find Group component - List](#19175-find-group-component---list)
+        - [1.9.1.7.6. Request to join component](#19176-request-to-join-component)
+        - [1.9.1.7.7. Request to join component - Context signal](#19177-request-to-join-component---context-signal)
+        - [1.9.1.7.8. My Applications component](#19178-my-applications-component)
+    - [1.9.2. Future features](#192-future-features)
+  - [1.10. Technologies used](#110-technologies-used)
+    - [1.10.1. Logic](#1101-logic)
+      - [1.10.1.1. Data model](#11011-data-model)
+      - [1.10.1.2. Django](#11012-django)
+      - [1.10.1.3. Python](#11013-python)
+        - [1.10.1.3.1. Python packages](#110131-python-packages)
+      - [1.10.1.4. JavaScript](#11014-javascript)
+        - [1.10.1.4.1. REACT](#110141-react)
+      - [1.10.1.5. CSS](#11015-css)
+        - [1.10.1.5.1. BootStrap](#110151-bootstrap)
+    - [1.10.2. Widgets](#1102-widgets)
+      - [1.10.2.1. Cloudinary](#11021-cloudinary)
+  - [1.11. Testing](#111-testing)
+    - [1.11.1. HTML](#1111-html)
+    - [1.11.2. CSS](#1112-css)
+    - [1.11.3. JavaScript](#1113-javascript)
+    - [1.11.4. Python](#1114-python)
+      - [1.11.4.1. Linters](#11141-linters)
+      - [1.11.4.2. Unit testing](#11142-unit-testing)
+      - [1.11.4.3. Coverage](#11143-coverage)
+    - [1.11.5. User testing](#1115-user-testing)
+  - [1.12. Bugs](#112-bugs)
+    - [1.12.1. Unresolved](#1121-unresolved)
+    - [1.12.2. Resolved](#1122-resolved)
+  - [1.13. Deployment](#113-deployment)
+    - [1.13.1. GitHub - Cloning](#1131-github---cloning)
+    - [1.13.2. Cloudinary deployment](#1132-cloudinary-deployment)
+    - [1.13.3. Neon deployment](#1133-neon-deployment)
+    - [1.13.4. Heroku](#1134-heroku)
+  - [1.14. Credits](#114-credits)
+    - [1.14.1. VS Code extensions](#1141-vs-code-extensions)
+    - [1.14.2. Other tech](#1142-other-tech)
+    - [1.14.3. Content](#1143-content)
+    - [1.14.4. Acknowledgements](#1144-acknowledgements)
 
 ---
 
-## Objective
+## 1.5. Objective
 
 Design an interactive Full-Stack application using HTML, CSS and advanced JavaScript. The application will include a front-end repository and a backend repository.
 
 Main technologies that need to be used:
 HTML, CSS, JavaScript (React),Python (Django) and a relational database (recommending MySQL or Postgres).
 
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-## Brief
+## 1.6. Brief
 
-### Squad Up - Team builder website
+### 1.6.1. Squad Up - Team builder website
 
 The goals of this applications are:
 
@@ -131,17 +145,17 @@ The goals of this applications are:
 - group leaders will be able to create a team listing looking for players.
 - searching players will be able to search for a group by using filters.
 
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-## UX - User Experience Design
+## 1.7. UX - User Experience Design
 
-### New user
+### 1.7.1. New user
 
 > *"As a new user I can register so that I can access registered user functions."*
 
-### Registered user
+### 1.7.2. Registered user
 
 > *"As a registered user I can login so that I can access logged in user functions."*
 >
@@ -151,7 +165,7 @@ The goals of this applications are:
 >
 > *"As a logged in user I can leave private notes of a player's profile so that next time I come across them, I have a way to remember their behaviors'."*
 
-### Registered user - Team leader
+### 1.7.3. Registered user - Team leader
 
 > *"As a logged in user I can create a looking for group listing so that other users looking for a group can request to join my group."*
 >
@@ -159,120 +173,117 @@ The goals of this applications are:
 >
 > *"As a looking for group owner I can kick a player from the group so that if they do not respond after joining, I can free the slot back up."*
 
-### Registered user - Team Recruit
+### 1.7.4. Registered user - Team Recruit
 
 > *"As a user who has joined a group I can leave the group so that the slot is made available and I can join a different group."*
 >
 > *"As a logged in user I can request to join a group that is looking for a teammate so that they can review my profile and decided if to accept or reject me."*
 
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-## Development
+## 1.8. Development
 
-### Agile design
+### 1.8.1. Agile design
 
-- [GitHub Issues](#github-issues)
-  - [Issue numbers](#issue-numbers)
-  - [User Story](#user-story)
-  - [Bug Report](#bug-report)
-  - [Feature Request](#feature-request)
-  - [Improvement Request](#improvement-request)
-  - [Assign an assignee or assignees](#choose-assignees)
-  - [Apply labels](#choose-labels)
-  - [Choose the project](#choose-project)
-  - [Choose the milestone](#choose-milestone)
-- [Kanban Board](#kanban-board)
+- [1.8.1. Agile design](#181-agile-design)
+- [1.8.2. GitHub issues](#182-github-issues)
+- [1.8.3. Issue numbers](#183-issue-numbers)
+- [1.8.4. User story](#184-user-story)
+- [1.8.5. Bug report](#185-bug-report)
+- [1.8.6. Feature request](#186-feature-request)
+- [1.8.7. Improvement request](#187-improvement-request)
+- [1.8.8. Choose assignees](#188-choose-assignees)
+- [1.8.9. Choose labels](#189-choose-labels)
+- [1.8.10. Choose Project](#1810-choose-project)
+- [1.8.11. Choose milestone](#1811-choose-milestone)
+- [1.8.12. Kanban board](#1812-kanban-board)
 
 When taking on any application especially large and complicated application with different moving parts, where it's easy to jump from one part of the application to another, leaving the previous part incomplete and leaving room for error. It's best to come up with a strategy. This is where agile design comes in, it can help you identify all the different parts of the application that need to be completed, in which order may be best, and if you are in a team delegate tasks to people so everyone knows what their responsibilities are.
 
 As part of the application, I heavily used GitHub Issues and GitHub Kanban board.
 
-### GitHub issues
+### 1.8.2. GitHub issues
 
 I created 4 different templates for issues being raised:
 
-- [User story](#user-story)
-- [Bug report](#bug-report)
-- [Feature request](#feature-request)
-- [Improvement request](#improvement-request)
+- [1.8.4. User story](#184-user-story)
+- [1.8.5. Bug report](#185-bug-report)
+- [1.8.6. Feature request](#186-feature-request)
+- [1.8.7. Improvement request](#187-improvement-request)
 
 Each issue category played a part in helping easily identify the category the issue was going to be related to, and each has a different template for myself, and other users to provide useful information that will help resolve the issue.
 
 When an issue is either being created or after. There are a few different options you can modify to help delegate the task and its priority. You can:
 
-- [Assign an assignee or assignees](#choose-assignees)
-- [Apply labels](#choose-labels)
-- [Choose the project](#choose-project)
-- [Choose the milestone](#choose-milestone)
+- [1.8.8. Choose assignees](#188-choose-assignees)
+- [1.8.9. Choose labels](#189-choose-labels)
+- [1.8.10. Choose Project](#1810-choose-project)
+- [1.8.11. Choose milestone](#1811-choose-milestone)
 
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
-### Issue numbers
+### 1.8.3. Issue numbers
 
 Every issue raised will have an issue number i.e., #1, #2, #3 and so on. If you put the issue number in the commit message, then that commit will automatically by GitHub be linked to that issue.
 
 If you use certain keywords as well it will also automatically manage the issue such as 'bug: fixes #58'. This will automatically close that issue for you.
 
-### User story
+### 1.8.4. User story
 
-[Link to user story template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/user-story.md)
-
+[Link to user story template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/user-story.md)\
 [Link to user story Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=USER+STORY)
 
 The user story was the first template I created, and this was basically to help start to build the idea of the application and what potential features were going to be needed.
 
 Any user story was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
 
-### Bug report
+### 1.8.5. Bug report
 
-[Link to bug report template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)
-
+[Link to bug report template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/bug_report.md)\
 [Link to bug report Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Abug+)
 
 As large and complex application, inevitably bugs came up. Bugs are very easy to get distracted by as they generally are discovered while working on an unrelated feature. When a bug comes up, I create a bug report so I can attend to it later.
 
 Bug reports are allocated the tag 'bug' to help identify them. You can also opt to allocate it the tag 'priority' to show it is something that needs to be fixed immediately as it could be application breaking or may affect many users.
 
-### Feature request
+### 1.8.6. Feature request
 
-[Link to feature request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/new-feature.md)
-
+[Link to feature request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/new-feature.md)\
 [Link to feature request Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3A%22new+feature%22)
 
 While building the application new ideas on new features would come to mind. Some that would potentially be perfect for the first version of the application and some that potentially could be implemented later. Whenever a new feature came to mind, I would complete the feature request form.
 
 Any feature request was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
 
-### Improvement request
+### 1.8.7. Improvement request
 
-[Link to improvement request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/improvement.md)
-
+[Link to improvement request template.](https://github.com/BobWritesCode/squadup_frontend/blob/master/.github/ISSUE_TEMPLATE/improvement.md)\
 [Link to improvement request Issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Aimprovement)
 
 Either while using the application as a user or developing the application. I would realise improvements to feature that had already been built. To separate new features to improvements I created the Improvement Request form. Improvements could mainly be left to later in the application as it was important to make sure that all the main features were implemented first.
 
 Any improvement Request was also allocated the tag 'improvement' automatically to help identify this was going to be a new feature.
 
-### Choose assignees
+### 1.8.8. Choose assignees
 
 [Link to my assigned issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=assignee%3ABobWritesCode)
 
 It may come as no surprise; I am the only person assigned issues on this project. Potentially in the future if the project grows and the team grows past me, then I would be able to assign other team members to tasks.
 
-### Choose labels
+### 1.8.9. Choose labels
 
 [Link to Frontend label choices for this application.](https://github.com/BobWritesCode/squadup_frontend/labels)\
 [Link to Backend label choices for this application.](https://github.com/BobWritesCode/squadup_api/labels)
 
 When creating an issue from an issue report, a label is automatically allocated but the user or a person creating the issue can choose to assign labels from the option available. For example, if something needs to be tagged as 'priority'.
 
-### Choose Project
+### 1.8.10. Choose Project
 
 It's probably obvious but all issues were assigned to this project. If you have one repository being used for several projects, it is useful to be able to choose the correct project.
 
-### Choose milestone
+### 1.8.11. Choose milestone
 
 [Link to Frontend milestones for this application.](https://github.com/BobWritesCode/squadup_frontend/milestones)\
 [Link to Backend milestones for this application.](https://github.com/BobWritesCode/squadup_api/milestones)
@@ -288,21 +299,21 @@ In my application I created 3 milestones:
 - Post v1.00
   - These are issues that are mainly going to be features that can wait until version 1.00 has been completed and be implements into a future version.
 
-### Kanban board
+### 1.8.12. Kanban board
 
 [Link to application Kanban board.](https://github.com/users/BobWritesCode/projects/5)
 
 A Kanban board is an agile application management tool that helps visualize tasks. It helps with the day-to-day works flow as you can easily see which tasks need to be completed. With GitHub applications you can have several views of the Kanban board. As you might want to have one for the team, and maybe views for each team member. Or different labels such as bugs or improvements.
 
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-### Wireframes
+### 1.8.13. Wireframes
 
 Below are  wireframe that I designed to help build and represent the design of this application.
 
-#### Homepage design
+#### 1.8.13.1. Homepage design
 
 <details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
 
@@ -314,7 +325,7 @@ Below are  wireframe that I designed to help build and represent the design of t
 ![Homepage on mobile / small screen](./README_files/wireframes/homepage_mobile.png)
 </details>
 
-#### Sign in design
+#### 1.8.13.2. Sign in design
 
 <details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
 
@@ -326,7 +337,7 @@ Below are  wireframe that I designed to help build and represent the design of t
 ![Sign in on mobile / small screen](./README_files/wireframes/sign_in_mobile.png)
 </details>
 
-#### Registration design
+#### 1.8.13.3. Registration design
 
 <details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
 
@@ -338,7 +349,7 @@ Below are  wireframe that I designed to help build and represent the design of t
 ![Registration on mobile / small screen](./README_files/wireframes/register_mobile.png)
 </details>
 
-#### Profile design
+#### 1.8.13.4. Profile design
 
 <details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
 
@@ -350,7 +361,7 @@ Below are  wireframe that I designed to help build and represent the design of t
 ![Profile on mobile / small screen](./README_files/wireframes/profile_mobile.png)
 </details>
 
-#### Squad Finder design
+#### 1.8.13.5. Squad Finder design
 
 <details><summary>PC / Large screen</summary> <!-- markdownlint-disable-line -->
 
@@ -362,20 +373,20 @@ Below are  wireframe that I designed to help build and represent the design of t
 ![Squad Finder on mobile / small screen](./README_files/wireframes/squad_finder_mobile.png)
 </details>
 
-### Colour scheme
+### 1.8.14. Colour scheme
 
 The 4 main colour's hex codes for this site are: B78F1D, 212731, 3F6974, FAFAFA.
 These 4 colours contrast very nicely against each other, and the white text against the other 3 colours pass WCAG contrast scores.
 
 ![Colour scheme](./README_files/colours.png)
 
-### Typography
+### 1.8.15. Typography
 
-We are using [BootStrap's](#bootstrap) native font stack. As it provides a sharp and clear font that works perfectly with the projects overall styling.
+We are using [BootStrap's](#110151-bootstrap) native font stack. As it provides a sharp and clear font that works perfectly with the projects overall styling.
 
 [Link to BootStrap's documentation for Native font stack.](https://getbootstrap.com/docs/5.3/content/reboot/#native-font-stack)
 
-### Imagery
+### 1.8.16. Imagery
 
 **This application comes with the following media:**
 
@@ -411,15 +422,15 @@ Valorant rank badges.
 
 The application allows users to upload images, currently there is no way to moderate these without accessing the SQL database. Future plans are to add an admin access area that will allow staff members moderate content on the application.
 
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-## Features
+## 1.9. Features
 
-### Existing features
+### 1.9.1. Existing features
 
-#### Navbar
+#### 1.9.1.1. Navbar
 
 [Navbar.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/NavBar.js)
 
@@ -482,7 +493,7 @@ As you will see from the code below we use a [React Bootstrap Nav](https://react
 </Navbar>
 ```
 
-#### Homepage
+#### 1.9.1.2. Homepage
 
 [HomePage.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/HomePage.js)
 
@@ -500,13 +511,13 @@ The homepage is designed to be simple and provide a clear understanding of what 
 
 </details>
 
-##### Registration
+#### 1.9.1.3. Registration
+
+[SignUpForm.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/auth/SignUpForm.js)
 
 It's important that users can easily sign up, the sign-up form itself is designed to be simplistic. Asking for a username, email address, and password. Username and password will be what is required to login. Both the username and email address must be unique, and the user will be notified if they are not.
 
 Currently email address serves no purpose on this application but it is planned in future updates to have email verification and account recovery.
-
-[SignUpForm.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/auth/SignUpForm.js)
 
 <details><summary>Registration - PC</summary> <!-- markdownlint-disable-line -->
 
@@ -526,7 +537,7 @@ Currently email address serves no purpose on this application but it is planned 
 
 </details>
 
-##### Sign In
+#### 1.9.1.4. Sign In
 
 [SignInForm.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/auth/SignInForm.js)
 
@@ -552,7 +563,7 @@ If the user cannot be found, or password does not match the correct account they
 
 </details>
 
-#### Profile
+#### 1.9.1.5. Profile
 
 [Profile.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/profile/Profile.js)
 
@@ -574,9 +585,15 @@ User's can also leave a user note on a different person's profile. The user note
 
 </details>
 
-##### Profile Box
+##### 1.9.1.5.1. Profile Box
 
 [Profile.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/profile/Profile.js)
+
+<details><summary>Profile Box</summary> <!-- markdownlint-disable-line -->
+
+![Profile Box](README_files/Snapshots/profile-box.png)
+
+</details>
 
 The Profile Box is within the Profile.js. The profile box houses a few different components within it, including:
 
@@ -588,15 +605,21 @@ The Profile Box is within the Profile.js. The profile box houses a few different
 - User Note
 - User Note update
 
-<details><summary>Profile Box</summary> <!-- markdownlint-disable-line -->
+##### 1.9.1.5.2. Avatar update component
 
-![Profile Box](README_files/Snapshots/profile-box.png)
+[AvatarUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/AvatarUpdate.js)
+
+<details><summary>Avatar - Hover</summary> <!-- markdownlint-disable-line -->
+
+![Avatar - Hover](README_files/Snapshots/avatar-hover.png)
 
 </details>
 
-##### Avatar update component
+<details><summary>Avatar update modal</summary> <!-- markdownlint-disable-line -->
 
-[AvatarUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/AvatarUpdate.js)
+![Avatar update modal](README_files/Snapshots/avatar-modal.png)
+
+</details>
 
 The avatar update component allows a user to update their avatar image. The user can hover their mouse over, and then tap/click on their current avatar which will open a modal allowing them to update.
 
@@ -627,7 +650,7 @@ if serializer.is_valid():
             serializer.save()
 ```
 
-##### Username update component
+##### 1.9.1.5.3. Username update component
 
 [UsernameUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UsernameUpdate.js)
 
@@ -639,7 +662,7 @@ if serializer.is_valid():
 
 Allows user to update their username. Their is a validation check to make sure the user is changing to a unique name, if not the user will receive an alert information them that the new name is not unique.
 
-As this also changes the user, the user in the browser needs to be refreshed otherwise the use will be logged out and other unexpected errors can happen
+As this also changes the user object, the user object in the browser needs to be refreshed otherwise the use will be logged out and other unexpected errors can happen
 
 ``` js
 /**
@@ -680,7 +703,7 @@ const handleSubmit = async (event) => {
 };
 ```
 
-##### Password update component
+##### 1.9.1.5.4. Password update component
 
 [PasswordUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/PasswordUpdate.js)
 
@@ -692,7 +715,7 @@ const handleSubmit = async (event) => {
 
 Allows the user to update their password. They are required to provide their current password, and a new password which they must type again to confirm, before submitting the change.
 
-##### Email update component
+##### 1.9.1.5.5. Email update component
 
 [EmailUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/EmailUpdate.js)
 
@@ -706,7 +729,7 @@ Allows the user to update their email address.
 
 Currently email address's server no purpose in this application but it is part of future plans to use them for login, account verification and account recovery.
 
-##### Tracker update component
+##### 1.9.1.5.6. Tracker update component
 
 [TrackerUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/TrackerUpdate.js)
 
@@ -724,7 +747,7 @@ In the future the form will be split into two inputs, one for the player name an
 
 We will also look into if it would be possible to contact tracker.gg to check the input is correct, and providing feedback tot he user.
 
-##### User notes component
+##### 1.9.1.5.7. User notes component
 
 [UserNote.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UserNote.js)
 
@@ -736,7 +759,7 @@ We will also look into if it would be possible to contact tracker.gg to check th
 
 Allows users to leave an updatable note on any user's profile. The note is only visible to the user leaving the note. This so user's can leave information about that player, should they come across them again. Things like if they enjoyed playing with them or noticed a specific style to their play.
 
-##### User Note update component
+##### 1.9.1.5.8. User Note update component
 
 [UserNoteUpdate.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/profile/UserNoteUpdate.js)
 
@@ -747,16 +770,16 @@ Allows users to leave an updatable note on any user's profile. The note is only 
 
 Opens up a modal where the user can edit their note.
 
-#### Posts
+#### 1.9.1.6. Posts
 
 <details><summary>Posts container</summary> <!-- markdownlint-disable-line -->
 
 ![Posts container](README_files/Snapshots/post-box.png)
 </details>
 
-A container on the [profile page](#profile) for combing [new post](#new-post-component), and [post list](#post-list-component).
+A container on the [profile page](#1915-profile) for combing [new post](#19161-new-post-component), and [post list](#19162-post-list-component).
 
-##### New Post component
+##### 1.9.1.6.1. New Post component
 
 [NewPost.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/NewPost.js)
 
@@ -769,7 +792,7 @@ Allows users to add posts to their own timeline.
 
 Users can either write some text, post an image, or both.
 
-##### Post List component
+##### 1.9.1.6.2. Post List component
 
 [UserPosts.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/UserPosts.js)
 
@@ -844,7 +867,7 @@ useEffect(() => {
 }, [latestNewPost]);
 ```
 
-##### Edit post component
+##### 1.9.1.6.3. Edit post component
 
 [PostEdit.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/PostEdit.js)
 
@@ -857,7 +880,7 @@ Allows the user to edit the text on a post. It currently does not allow you to e
 
 Once updated, the change can be seem immediately in the post.
 
-#### Delete post component
+##### 1.9.1.6.4. Delete post component
 
 [PostDelete.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/posts/PostDelete.js)
 
@@ -869,7 +892,7 @@ Once updated, the change can be seem immediately in the post.
 
 Allows user to delete their own post.
 
-#### Squad Finder page
+#### 1.9.1.7. Squad Finder page
 
 <details><summary>Squad Finder page - PC</summary> <!-- markdownlint-disable-line -->
 
@@ -894,7 +917,7 @@ As a user they will be able to:
 - Review their requests to join other groups.
 - Delete their requests to join other groups.
 
-##### Create group
+##### 1.9.1.7.1. Create group component
 
 [CreateGroup.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/CreateGroup.js)
 
@@ -918,7 +941,7 @@ For each group the user will be able to choose:
 - Text area to provide extra content
 - Add open slots, where other users can request to join the team.
 
-##### Create slot
+##### 1.9.1.7.2. Create slot component
 
 [CreateGroupSlot.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/CreateGroupSlot.js)
 
@@ -942,7 +965,7 @@ The two things a user can choose when creating a slot is:
 - Desired role.
 - Extra context, via a text area.
 
-##### Review applications
+##### 1.9.1.7.3. Review applications
 
 [ApplicationReviews.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/ApplicationReviews.js)
 
@@ -1011,11 +1034,11 @@ Next in 'My Groups' the slot will be closed and the accepted user's name will sh
 
 If the user needs to kick the player from the slow for any reason, they just click the button with the user's name in it, and then can click 'Kick from group' in the modal. The user will then need to confirm the kick by typing kick in the input then clicking 'Confirm Kick'. This will then delete every current request, so users can re-request to join even if they were rejected previously.
 
-#### Applications Review - Pagination
+###### 1.9.1.7.3.1. Applications Review - Pagination
 
 
 
-##### Find Group component - Filter
+##### 1.9.1.7.4. Find Group component - Filter
 
 [GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
@@ -1067,7 +1090,7 @@ class LFGSerializer(serializers.ModelSerializer):
         return [group.role for group in groups]
 ```
 
-##### Find Group component - List
+##### 1.9.1.7.5. Find Group component - List
 
 [GroupList.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/GroupList.js)
 
@@ -1078,9 +1101,9 @@ class LFGSerializer(serializers.ModelSerializer):
 
 The group list will show every group that is 'Open' which currently means they have at least 1 slot open. If a group has a closed slot then the user will not be able to request to join that group.
 
-The group list is determined by the [filters applied](#find-group-component---filter).
+The group list is determined by the [filters applied](#19174-find-group-component---filter).
 
-##### Request to join component
+##### 1.9.1.7.6. Request to join component
 
 [SlotApply.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/SlotApply.js)
 
@@ -1099,7 +1122,7 @@ The group list is determined by the [filters applied](#find-group-component---fi
 
 Allows users to request to join a group in an open slot. The requesting user can choose a role, and add some extra information via a textarea input for the group leader to see.
 
-##### Request to join component - Context signal
+##### 1.9.1.7.7. Request to join component - Context signal
 
 [SlotApply.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/groups/SlotApply.js)\
 [myApplicationsSignalContext.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/contexts/myApplicationsSignalContext.js)\
@@ -1166,7 +1189,7 @@ const MyApplications = () => {
 }
 ```
 
-##### My Applications component
+##### 1.9.1.7.8. My Applications component
 
 [MyApplications.js](squadup_frontend/src/components/groups/MyApplications.js)
 
@@ -1206,38 +1229,25 @@ The above images show what the user can expect to see if their request has been 
 
 If accepted by the group leader, the user will see accepted in their applications. If they click on it to open the modal they will see the message the group leader provided when the group leader accepted the request.
 
-#### User authentication
-
-##### Change password
-
-<details><summary> - PC</summary> <!-- markdownlint-disable-line -->
-
-![ - PC](README_files/Snapshots/-pc.png)
-
-</details>
-
-<details><summary> - Mobile</summary> <!-- markdownlint-disable-line -->
-
-![ - Mobile](README_files/Snapshots/-mobile.png)
-
-</details>
-
-### Features left to implement
+### 1.9.2. Future features
 
 - Admin area
 - Close/Open group
-email verification
-account recovery.
+- email verification
+- account recovery.
+- email login
+- two inputs for tracker id
+- account deletion
 
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-## Technologies used
+## 1.10. Technologies used
 
-### Logic
+### 1.10.1. Logic
 
-#### Data model
+#### 1.10.1.1. Data model
 
 The below entity relationship diagram (ERD) is a graphical representation that depicts relationships between the different models in this project. It also shows the different attributes and their types for each class.
 
@@ -1245,84 +1255,84 @@ The below entity relationship diagram (ERD) is a graphical representation that d
 
 *Created using: [app.diagrams.net](https://app.diagrams.net/)*
 
-#### Django
+#### 1.10.1.2. Django
 
-#### Python
+#### 1.10.1.3. Python
 
-##### Python packages
+##### 1.10.1.3.1. Python packages
 
-#### JavaScript
+#### 1.10.1.4. JavaScript
 
-##### REACT
+##### 1.10.1.4.1. REACT
 
-#### CSS
+#### 1.10.1.5. CSS
 
-##### BootStrap
+##### 1.10.1.5.1. BootStrap
 
-### Widgets
+### 1.10.2. Widgets
 
-#### Cloudinary
+#### 1.10.2.1. Cloudinary
 
-[🔝](#table-of-contents)
-
----
-
-## Testing
-
-### HTML
-
-### CSS
-
-### JavaScript
-
-### Python
-
-#### Linters
-
-#### Unit testing
-
-#### Coverage
-
-### User testing
-
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-## Bugs
+## 1.11. Testing
 
-### Unresolved
+### 1.11.1. HTML
 
-### Resolved
+### 1.11.2. CSS
 
-[🔝](#table-of-contents)
+### 1.11.3. JavaScript
 
----
+### 1.11.4. Python
 
-## Deployment
+#### 1.11.4.1. Linters
 
-### GitHub - Cloning
+#### 1.11.4.2. Unit testing
 
-### Cloudinary deployment
+#### 1.11.4.3. Coverage
 
-### Neon deployment
+### 1.11.5. User testing
 
-### Heroku
-
-[🔝](#table-of-contents)
+[🔝](#14-table-of-contents)
 
 ---
 
-## Credits
+## 1.12. Bugs
 
-### VS Code extensions
+### 1.12.1. Unresolved
 
-### Other tech
+### 1.12.2. Resolved
 
-### Content
+[🔝](#14-table-of-contents)
 
-### Acknowledgements
+---
 
-[🔝](#table-of-contents)
+## 1.13. Deployment
+
+### 1.13.1. GitHub - Cloning
+
+### 1.13.2. Cloudinary deployment
+
+### 1.13.3. Neon deployment
+
+### 1.13.4. Heroku
+
+[🔝](#14-table-of-contents)
+
+---
+
+## 1.14. Credits
+
+### 1.14.1. VS Code extensions
+
+### 1.14.2. Other tech
+
+### 1.14.3. Content
+
+### 1.14.4. Acknowledgements
+
+[🔝](#14-table-of-contents)
 
 ---
