@@ -98,7 +98,7 @@
 }
 
 .Success:disabled {
-  border: px solid #284933 !important;
+  border: 1px solid #284933 !important;
   color: #fafafa !important;
 }
 
