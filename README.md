@@ -1939,6 +1939,8 @@ All code other then libraries used was my own. Some of the code though was influ
 
 ### 1.14.4. Acknowledgements
 
+I like to acknowledge Code Institute who helped my in learning React, and provided educational content, and code-alongs.
+
 [🔝](#14-table-of-contents)
 
 ---
