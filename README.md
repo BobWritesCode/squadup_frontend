@@ -1609,6 +1609,24 @@ To validate all HTML, I used the [W3C validator](https://validator.w3.org/#valid
 
 ### 1.11.2. CSS
 
+I have used a combination of custom stylesheets and Bootstrap for the styling of this project. We do not need to test the Bootstrap CSS but we will test the custom code written. For the tests we are using [W3C CSS validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input).
+
+| Page | Errors | Errors results? | Final result |
+|---|---|---|---|
+| App.module.css | none |  | pass |
+| Avatar.module.css | none |  | pass |
+| Buttons.module.css | Value Error : border px is not a color value : px solid #284933 | Added missing 1 before the px | pass |
+| Footer.module.css | none |  | pass |
+| Forms.module.css | none |  | pass |
+| Lists.module.css | none |  | pass |
+| Modal.module.css | none |  | pass |
+| NavBar.module.css | none |  | pass |
+| Pagination.module.css | none |  | pass |
+| Posts.module.css | none |  | pass |
+| Profile.module.css | none |  | pass |
+| SignUpForm.module.css | none |  | pass |
+| Table.module.css | none |  | pass |
+
 ### 1.11.3. JavaScript
 
 ### 1.11.4. Python
