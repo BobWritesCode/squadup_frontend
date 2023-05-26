@@ -1667,6 +1667,19 @@ When a bug is identified a user can raise an issue in GitHub to flag it. The use
 
 ### 1.13.1. GitHub - Cloning
 
+To clone using GitHub:
+
+Go to the project you wish to clone.
+
+<details><summary>Cloudinary - Site</summary> <!-- markdownlint-disable-line -->
+
+![GitHub - Cloning](./README_files/deployment/github/github_cloning.png)
+</details>
+
+- **Option 1:** If you are using GitPod you can download the [Google Chrome GitPod extension](https://chrome.google.com/webstore/detail/gitpod-always-ready-to-co/dodmmooeoklaejobgleioelladacbeki) then you can just click on the green GitPod button
+
+- **Option 2:** Click the 'Code' button. This open options for you to clone your preferred way.
+
 ### 1.13.2. Cloudinary deployment
 
 Go to the Cloudinary website [https://cloudinary.com/](https://cloudinary.com/)
