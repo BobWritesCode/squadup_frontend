@@ -1669,6 +1669,41 @@ When a bug is identified a user can raise an issue in GitHub to flag it. The use
 
 ### 1.13.2. Cloudinary deployment
 
+Go to the Cloudinary website [https://cloudinary.com/](https://cloudinary.com/)
+
+<details><summary>Cloudinary - Site</summary> <!-- markdownlint-disable-line -->
+
+![Cloudinary - Site](./README_files/deployment/cloudinary/cloudinary_1_site.png)
+</details>
+
+You can either Log in if you have a current account or create a new account with your email address.
+
+<details><summary>Cloudinary - Log in options</summary> <!-- markdownlint-disable-line -->
+
+![Cloudinary - Log in options](./README_files/deployment/cloudinary/cloudinary_2_log_in.png)
+</details>
+
+Once you have logged in or completed the registration you are taken to the main console page.
+
+<details><summary>Cloudinary - Console page</summary> <!-- markdownlint-disable-line -->
+
+![Cloudinary - Console page](./README_files/deployment/cloudinary/cloudinary_3_logged_in.png)
+</details>
+
+Click the 'Dashboard' button which is located in the nav bar.
+
+<details><summary>Cloudinary - Dashboard button</summary> <!-- markdownlint-disable-line -->
+
+![Cloudinary - Dashboard button](./README_files/deployment/cloudinary/cloudinary_4_dashboard_button.png)
+</details>
+
+And you are now on the screen which shows you all the credential information you will require.
+
+<details><summary>Cloudinary - Dashboard page</summary> <!-- markdownlint-disable-line -->
+
+![Cloudinary - Dashboard page](./README_files/deployment/cloudinary/cloudinary_5_dashboard.png)
+</details>
+
 ### 1.13.3. Neon deployment
 
 ### 1.13.4. Heroku
