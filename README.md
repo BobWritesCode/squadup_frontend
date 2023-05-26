@@ -1645,9 +1645,19 @@ I have used a combination of custom stylesheets and Bootstrap for the styling of
 
 ## 1.12. Bugs
 
+When a bug is identified a user can raise an issue in GitHub to flag it. The user will need to complete a bug report, but this helps identify the bug and know what the user expected. As I work through the project numerous of bugs would come up, but to make sure I stayed on track and focused at 1 task at a time, I raised an issue to handle the bug later.
+
+![Bug report](/README_files/bug-report.png)
+
+![Bug list](/README_files/bug-list.png)
+
 ### 1.12.1. Unresolved
 
+[Link to unresolved bugs](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Abug+-status%3ADone&visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%2C%22Repository%22%5D)
+
 ### 1.12.2. Resolved
+
+[Link to resolved bugs](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Abug+status%3ADone&visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%2C%22Repository%22%5D)
 
 [🔝](#14-table-of-contents)
 
