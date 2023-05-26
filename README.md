@@ -8,8 +8,6 @@ REACT, Django Python, JavaScript, BootStrap, CSS and HTML.
 **Also including**:\
 Cloudinary.
 
-![Showcase of site on different screen sizes]()
-
 ## 1.2. Live site
 
 [Hosted on Heroku](https://squadup-frontend.herokuapp.com/)
