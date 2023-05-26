@@ -459,6 +459,7 @@ The application allows users to upload images, currently there is no way to mode
 - [1.9.1.5. Profile](#1915-profile)
 - [1.9.1.6. Posts](#1916-posts)
 - [1.9.1.7. Squad Finder page](#1917-squad-finder-page)
+- [1.9.1.8. Spinner](#1918-spinner)
 
 #### 1.9.1.1. Navbar
 
