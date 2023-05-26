@@ -140,6 +140,8 @@ HTML, CSS, JavaScript (React),Python (Django) and a relational database (recomme
 
 ## 1.6. Brief
 
+- [1.6.1. Squad Up - Team builder website](#161-squad-up---team-builder-website)
+
 ### 1.6.1. Squad Up - Team builder website
 
 The goals of this applications are:
@@ -153,6 +155,11 @@ The goals of this applications are:
 ---
 
 ## 1.7. UX - User Experience Design
+
+- [1.7.1. New user](#171-new-user)
+- [1.7.2. Registered user](#172-registered-user)
+- [1.7.3. Registered user - Team leader](#173-registered-user---team-leader)
+- [1.7.4. Registered user - Team Recruit](#174-registered-user---team-recruit)
 
 ### 1.7.1. New user
 
@@ -188,8 +195,6 @@ The goals of this applications are:
 
 ## 1.8. Development
 
-### 1.8.1. Agile design
-
 - [1.8.1. Agile design](#181-agile-design)
 - [1.8.2. GitHub issues](#182-github-issues)
 - [1.8.3. Issue numbers](#183-issue-numbers)
@@ -202,6 +207,12 @@ The goals of this applications are:
 - [1.8.10. Choose Project](#1810-choose-project)
 - [1.8.11. Choose milestone](#1811-choose-milestone)
 - [1.8.12. Kanban board](#1812-kanban-board)
+- [1.8.13. Wireframes](#1813-wireframes)
+- [1.8.14. Colour scheme](#1814-colour-scheme)
+- [1.8.15. Typography](#1815-typography)
+- [1.8.16. Imagery](#1816-imagery)
+
+### 1.8.1. Agile design
 
 When taking on any application especially large and complicated application with different moving parts, where it's easy to jump from one part of the application to another, leaving the previous part incomplete and leaving room for error. It's best to come up with a strategy. This is where agile design comes in, it can help you identify all the different parts of the application that need to be completed, in which order may be best, and if you are in a team delegate tasks to people so everyone knows what their responsibilities are.
 
@@ -314,6 +325,12 @@ A Kanban board is an agile application management tool that helps visualize task
 
 ### 1.8.13. Wireframes
 
+- [1.8.13.1. Homepage design](#18131-homepage-design)
+- [1.8.13.2. Sign in design](#18132-sign-in-design)
+- [1.8.13.3. Registration design](#18133-registration-design)
+- [1.8.13.4. Profile design](#18134-profile-design)
+- [1.8.13.5. Squad Finder design](#18135-squad-finder-design)
+
 Below are  wireframe that I designed to help build and represent the design of this application.
 
 #### 1.8.13.1. Homepage design
@@ -385,7 +402,7 @@ These 4 colours contrast very nicely against each other, and the white text agai
 
 ### 1.8.15. Typography
 
-We are using [BootStrap's](#110151-bootstrap) native font stack. As it provides a sharp and clear font that works perfectly with the projects overall styling.
+We are using [BootStrap's](#110161-bootstrap) native font stack. As it provides a sharp and clear font that works perfectly with the projects overall styling.
 
 [Link to BootStrap's documentation for Native font stack.](https://getbootstrap.com/docs/5.3/content/reboot/#native-font-stack)
 
@@ -431,7 +448,18 @@ The application allows users to upload images, currently there is no way to mode
 
 ## 1.9. Features
 
+- [1.9.1. Existing features](#191-existing-features)
+- [1.9.2. Future features](#192-future-features)
+
 ### 1.9.1. Existing features
+
+- [1.9.1.1. Navbar](#1911-navbar)
+- [1.9.1.2. Homepage](#1912-homepage)
+- [1.9.1.3. Registration](#1913-registration)
+- [1.9.1.4. Sign In](#1914-sign-in)
+- [1.9.1.5. Profile](#1915-profile)
+- [1.9.1.6. Posts](#1916-posts)
+- [1.9.1.7. Squad Finder page](#1917-squad-finder-page)
 
 #### 1.9.1.1. Navbar
 
@@ -567,6 +595,15 @@ If the user cannot be found, or password does not match the correct account they
 </details>
 
 #### 1.9.1.5. Profile
+
+- [1.9.1.5.1. Profile Box](#19151-profile-box)
+- [1.9.1.5.2. Avatar update component](#19152-avatar-update-component)
+- [1.9.1.5.3. Username update component](#19153-username-update-component)
+- [1.9.1.5.4. Password update component](#19154-password-update-component)
+- [1.9.1.5.5. Email update component](#19155-email-update-component)
+- [1.9.1.5.6. Tracker update component](#19156-tracker-update-component)
+- [1.9.1.5.7. User notes component](#19157-user-notes-component)
+- [1.9.1.5.8. User Note update component](#19158-user-note-update-component)
 
 [Profile.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/pages/profile/Profile.js)
 
@@ -775,6 +812,11 @@ Opens up a modal where the user can edit their note.
 
 #### 1.9.1.6. Posts
 
+- [1.9.1.6.1. New Post component](#19161-new-post-component)
+- [1.9.1.6.2. Post List component](#19162-post-list-component)
+- [1.9.1.6.3. Edit post component](#19163-edit-post-component)
+- [1.9.1.6.4. Delete post component](#19164-delete-post-component)
+
 <details><summary>Posts container</summary> <!-- markdownlint-disable-line -->
 
 ![Posts container](README_files/Snapshots/post-box.png)
@@ -897,6 +939,16 @@ Allows user to delete their own post.
 
 #### 1.9.1.7. Squad Finder page
 
+- [1.9.1.7.1. Create group component](#19171-create-group-component)
+- [1.9.1.7.2. Create slot component](#19172-create-slot-component)
+- [1.9.1.7.3. Review applications](#19173-review-applications)
+- [1.9.1.7.4. Applications Review - Pagination](#19174-applications-review---pagination)
+- [1.9.1.7.5. Find Group component - Filter](#19175-find-group-component---filter)
+- [1.9.1.7.6. Find Group component - List](#19176-find-group-component---list)
+- [1.9.1.7.7. Request to join component](#19177-request-to-join-component)
+- [1.9.1.7.8. Request to join component - Context signal](#19178-request-to-join-component---context-signal)
+- [1.9.1.7.9. My Applications component](#19179-my-applications-component)
+
 <details><summary>Squad Finder page - PC</summary> <!-- markdownlint-disable-line -->
 
 ![Squad Finder page - PC](README_files/Snapshots/squad-finder-pc.png)
@@ -969,6 +1021,9 @@ The two things a user can choose when creating a slot is:
 - Extra context, via a text area.
 
 ##### 1.9.1.7.3. Review applications
+
+- [1.9.1.7.3.1. Group view](#191731-group-view)
+- [1.9.1.7.3.2. Application modal](#191732-application-modal)
 
 ###### 1.9.1.7.3.1. Group view
 
@@ -1420,18 +1475,17 @@ If accepted by the group leader, the user will see accepted in their application
 
 ## 1.10. Technologies used
 
+- [1.10.1. Logic](#1101-logic)
+- [1.10.2. Widgets](#1102-widgets)
+
 ### 1.10.1. Logic
 
-- [1.10.1. Logic](#1101-logic)
-  - [1.10.1.1. Data model](#11011-data-model)
-  - [1.10.1.2. REACT](#11012-react)
-  - [1.10.1.3. Django Rest framework](#11013-django-rest-framework)
-  - [1.10.1.4. Python](#11014-python)
-    - [1.10.1.4.1. Python packages](#110141-python-packages)
-  - [1.10.1.5. JavaScript](#11015-javascript)
-    - [1.10.1.5.1. React Bootstrap](#110151-react-bootstrap)
-  - [1.10.1.6. CSS](#11016-css)
-    - [1.10.1.6.1. BootStrap](#110161-bootstrap)
+- [1.10.1.1. Data model](#11011-data-model)
+- [1.10.1.2. REACT](#11012-react)
+- [1.10.1.3. Django Rest framework](#11013-django-rest-framework)
+- [1.10.1.4. Python](#11014-python)
+- [1.10.1.5. JavaScript](#11015-javascript)
+- [1.10.1.6. CSS](#11016-css)
 
 #### 1.10.1.1. Data model
 
@@ -1477,6 +1531,8 @@ Some reasons you might want to use REST framework:
 
 #### 1.10.1.4. Python
 
+- [1.10.1.4.1. Python packages](#110141-python-packages)
+
 [Python website](https://www.python.org/)
 
 ##### 1.10.1.4.1. Python packages
@@ -1500,6 +1556,8 @@ These are some of the notable python packages that are used in this application.
 
 #### 1.10.1.5. JavaScript
 
+- [1.10.1.5.1. React Bootstrap](#110151-react-bootstrap)
+
 Other than React and React Bootstrap, only vanilla JavaScript has been used in this application.
 
 ##### 1.10.1.5.1. React Bootstrap
@@ -1511,6 +1569,8 @@ React-Bootstrap replaces the Bootstrap JavaScript. Each component has been built
 As one of the oldest React libraries, React-Bootstrap has evolved and grown alongside React, making it an excellent choice as your UI foundation.
 
 #### 1.10.1.6. CSS
+
+- [1.10.1.6.1. BootStrap](#110161-bootstrap)
 
 [W3C CSS Homepage](https://www.w3.org/Style/CSS/)
 
@@ -1594,6 +1654,12 @@ if image:
 
 ## 1.11. Testing
 
+- [1.11.1. HTML](#1111-html)
+- [1.11.2. CSS](#1112-css)
+- [1.11.3. JavaScript](#1113-javascript)
+- [1.11.4. Python](#1114-python)
+- [1.11.5. User testing](#1115-user-testing)
+
 ### 1.11.1. HTML
 
 To validate all HTML, I used the [W3C validator](https://validator.w3.org/#validate_by_uri) by validating by URL.
@@ -1631,6 +1697,10 @@ I have used a combination of custom stylesheets and Bootstrap for the styling of
 
 ### 1.11.4. Python
 
+- [1.11.4.1. Linters](#11141-linters)
+- [1.11.4.2. Unit testing](#11142-unit-testing)
+- [1.11.4.3. Coverage](#11143-coverage)
+
 #### 1.11.4.1. Linters
 
 #### 1.11.4.2. Unit testing
@@ -1644,6 +1714,9 @@ I have used a combination of custom stylesheets and Bootstrap for the styling of
 ---
 
 ## 1.12. Bugs
+
+- [1.12.1. Unresolved](#1121-unresolved)
+- [1.12.2. Resolved](#1122-resolved)
 
 When a bug is identified a user can raise an issue in GitHub to flag it. The user will need to complete a bug report, but this helps identify the bug and know what the user expected. As I work through the project numerous of bugs would come up, but to make sure I stayed on track and focused at 1 task at a time, I raised an issue to handle the bug later.
 
@@ -1664,6 +1737,11 @@ When a bug is identified a user can raise an issue in GitHub to flag it. The use
 ---
 
 ## 1.13. Deployment
+
+- [1.13.1. GitHub - Cloning](#1131-github---cloning)
+- [1.13.2. Cloudinary deployment](#1132-cloudinary-deployment)
+- [1.13.3. Neon deployment](#1133-neon-deployment)
+- [1.13.4. Heroku](#1134-heroku)
 
 ### 1.13.1. GitHub - Cloning
 
@@ -1826,6 +1904,11 @@ Click 'View' to view the deployed site.\
 ---
 
 ## 1.14. Credits
+
+- [1.14.1. VS Code extensions](#1141-vs-code-extensions)
+- [1.14.2. Other tech](#1142-other-tech)
+- [1.14.3. Content](#1143-content)
+- [1.14.4. Acknowledgements](#1144-acknowledgements)
 
 ### 1.14.1. VS Code extensions
 
