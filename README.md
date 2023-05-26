@@ -1515,8 +1515,8 @@ const ExampleComp = () => {
 
   return (
     <>
-      // If setShowSpinner true show spinner, else show content.
-      {setShowSpinner ? <Spinner /> : ShowContent}
+      // If showSpinner true show spinner, else show content.
+      {showSpinner ? <Spinner /> : ShowContent}
     </>
   );
 };
