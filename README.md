@@ -86,6 +86,7 @@ Cloudinary.
         - [1.9.1.7.7. Request to join component](#19177-request-to-join-component)
         - [1.9.1.7.8. Request to join component - Context signal](#19178-request-to-join-component---context-signal)
         - [1.9.1.7.9. My Applications component](#19179-my-applications-component)
+      - [1.9.1.8. Spinner](#1918-spinner)
     - [1.9.2. Future features](#192-future-features)
   - [1.10. Technologies used](#110-technologies-used)
     - [1.10.1. Logic](#1101-logic)
@@ -1456,6 +1457,67 @@ The above images show what the user can expect to see if their request has been 
 </details>
 
 If accepted by the group leader, the user will see accepted in their applications. If they click on it to open the modal they will see the message the group leader provided when the group leader accepted the request.
+
+#### 1.9.1.8. Spinner
+
+[Spinner.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/Spinner.js)
+
+<details><summary>Spinner - Loading data example</summary> <!-- markdownlint-disable-line -->
+
+![Spinner - Loading data example](README_files/spinner-example.gif)
+</details>
+
+By far the most common reused component in the code is the `<LoadSpinner />`.
+
+To make sure the user is receiving feedback on their actions and they are aware that more data/content is coming. I have used a spinner from the React Bootstrap library.
+
+``` js
+// Example component showing how to add spinner, and how to code it to show while API is resolving.
+
+const ExampleComp = () => {
+  // Use to show spinner while waiting for API response
+  const [showSpinner, setShowSpinner] = useState(false);
+
+  /**
+   * Example API call.
+   */
+  useEffect(
+    () => {
+      const fetchData = async () => {
+        // Set spinner to show
+        setShowSpinner(true);
+        try {
+          // Make API call with filter options.
+          const { data } = await axios.get(`/api/url/`);
+        } catch (err) {
+          // Handle errors here.
+        } finally {
+          // Remove spinner.
+          setShowSpinner(false);
+        }
+      };
+      fetchData();
+    },
+    [/*Dependencies go here*/],
+  );
+
+  /**
+   * JSX content to go here.
+   */
+  const ShowContent = (
+    <>
+      {/*Content to go here*/}
+    </>
+  );
+
+  return (
+    <>
+      // If setShowSpinner true show spinner, else show content.
+      {setShowSpinner ? <Spinner /> : ShowContent}
+    </>
+  );
+};
+```
 
 ### 1.9.2. Future features
 
