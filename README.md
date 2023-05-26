@@ -1935,6 +1935,8 @@ These are some notable VS extensions that have really helped me with this projec
 
 ### 1.14.3. Content
 
+All code other then libraries used was my own. Some of the code though was influenced by Code Institute from their walkthroughs but I avoided direct copying of code where possible to make this project my own.
+
 ### 1.14.4. Acknowledgements
 
 [🔝](#14-table-of-contents)
