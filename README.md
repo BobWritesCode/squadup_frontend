@@ -1596,6 +1596,17 @@ if image:
 
 ### 1.11.1. HTML
 
+To validate all HTML, I used the [W3C validator](https://validator.w3.org/#validate_by_uri) by validating by URL.
+
+| Page | Errors | Errors results? | Final result |
+|---|---|---|---|
+| Homepage | none |  | pass |
+| Sign In | none |  | pass |
+| Sign Up | none |  | pass |
+| Profile | none |  | pass |
+| Squad Finder | none |  | pass |
+| 404 | none |  | pass |
+
 ### 1.11.2. CSS
 
 ### 1.11.3. JavaScript
