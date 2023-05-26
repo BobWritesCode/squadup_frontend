@@ -1927,6 +1927,12 @@ These are some notable VS extensions that have really helped me with this projec
 
 ### 1.14.2. Other tech
 
+- [Online Spellcheck](https://www.online-spellcheck.com/): To check spelling.
+- [Balsamiq](https://balsamiq.com/wireframes/): To create wireframes.
+- [diagrams.net](https://app.diagrams.net/): To create ERD.
+- [ShareX](https://getsharex.com/): Used to snip screenshots.
+- [Photoshop](https://www.adobe.com/uk/products/photoshop.html): Used to create logo.
+
 ### 1.14.3. Content
 
 ### 1.14.4. Acknowledgements
