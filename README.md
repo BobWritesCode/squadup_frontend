@@ -92,13 +92,14 @@ Cloudinary.
   - [1.10. Technologies used](#110-technologies-used)
     - [1.10.1. Logic](#1101-logic)
       - [1.10.1.1. Data model](#11011-data-model)
-      - [1.10.1.2. Django](#11012-django)
-      - [1.10.1.3. Python](#11013-python)
-        - [1.10.1.3.1. Python packages](#110131-python-packages)
-      - [1.10.1.4. JavaScript](#11014-javascript)
-        - [1.10.1.4.1. REACT](#110141-react)
-      - [1.10.1.5. CSS](#11015-css)
-        - [1.10.1.5.1. BootStrap](#110151-bootstrap)
+      - [1.10.1.2. REACT](#11012-react)
+      - [1.10.1.3. Django Rest framework](#11013-django-rest-framework)
+      - [1.10.1.4. Python](#11014-python)
+        - [1.10.1.4.1. Python packages](#110141-python-packages)
+      - [1.10.1.5. JavaScript](#11015-javascript)
+        - [1.10.1.5.1. React Bootstrap](#110151-react-bootstrap)
+      - [1.10.1.6. CSS](#11016-css)
+        - [1.10.1.6.1. BootStrap](#110161-bootstrap)
     - [1.10.2. Widgets](#1102-widgets)
       - [1.10.2.1. Cloudinary](#11021-cloudinary)
   - [1.11. Testing](#111-testing)
@@ -1421,7 +1422,27 @@ If accepted by the group leader, the user will see accepted in their application
 
 ### 1.10.1. Logic
 
+- [1.10.1. Logic](#1101-logic)
+  - [1.10.1.1. Data model](#11011-data-model)
+  - [1.10.1.2. REACT](#11012-react)
+  - [1.10.1.3. Django Rest framework](#11013-django-rest-framework)
+  - [1.10.1.4. Python](#11014-python)
+    - [1.10.1.4.1. Python packages](#110141-python-packages)
+  - [1.10.1.5. JavaScript](#11015-javascript)
+    - [1.10.1.5.1. React Bootstrap](#110151-react-bootstrap)
+  - [1.10.1.6. CSS](#11016-css)
+    - [1.10.1.6.1. BootStrap](#110161-bootstrap)
+
 #### 1.10.1.1. Data model
+
+**API models:**
+
+- [Profile](https://github.com/BobWritesCode/SquadUp_api/blob/master/profiles/models.py)
+- [Post](https://github.com/BobWritesCode/SquadUp_api/blob/master/posts/models.py)
+- [UserNote](https://github.com/BobWritesCode/SquadUp_api/blob/master/user_notes/models.py)
+- [LFG](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg/models.py)
+- [LFG_Slot](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg_slots/models.py)
+- [LFGSlotApply](https://github.com/BobWritesCode/SquadUp_api/blob/master/lfg_slots_apply/models.py)
 
 The below entity relationship diagram (ERD) is a graphical representation that depicts relationships between the different models in this project. It also shows the different attributes and their types for each class.
 
@@ -1429,19 +1450,94 @@ The below entity relationship diagram (ERD) is a graphical representation that d
 
 *Created using: [app.diagrams.net](https://app.diagrams.net/)*
 
-#### 1.10.1.2. Django
+#### 1.10.1.2. REACT
 
-#### 1.10.1.3. Python
+[React website](https://react.dev/)
 
-##### 1.10.1.3.1. Python packages
+The core framework of this project for the frontend is React.
 
-#### 1.10.1.4. JavaScript
+"React lets you build user interfaces out of individual pieces called components. Create your own React components like Thumbnail, LikeButton, and Video. Then combine them into entire screens, pages, and apps."
 
-##### 1.10.1.4.1. REACT
+#### 1.10.1.3. Django Rest framework
 
-#### 1.10.1.5. CSS
+[Django REST framework website](https://www.django-rest-framework.org/)
 
-##### 1.10.1.5.1. BootStrap
+The core framework of this project for the backend is Django Rest framework.
+
+"Django REST framework is a powerful and flexible toolkit for building Web APIs.
+
+Some reasons you might want to use REST framework:
+
+- The Web browsable API is a huge usability win for your developers.
+- Authentication policies including packages for OAuth1a and OAuth2.
+- Serialization that supports both ORM and non-ORM data sources.
+- Customizable all the way down - just use regular function-based views if you don't need the more powerful features.
+- Extensive documentation, and great community support.
+- Used and trusted by internationally recognised companies including Mozilla, Red Hat, Heroku, and Eventbrite."
+
+#### 1.10.1.4. Python
+
+[Python website](https://www.python.org/)
+
+##### 1.10.1.4.1. Python packages
+
+These are some of the notable python packages that are used in this application.
+
+- [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/)
+  - "Since the introduction of django-rest-framework, Django apps have been able to serve up app-level REST   API endpoints. As a result, we saw a lot of instances where developers implemented their own REST registration API endpoints here and there, snippets, and so on. We aim to solve this demand by providing dj-rest-auth, a set of REST API endpoints to handle User Registration and Authentication tasks. By having these API endpoints, your client apps such as AngularJS, iOS, Android, and others can communicate to your Django backend site independently via REST APIs for User Management. Of course, we’ll add more API endpoints as we see the demand."
+
+- [bleach](https://pypi.org/project/bleach/)
+  - "Bleach is an allowed-list-based HTML sanitizing library that escapes or strips markup and attributes.
+
+    Bleach can also linkify text safely, applying filters that Django’s urlize filter cannot, and optionally setting rel attributes, even on links already in the text.
+
+    Bleach is intended for sanitizing text from untrusted sources. If you find yourself jumping through hoops to allow your site administrators to do lots of things, you’re probably outside the use cases. Either trust those users, or don’t.
+
+    Because it relies on html5lib, Bleach is as good as modern browsers at dealing with weird, quirky HTML fragments. And any of Bleach’s methods will fix unbalanced or mis-nested tags."
+
+- [cloudinary](https://pypi.org/project/cloudinary/)
+  - "The Cloudinary Python SDK allows you to quickly and easily integrate your application with Cloudinary. Effortlessly optimize, transform, upload and manage your cloud's assets."
+
+#### 1.10.1.5. JavaScript
+
+Other than React and React Bootstrap, only vanilla JavaScript has been used in this application.
+
+##### 1.10.1.5.1. React Bootstrap
+
+[React Bootstrap website](https://react-bootstrap.github.io/)
+
+React-Bootstrap replaces the Bootstrap JavaScript. Each component has been built from scratch as a true React component, without unneeded dependencies like jQuery.
+
+As one of the oldest React libraries, React-Bootstrap has evolved and grown alongside React, making it an excellent choice as your UI foundation.
+
+#### 1.10.1.6. CSS
+
+[W3C CSS Homepage](https://www.w3.org/Style/CSS/)
+
+##### 1.10.1.6.1. BootStrap
+
+[BootStrap website](https://getbootstrap.com/)
+
+BootStrap is a powerful framework that mainly focuses on providing each to implement CSS with some powerful JS features such as modals.
+
+The project was built using BootStrap 5. 99% of the styling is done using BootStrap with only little bit down in the projects own CSS file, such as colours.
+
+There are a few ways to install BootStrap, for this project we used CDNs. We also used BootStrap icons, which is a Free, high quality, open-source icon library with over 1,800 icons.
+
+Add the following in the `index.html` to add Bootstrap to the application.
+
+```html
+<!-- React Bootstrap CSS Stylesheet version 5.2.3 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+```
+
+Also add the following in the `index.html` to use Bootstrap icons.
+
+```html
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+```
 
 ### 1.10.2. Widgets
 
