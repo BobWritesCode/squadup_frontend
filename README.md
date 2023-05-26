@@ -1,5 +1,7 @@
 # 1. Squad Up
 
+![Showcase of site on different screen sizes](README_files/showcase.png)
+
 ## 1.1. Full stack website
 
 **Built using**:\
