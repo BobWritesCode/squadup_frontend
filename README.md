@@ -1459,13 +1459,13 @@ If accepted by the group leader, the user will see accepted in their application
 
 ### 1.9.2. Future features
 
-- Admin area
-- Close/Open group
-- email verification
-- account recovery.
-- email login
-- two inputs for tracker id
-- account deletion
+- [#63](https://github.com/BobWritesCode/squadup_frontend/issues/63) Admin area to moderate users and content.
+- [#31](https://github.com/BobWritesCode/squadup_frontend/issues/31) Group Leader can manually open and close group/slot.
+- [#64](https://github.com/BobWritesCode/squadup_frontend/issues/64) Email verification on registration.
+- [#65](https://github.com/BobWritesCode/squadup_frontend/issues/65) Account Recovery / Forgotten Password.
+- [#66](https://github.com/BobWritesCode/squadup_frontend/issues/66) Email login
+- [#67](https://github.com/BobWritesCode/squadup_frontend/issues/67) Split input for tracker ID
+- [#68](https://github.com/BobWritesCode/squadup_frontend/issues/68) Account deletion
 
 [🔝](#14-table-of-contents)
 
