@@ -1541,7 +1541,52 @@ Also add the following in the `index.html` to use Bootstrap icons.
 
 ### 1.10.2. Widgets
 
+- [1.10.2.1. Cloudinary](#11021-cloudinary)
+
 #### 1.10.2.1. Cloudinary
+
+Cloudinary is a powerful image and video hosting service that provides services to store, transform and optimize delivery of your images to your website via an API.
+
+For setting up Cloudinary check out the [Cloudinary Deployment](#1132-cloudinary-deployment) section.
+
+In Python you need to import Cloudinary into your project
+
+```py
+from cloudinary import uploader
+```
+
+The way I have used Cloudinary in this project is mainly focus on uploading images and destroying images.
+
+It was also important to bear in mind that potentially hundreds, even thousands of images could be uploaded through the website, so storage management was something to think about.
+
+One simple way images could build up is as images get replaced. The storage will be filled up with images that have been replaced but are no longer in use. So when an image is no longer needed, it is best to also delete it from the storage.
+
+**Example of checking for an existing image, and deleting it before saving a new image:**
+
+```py
+# SquadUp_api/profiles/models.py
+# class ProfileDetail(generics.RetrieveUpdateAPIView):
+# def put(self, request, *args, **kwargs):
+
+if image:
+  if profile.image is not None and request.FILES:
+      # Delete old image from Cloudinary server
+      try:
+          uploader.destroy(str(profile.image))
+      except:
+          pass
+
+  if request.FILES:
+      # Upload new image
+      new_image = uploader.upload(
+          request.FILES['image'],
+          folder="squadup/avatars/",
+          allowed_formats=['jpg', 'png', 'jpeg'],
+          format='jpg'
+      )
+      serializer.validated_data['image'] = new_image['public_id']
+      serializer.save()
+```
 
 [🔝](#14-table-of-contents)
 
