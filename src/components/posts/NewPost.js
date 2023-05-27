@@ -95,14 +95,17 @@ const NewPost = (props) => {
         // Text input for user.
       }
       <Form.Group className="mb-0" controlId="textbox">
-        <Form.Control
-          as="textarea"
-          placeholder=""
-          name="textbox"
-          value={textbox}
-          onChange={handleChange}
-        />
-        <Form.Text>Max length 400 characters. ({charCount}/400)</Form.Text>
+        <div className="d-flex flex-column w-100">
+          <Form.Control
+            className={`mb-0`}
+            as="textarea"
+            placeholder=""
+            name="textbox"
+            value={textbox}
+            onChange={handleChange}
+          />
+          <Form.Text className="ms-auto">({charCount}/400)</Form.Text>
+        </div>
       </Form.Group>
 
       {
