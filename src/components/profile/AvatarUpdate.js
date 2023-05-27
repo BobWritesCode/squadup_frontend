@@ -42,15 +42,13 @@ const AvatarUpdate = (props) => {
     setShowSpinner(true);
     setErrors({});
     const formData = new FormData();
-    formData.append('objective', 'Update avatar');
     formData.append('image', imageFile);
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
-      // update the username in the other component
-      onAvatarChange(data.url);
+      const { data } = await axiosReq.patch(`/profiles/${id}/`, formData);
+      // update the image in parent component.
+      onAvatarChange(data.post.image);
       handleClose();
     } catch (err) {
-      console.log('err', err.response?.data);
       setErrors(err.response?.data);
     } finally {
       setShowSpinner(false);
@@ -107,14 +105,14 @@ const AvatarUpdate = (props) => {
               />
             </Form.Group>
 
-            {errors.avatar?.map((m, idx) => (
-              <Alert variant="warning" key={idx}>
+            {errors.image?.map((m, idx) => (
+              <Alert variant="warning" key={idx} className="mt-3 mb-0">
                 {m}
               </Alert>
             ))}
 
             {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
+              <Alert key={idx} variant="warning" className="mt-3  mb-0">
                 {message}
               </Alert>
             ))}
