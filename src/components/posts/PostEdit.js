@@ -85,19 +85,19 @@ const PostEdit = (props) => {
         <Modal.Body className={modalStyles.Body}>
           <Form className={formStyles.Form}>
             <Form.Group className="mb-3" controlId="content">
-              <Form.Control
-                as="textarea"
-                placeholder="Enter desired note"
-                name="content"
-                value={formData.content}
-                onChange={handleChange}
-                autoComplete="content"
-              />
-              <p>
-                <Form.Text className={appStyles.SecondaryText}>
-                  Max length 400 characters. ({charCount}/400)
-                </Form.Text>
-              </p>
+              <div className="d-flex flex-column w-100">
+                <Form.Control
+                  className={`mb-0`}
+                  as="textarea"
+                  placeholder="Enter desired note"
+                  name="content"
+                  value={formData.content}
+                  onChange={handleChange}
+                  autoComplete="content"
+                />
+
+                <Form.Text className="ms-auto">({charCount}/200)</Form.Text>
+              </div>
             </Form.Group>
 
             {errors.content?.map((m, idx) => (
