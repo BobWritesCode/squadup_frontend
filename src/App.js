@@ -1,12 +1,9 @@
 import Container from 'react-bootstrap/Container';
 import { Route, Routes } from 'react-router-dom';
-// Bootstrap
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NavBar from './components/NavBar';
 import appStyles from './App.module.css';
-// App imports
-
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import Profile from './pages/profile/Profile';
@@ -15,6 +12,7 @@ import myApplicationsSignalContext from './contexts/myApplicationsSignalContext'
 import { useState } from 'react';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
+import Page404 from './pages/Page404';
 
 function App() {
   const [myApplicationsSignal, setMyApplicationsSignal] = useState(false);
@@ -37,7 +35,7 @@ function App() {
                 <Route path="/signup" element={<SignUpForm />} />
                 <Route path="/profile/:id" element={<Profile />} />
                 <Route path="/lfg" element={<LFGPage />} />
-                <Route path="*" element={<h1>404 Page Not Found</h1>} />
+                <Route path="*" element={<Page404 />} />
               </Routes>
             </myApplicationsSignalContext.Provider>
           </Col>
