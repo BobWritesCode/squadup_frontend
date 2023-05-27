@@ -6,7 +6,6 @@ import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import { Image } from 'react-bootstrap';
-import appStyles from '../../App.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 
