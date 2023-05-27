@@ -7,6 +7,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import LoadSpinner from '../Spinner';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import btnStyles from '../../styles/Buttons.module.css';
+import formStyles from '../../styles/Forms.module.css';
 
 const NewPost = (props) => {
   const { onNewPost } = props;
@@ -87,7 +88,7 @@ const NewPost = (props) => {
    * Form to render.
    */
   const newPostForm = (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={formStyles.Form}>
       <Form.Text>New Post:</Form.Text>
 
       {
