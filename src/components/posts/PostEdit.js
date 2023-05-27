@@ -95,7 +95,7 @@ const PostEdit = (props) => {
                   autoComplete="content"
                 />
 
-                <Form.Text className="ms-auto">({charCount}/200)</Form.Text>
+                <Form.Text className="ms-auto">({charCount}/400)</Form.Text>
               </div>
             </Form.Group>
 
