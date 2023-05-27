@@ -93,7 +93,18 @@ const TrackerUpdate = (props) => {
                 Your tracker.gg profile must be set to public for people to see.
               </Form.Text>
               <br />
+              <Form.Text>Format: Name + # + Tag</Form.Text>
+              <br />
+              <Form.Text>Name cannot exceed 20 characters.</Form.Text>
+              <br />
+              <Form.Text>Tag cannot exceed 5 characters.</Form.Text>
+              <br />
               <Form.Text>Example: Player Name#1234</Form.Text>
+              <br />
+              <br />
+              <Form.Text>
+                Leave blank and save to remove tracker ID from your profile.
+              </Form.Text>
             </Form.Group>
 
             {errors.tracker?.map((m, idx) => (
