@@ -6,6 +6,7 @@ import Image from 'react-bootstrap/Image';
 import InputGroup from 'react-bootstrap/InputGroup';
 import LoadSpinner from '../Spinner';
 import { axiosReq } from '../../contexts/CurrentUserContext';
+import btnStyles from '../../styles/Buttons.module.css';
 
 const NewPost = (props) => {
   const { onNewPost } = props;
@@ -146,17 +147,24 @@ const NewPost = (props) => {
           // Button to add an image.
         }
         <Button
+          className={`${btnStyles.Success} px-4`}
           variant="primary"
           onClick={() => document.getElementById('image-upload').click()}
         >
-          Choose File
+          <i className="bi bi-file-earmark-image"></i>
         </Button>
 
         {
           // Button to remove image.
           imagePath && (
-            <Button variant="warning" type="button" onClick={handleRemoveImage}>
-              Remove image
+            <Button
+              variant="warning"
+              type="button"
+              onClick={handleRemoveImage}
+              className={`${btnStyles.Danger} px-4`}
+            >
+              <i className="bi bi-file-earmark-image"></i>
+              <i className="bi bi-trash"></i>
             </Button>
           )
         }
@@ -164,7 +172,11 @@ const NewPost = (props) => {
         {
           // Submit post button.
         }
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          type="submit"
+          className={`${btnStyles.Success} px-4`}
+        >
           Post
         </Button>
       </div>
