@@ -2,6 +2,16 @@
 
 ![Showcase of site on different screen sizes](README_files/showcase.png)
 
+**Still to be completed in this README:**
+
+- Testing
+  - JavaScript
+  - Python
+    - Linters
+    - Unit testing
+    - Coverage
+  - User testing
+
 ## 1.1. Full stack website
 
 **Built using**:\
@@ -89,6 +99,7 @@ Cloudinary.
         - [1.9.1.7.8. Request to join component - Context signal](#19178-request-to-join-component---context-signal)
         - [1.9.1.7.9. My Applications component](#19179-my-applications-component)
       - [1.9.1.8. Spinner](#1918-spinner)
+      - [1.9.1.9. 404 Page](#1919-404-page)
     - [1.9.2. Future features](#192-future-features)
   - [1.10. Technologies used](#110-technologies-used)
     - [1.10.1. Logic](#1101-logic)
@@ -1521,6 +1532,17 @@ const ExampleComp = () => {
   );
 };
 ```
+
+#### 1.9.1.9. 404 Page
+
+<details><summary>404 page snapshot</summary> <!-- markdownlint-disable-line -->
+
+![404 page snapshot](README_files/Snapshots/404-page.png)
+</details>
+
+If the user tries to visit a URL path that is not valid they will be shown the 404 page, where there will be a button to take them back tot he homepage.
+
+[🔝](#14-table-of-contents)
 
 ### 1.9.2. Future features
 
