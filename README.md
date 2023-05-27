@@ -1860,6 +1860,43 @@ And you are now on the screen which shows you all the credential information you
 
 ### 1.13.3. Neon deployment
 
+You can choose your own SQL database provider but for this project I used Neon which uses PostgresSQL databases.
+
+Go to the Neon's website [https://www.neon.tech/](https://www.neon.tech/).
+
+<details><summary>Neon - Website</summary> <!-- markdownlint-disable-line -->
+
+![Neon - Website](./README_files/deployment/neon/neon-website.png)
+</details>
+
+Sign in or sign up for a new account.
+
+<details><summary>Neon - Sign in / Sign up</summary> <!-- markdownlint-disable-line -->
+
+![Neon - Sign in / Sign up](./README_files/deployment/neon/neon-signup.png)
+</details>
+
+Once you are signed in, click **Create a project**.
+
+<details><summary>Neon - Create a project</summary> <!-- markdownlint-disable-line -->
+
+![Neon - Create a project](./README_files/deployment/neon/neon-create-project.png)
+</details>
+
+Provide a project name, and choose a location where you wish the database to be located.
+
+<details><summary>Neon - Project name and location</summary> <!-- markdownlint-disable-line -->
+
+![Neon - Project name and location](./README_files/deployment/neon/neon-project-name.png)
+</details>
+
+Once created you will see details on how to contact your database to your application. Save the psql details as you will need them for Heroku.
+
+<details><summary>Neon - Project connection details</summary> <!-- markdownlint-disable-line -->
+
+![Neon - Project connection details](./README_files/deployment/neon/neon-project-details.png)
+</details>
+
 ### 1.13.4. Heroku
 
 **You will need to set up TWO Heroku projects, one for the front end and the other for the backend.**
