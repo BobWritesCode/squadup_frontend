@@ -483,7 +483,9 @@ const ApplicationReviews = (props) => {
               value={reply_content}
               onChange={handleChange}
             />
-            <Form.Text className="ms-auto">({charCount}/100)</Form.Text>
+            <Form.Text className="ms-auto">
+              Min: 10 characters. ({charCount}/100)
+            </Form.Text>
           </div>
         </Form.Group>
 
