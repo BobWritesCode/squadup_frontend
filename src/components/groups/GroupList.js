@@ -163,7 +163,7 @@ const GroupList = () => {
           children={groups.results.map((g) => {
             if (g.owner !== currentUser.username && g.status) {
               return (
-                <>
+                <div key={g.id}>
                   <Group
                     key={g.id}
                     {...g}
@@ -175,7 +175,7 @@ const GroupList = () => {
                     key={`hr-${g.id}`}
                     className={`${appStyles.Hr} mt-4 mb-4`}
                   />
-                </>
+                </div>
               );
             }
             return null;
