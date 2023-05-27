@@ -50,11 +50,11 @@ const TrackerUpdate = (props) => {
     setShowSpinner(true);
     setErrors({});
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}/`, {
+      const { data } = await axiosReq.patch(`/profiles/${id}/`, {
         tracker: tracker,
       });
       // update the username in the other component
-      onTrackerChange(data.response);
+      onTrackerChange(data.post.tracker);
       handleClose();
     } catch (err) {
       setErrors(err.response?.data);
