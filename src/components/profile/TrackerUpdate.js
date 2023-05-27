@@ -108,13 +108,13 @@ const TrackerUpdate = (props) => {
             </Form.Group>
 
             {errors.tracker?.map((m, idx) => (
-              <Alert variant="warning" key={idx} dismissible>
+              <Alert variant="warning" key={idx}>
                 {m}
               </Alert>
             ))}
 
             {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3" dismissible>
+              <Alert key={idx} variant="warning" className="mt-3">
                 {message}
               </Alert>
             ))}
