@@ -38,12 +38,12 @@ const NewPost = (props) => {
     });
   };
 
-  const handleRemoveImage = (e) => {
+  const handleRemoveImage = () => {
     // Reset image control element to allow selecting same image.
     imageFile.current.value = null;
     setFormData({
+      ...formData,
       imagePath: '',
-      textbox: textbox,
     });
   };
 
@@ -138,10 +138,18 @@ const NewPost = (props) => {
           ref={imageFile}
           accept="image/*"
           onChange={(e) => {
-            setFormData({
-              imagePath: URL.createObjectURL(e.target.files[0]),
-              textbox: textbox,
-            });
+            if (e.target.files.length > 0) {
+              setFormData({
+                ...formData,
+                imagePath: URL.createObjectURL(e.target.files[0]),
+              });
+            } else {
+              imageFile.current.value = null;
+              setFormData({
+                ...formData,
+                imagePath: '',
+              });
+            }
           }}
           style={{ display: 'none' }}
         />
