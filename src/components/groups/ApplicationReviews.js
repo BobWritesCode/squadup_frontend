@@ -11,7 +11,6 @@ import Badge from 'react-bootstrap/Badge';
 import Pagination from 'react-bootstrap/Pagination';
 import paginationStyles from '../../styles/Pagination.module.css';
 import { Link } from 'react-router-dom';
-import tableStyles from '../../styles/Table.module.css';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../styles/Forms.module.css';
@@ -540,7 +539,7 @@ const ApplicationReviews = (props) => {
         striped
         hover
         variant="dark"
-        className={`${tableStyles} mb-1`}
+        className={`mb-1`}
       >
         <thead>
           <tr>
