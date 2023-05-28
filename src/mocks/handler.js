@@ -19,6 +19,25 @@ export const handlers = [
     );
   }),
 
+  rest.get(`${baseURL}profiles/28`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        id: 28,
+        owner: 'JimmyBob',
+        tracker: '',
+        image:
+          'https://res.cloudinary.com/dxjilemam/image/upload/v1/squadup/avatars/download_1_tkm6at',
+        created_at: '2023-05-25T15:36:12.910596Z',
+        is_owner: false,
+        email: 'test@test.me',
+      }),
+    );
+  }),
+
+  rest.post(`${baseURL}dj-rest-auth/token/refresh/`, (req, res, ctx) => {
+    return res(ctx.json({ status: 200 }));
+  }),
+
   rest.get(`${baseURL}posts/`, (req, res, ctx) => {
     const queryParams = req.url.searchParams;
     const owner = queryParams.get('owner');
