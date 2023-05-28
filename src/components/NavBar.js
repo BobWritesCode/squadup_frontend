@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 import { removeTokenTimestamp } from '../utils/utils';
 import { axiosDefaultsBaseUrl } from '../api/axiosDefaults';
-import useClickOutsideToggle from './hooks/useClickOutsideToggle';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 /**
  * Navigation bar component.

@@ -18,7 +18,7 @@ import NewPost from '../../components/posts/NewPost';
 import LoadSpinner from '../../components/Spinner';
 import UserPosts from '../../components/posts/UserPosts';
 import UserNote from '../../components/profile/UserNote';
-import { useRedirect } from '../../components/hooks/useRedirect';
+import { useRedirect } from '../../hooks/useRedirect';
 import ReactTimeago from 'react-timeago';
 
 const Profile = () => {
