@@ -19,6 +19,47 @@ export const handlers = [
     );
   }),
 
+  rest.get(`${baseURL}posts/`, (req, res, ctx) => {
+    const queryParams = req.url.searchParams;
+    const owner = queryParams.get('owner');
+
+    if (owner === 9) {
+      return res(ctx.status(404));
+    }
+
+    return res(
+      ctx.json({
+        count: 2,
+        next: null,
+        previous: null,
+        results: [
+          {
+            id: 355,
+            owner: 'WozzaWozzaWozza',
+            is_owner: true,
+            profile_id: 9,
+            created_at: '2023-05-25T13:48:21.644639Z',
+            updated_at: '2023-05-25T13:48:21.644656Z',
+            content: 'WE CAN DO IT!',
+            image:
+              'https://res.cloudinary.com/dxjilemam/image/upload/v1/squadup/post_images/frspo3znfu0wjst0i6h9',
+          },
+          {
+            id: 354,
+            owner: 'WozzaWozzaWozza',
+            is_owner: true,
+            profile_id: 9,
+            created_at: '2023-05-25T13:12:20.097046Z',
+            updated_at: '2023-05-25T13:12:20.097061Z',
+            content: 'I think I will hit diamond soon!',
+            image:
+              'https://res.cloudinary.com/dxjilemam/image/upload/v1/squadup/post_images/tqtnoag4rgewxdbjkexs',
+          },
+        ],
+      }),
+    );
+  }),
+
   rest.post(`${baseURL}dj-rest-auth/logout/`, (req, res, ctx) => {
     return res(ctx.status(200));
   }),
