@@ -9,7 +9,6 @@ import Table from 'react-bootstrap/Table';
 import RankBadge from '../utils/RankBadge';
 import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
-import tableStyles from '../../styles/Table.module.css';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../styles/Forms.module.css';
@@ -188,13 +187,7 @@ const SlotUser = (props) => {
    */
   const ShowRequest = (
     <>
-      <Table
-        bordered
-        striped
-        hover
-        variant="dark"
-        className={`${tableStyles} mb-1`}
-      >
+      <Table bordered striped hover variant="dark" className={`mb-1`}>
         <thead>
           <tr>
             <th>User</th>
