@@ -16,36 +16,42 @@ import LoadSpinner from '../Spinner';
 
 const UsernameUpdate = (props) => {
   const { onUsernameChange } = props;
-
-  const [showSpinner, setShowSpinner] = useState(false);
-  // Modal functions
-  const [show, setShow] = useState(false);
-  const handleClose = () => {
-    setErrors({});
-    setShow(false);
-  };
-  const handleShow = () => setShow(true);
-
+  // get current user id
+  const { id } = useParams();
   // get current user
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-
   // react route dom navigation
   const navigate = useNavigate();
-
-  // get current user id
-  const { id } = useParams();
-
+  // Use to toggle showing spinner when waiting for data from API for request.
+  const [showSpinner, setShowSpinner] = useState(false);
+  // set up variables for errors from request.
+  const [errors, setErrors] = useState({});
+  // Use to toggle showing modal.
+  const [show, setShow] = useState(false);
   // set up variables for fields used in this component
   const [formData, setFormData] = useState({
     username: '',
   });
   const { username } = formData;
 
-  // set up variables for errors from request.
-  const [errors, setErrors] = useState({});
+  /**
+   * Handle closing modal.
+   */
+  const handleClose = () => {
+    setErrors({});
+    setShow(false);
+  };
 
-  // Allow user to edit form.
+  /**
+   * Handle opening modal.
+   */
+  const handleShow = () => setShow(true);
+
+  /**
+   * Allow user to edit form.
+   * @param {*} e
+   */
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -54,7 +60,7 @@ const UsernameUpdate = (props) => {
   };
 
   useEffect(() => {
-    if (currentUser?.profile_id?.toString() === id) {
+    if (currentUser) {
       setFormData({ username: currentUser.username });
     } else {
       navigate('/');
@@ -76,10 +82,10 @@ const UsernameUpdate = (props) => {
     // Clear any error alerts.
     setErrors({});
     // Create new form to control data sent to API.
-    const formData = new FormData();
-    formData.append('username', username);
+    const apiData = new FormData();
+    apiData.append('username', username);
     try {
-      await axiosReq.put(`/dj-rest-auth/user/`, formData);
+      await axiosReq.put(`/dj-rest-auth/user/`, apiData);
       // If change successful update authentication in browser.
       setCurrentUser((prevUser) => ({
         ...prevUser,
