@@ -1,7 +1,6 @@
 import { rest } from 'msw';
 
-// const baseURL= 'https://squadup-api.herokuapp.com/'
-const baseURL = 'http://127.0.0.1:8000/';
+const baseURL = 'https://squadup-api.herokuapp.com/';
 
 export const handlers = [
   rest.get(`${baseURL}dj-rest-auth/user/`, (req, res, ctx) => {
@@ -293,20 +292,19 @@ export const handlers = [
   rest.get(`${baseURL}usernotes/`, (req, res, ctx) => {
     return res(
       ctx.json({
-        "count": 1,
-        "next": null,
-        "previous": null,
-        "results": [
-            {
-                "id": 32,
-                "owner": "John",
-                "is_owner": false,
-                "target_user": 15,
-                "content": "testing updating a note"
-            }
-        ]
-    }),
+        count: 1,
+        next: null,
+        previous: null,
+        results: [
+          {
+            id: 32,
+            owner: 'John',
+            is_owner: false,
+            target_user: 15,
+            content: 'testing updating a note',
+          },
+        ],
+      }),
     );
   }),
-
 ];
