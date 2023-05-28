@@ -11,9 +11,15 @@ describe('Check Footer rendering', () => {
     );
 
   it('checks social links show', () => {
-    footerRender()
+    footerRender();
     const links = screen.getAllByRole('link');
-    expect(links[0]).toHaveAttribute('href', 'https://github.com/BobWritesCode');
-    expect(links[1]).toHaveAttribute('href', 'https://www.linkedin.com/in/warwickhart/');
+    expect(links[0]).toHaveAttribute(
+      'href',
+      'https://github.com/BobWritesCode',
+    );
+    expect(links[1]).toHaveAttribute(
+      'href',
+      'https://www.linkedin.com/in/warwickhart/',
+    );
   });
 });
