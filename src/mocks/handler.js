@@ -289,4 +289,24 @@ export const handlers = [
       }),
     );
   }),
+
+  rest.get(`${baseURL}usernotes/`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        "count": 1,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": 32,
+                "owner": "John",
+                "is_owner": false,
+                "target_user": 15,
+                "content": "testing updating a note"
+            }
+        ]
+    }),
+    );
+  }),
+
 ];
