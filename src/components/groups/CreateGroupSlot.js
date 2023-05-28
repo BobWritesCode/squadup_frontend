@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import appStyles from '../../App.module.css';
 import Form from 'react-bootstrap/Form';
 
-export const CreateGroupSlot = (props) => {
+const CreateGroupSlot = (props) => {
   const { onSlotChange, slotValue, id } = props;
 
   const [role, setRole] = useState(slotValue.role);
@@ -81,3 +81,5 @@ export const CreateGroupSlot = (props) => {
 
   return <>{form}</>;
 };
+
+export default CreateGroupSlot;
