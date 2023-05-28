@@ -158,4 +158,56 @@ export const handlers = [
       }),
     );
   }),
+
+  rest.get(`${baseURL}lfg_slots/`, (req, res, ctx) => {
+    const queryParams = req.url.searchParams;
+    const lfg = queryParams.get('lfg');
+
+    if (lfg !== '239') {
+      return res(ctx.status(404));
+    }
+
+    return res(
+      ctx.json({
+        count: 3,
+        next: null,
+        previous: null,
+        results: [
+          {
+            id: 221,
+            lfg: 239,
+            role: 'Sentinel',
+            status: 'Open',
+            content:
+              'We need someone who can watch our flank. My friend is always saying we need utility behind us.',
+            created_at: '3 days, 23 hours ago',
+            owner: 'WozzaWozzaWozza',
+            is_owner: true,
+          },
+          {
+            id: 220,
+            lfg: 239,
+            role: 'Any',
+            status: 'Closed',
+            content:
+              'We are not really worried what agent you like to play here.',
+            created_at: '3 days, 23 hours ago',
+            owner: 'WozzaWozzaWozza',
+            is_owner: true,
+          },
+          {
+            id: 219,
+            lfg: 239,
+            role: 'Duelist',
+            status: 'Closed',
+            content:
+              'Ideally someone who can main Raze or Jett. Our team will offer some really good support for entry.',
+            created_at: '3 days, 23 hours ago',
+            owner: 'WozzaWozzaWozza',
+            is_owner: true,
+          },
+        ],
+      }),
+    );
+  }),
 ];
