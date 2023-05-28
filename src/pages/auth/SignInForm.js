@@ -19,7 +19,7 @@ import LoadSpinner from '../../components/Spinner';
  * Sign in page.
  * @return {JSX} Renders page.
  */
-function SignInForm() {
+const SignInForm = () => {
   // Set current user on successful authentication.
   const setCurrentUser = useSetCurrentUser();
   // react-router-dom navigation control.
@@ -154,6 +154,6 @@ function SignInForm() {
       </Row>
     </Container>
   );
-}
+};
 
 export default SignInForm;
