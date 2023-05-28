@@ -18,6 +18,9 @@ const GroupList = () => {
   const [url, setUrl] = useState({
     start: '/lfg/?status=true',
     game_type: '',
+    lowest_rank: '',
+    highest_rank: '',
+    role: '',
   });
   // Use to store groups returned by API.
   const [groups, setGroups] = useState({ results: [] });
@@ -124,6 +127,7 @@ const GroupList = () => {
         const { data } = await axiosReq.get(
           `${url.start}${url.game_type}${url.lowest_rank}${url.highest_rank}${url.role}`,
         );
+
         // Set received api data to variable.
         setGroups(data);
       } catch (err) {
