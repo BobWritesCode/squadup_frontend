@@ -141,11 +141,11 @@ const NavBar = () => {
           >
             {/* Links to show depending in user is logged in or not */}
             {homeLink}
-            {currentUser ? '' : signInLink}
-            {currentUser ? '' : signUpLink}
-            {currentUser ? lfgLink : ''}
-            {currentUser ? profileLink : ''}
-            {currentUser ? logoutLink : ''}
+            {!currentUser && signInLink}
+            {!currentUser && signUpLink}
+            {currentUser && lfgLink}
+            {currentUser && profileLink}
+            {currentUser && logoutLink}
           </Nav>
         </Navbar.Collapse>
       </Container>
