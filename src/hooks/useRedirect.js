@@ -1,6 +1,6 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const useRedirect = (userAuthStatus) => {
   const navigate = useNavigate();
@@ -8,16 +8,13 @@ export const useRedirect = (userAuthStatus) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        await axios.post('/dj-rest-auth/token/refresh/')
-        // if user is logged in:
-        if (userAuthStatus === 'loggedIn') {
-        }
+        await axios.post('/dj-rest-auth/token/refresh/');
       } catch (error) {
         if (error.response.data.code === 'token_not_valid') {
-          navigate('/signin')
+          navigate('/signin');
         }
       }
-    }
+    };
     handleMount();
-  }, [navigate, userAuthStatus])
-}
+  }, [navigate, userAuthStatus]);
+};
