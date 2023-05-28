@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 import btnStyles from '../../styles/Buttons.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
-import { CreateGroupSlot } from './CreateGroupSlot';
+import CreateGroupSlot from './CreateGroupSlot';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
 
