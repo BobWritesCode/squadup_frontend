@@ -22,6 +22,125 @@ export const handlers = [
     return res(ctx.status(200));
   }),
 
+  rest.get(`${baseURL}lfg/`, (req, res, ctx) => {
+    const queryParams = req.url.searchParams;
+    const status = queryParams.get('status');
+
+    if (status !== 'true') {
+      return res(ctx.status(404));
+    }
+
+    return res(
+      ctx.json({
+    "count": 6,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 244,
+            "owner": "JimmyBob",
+            "owner_id": 28,
+            "game_type": "Competitive",
+            "max_team_size": 4,
+            "current_team_size": 3,
+            "lowest_rank": 0,
+            "highest_rank": 9,
+            "content": "",
+            "is_owner": false,
+            "status": true,
+            "roles": [
+                "Any"
+            ]
+        },
+        {
+            "id": 239,
+            "owner": "WozzaWozzaWozza",
+            "owner_id": 9,
+            "game_type": "Tournament",
+            "max_team_size": 5,
+            "current_team_size": 2,
+            "lowest_rank": 7,
+            "highest_rank": 7,
+            "content": "We are a small team trying to rank up. We play weekly on Monday nights. Just chill and good vibes. If you think you might be a fit for our little crew, put in a request and we shall see. GLHF!",
+            "is_owner": true,
+            "status": true,
+            "roles": [
+                "Sentinel",
+                "Any",
+                "Duelist"
+            ]
+        },
+        {
+            "id": 238,
+            "owner": "Jerry",
+            "owner_id": 16,
+            "game_type": "Casual",
+            "max_team_size": 5,
+            "current_team_size": 3,
+            "lowest_rank": 3,
+            "highest_rank": 5,
+            "content": "Just for the chills! We need 2!",
+            "is_owner": false,
+            "status": true,
+            "roles": [
+                "Any",
+                "Any"
+            ]
+        },
+        {
+            "id": 237,
+            "owner": "John",
+            "owner_id": 15,
+            "game_type": "Tournament",
+            "max_team_size": 3,
+            "current_team_size": 1,
+            "lowest_rank": 3,
+            "highest_rank": 5,
+            "content": "",
+            "is_owner": false,
+            "status": true,
+            "roles": [
+                "Controller",
+                "Duelist"
+            ]
+        },
+        {
+            "id": 225,
+            "owner": "Bobby",
+            "owner_id": 12,
+            "game_type": "Competitive",
+            "max_team_size": 2,
+            "current_team_size": 1,
+            "lowest_rank": 1,
+            "highest_rank": 1,
+            "content": "",
+            "is_owner": false,
+            "status": true,
+            "roles": [
+                "Any"
+            ]
+        },
+        {
+            "id": 222,
+            "owner": "Player",
+            "owner_id": 11,
+            "game_type": "2",
+            "max_team_size": 3,
+            "current_team_size": 2,
+            "lowest_rank": 2,
+            "highest_rank": 3,
+            "content": "Join us, we will rule the world!",
+            "is_owner": false,
+            "status": true,
+            "roles": [
+                "Any"
+            ]
+        }
+    ]
+}),
+    );
+  }),
+
   rest.get(`${baseURL}lfg_slots_apply/88/`, (req, res, ctx) => {
     return res(
       ctx.json({
