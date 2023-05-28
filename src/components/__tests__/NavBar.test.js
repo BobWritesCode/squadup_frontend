@@ -1,7 +1,8 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import NavBar from '../NavBar';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { CurrentUserProvider } from '../../contexts/CurrentUserContext';
+import { act } from 'react-dom/test-utils';
 
 describe('Test NavBar rendering for non-logged in user', () => {
   const nonLoggedInUser = () =>
@@ -83,8 +84,10 @@ describe('Test NavBar rendering for logged in user', () => {
     loggedInUser();
 
     const link = await screen.findByRole('link', { name: 'Sign Out' });
-    expect(link).toBeInTheDocument();
-    fireEvent.click(link);
+
+    await act(async () => {
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
 
     const signInLink = await screen.findByRole('link', { name: 'Sign In' });
     const signUpLink = await screen.findByRole('link', { name: 'Sign Up' });
