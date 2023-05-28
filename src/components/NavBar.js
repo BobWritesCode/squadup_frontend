@@ -71,7 +71,7 @@ const NavBar = () => {
       to="/signup"
       className={(el) => (el.isActive ? styles.active : '')}
     >
-      Sign up
+      Sign Up
     </NavLink>
   );
 
