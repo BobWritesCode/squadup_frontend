@@ -127,6 +127,39 @@ export const handlers = [
     );
   }),
 
+  rest.get(`${baseURL}lfg_slots_apply/`, (req, res, ctx) => {
+    const queryParams = req.url.searchParams;
+    const slot = queryParams.get('slot');
+    const status = queryParams.get('status');
+
+    if (status !== 'Accepted' && slot === 228) {
+      return res(ctx.status(404));
+    }
+    console.log('found');
+    return res(
+      ctx.json({
+        count: 1,
+        next: null,
+        previous: null,
+        results: [
+          {
+            id: 135,
+            slot: 228,
+            role: 'Any',
+            rank: '0',
+            content: '',
+            reply_content: 'You are in!',
+            created_at: '3 hours ago',
+            owner: 'WozzaWozzaWozza',
+            ownerID: 9,
+            is_owner: true,
+            status: 'Accepted',
+          },
+        ],
+      }),
+    );
+  }),
+
   rest.get(`${baseURL}lfg_slots_apply/88/`, (req, res, ctx) => {
     return res(
       ctx.json({
