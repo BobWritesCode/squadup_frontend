@@ -48,7 +48,9 @@ const UserPosts = (props) => {
         const { data } = await axiosReq.get(`/posts/?owner=${profileId}`);
         // Set received api data to variable.
         setPosts(data);
-      } catch { /* empty */ } finally {
+      } catch {
+        /* empty */
+      } finally {
         // Remove spinner from DOM.
         setHasLoaded(true);
       }
@@ -66,9 +68,6 @@ const UserPosts = (props) => {
     of the page it requests the next 10, and then loads them. This repeats until you reach the last item. */}
       <InfiniteScroll
         className={appStyles.NoScrollBars}
-        children={posts.results.map((p) => (
-          <Post key={p.id} {...p} setPosts={setPosts} />
-        ))}
         dataLength={posts.results.length}
         loader={<LoadSpinner />}
         hasMore={!!posts.next}
@@ -77,7 +76,11 @@ const UserPosts = (props) => {
           // Message displayed when user reaches the end of the list and no more results to be loaded.
           <p style={{ textAlign: 'center' }}>No more posts to see.</p>
         }
-      />
+      >
+        {posts.results.map((p) => (
+          <Post key={p.id} {...p} setPosts={setPosts} />
+        ))}
+      </InfiniteScroll>
     </>
   );
 
