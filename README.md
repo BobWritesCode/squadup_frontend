@@ -4,8 +4,6 @@
 
 **Still to be completed in this README:**
 
-  - JavaScript
-    - ESlint
   - Python
     - Linters
     - Unit testing
@@ -121,6 +119,7 @@ Cloudinary.
       - [1.11.3.1. React Testing](#11131-react-testing)
       - [1.11.3.2. Completed Tests](#11132-completed-tests)
       - [1.11.3.3. Coverage](#11133-coverage)
+      - [1.11.3.4. ESLint](#11134-eslint)
     - [1.11.4. Python](#1114-python)
       - [1.11.4.1. Linters](#11141-linters)
       - [1.11.4.2. Unit testing](#11142-unit-testing)
@@ -1864,6 +1863,38 @@ Here is a snapshot of the current report:
 
 ![Coverage snapshot](./README_files/testing/coverage-js.png)
 </details>
+
+#### 1.11.3.4. ESLint
+
+[ESLint website](https://eslint.org/)
+
+"ESLint statically analyzes your code to quickly find problems. It is built into most text editors and you can run ESLint as part of your continuous integration pipeline."
+
+I have used ESLint to provide a more robust codebase, and help enforce consistency throughout. When I installed ESLint it did mean I had no go through every .js file and make changes to conform with the ESLint rules. Most of these changes can be seen in this [commit](https://github.com/BobWritesCode/squadup_frontend/commit/4f79d0e9643db3681e00fba9806a74f38c6174a0).
+
+This is the configuation used:
+
+```js
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  overrides: [],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react'],
+  rules: {
+    indent: ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
+  },
+};
+```
 
 ### 1.11.4. Python
 
