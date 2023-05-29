@@ -164,7 +164,15 @@ const GroupList = () => {
       {searchFormData.highest_rank >= searchFormData.lowest_rank && (
         <InfiniteScroll
           className={appStyles.NoScrollBars}
-          children={groups.results.map((g) => {
+          dataLength={groups.results.length}
+          loader={<LoadSpinner />}
+          hasMore={!!groups.next}
+          next={() => fetchMoreData(groups, setGroups)}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>No more groups to see.</p>
+          }
+        >
+          {groups.results.map((g) => {
             if (g.owner !== currentUser.username && g.status) {
               return (
                 <div key={g.id}>
@@ -184,14 +192,7 @@ const GroupList = () => {
             }
             return null;
           })}
-          dataLength={groups.results.length}
-          loader={<LoadSpinner />}
-          hasMore={!!groups.next}
-          next={() => fetchMoreData(groups, setGroups)}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>No more groups to see.</p>
-          }
-        />
+        </InfiniteScroll>
       )}
     </>
   );
