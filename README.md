@@ -1872,7 +1872,7 @@ Here is a snapshot of the current report:
 
 I have used ESLint to provide a more robust codebase, and help enforce consistency throughout. When I installed ESLint it did mean I had no go through every .js file and make changes to conform with the ESLint rules. Most of these changes can be seen in this [commit](https://github.com/BobWritesCode/squadup_frontend/commit/4f79d0e9643db3681e00fba9806a74f38c6174a0).
 
-This is the configuation used:
+This is the configuration used:
 
 ```js
 module.exports = {
