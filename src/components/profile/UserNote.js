@@ -33,6 +33,12 @@ const UserNote = () => {
           // If results found update variable.
           if (data.results.length > 0) {
             setUserNote(data.results[0]);
+          } else {
+            // If no note, make sure to reset variables.
+            setUserNote({
+              id: null,
+              content: '',
+            });
           }
         } catch { /* empty */ } finally {
           // Remove spinner.

@@ -52,6 +52,16 @@ const UserNoteUpdate = (props) => {
   }, [formData.content]);
 
   /**
+   * Update content correctly when changing profile.
+   */
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      content:content
+    });
+  }, [content]);
+
+  /**
    * Allow user to edit form.
    * @param {*} e
    */
@@ -107,7 +117,7 @@ const UserNoteUpdate = (props) => {
    */
   const ShowForm = (
     <>
-      <Form className={formStyles.Form}>
+      <Form className={formStyles.Form} onSubmit={handleSubmit}>
         <Form.Group className="mb-2 d-flex flex-column" controlId="content">
           <Form.Label>Note:</Form.Label>
           <div className="d-flex flex-column w-100">
