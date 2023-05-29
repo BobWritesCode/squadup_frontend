@@ -82,7 +82,7 @@ const PostEdit = (props) => {
           <Modal.Title>Update post</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form className={formStyles.Form}>
+          <Form className={formStyles.Form} onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="content">
               <div className="d-flex flex-column w-100">
                 <Form.Control

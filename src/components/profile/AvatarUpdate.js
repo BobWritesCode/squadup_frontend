@@ -75,7 +75,10 @@ const AvatarUpdate = (props) => {
           <Modal.Title>Update avatar</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form className={formStyles.Form}>
+          <Form
+            className={formStyles.Form}
+            onSubmit={handleSubmit}
+          >
             <Form.Group>
               {avatar && (
                 <figure className="d-flex justify-content-center">

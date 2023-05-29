@@ -71,7 +71,10 @@ const PasswordUpdate = () => {
           <Modal.Title>Update Password</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form className={formStyles.Form}>
+          <Form
+            className={formStyles.Form}
+            onSubmit={handleSubmit}
+          >
             <Form.Group className="mb-3" controlId="old_password">
               <Form.Label>Current password:</Form.Label>
               <Form.Control

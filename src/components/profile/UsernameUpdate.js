@@ -117,7 +117,7 @@ const UsernameUpdate = (props) => {
           <Modal.Title>Update Username</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form className={formStyles.Form}>
+          <Form className={formStyles.Form} onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="username">
               <Form.Label>Update your username here.</Form.Label>
               <Form.Control

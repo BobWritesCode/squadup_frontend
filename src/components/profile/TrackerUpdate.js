@@ -76,7 +76,10 @@ const TrackerUpdate = (props) => {
           <Modal.Title>Update tracker ID</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form className={formStyles.Form}>
+          <Form
+            className={formStyles.Form}
+            onSubmit={handleSubmit}
+          >
             <Form.Group className="mb-3" controlId="tracker">
               <Form.Label>
                 Please enter your player name and hashtag number as it is on

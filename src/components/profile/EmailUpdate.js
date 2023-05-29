@@ -74,7 +74,7 @@ const EmailUpdate = (props) => {
           <Modal.Title>Update Email</Modal.Title>
         </Modal.Header>
         <Modal.Body className={modalStyles.Body}>
-          <Form className={formStyles.Form}>
+          <Form className={formStyles.Form} onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email new address</Form.Label>
               <Form.Control
