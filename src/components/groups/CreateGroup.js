@@ -33,42 +33,55 @@ const CreateGroup = (props) => {
     content: '',
     slots: {},
   });
-  const { content, max_team_size, current_team_size } = formData;
+  const { content, max_team_size } = formData;
   const [currentTeamSize, setCurrentTeamSize] = useState(2);
-
   // Used to display character count under note input
   const [charCount, setCharCount] = useState(0);
 
-  // close modal function
+  /**
+   * Handle closing modal.
+   */
   const handleClose = () => {
     setErrors({});
     disableInputs(false);
     setShow(false);
   };
 
+  /**
+   * Handle opening modal.
+   */
   const handleShow = () => {
     setSuccessMessage('');
     setShow(true);
   };
 
-  // Update character count on change.
   useEffect(() => {
-    setCharCount(String(content).length);
-    // Remove slots if a lower max team size is picked then slots minus one.
-    while (slots.length >= max_team_size) {
-      slots.pop();
+    if (slots.length >= Number(max_team_size)) {
+      slots.splice(-(slots.length - (max_team_size - 1)));
+      // Create new array so react updates correctly.
+      const updatedSlots = [...slots];
+      setSlots(updatedSlots);
     }
-    // Set current team size to the correct amount.
-    setCurrentTeamSize(max_team_size - slots.length);
-  }, [content, max_team_size, slots, current_team_size]);
+    const updatedCurrentTeamSize = max_team_size - slots.length;
+    setCurrentTeamSize(updatedCurrentTeamSize);
+    // setCurrentTeamSize(max_team_size-slots.length);
+  }, [formData.max_team_size]);
+
+  useEffect(() => {
+    // Update character count on change.
+    setCharCount(String(content).length);
+  }, [content]);
+
+  useEffect(() => {
+    const updatedCurrentTeamSize = max_team_size - slots.length;
+    setCurrentTeamSize(updatedCurrentTeamSize);
+  }, [slots]);
 
   // Allow user to edit form.
   const handleChange = (e) => {
-    setCurrentTeamSize(formData.max_team_size - slots.length);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-      current_team_size: formData.max_team_size - slots.length,
     });
   };
 
@@ -80,14 +93,16 @@ const CreateGroup = (props) => {
       content: '',
     };
     setSlots((prevSlots) => [...prevSlots, newSlot]);
-    setCurrentTeamSize(formData.max_team_size - slots.length);
   };
 
   //  Remove a player slot to the form
   const handleRemoveSlot = () => {
     slots.pop();
-    setSlots(slots);
-    setCurrentTeamSize(formData.max_team_size - slots.length);
+    // Create new array so react updates correctly.
+    const updatedSlots = [...slots];
+    setSlots(updatedSlots);
+    const updatedCurrentTeamSize = max_team_size - slots.length;
+    setCurrentTeamSize(updatedCurrentTeamSize);
   };
 
   const handleSlotChange = (e) => {
