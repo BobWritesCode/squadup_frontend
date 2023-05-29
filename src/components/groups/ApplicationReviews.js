@@ -57,10 +57,13 @@ const ApplicationReviews = (props) => {
   const handleClose = () => {
     setShow(false);
     GetSlotData();
-    setPageData({
-      ...pageData,
-      status: 'Awaiting',
-    });
+    if (pageData.status==='Complete form below') {
+      setPageData({
+        ...pageData,
+        status: 'Awaiting',
+      });
+    }
+
     setShowProcessing(false);
     setPageNumber(0);
     setErrors({});
