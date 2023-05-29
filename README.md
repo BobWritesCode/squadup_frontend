@@ -178,30 +178,40 @@ The goals of this applications are:
 ### 1.7.1. New user
 
 > *"As a new user I can register so that I can access registered user functions."*
+> [1.9.1.3. Registration](#1913-registration)
 
 ### 1.7.2. Registered user
 
 > *"As a registered user I can login so that I can access logged in user functions."*
+> [1.9.1.4. Sign In](#1914-sign-in)
 >
 > *"As a logged in user I can manage my profile so that I can make sure it reflects me accurately."*
+> [1.9.1.5. Profile](#1915-profile)
 >
 > *"As a logged in user I can create a post that appears in my profile so that other users can view the post."*
+> [1.9.1.6.1. New Post component](#19161-new-post-component)
 >
 > *"As a logged in user I can leave private notes of a player's profile so that next time I come across them, I have a way to remember their behaviors'."*
+> [1.9.1.5.7. User notes component](#19157-user-notes-component)
 
 ### 1.7.3. Registered user - Team leader
 
 > *"As a logged in user I can create a looking for group listing so that other users looking for a group can request to join my group."*
+> [1.9.1.7.1. Create group component](#19171-create-group-component)
 >
 > *"As a looking for group owner I can review requests to join my group by accept or declining the request so that the requester will know if they are successful."*
+> [1.9.1.7.3. Review applications](#19173-review-applications)
 >
 > *"As a looking for group owner I can kick a player from the group so that if they do not respond after joining, I can free the slot back up."*
+> [1.9.1.7.3.2. Application modal](#191732-application-modal)
 
 ### 1.7.4. Registered user - Team Recruit
 
-> *"As a user who has joined a group I can leave the group so that the slot is made available and I can join a different group."*
->
 > *"As a logged in user I can request to join a group that is looking for a teammate so that they can review my profile and decided if to accept or reject me."*
+> [1.9.1.7.7. Request to join component](#19177-request-to-join-component)
+>
+> *"As a user who has joined a group I can leave the group so that the slot is made available and I can join a different group."*
+> [1.9.1.7.9. My Applications component](#19179-my-applications-component)
 
 [🔝](#14-table-of-contents)
 
