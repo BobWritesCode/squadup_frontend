@@ -1601,13 +1601,21 @@ The below entity relationship diagram (ERD) is a graphical representation that d
 
 *Created using: [app.diagrams.net](https://app.diagrams.net/)*
 
-#### 1.10.1.2. REACT
+#### 1.10.1.2. React
 
 [React website](https://react.dev/)
 
 The core framework of this project for the frontend is React.
 
 "React lets you build user interfaces out of individual pieces called components. Create your own React components like Thumbnail, LikeButton, and Video. Then combine them into entire screens, pages, and apps."
+
+In this project, I have leveraged the power of React, a popular JavaScript library, to enhance the user experience of our application. By utilizing React libraries and implementing key features, I have significantly improved the overall usability, performance, and interactivity for our users. This document aims to highlight the specific features I have employed and how they have contributed to an improved user experience.
+
+Some key React features utilised include:
+
+- **React Router** by using features like: `<route>`, `<routes>`, `<link>` and `<navigate>`.
+- **Conditional Rendering** by using features like `useState()` and `useEffect()`.
+- **React Bootstrap** to help generate pre-built components like `modals`, `tables` and `forms`.
 
 #### 1.10.1.3. Django Rest framework
 
