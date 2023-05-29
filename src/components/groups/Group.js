@@ -164,7 +164,7 @@ const Group = (props) => {
         <tbody>
           <tr>
             <td>{group.max_team_size}</td>
-            <td colSpan={2}>
+            <td colSpan={2} className="text-break">
               <Link
                 to={`/profile/${group.owner_id}`}
                 preventScrollReset={true}
@@ -206,7 +206,7 @@ const Group = (props) => {
         <tbody>
           <tr>
             <td>{group.id}</td>
-            <td>
+            <td className="text-break">
               <Link
                 to={`/profile/${group.owner_id}`}
                 preventScrollReset={true}
