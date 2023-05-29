@@ -11,10 +11,17 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const Post = (props) => {
   const { id, created_at, updated_at, content, image, owner } = props;
+
   // Get current logged in user.
   const currentUser = useCurrentUser();
   // Check to see if viewing user is profile owner.
-  const is_owner = currentUser?.username === owner;
+  let temp_is_owner;
+  if (typeof(owner)=='string'){
+    temp_is_owner = currentUser?.username === owner;
+  } else {
+    temp_is_owner = currentUser?.pk === owner;
+  }
+  const is_owner = temp_is_owner;
 
   const [post, setPost] = useState({
     id: id,
@@ -92,7 +99,7 @@ const Post = (props) => {
 Post.propTypes = {
   id: PropTypes.number.isRequired,
   created_at: PropTypes.string.isRequired,
-  owner: PropTypes.string,
+  owner: PropTypes.any,
   updated_at: PropTypes.string,
   content: PropTypes.string,
   image: PropTypes.string,
