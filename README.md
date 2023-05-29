@@ -121,7 +121,7 @@ Cloudinary.
       - [1.11.3.3. Coverage](#11133-coverage)
       - [1.11.3.4. ESLint](#11134-eslint)
     - [1.11.4. Python](#1114-python)
-      - [1.11.4.1. Linters](#11141-linters)
+      - [1.11.4.1. Linter](#11141-linter)
       - [1.11.4.2. Unit testing](#11142-unit-testing)
       - [1.11.4.3. Coverage](#11143-coverage)
     - [1.11.5. User testing](#1115-user-testing)
@@ -1916,11 +1916,17 @@ module.exports = {
 
 ### 1.11.4. Python
 
-- [1.11.4.1. Linters](#11141-linters)
+- [1.11.4.1. Linter](#11141-linter)
 - [1.11.4.2. Unit testing](#11142-unit-testing)
 - [1.11.4.3. Coverage](#11143-coverage)
 
-#### 1.11.4.1. Linters
+#### 1.11.4.1. Linter
+
+For the python linter I went with [pycodestyle](https://pycodestyle.pycqa.org/en/latest/) as this was the former pep8.
+
+In commit [47b5b04](https://github.com/BobWritesCode/SquadUp_api/commit/47b5b04fd615f121ff4a0ace0cd503ec3cdcf3c1), I went through every .py file and made the advised changes.
+
+This helps make sure code is formatted to an industry standard and makes the code easier to read and for other developers to work on.
 
 #### 1.11.4.2. Unit testing
 
