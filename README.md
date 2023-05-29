@@ -5,7 +5,6 @@
 **Still to be completed in this README:**
 
   - Python
-    - Linters
     - Unit testing
     - Coverage
     - User testing
@@ -67,6 +66,7 @@ Cloudinary.
   - [1.9. Features](#19-features)
     - [1.9.1. Existing features](#191-existing-features)
       - [1.9.1.1. Navbar](#1911-navbar)
+        - [1.9.1.1.1. Search bar](#19111-search-bar)
       - [1.9.1.2. Homepage](#1912-homepage)
       - [1.9.1.3. Registration](#1913-registration)
       - [1.9.1.4. Sign In](#1914-sign-in)
@@ -548,6 +548,25 @@ As you will see from the code below we use a [React Bootstrap Nav](https://react
   </Container>
 </Navbar>
 ```
+
+---
+
+##### 1.9.1.1.1. Search bar
+
+[SearchBar.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/utils/SearchBar.js)
+
+<details><summary>Search bar preview</summary> <!-- markdownlint-disable-line -->
+
+![Search bar preview](README_files/Snapshots/search-bar.gif)
+</details>
+
+Users can search for other users using the custom built search bar.
+
+The search bar provides the top 10 closest results the input from the user. The user can then click on a desired result to be taken to that user's profile page.
+
+If the user click's anywhere else on the page the results will be removed.
+
+---
 
 #### 1.9.1.2. Homepage
 
