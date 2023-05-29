@@ -86,8 +86,8 @@ const Post = (props) => {
 // Props validation
 Post.propTypes = {
   id: PropTypes.number.isRequired,
-  created_at: PropTypes.number.isRequired,
-  updated_at: PropTypes.number,
+  created_at: PropTypes.string.isRequired,
+  updated_at: PropTypes.string,
   content: PropTypes.string,
   image: PropTypes.string,
 };

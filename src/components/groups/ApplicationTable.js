@@ -54,7 +54,7 @@ const ApplicationTable = (props) => {
 
 // Props validation
 ApplicationTable.propTypes = {
-  applications: PropTypes.object.isRequired,
+  applications: PropTypes.array.isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
 

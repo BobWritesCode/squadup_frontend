@@ -51,7 +51,7 @@ const RankBadge = (props) => {
 
 // Props validation
 RankBadge.propTypes = {
-  rank: PropTypes.number.isRequired,
+  rank: PropTypes.any.isRequired,
   width: PropTypes.string
 };
 

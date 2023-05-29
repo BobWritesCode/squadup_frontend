@@ -175,7 +175,7 @@ const UserNoteUpdate = (props) => {
 
 // Props validation
 UserNoteUpdate.propTypes = {
-  onUserNoteChange: PropTypes.object.isRequired,
+  onUserNoteChange: PropTypes.func.isRequired,
   userNote: PropTypes.object.isRequired,
 };
 

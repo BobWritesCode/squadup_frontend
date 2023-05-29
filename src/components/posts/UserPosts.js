@@ -90,8 +90,8 @@ const UserPosts = (props) => {
 
 // Props validation
 UserPosts.propTypes = {
-  profileId: PropTypes.number.isRequired,
-  latestNewPost: PropTypes.number,
+  profileId: PropTypes.string.isRequired,
+  latestNewPost: PropTypes.any ,
 };
 
 export default UserPosts;

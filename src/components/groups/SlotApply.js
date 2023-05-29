@@ -427,8 +427,8 @@ const SlotApply = (props) => {
 
 // Props validation
 SlotApply.propTypes = {
-  slotData: PropTypes.object.isRequired,
-  slotID: PropTypes.number.isRequired,
+  slotData: PropTypes.object,
+  slotID: PropTypes.number,
   onUpdate: PropTypes.func.isRequired,
 };
 
