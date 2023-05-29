@@ -2,13 +2,6 @@
 
 ![Showcase of site on different screen sizes](README_files/showcase.png)
 
-**Still to be completed in this README:**
-
-- Python
-  - Unit testing
-  - Coverage
-  - User testing
-
 ---
 
 ## 1.1. Full stack website
@@ -164,6 +157,8 @@ HTML, CSS, JavaScript (React), Python (Django) and a relational database (recomm
 
 - [1.6.1. Squad Up - Team builder website](#161-squad-up---team-builder-website)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.6.1. Squad Up - Team builder website
@@ -184,6 +179,8 @@ The goals of this applications are:
 - [1.7.2. Registered user](#172-registered-user)
 - [1.7.3. Registered user - Team leader](#173-registered-user---team-leader)
 - [1.7.4. Registered user - Team Recruit](#174-registered-user---team-recruit)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -248,6 +245,8 @@ The goals of this applications are:
 - [1.8.15. Typography](#1815-typography)
 - [1.8.16. Imagery](#1816-imagery)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.8.1. Agile design
@@ -255,6 +254,8 @@ The goals of this applications are:
 When taking on any application especially large and complicated application with different moving parts, where it's easy to jump from one part of the application to another, leaving the previous part incomplete and leaving room for error. It's best to come up with a strategy. This is where agile design comes in, it can help you identify all the different parts of the application that need to be completed, in which order may be best, and if you are in a team delegate tasks to people so everyone knows what their responsibilities are.
 
 As part of the application, I heavily used GitHub Issues and GitHub Kanban board.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -286,6 +287,8 @@ Every issue raised will have an issue number i.e., #1, #2, #3 and so on. If you 
 
 If you use certain keywords as well it will also automatically manage the issue such as 'bug: fixes #58'. This will automatically close that issue for you.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.8.4. User story
@@ -296,6 +299,8 @@ If you use certain keywords as well it will also automatically manage the issue 
 The user story was the first template I created, and this was basically to help start to build the idea of the application and what potential features were going to be needed.
 
 Any user story was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -308,6 +313,8 @@ As large and complex application, inevitably bugs came up. Bugs are very easy to
 
 Bug reports are allocated the tag 'bug' to help identify them. You can also opt to allocate it the tag 'priority' to show it is something that needs to be fixed immediately as it could be application breaking or may affect many users.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.8.6. Feature request
@@ -318,6 +325,8 @@ Bug reports are allocated the tag 'bug' to help identify them. You can also opt 
 While building the application new ideas on new features would come to mind. Some that would potentially be perfect for the first version of the application and some that potentially could be implemented later. Whenever a new feature came to mind, I would complete the feature request form.
 
 Any feature request was also allocated the tag 'new feature' automatically to help identify this was going to be a new feature.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -330,6 +339,8 @@ Either while using the application as a user or developing the application. I wo
 
 Any improvement Request was also allocated the tag 'improvement' automatically to help identify this was going to be a new feature.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.8.8. Choose assignees
@@ -337,6 +348,8 @@ Any improvement Request was also allocated the tag 'improvement' automatically t
 [Link to my assigned issues.](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=assignee%3ABobWritesCode)
 
 It may come as no surprise; I am the only person assigned issues on this project. Potentially in the future if the project grows and the team grows past me, then I would be able to assign other team members to tasks.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -347,11 +360,15 @@ It may come as no surprise; I am the only person assigned issues on this project
 
 When creating an issue from an issue report, a label is automatically allocated but the user or a person creating the issue can choose to assign labels from the option available. For example, if something needs to be tagged as 'priority'.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.8.10. Choose Project
 
 It's probably obvious but all issues were assigned to this project. If you have one repository being used for several projects, it is useful to be able to choose the correct project.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -370,6 +387,8 @@ In my application I created 3 milestones:
   - These are issues that would be nice to have done but are mandatory.
 - Post v1.00
   - These are issues that are mainly going to be features that can wait until version 1.00 has been completed and be implements into a future version.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -392,6 +411,8 @@ A Kanban board is an agile application management tool that helps visualize task
 - [1.8.13.5. Squad Finder design](#18135-squad-finder-design)
 
 Below are  wireframe that I designed to help build and represent the design of this application.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -455,6 +476,8 @@ Below are  wireframe that I designed to help build and represent the design of t
 ![Squad Finder on mobile / small screen](./README_files/wireframes/squad_finder_mobile.png)
 </details>
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.8.14. Colour scheme
@@ -464,6 +487,8 @@ These 4 colours contrast very nicely against each other, and the white text agai
 
 ![Colour scheme](./README_files/colours.png)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.8.15. Typography
@@ -471,6 +496,8 @@ These 4 colours contrast very nicely against each other, and the white text agai
 We are using [BootStrap's](#110161-bootstrap) native font stack. As it provides a sharp and clear font that works perfectly with the projects overall styling.
 
 [Link to BootStrap's documentation for Native font stack.](https://getbootstrap.com/docs/5.3/content/reboot/#native-font-stack)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -519,6 +546,8 @@ The application allows users to upload images, currently there is no way to mode
 - [1.9.1. Existing features](#191-existing-features)
 - [1.9.2. Future features](#192-future-features)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.9.1. Existing features
@@ -531,10 +560,15 @@ The application allows users to upload images, currently there is no way to mode
 - [1.9.1.6. Posts](#1916-posts)
 - [1.9.1.7. Squad Finder page](#1917-squad-finder-page)
 - [1.9.1.8. Spinner](#1918-spinner)
+- [1.9.1.9. 404 Page](#1919-404-page)
+
+[🔝](#14-table-of-contents)
 
 ---
 
 #### 1.9.1.1. Navbar
+
+- [1.9.1.1.1. Search bar](#19111-search-bar)
 
 [Navbar.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/components/NavBar.js)
 
@@ -597,6 +631,8 @@ As you will see from the code below we use a [React Bootstrap Nav](https://react
 </Navbar>
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.1.1. Search bar
@@ -613,6 +649,8 @@ Users can search for other users using the custom built search bar.
 The search bar provides the top 10 closest results the input from the user. The user can then click on a desired result to be taken to that user's profile page.
 
 If the user click's anywhere else on the page the results will be removed.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -633,6 +671,8 @@ The homepage is designed to be simple and provide a clear understanding of what 
 ![Homepage - Mobile](README_files/Snapshots/homepage-mobile.png)
 
 </details>
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -662,6 +702,8 @@ Currently email address serves no purpose on this application but it is planned 
 
 </details>
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.9.1.4. Sign In
@@ -689,6 +731,8 @@ If the user cannot be found, or password does not match the correct account they
 ![Sign In - Alert](README_files/Snapshots/sign-in-alert.png)
 
 </details>
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -723,6 +767,8 @@ User's can also leave a user note on a different person's profile. The user note
 
 </details>
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.5.1. Profile Box
@@ -744,6 +790,8 @@ The Profile Box is within the Profile.js. The profile box houses a few different
 - Tracker update
 - User Note
 - User Note update
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -791,6 +839,8 @@ if serializer.is_valid():
             serializer.validated_data['image'] = new_image['public_id']
             serializer.save()
 ```
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -847,6 +897,8 @@ const handleSubmit = async (event) => {
 };
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.5.4. Password update component
@@ -860,6 +912,8 @@ const handleSubmit = async (event) => {
 </details>
 
 Allows the user to update their password. They are required to provide their current password, and a new password which they must type again to confirm, before submitting the change.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -876,6 +930,8 @@ Allows the user to update their password. They are required to provide their cur
 Allows the user to update their email address.
 
 Currently email address's server no purpose in this application but it is part of future plans to use them for login, account verification and account recovery.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -897,6 +953,8 @@ In the future the form will be split into two inputs, one for the player name an
 
 We will also look into if it would be possible to contact tracker.gg to check the input is correct, and providing feedback tot he user.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.5.7. User notes component
@@ -911,6 +969,8 @@ We will also look into if it would be possible to contact tracker.gg to check th
 
 Allows users to leave an updatable note on any user's profile. The note is only visible to the user leaving the note. This so user's can leave information about that player, should they come across them again. Things like if they enjoyed playing with them or noticed a specific style to their play.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.5.8. User Note update component
@@ -923,6 +983,8 @@ Allows users to leave an updatable note on any user's profile. The note is only 
 </details>
 
 Opens up a modal where the user can edit their note.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -940,6 +1002,8 @@ Opens up a modal where the user can edit their note.
 
 A container on the [profile page](#1915-profile) for combing [new post](#19161-new-post-component), and [post list](#19162-post-list-component).
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.6.1. New Post component
@@ -954,6 +1018,8 @@ A container on the [profile page](#1915-profile) for combing [new post](#19161-n
 Allows users to add posts to their own timeline.
 
 Users can either write some text, post an image, or both.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1023,14 +1089,14 @@ useEffect(() => {
           ...prevPosts,
           results: [newPost, ...prevPosts.results],
         }));
-      } catch {
-        console.log('error');
-      }
+        } catch { /* empty */ } finally { /* empty */ }
     };
     fetchData();
   }
 }, [latestNewPost]);
 ```
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1047,6 +1113,8 @@ Allows the user to edit the text on a post. It currently does not allow you to e
 
 Once updated, the change can be seem immediately in the post.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.6.4. Delete post component
@@ -1061,6 +1129,8 @@ Once updated, the change can be seem immediately in the post.
 
 Allows user to delete their own post.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.9.1.7. Squad Finder page
@@ -1074,6 +1144,8 @@ Allows user to delete their own post.
 - [1.9.1.7.7. Request to join component](#19177-request-to-join-component)
 - [1.9.1.7.8. Request to join component - Context signal](#19178-request-to-join-component---context-signal)
 - [1.9.1.7.9. My Applications component](#19179-my-applications-component)
+
+[🔝](#14-table-of-contents)
 
 <details><summary>Squad Finder page - PC</summary> <!-- markdownlint-disable-line -->
 
@@ -1097,6 +1169,8 @@ As a user they will be able to:
 - Request to join a another group.
 - Review their requests to join other groups.
 - Delete their requests to join other groups.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1124,6 +1198,8 @@ For each group the user will be able to choose:
 - Text area to provide extra content
 - Add open slots, where other users can request to join the team.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.7.2. Create slot component
@@ -1150,12 +1226,16 @@ The two things a user can choose when creating a slot is:
 - Desired role.
 - Extra context, via a text area.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.7.3. Review applications
 
 - [1.9.1.7.3.1. Group view](#191731-group-view)
 - [1.9.1.7.3.2. Application modal](#191732-application-modal)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1187,6 +1267,8 @@ If the button shows 1 or higher, then it means one or more people currently have
 </details>
 
 If the leader has accepted someone, but that person leaves afterwards. The button will change to reopen, to reopen the slot.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1238,6 +1320,8 @@ Next in 'My Groups' the slot will be closed and the accepted user's name will sh
 </details>
 
 If the user needs to kick the player from the slow for any reason, they just click the button with the user's name in it, and then can click 'Kick from group' in the modal. The user will then need to confirm the kick by typing kick in the input then clicking 'Confirm Kick'. This will then delete every current request, so users can re-request to join even if they were rejected previously.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1406,6 +1490,8 @@ const ShowPages11Up = (
 );
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.7.5. Find Group component - Filter
@@ -1460,6 +1546,8 @@ class LFGSerializer(serializers.ModelSerializer):
         return [group.role for group in groups]
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.7.6. Find Group component - List
@@ -1474,6 +1562,8 @@ class LFGSerializer(serializers.ModelSerializer):
 The group list will show every group that is 'Open' which currently means they have at least 1 slot open. If a group has a closed slot then the user will not be able to request to join that group.
 
 The group list is determined by the [filters applied](#19175-find-group-component---filter).
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1495,6 +1585,8 @@ The group list is determined by the [filters applied](#19175-find-group-componen
 </details>
 
 Allows users to request to join a group in an open slot. The requesting user can choose a role, and add some extra information via a textarea input for the group leader to see.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1565,6 +1657,8 @@ const MyApplications = () => {
 }
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ##### 1.9.1.7.9. My Applications component
@@ -1606,6 +1700,8 @@ The above images show what the user can expect to see if their request has been 
 </details>
 
 If accepted by the group leader, the user will see accepted in their applications. If they click on it to open the modal they will see the message the group leader provided when the group leader accepted the request.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1670,6 +1766,8 @@ const ExampleComp = () => {
 };
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.9.1.9. 404 Page
@@ -1699,23 +1797,25 @@ If the user tries to visit a URL path that is not valid they will be shown the 4
 
 ---
 
----
-
 ## 1.10. Technologies used
 
 - [1.10.1. Logic](#1101-logic)
 - [1.10.2. Widgets](#1102-widgets)
+
+[🔝](#14-table-of-contents)
 
 ---
 
 ### 1.10.1. Logic
 
 - [1.10.1.1. Data model](#11011-data-model)
-- [1.10.1.2. REACT](#11012-react)
+- [1.10.1.2. React](#11012-react)
 - [1.10.1.3. Django Rest framework](#11013-django-rest-framework)
 - [1.10.1.4. Python](#11014-python)
 - [1.10.1.5. JavaScript](#11015-javascript)
 - [1.10.1.6. CSS](#11016-css)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1736,6 +1836,8 @@ The below entity relationship diagram (ERD) is a graphical representation that d
 
 *Created using: [app.diagrams.net](https://app.diagrams.net/)*
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.10.1.2. React
@@ -1753,6 +1855,8 @@ Some key React features utilised include:
 - **React Router** by using features like: `<route>`, `<routes>`, `<link>` and `<navigate>`.
 - **Conditional Rendering** by using features like `useState()` and `useEffect()`.
 - **React Bootstrap** to help generate pre-built components like `modals`, `tables` and `forms`.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1773,6 +1877,8 @@ Some reasons you might want to use REST framework:
 - Extensive documentation, and great community support.
 - Used and trusted by internationally recognised companies including Mozilla, Red Hat, Heroku, and Eventbrite."
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.10.1.4. Python
@@ -1780,6 +1886,8 @@ Some reasons you might want to use REST framework:
 - [1.10.1.4.1. Python packages](#110141-python-packages)
 
 [Python website](https://www.python.org/)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1802,6 +1910,8 @@ These are some of the notable python packages that are used in this application.
 - [cloudinary](https://pypi.org/project/cloudinary/)
   - "The Cloudinary Python SDK allows you to quickly and easily integrate your application with Cloudinary. Effortlessly optimize, transform, upload and manage your cloud's assets."
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.10.1.5. JavaScript
@@ -1809,6 +1919,8 @@ These are some of the notable python packages that are used in this application.
 - [1.10.1.5.1. React Bootstrap](#110151-react-bootstrap)
 
 Other than React and React Bootstrap, only vanilla JavaScript has been used in this application.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1820,6 +1932,8 @@ React-Bootstrap replaces the Bootstrap JavaScript. Each component has been built
 
 As one of the oldest React libraries, React-Bootstrap has evolved and grown alongside React, making it an excellent choice as your UI foundation.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.10.1.6. CSS
@@ -1827,6 +1941,8 @@ As one of the oldest React libraries, React-Bootstrap has evolved and grown alon
 - [1.10.1.6.1. BootStrap](#110161-bootstrap)
 
 [W3C CSS Homepage](https://www.w3.org/Style/CSS/)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1855,11 +1971,15 @@ Also add the following in the `index.html` to use Bootstrap icons.
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.10.2. Widgets
 
 - [1.10.2.1. Cloudinary](#11021-cloudinary)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1920,6 +2040,8 @@ if image:
 - [1.11.4. Python](#1114-python)
 - [1.11.5. User testing](#1115-user-testing)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.11.1. HTML
@@ -1934,6 +2056,8 @@ To validate all HTML, I used the [W3C validator](https://validator.w3.org/#valid
 | Profile | none |  | pass |
 | Squad Finder | none |  | pass |
 | 404 | none |  | pass |
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -1957,6 +2081,8 @@ I have used a combination of custom stylesheets and Bootstrap for the styling of
 | SignUpForm.module.css | none |  | pass |
 | Table.module.css | none |  | pass |
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.11.3. JavaScript
@@ -1966,6 +2092,8 @@ I have used a combination of custom stylesheets and Bootstrap for the styling of
 - [1.11.3.3. Coverage](#11133-coverage)
 - [1.11.3.4. ESLint](#11134-eslint)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.11.3.1. React Testing
@@ -1973,6 +2101,8 @@ I have used a combination of custom stylesheets and Bootstrap for the styling of
 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 "The React Testing Library is a very light-weight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices."
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -2042,6 +2172,8 @@ describe('Profile component test', () => {
 });
 ```
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.11.3.3. Coverage
@@ -2053,6 +2185,8 @@ Here is a snapshot of the current report:
 
 ![Coverage snapshot](./README_files/testing/coverage-js.png)
 </details>
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -2096,6 +2230,8 @@ module.exports = {
 - [1.11.4.2. Unit testing](#11142-unit-testing)
 - [1.11.4.3. Coverage](#11143-coverage)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.11.4.1. Linter
@@ -2106,13 +2242,19 @@ In commit [47b5b04](https://github.com/BobWritesCode/SquadUp_api/commit/47b5b04f
 
 This helps make sure code is formatted to an industry standard and makes the code easier to read and for other developers to work on.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.11.4.2. Unit testing
 
+[🔝](#14-table-of-contents)
+
 ---
 
 #### 1.11.4.3. Coverage
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -2133,11 +2275,15 @@ When a bug is identified a user can raise an issue in GitHub to flag it. The use
 
 ![Bug list](/README_files/bug-list.png)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.12.1. Unresolved
 
 [Link to unresolved bugs](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Abug+-status%3ADone&visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%2C%22Repository%22%5D)
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -2156,6 +2302,8 @@ When a bug is identified a user can raise an issue in GitHub to flag it. The use
 - [1.13.3. Neon deployment](#1133-neon-deployment)
 - [1.13.4. Heroku](#1134-heroku)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.13.1. GitHub - Cloning
@@ -2172,6 +2320,8 @@ Go to the project you wish to clone.
 - **Option 1:** If you are using GitPod you can download the [Google Chrome GitPod extension](https://chrome.google.com/webstore/detail/gitpod-always-ready-to-co/dodmmooeoklaejobgleioelladacbeki) then you can just click on the green GitPod button
 
 - **Option 2:** Click the 'Code' button. This open options for you to clone your preferred way.
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -2211,6 +2361,8 @@ And you are now on the screen which shows you all the credential information you
 
 ![Cloudinary - Dashboard page](./README_files/deployment/cloudinary/cloudinary_5_dashboard.png)
 </details>
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -2252,6 +2404,8 @@ Once created you will see details on how to contact your database to your applic
 
 ![Neon - Project connection details](./README_files/deployment/neon/neon-project-details.png)
 </details>
+
+[🔝](#14-table-of-contents)
 
 ---
 
@@ -2363,6 +2517,8 @@ Click 'View' to view the deployed site.\
 - [1.14.3. Content](#1143-content)
 - [1.14.4. Acknowledgements](#1144-acknowledgements)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.14.1. VS Code extensions
@@ -2380,6 +2536,8 @@ These are some notable VS extensions that have really helped me with this projec
 - [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
 - [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.14.2. Other tech
@@ -2390,11 +2548,15 @@ These are some notable VS extensions that have really helped me with this projec
 - [ShareX](https://getsharex.com/): Used to snip screenshots.
 - [Photoshop](https://www.adobe.com/uk/products/photoshop.html): Used to create logo.
 
+[🔝](#14-table-of-contents)
+
 ---
 
 ### 1.14.3. Content
 
 All code other then libraries used was my own. Some of the code though was influenced by Code Institute from their walkthroughs but I avoided direct copying of code where possible to make this project my own.
+
+[🔝](#14-table-of-contents)
 
 ---
 
