@@ -7,9 +7,14 @@ import ReactTimeago from 'react-timeago';
 import PostEdit from './PostEdit';
 import PostDelete from './PostDelete';
 import PropTypes from 'prop-types';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const Post = (props) => {
-  const { id, created_at, updated_at, content, image } = props;
+  const { id, created_at, updated_at, content, image, owner } = props;
+  // Get current logged in user.
+  const currentUser = useCurrentUser();
+  // Check to see if viewing user is profile owner.
+  const is_owner = currentUser?.username === owner;
 
   const [post, setPost] = useState({
     id: id,
@@ -77,7 +82,7 @@ const Post = (props) => {
         <div className="d-flex justify-content-center mb-3">
           <Image src={post.image} fluid rounded />
         </div>
-        {postButtons}
+        {is_owner && postButtons}
       </div>
     </>
   );
@@ -87,6 +92,7 @@ const Post = (props) => {
 Post.propTypes = {
   id: PropTypes.number.isRequired,
   created_at: PropTypes.string.isRequired,
+  owner: PropTypes.string,
   updated_at: PropTypes.string,
   content: PropTypes.string,
   image: PropTypes.string,
