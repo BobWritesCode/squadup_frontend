@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +9,10 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import { setTokenTimestamp } from '../../utils/utils';
 import { axiosDefaultsBaseUrl } from '../../api/axiosDefaults';
-import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from '../../contexts/CurrentUserContext';
 import appStyles from '../../App.module.css';
 import styles from '../../styles/SignUpForm.module.css';
 import btnStyles from '../../styles/Buttons.module.css';
@@ -20,6 +23,8 @@ import LoadSpinner from '../../components/Spinner';
  * @return {JSX} Renders page.
  */
 const SignInForm = () => {
+  // Get current user.
+  const currentUser = useCurrentUser();
   // Set current user on successful authentication.
   const setCurrentUser = useSetCurrentUser();
   // react-router-dom navigation control.
@@ -34,6 +39,15 @@ const SignInForm = () => {
   const [errors, setErrors] = useState({});
   // Use to toggle showing spinner while waiting for API to resolve.
   const [showSpinner, setShowSpinner] = useState(false);
+
+  /**
+   * If user is logged in redirect to their profile page.
+   */
+  useEffect(() => {
+    if (currentUser) {
+      navigate(`/profile/${currentUser.pk}`);
+    }
+  });
 
   /**
    * Handles submitting form data to api and handling the response.

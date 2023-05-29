@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { axiosDefaultsBaseUrl } from '../../api/axiosDefaults';
@@ -13,8 +13,11 @@ import Alert from 'react-bootstrap/Alert';
 import styles from '../../styles/SignUpForm.module.css';
 import btnStyles from '../../styles/Buttons.module.css';
 import LoadSpinner from '../../components/Spinner';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const SignUpForm = () => {
+  // Get current user.
+  const currentUser = useCurrentUser();
   const [signUpData, setSignUpData] = useState({
     username: '',
     email: '',
@@ -26,6 +29,15 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
+
+  /**
+   * If user is logged in redirect to their profile page.
+   */
+  useEffect(()=>{
+    if(currentUser){
+      navigate(`/profile/${currentUser.pk}`);
+    }
+  });
 
   // Allow user to edit form.
   const handleChange = (e) => {
