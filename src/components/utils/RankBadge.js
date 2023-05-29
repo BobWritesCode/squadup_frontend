@@ -13,7 +13,7 @@ import unranked from '../../assets/rank_badges/unranked.webp';
 import PropTypes from 'prop-types';
 
 const RankBadge = (props) => {
-  const { rank, width = '30px' } = props;
+  const { rank = 0, width = '30px' } = props;
 
   const Badge = () => {
     switch (Number(rank)) {
@@ -51,7 +51,7 @@ const RankBadge = (props) => {
 
 // Props validation
 RankBadge.propTypes = {
-  rank: PropTypes.any.isRequired,
+  rank: PropTypes.any,
   width: PropTypes.string
 };
 
