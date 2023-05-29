@@ -99,6 +99,17 @@ const NavBar = () => {
   );
 
   /**
+   * JSX to show search bar.
+   */
+  const ShowSearchBar = (
+    <>
+      <div className="ms-3">
+        <SearchBar />
+      </div>
+    </>
+  );
+
+  /**
    * JSX of profile link.
    */
   const profileLink = (
@@ -125,9 +136,15 @@ const NavBar = () => {
     >
       <Container fluid>
         {/* Brand logo */}
-        <Navbar.Brand>
+        <Navbar.Brand className="me-0">
           <img src={logo} alt="Squad Up logo" height="45" />
         </Navbar.Brand>
+        {/*User search for small screen, only show when logged in*/}
+        {currentUser && (
+          <div className="d-inline d-md-none w-50">
+            <SearchBar />
+          </div>
+        )}
         {/* Controls if nav is expanded or close for mobile */}
         <Navbar.Toggle
           aria-controls="navbarScroll"
@@ -146,7 +163,7 @@ const NavBar = () => {
             {!currentUser && signUpLink}
             {currentUser && lfgLink}
             {currentUser && profileLink}
-            {currentUser && <SearchBar/>}
+            {currentUser && ShowSearchBar}
             {currentUser && logoutLink}
           </Nav>
         </Navbar.Collapse>

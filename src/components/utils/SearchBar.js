@@ -155,8 +155,8 @@ const SearchBar = () => {
           <i className="bi bi-search text-dark"></i>
         </InputGroup.Text>
         <Form.Control
-          placeholder="Search user"
-          aria-label="Search user"
+          placeholder="User search"
+          aria-label="User search"
           aria-describedby="basic-addon2"
           className="rounded-0 border-secondary"
           onChange={handleChange}
@@ -170,7 +170,7 @@ const SearchBar = () => {
    * Main return render.
    */
   return (
-    <div className="ms-3" ref={searchContainerRef}>
+    <div ref={searchContainerRef}>
       {ShowSearchBar}
       {results.length > 0 && ShowResultsContainer}
       {showSpinner && ShowSpinner}
