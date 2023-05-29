@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { removeTokenTimestamp, shouldRefreshToken } from '../utils/utils';
@@ -7,6 +7,8 @@ import {
   axiosDefaultsHeadersPostContentType,
   axiosDefaultsWithCredentials,
 } from '../api/axiosDefaults';
+import PropTypes from 'prop-types';
+
 
 axios.defaults.baseURL = axiosDefaultsBaseUrl;
 axios.defaults.headers.post['Content-Type'] =
@@ -30,7 +32,7 @@ export const CurrentUserProvider = ({ children }) => {
     try {
       const { data } = await axiosRes.get('/dj-rest-auth/user/');
       setCurrentUser(data);
-    } catch (err) {}
+    } catch (err) { /* empty */ }
   };
 
   useEffect(() => {
@@ -90,4 +92,9 @@ export const CurrentUserProvider = ({ children }) => {
       </SetCurrentUserContext.Provider>
     </CurrentUserContext.Provider>
   );
+};
+
+// Props validation
+CurrentUserProvider.propTypes = {
+  children: PropTypes.any,
 };
