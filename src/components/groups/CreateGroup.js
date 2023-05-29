@@ -141,13 +141,23 @@ const CreateGroup = (props) => {
       slots: slots,
     };
     try {
-      const { data } = await axiosReq.post('/lfg/', JSON.stringify(ctx));
-      setSuccessMessage('Group created.');
-      onNewGroup(data.slot_id);
-    } catch (err) {
-      setErrors(err.response?.data);
+      slots.forEach((s) => {
+        if (s.content.length > 100) {
+          throw new Error('Content length exceeds 100 characters.');
+        }
+      });
+      try {
+        const { data } = await axiosReq.post('/lfg/', JSON.stringify(ctx));
+        setSuccessMessage('Group created.');
+        onNewGroup(data.slot_id);
+      } catch (err) {
+        setErrors(err.response?.data);
+        disableInputs(false);
+      } finally {
+        setAwaitingResponse(false);
+      }
+    } catch (error) {
       disableInputs(false);
-    } finally {
       setAwaitingResponse(false);
     }
   };

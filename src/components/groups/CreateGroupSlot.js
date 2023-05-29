@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import appStyles from '../../App.module.css';
 import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
+import Alert from 'react-bootstrap/Alert';
 
 const CreateGroupSlot = (props) => {
   const { onSlotChange, slotValue, id } = props;
@@ -76,6 +77,9 @@ const CreateGroupSlot = (props) => {
             <Form.Text className="ms-auto">({charCount}/100)</Form.Text>
           </div>
         </Form.Group>
+        {content.length > 100 && (
+          <Alert variant="warning">MAx length is 100 characters</Alert>
+        )}
       </div>
     </div>
   );
