@@ -56,6 +56,11 @@ const ApplicationReviews = (props) => {
   const handleClose = () => {
     setShow(false);
     GetSlotData();
+    setPageData({
+      ...pageData,
+      status: 'Awaiting',
+    });
+    setShowProcessing(false);
     setPageNumber(0);
     setErrors({});
     setFormData({
@@ -63,7 +68,6 @@ const ApplicationReviews = (props) => {
       reply_content: '',
     });
     setShowSuccessMsg(false);
-    setShowProcessing(false);
     // refresh parent if request is accepted.
     if (pageData.status === 'Accepted') {
       onChange('Close Slot');
