@@ -2248,17 +2248,25 @@ This helps make sure code is formatted to an industry standard and makes the cod
 
 #### 1.11.4.2. Unit testing
 
+No unit testing has been conducted on this project yet.
+
 [🔝](#14-table-of-contents)
 
 ---
 
 #### 1.11.4.3. Coverage
 
+No unit testing has been conducted on this project yet so there is currently no coverage report.
+
 [🔝](#14-table-of-contents)
 
 ---
 
 ### 1.11.5. User testing
+
+User testing is manual testing features and components to try and find errors/bugs. Then reporting those bugs as an issues to be fixed.
+
+User testing can be found [here](./USERTESTING.md).
 
 [🔝](#14-table-of-contents)
 
