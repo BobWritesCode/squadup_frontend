@@ -4,13 +4,13 @@
 
 **Still to be completed in this README:**
 
-- Testing
   - JavaScript
+    - ESlint
   - Python
     - Linters
     - Unit testing
     - Coverage
-  - User testing
+    - User testing
 
 ## 1.1. Full stack website
 
@@ -118,6 +118,9 @@ Cloudinary.
     - [1.11.1. HTML](#1111-html)
     - [1.11.2. CSS](#1112-css)
     - [1.11.3. JavaScript](#1113-javascript)
+      - [1.11.3.1. React Testing](#11131-react-testing)
+      - [1.11.3.2. Completed Tests](#11132-completed-tests)
+      - [1.11.3.3. Coverage](#11133-coverage)
     - [1.11.4. Python](#1114-python)
       - [1.11.4.1. Linters](#11141-linters)
       - [1.11.4.2. Unit testing](#11142-unit-testing)
@@ -1779,6 +1782,88 @@ I have used a combination of custom stylesheets and Bootstrap for the styling of
 | Table.module.css | none |  | pass |
 
 ### 1.11.3. JavaScript
+
+#### 1.11.3.1. React Testing
+
+[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+
+"The React Testing Library is a very light-weight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices."
+
+#### 1.11.3.2. Completed Tests
+
+The primary focus of the current testing was to mainly focus on the rendering of each component. Making sure that there are no critical errors for any component to load.
+
+<details><summary>Test List</summary> <!-- markdownlint-disable-line -->
+
+![Test List](./README_files/testing/test-list.png)
+</details>
+
+A key mechanic I had to use was mocking. All the API mocks are in [squadup_frontend/src/mocks/handler.js](https://github.com/BobWritesCode/squadup_frontend/blob/master/src/mocks/handler.js).
+
+```js
+//squadup_frontend/src/mocks/handler.js
+
+...
+// Example mock for loading a profile page.
+rest.get(`${baseURL}profiles/28`, (req, res, ctx) => {
+  return res(
+    ctx.json({
+      id: 28,
+      owner: 'JimmyBob',
+      tracker: '',
+      image:
+        'https://res.cloudinary.com/dxjilemam/image/upload/v1/squadup/avatars/download_1_tkm6at',
+      created_at: '2023-05-25T15:36:12.910596Z',
+      is_owner: false,
+      email: 'test@test.me',
+    }),
+  );
+}),
+...
+```
+
+```js
+//squadup_frontend/src/pages/profile/__tests__/Profile.test.js
+
+// Mock useParams to provide the id parameter
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: jest.fn(),
+}));
+
+describe('Profile component test', () => {
+  const renderComponent = () =>
+    render(
+      <Router>
+        <CurrentUserProvider>
+          <ProfileDataProvider>
+            <Profile />
+          </ProfileDataProvider>
+        </CurrentUserProvider>
+      </Router>,
+    );
+
+  it('renders the component', async () => {
+    // Mock Params to use.
+    useParams.mockReturnValue({ id: '28' });
+    renderComponent();
+    // This act makes sure that the render is completed because of any state changes after useEffect() API is resolved.
+    await act(async () => {
+      expect(true).toEqual(true);
+    });
+  });
+});
+```
+
+#### 1.11.3.3. Coverage
+
+There are a significant amount more tests I could do to make sure that all key functions are covered. It is possible to get a report called 'coverage' that shows you in an interactive HTML format what parts of the code have been and not tested.
+
+Here is a snapshot of the current report:
+<details><summary>Coverage snapshot</summary> <!-- markdownlint-disable-line -->
+
+![Coverage snapshot](./README_files/testing/coverage-js.png)
+</details>
 
 ### 1.11.4. Python
 
