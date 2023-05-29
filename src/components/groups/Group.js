@@ -10,6 +10,7 @@ import GroupSlot from './GroupSlot';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import tableStyles from '../../styles/Table.module.css';
 
 const Group = (props) => {
   const { onDelete, group } = props;
@@ -49,7 +50,11 @@ const Group = (props) => {
         const { data } = await axiosReq.get(`/lfg_slots/?lfg=${group.id}`);
         // Set received api data to variable.
         setSlots(data);
-      } catch { /* empty */ } finally { /* empty */ }
+      } catch {
+        /* empty */
+      } finally {
+        /* empty */
+      }
     };
     fetchData();
   }, [group]);
@@ -208,6 +213,7 @@ const Group = (props) => {
                 to={`/profile/${group.owner_id}`}
                 preventScrollReset={true}
                 target={'_blank'}
+                className={`${tableStyles.Link}`}
               >
                 {group.owner}
               </Link>

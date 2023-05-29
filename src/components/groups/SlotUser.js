@@ -13,6 +13,7 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../styles/Forms.module.css';
 import PropTypes from 'prop-types';
+import tableStyles from '../../styles/Table.module.css';
 
 const SlotUser = (props) => {
   const { slotData, onChange } = props;
@@ -190,7 +191,7 @@ const SlotUser = (props) => {
       <Table bordered striped hover variant="dark" className={'mb-1'}>
         <thead>
           <tr>
-            <th>User</th>
+            <th>Requester</th>
             <th>Role</th>
             <th>Rank</th>
           </tr>
@@ -202,6 +203,7 @@ const SlotUser = (props) => {
                 to={`/profile/${acceptedRequest.owner}`}
                 preventScrollReset={true}
                 target={'_blank'}
+                className={`${tableStyles.Link}`}
               >
                 {acceptedRequest.owner}
               </Link>
