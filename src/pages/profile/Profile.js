@@ -54,7 +54,9 @@ const Profile = () => {
           ...prevState,
           pageProfile: { results: [data] },
         }));
-      } catch { /* empty */ } finally {
+      } catch {
+        /* empty */
+      } finally {
         setHasLoaded(true);
       }
     };
@@ -189,13 +191,11 @@ const Profile = () => {
                     {tracker}
                   </a>
                 ) : (
-                  ''
+                  <em>No tracker ID given yet.</em>
                 )}
               </span>
-              {is_owner ? (
+              {is_owner && (
                 <TrackerUpdate onTrackerChange={handleTrackerChange} />
-              ) : (
-                <em>No tracker ID given yet.</em>
               )}
             </p>
           </div>
