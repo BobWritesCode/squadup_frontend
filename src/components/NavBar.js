@@ -13,6 +13,7 @@ import axios from 'axios';
 import { removeTokenTimestamp } from '../utils/utils';
 import { axiosDefaultsBaseUrl } from '../api/axiosDefaults';
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import SearchBar from './utils/SearchBar';
 
 /**
  * Navigation bar component.
@@ -145,6 +146,7 @@ const NavBar = () => {
             {!currentUser && signUpLink}
             {currentUser && lfgLink}
             {currentUser && profileLink}
+            {currentUser && <SearchBar/>}
             {currentUser && logoutLink}
           </Nav>
         </Navbar.Collapse>
