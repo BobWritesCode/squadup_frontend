@@ -12,6 +12,7 @@ import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 import LoadSpinner from '../Spinner';
+import PropTypes from 'prop-types';
 
 const AvatarUpdate = (props) => {
   const { onAvatarChange, avatar } = props;
@@ -135,6 +136,12 @@ const AvatarUpdate = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+AvatarUpdate.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  onAvatarChange: PropTypes.func.isRequired,
 };
 
 export default AvatarUpdate;

@@ -4,6 +4,7 @@ import SlotApply from './SlotApply';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import ApplicationReviews from './ApplicationReviews';
 import SlotUser from './SlotUser';
+import PropTypes from 'prop-types';
 
 const GroupSlot = (props) => {
   const { slotData } = props;
@@ -23,14 +24,14 @@ const GroupSlot = (props) => {
 
   const handleRefresh = (e) => {
     switch (e) {
-      case 'Close Slot':
-        slotData.status = 'Closed';
-        break;
-      case 'Open Slot':
-        slotData.status = 'Open';
-        break;
-      default:
-        break;
+    case 'Close Slot':
+      slotData.status = 'Closed';
+      break;
+    case 'Open Slot':
+      slotData.status = 'Open';
+      break;
+    default:
+      break;
     }
     setRefresh(!refresh);
   };
@@ -106,6 +107,11 @@ const GroupSlot = (props) => {
       {SmallScreen}
     </>
   );
+};
+
+// Props validation
+GroupSlot.propTypes = {
+  slotData: PropTypes.object.isRequired,
 };
 
 export default GroupSlot;

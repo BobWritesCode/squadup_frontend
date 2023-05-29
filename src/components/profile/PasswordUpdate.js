@@ -52,7 +52,7 @@ const PasswordUpdate = () => {
     formData.append('new_password1', new_password1);
     formData.append('new_password2', new_password2);
     try {
-      await axiosReq.post(`/dj-rest-auth/password/change/`, formData);
+      await axiosReq.post('/dj-rest-auth/password/change/', formData);
       handleClose();
     } catch (err) {
       setErrors(err.response?.data);

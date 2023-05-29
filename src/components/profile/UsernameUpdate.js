@@ -13,6 +13,7 @@ import btnStyles from '../../styles/Buttons.module.css';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 import LoadSpinner from '../Spinner';
+import PropTypes from 'prop-types';
 
 const UsernameUpdate = (props) => {
   const { onUsernameChange } = props;
@@ -85,7 +86,7 @@ const UsernameUpdate = (props) => {
     const apiData = new FormData();
     apiData.append('username', username);
     try {
-      await axiosReq.put(`/dj-rest-auth/user/`, apiData);
+      await axiosReq.put('/dj-rest-auth/user/', apiData);
       // If change successful update authentication in browser.
       setCurrentUser((prevUser) => ({
         ...prevUser,
@@ -159,6 +160,11 @@ const UsernameUpdate = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+UsernameUpdate.propTypes = {
+  onUsernameChange: PropTypes.func.isRequired,
 };
 
 export default UsernameUpdate;

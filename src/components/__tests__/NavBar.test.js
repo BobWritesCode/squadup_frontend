@@ -1,3 +1,5 @@
+/* global describe it expect*/
+import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import NavBar from '../NavBar';
 import { BrowserRouter as Router } from 'react-router-dom';

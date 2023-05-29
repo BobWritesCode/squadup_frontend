@@ -9,6 +9,7 @@ import LoadSpinner from '../Spinner';
 import GroupSlot from './GroupSlot';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Group = (props) => {
   const { onDelete, group } = props;
@@ -48,9 +49,7 @@ const Group = (props) => {
         const { data } = await axiosReq.get(`/lfg_slots/?lfg=${group.id}`);
         // Set received api data to variable.
         setSlots(data);
-      } catch {
-      } finally {
-      }
+      } catch { /* empty */ } finally { /* empty */ }
     };
     fetchData();
   }, [group]);
@@ -81,7 +80,7 @@ const Group = (props) => {
             <p>Getting group slots...</p>
           </div>
         ) : (
-          <Table hover variant="dark" className={`mb-1`}>
+          <Table hover variant="dark" className={'mb-1'}>
             <tbody>
               {slots.results?.map((gs) => (
                 <GroupSlot key={gs.id} slotData={gs} />
@@ -102,7 +101,7 @@ const Group = (props) => {
             <p>Getting group slots...</p>
           </div>
         ) : (
-          <Table bordered striped hover variant="dark" className={`mb-1`}>
+          <Table bordered striped hover variant="dark" className={'mb-1'}>
             <thead>
               <tr>
                 <th>Status</th>
@@ -129,7 +128,7 @@ const Group = (props) => {
         striped
         hover
         variant="dark"
-        className={`mb-1 d-table d-md-none`}
+        className={'mb-1 d-table d-md-none'}
       >
         <thead>
           <tr>
@@ -189,7 +188,7 @@ const Group = (props) => {
         striped
         hover
         variant="dark"
-        className={`mb-1 d-none d-md-table`}
+        className={'mb-1 d-none d-md-table'}
       >
         <thead>
           <tr>
@@ -231,7 +230,7 @@ const Group = (props) => {
       </Table>
     </>
   );
-  const ShowGroup = (group) => (
+  const ShowGroup = () => (
     <>
       <div>
         <div className="d-flex">
@@ -264,6 +263,11 @@ const Group = (props) => {
       }
     </div>
   );
+};
+
+Group.propTypes = {
+  group: PropTypes.object.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Group;

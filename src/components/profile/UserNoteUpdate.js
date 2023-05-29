@@ -9,6 +9,7 @@ import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 import LoadSpinner from '../Spinner';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const UserNoteUpdate = (props) => {
   const { onUserNoteChange, userNote } = props;
@@ -78,7 +79,7 @@ const UserNoteUpdate = (props) => {
       apiData.append('target_user', id);
       if (!userNote.id) {
         // Create new object in database.
-        const { data } = await axiosReq.post(`/usernotes/`, apiData);
+        const { data } = await axiosReq.post('/usernotes/', apiData);
         // Update parent component.
         onUserNoteChange(data);
       } else {
@@ -113,7 +114,7 @@ const UserNoteUpdate = (props) => {
           <Form.Label>Note:</Form.Label>
           <div className="d-flex flex-column w-100">
             <Form.Control
-              className={`mb-0`}
+              className={'mb-0'}
               as="textarea"
               placeholder="Enter desired note"
               name="content"
@@ -170,6 +171,12 @@ const UserNoteUpdate = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+UserNoteUpdate.propTypes = {
+  onUserNoteChange: PropTypes.object.isRequired,
+  userNote: PropTypes.object.isRequired,
 };
 
 export default UserNoteUpdate;

@@ -10,34 +10,35 @@ import ascendant from '../../assets/rank_badges/ascendant.png';
 import immortal from '../../assets/rank_badges/immortal.webp';
 import radiant from '../../assets/rank_badges/radiant.webp';
 import unranked from '../../assets/rank_badges/unranked.webp';
+import PropTypes from 'prop-types';
 
 const RankBadge = (props) => {
   const { rank, width = '30px' } = props;
 
   const Badge = () => {
     switch (Number(rank)) {
-      case 0:
-        return unranked;
-      case 1:
-        return iron;
-      case 2:
-        return bronze;
-      case 3:
-        return silver;
-      case 4:
-        return gold;
-      case 5:
-        return platinum;
-      case 6:
-        return diamond;
-      case 7:
-        return ascendant;
-      case 8:
-        return immortal;
-      case 9:
-        return radiant;
-      default:
-        return unranked;
+    case 0:
+      return unranked;
+    case 1:
+      return iron;
+    case 2:
+      return bronze;
+    case 3:
+      return silver;
+    case 4:
+      return gold;
+    case 5:
+      return platinum;
+    case 6:
+      return diamond;
+    case 7:
+      return ascendant;
+    case 8:
+      return immortal;
+    case 9:
+      return radiant;
+    default:
+      return unranked;
     }
   };
 
@@ -46,6 +47,12 @@ const RankBadge = (props) => {
       <Image src={Badge()} width={width} />
     </>
   );
+};
+
+// Props validation
+RankBadge.propTypes = {
+  rank: PropTypes.number.isRequired,
+  width: PropTypes.string
 };
 
 export default RankBadge;

@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Route, Routes } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
@@ -9,7 +10,6 @@ import SignInForm from './pages/auth/SignInForm';
 import Profile from './pages/profile/Profile';
 import LFGPage from './pages/lfg/LFGPage';
 import myApplicationsSignalContext from './contexts/myApplicationsSignalContext';
-import { useState } from 'react';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import Page404 from './pages/Page404';

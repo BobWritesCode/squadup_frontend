@@ -205,8 +205,8 @@ const GroupList = () => {
         <h5>Filters:</h5>
 
         <Form className={`${formStyles.Form} d-flex flex-column`}>
-          <div className={`d-flex flex-row w-100 `}>
-            <div className={`d-flex flex-column flex-md-row w-50`}>
+          <div className={'d-flex flex-row w-100 '}>
+            <div className={'d-flex flex-column flex-md-row w-50'}>
               <Form.Group
                 className="d-flex flex-column w-100 w-md-50"
                 controlId="game_type"
@@ -245,7 +245,7 @@ const GroupList = () => {
                 </Form.Select>
               </Form.Group>
             </div>
-            <div className={`d-flex flex-column flex-md-row w-50`}>
+            <div className={'d-flex flex-column flex-md-row w-50'}>
               <Form.Group
                 className="ms-3 d-flex flex-column w-100 w-md-50  pe-3 pe-md-0"
                 controlId="lowest_rank"

@@ -1,3 +1,5 @@
+/* global describe it expect jest*/
+
 import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router, useParams } from 'react-router-dom';

@@ -12,7 +12,7 @@ const Footer = () => {
 
   const Socials = (
     <>
-      <div className={`d-flex flex-row`}>
+      <div className={'d-flex flex-row'}>
         <a
           href="https://github.com/BobWritesCode"
           target="_blank"
@@ -34,11 +34,11 @@ const Footer = () => {
   return (
     <>
       <Container fluid className={footerStyles.Main}>
-        <Row className={`justify-content-center`}>
-          <Col xs="11" className={`d-flex flex-column align-items-center`}>
+        <Row className={'justify-content-center'}>
+          <Col xs="11" className={'d-flex flex-column align-items-center'}>
             <p className="mt-2 mb-1">Why not connect with us?</p>
             {Socials}
-            <Link to={`/`}>
+            <Link to={'/'}>
               <img
                 src={logo}
                 alt="Squad Up logo"

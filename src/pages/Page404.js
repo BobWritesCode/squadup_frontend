@@ -24,7 +24,7 @@ const Page404 = () => {
       <Row className="d-flex justify-content-center">
         <Col className="d-flex flex-column align-items-center">
           <h1 className="mb-4">How did you even get here?</h1>
-          <h3 className="mb-4">Let's get you home!</h3>
+          <h3 className="mb-4">Let&apos;s get you home!</h3>
           <Button
             variant="warning"
             type="button"

@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../styles/Forms.module.css';
+import PropTypes from 'prop-types';
 
 const ApplicationReviews = (props) => {
   const { slotData, onChange } = props;
@@ -359,46 +360,46 @@ const ApplicationReviews = (props) => {
         </>
       ) : pageNumber >= applications.count - 3 &&
         pageNumber <= applications.count ? (
-        <>
-          {/* Set up pagination last-5 to last-1, if the page is within 3 of the end */}
-          {Array(5)
-            .fill()
-            .map((_, i) =>
-              pageNumber === applications.count - 6 + i ? (
-                <Pagination.Item
-                  key={applications.count - 6 + i}
-                  active
-                  onClick={() => setPageNumber(applications.count - 6 + i)}
-                >
-                  {applications.count - 5 + i}
-                </Pagination.Item>
-              ) : (
-                <Pagination.Item
-                  key={applications.count - 6 + i}
-                  onClick={() => setPageNumber(applications.count - 6 + i)}
-                >
-                  {applications.count - 5 + i}
-                </Pagination.Item>
-              ),
-            )}
-        </>
-      ) : (
-        <>
-          <Pagination.Item onClick={() => setPageNumber(pageNumber - 2)}>
-            {pageNumber - 1}
-          </Pagination.Item>
-          <Pagination.Item onClick={() => setPageNumber(pageNumber - 1)}>
-            {pageNumber}
-          </Pagination.Item>
-          <Pagination.Item active>{pageNumber + 1}</Pagination.Item>
-          <Pagination.Item onClick={() => setPageNumber(pageNumber + 1)}>
-            {pageNumber + 2}
-          </Pagination.Item>
-          <Pagination.Item onClick={() => setPageNumber(pageNumber + 2)}>
-            {pageNumber + 3}
-          </Pagination.Item>
-        </>
-      )}
+          <>
+            {/* Set up pagination last-5 to last-1, if the page is within 3 of the end */}
+            {Array(5)
+              .fill()
+              .map((_, i) =>
+                pageNumber === applications.count - 6 + i ? (
+                  <Pagination.Item
+                    key={applications.count - 6 + i}
+                    active
+                    onClick={() => setPageNumber(applications.count - 6 + i)}
+                  >
+                    {applications.count - 5 + i}
+                  </Pagination.Item>
+                ) : (
+                  <Pagination.Item
+                    key={applications.count - 6 + i}
+                    onClick={() => setPageNumber(applications.count - 6 + i)}
+                  >
+                    {applications.count - 5 + i}
+                  </Pagination.Item>
+                ),
+              )}
+          </>
+        ) : (
+          <>
+            <Pagination.Item onClick={() => setPageNumber(pageNumber - 2)}>
+              {pageNumber - 1}
+            </Pagination.Item>
+            <Pagination.Item onClick={() => setPageNumber(pageNumber - 1)}>
+              {pageNumber}
+            </Pagination.Item>
+            <Pagination.Item active>{pageNumber + 1}</Pagination.Item>
+            <Pagination.Item onClick={() => setPageNumber(pageNumber + 1)}>
+              {pageNumber + 2}
+            </Pagination.Item>
+            <Pagination.Item onClick={() => setPageNumber(pageNumber + 2)}>
+              {pageNumber + 3}
+            </Pagination.Item>
+          </>
+        )}
 
       <Pagination.Ellipsis disabled />
 
@@ -534,13 +535,7 @@ const ApplicationReviews = (props) => {
    */
   const ShowRequest = (
     <>
-      <Table
-        bordered
-        striped
-        hover
-        variant="dark"
-        className={`mb-1`}
-      >
+      <Table bordered striped hover variant="dark" className={'mb-1'}>
         <thead>
           <tr>
             <th>User</th>
@@ -642,6 +637,11 @@ const ApplicationReviews = (props) => {
       </Modal>
     </>
   );
+};
+
+ApplicationReviews.propTypes = {
+  slotData: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default ApplicationReviews;

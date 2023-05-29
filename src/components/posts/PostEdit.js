@@ -8,6 +8,7 @@ import { axiosReq } from '../../contexts/CurrentUserContext';
 import { Image } from 'react-bootstrap';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
+import PropTypes from 'prop-types';
 
 const PostEdit = (props) => {
   const { onEditPost, post } = props;
@@ -86,7 +87,7 @@ const PostEdit = (props) => {
             <Form.Group className="mb-3" controlId="content">
               <div className="d-flex flex-column w-100">
                 <Form.Control
-                  className={`mb-0`}
+                  className={'mb-0'}
                   as="textarea"
                   placeholder="Enter desired note"
                   name="content"
@@ -125,6 +126,12 @@ const PostEdit = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+PostEdit.propTypes = {
+  post: PropTypes.object.isRequired,
+  onEditPost: PropTypes.func.isRequired,
 };
 
 export default PostEdit;

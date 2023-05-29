@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import appStyles from '../../App.module.css';
 import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types';
 
 const CreateGroupSlot = (props) => {
   const { onSlotChange, slotValue, id } = props;
@@ -29,16 +30,16 @@ const CreateGroupSlot = (props) => {
   // Allow user to edit form.
   const handleChange = (e) => {
     switch (e.target.name) {
-      case 'role':
-        setRole(e.target.value);
-        setFormData({ ...formData, role: e.target.value });
-        break;
-      case 'content':
-        setContent(e.target.value);
-        setFormData({ ...formData, content: e.target.value });
-        break;
-      default:
-        break;
+    case 'role':
+      setRole(e.target.value);
+      setFormData({ ...formData, role: e.target.value });
+      break;
+    case 'content':
+      setContent(e.target.value);
+      setFormData({ ...formData, content: e.target.value });
+      break;
+    default:
+      break;
     }
   };
 
@@ -80,6 +81,13 @@ const CreateGroupSlot = (props) => {
   );
 
   return <>{form}</>;
+};
+
+// Props validation
+CreateGroupSlot.propTypes = {
+  onSlotChange: PropTypes.func.isRequired,
+  slotValue: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default CreateGroupSlot;

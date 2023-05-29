@@ -1,3 +1,4 @@
+/* global describe it*/
 import React from 'react';
 import { render } from '@testing-library/react';
 import LoadSpinner from '../Spinner';

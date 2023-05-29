@@ -8,6 +8,7 @@ import LoadSpinner from '../Spinner';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import btnStyles from '../../styles/Buttons.module.css';
 import formStyles from '../../styles/Forms.module.css';
+import PropTypes from 'prop-types';
 
 const NewPost = (props) => {
   const { onNewPost } = props;
@@ -63,7 +64,7 @@ const NewPost = (props) => {
     apiData.append('image', apiImageFile);
     // Try block to submit form to api and get response
     try {
-      const { data } = await axiosReq.post(`/posts/`, apiData);
+      const { data } = await axiosReq.post('/posts/', apiData);
       setFormData({
         textbox: '',
         imagePath: '',
@@ -97,7 +98,7 @@ const NewPost = (props) => {
       <Form.Group className="mb-0" controlId="textbox">
         <div className="d-flex flex-column w-100">
           <Form.Control
-            className={`mb-0`}
+            className={'mb-0'}
             as="textarea"
             placeholder=""
             name="textbox"
@@ -154,7 +155,7 @@ const NewPost = (props) => {
           style={{ display: 'none' }}
         />
       </InputGroup>
-      <div className={`d-flex justify-content-between`}>
+      <div className={'d-flex justify-content-between'}>
         {
           // Button to add an image.
         }
@@ -224,6 +225,11 @@ const NewPost = (props) => {
 
   // Render, show spinner until form loaded.
   return <div>{hasLoaded ? newPostForm : <LoadSpinner />}</div>;
+};
+
+// Props validation
+NewPost.propTypes = {
+  onNewPost: PropTypes.func.isRequired,
 };
 
 export default NewPost;

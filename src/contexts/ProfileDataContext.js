@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const ProfileDataContext = createContext();
 const SetProfileDataContext = createContext();
@@ -18,4 +19,9 @@ export const ProfileDataProvider = ({ children }) => {
       </SetProfileDataContext.Provider>
     </ProfileDataContext.Provider>
   );
+};
+
+// Props validation
+ProfileDataProvider.propTypes = {
+  children: PropTypes.any,
 };

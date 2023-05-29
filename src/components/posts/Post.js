@@ -6,6 +6,7 @@ import Image from 'react-bootstrap/Image';
 import ReactTimeago from 'react-timeago';
 import PostEdit from './PostEdit';
 import PostDelete from './PostDelete';
+import PropTypes from 'prop-types';
 
 const Post = (props) => {
   const { id, created_at, updated_at, content, image } = props;
@@ -33,7 +34,7 @@ const Post = (props) => {
   };
 
   const postButtons = (
-    <div className={`d-flex flex-row-reverse`}>
+    <div className={'d-flex flex-row-reverse'}>
       <div className={`d-inline-flex mb-2 w-0 ${btnStyles.Panel}`}>
         <PostEdit onEditPost={handleEditPost} post={post} />
         <PostDelete onDeletePost={handleDeletePost} post={post} />
@@ -80,6 +81,15 @@ const Post = (props) => {
       </div>
     </>
   );
+};
+
+// Props validation
+Post.propTypes = {
+  id: PropTypes.number.isRequired,
+  created_at: PropTypes.number.isRequired,
+  updated_at: PropTypes.number,
+  content: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default Post;

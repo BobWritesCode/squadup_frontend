@@ -9,6 +9,7 @@ import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 import LoadSpinner from '../Spinner';
+import PropTypes from 'prop-types';
 
 const EmailUpdate = (props) => {
   const { onEmailChange } = props;
@@ -84,7 +85,7 @@ const EmailUpdate = (props) => {
                 onChange={handleChange}
               />
               <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                We&apo;ll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
 
@@ -118,6 +119,11 @@ const EmailUpdate = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+EmailUpdate.propTypes = {
+  onEmailChange: PropTypes.func.isRequired,
 };
 
 export default EmailUpdate;

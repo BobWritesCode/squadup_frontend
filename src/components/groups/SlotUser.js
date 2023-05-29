@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import formStyles from '../../styles/Forms.module.css';
+import PropTypes from 'prop-types';
 
 const SlotUser = (props) => {
   const { slotData, onChange } = props;
@@ -115,8 +116,7 @@ const SlotUser = (props) => {
     } catch (err) {
       // log errors to console.
       console.log(err);
-    } finally {
-    }
+    } finally { /* empty */ }
   };
 
   /**
@@ -137,7 +137,7 @@ const SlotUser = (props) => {
           className="mb-2 d-flex flex-column"
           controlId="confirmKickText"
         >
-          <Form.Label>Type 'kick' to confirm kick:</Form.Label>
+          <Form.Label>Type &apos;kick&apos; to confirm kick:</Form.Label>
           <div className="d-flex flex-column w-100">
             <Form.Control
               className={`${formStyles.Form} mb-0`}
@@ -187,7 +187,7 @@ const SlotUser = (props) => {
    */
   const ShowRequest = (
     <>
-      <Table bordered striped hover variant="dark" className={`mb-1`}>
+      <Table bordered striped hover variant="dark" className={'mb-1'}>
         <thead>
           <tr>
             <th>User</th>
@@ -274,6 +274,12 @@ const SlotUser = (props) => {
       )}
     </>
   );
+};
+
+// Props validation
+SlotUser.propTypes = {
+  slotData: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default SlotUser;

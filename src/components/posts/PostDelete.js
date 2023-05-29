@@ -8,6 +8,7 @@ import modalStyles from '../../styles/Modal.module.css';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import { Image } from 'react-bootstrap';
 import formStyles from '../../styles/Forms.module.css';
+import PropTypes from 'prop-types';
 
 const PostDelete = (props) => {
   const { onDeletePost, post } = props;
@@ -102,6 +103,12 @@ const PostDelete = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+PostDelete.propTypes = {
+  post: PropTypes.object.isRequired,
+  onDeletePost: PropTypes.func.isRequired,
 };
 
 export default PostDelete;

@@ -13,6 +13,7 @@ import RankBadge from '../utils/RankBadge';
 import appStyles from '../../App.module.css';
 import Badge from 'react-bootstrap/Badge';
 import myApplicationsSignalContext from '../../contexts/myApplicationsSignalContext';
+import PropTypes from 'prop-types';
 
 const SlotApply = (props) => {
   const { slotData, slotID, onUpdate } = props;
@@ -42,13 +43,13 @@ const SlotApply = (props) => {
 
   const Status = (s) => {
     switch (s) {
-      case 'Awaiting':
-        return <Badge bg="warning">Awaiting</Badge>;
-      case 'Accepted':
-        return <Badge bg="success">Accepted</Badge>;
-      case 'Rejected':
-        return <Badge bg="danger">Rejected</Badge>;
-      default:
+    case 'Awaiting':
+      return <Badge bg="warning">Awaiting</Badge>;
+    case 'Accepted':
+      return <Badge bg="success">Accepted</Badge>;
+    case 'Rejected':
+      return <Badge bg="danger">Rejected</Badge>;
+    default:
     }
   };
 
@@ -130,7 +131,7 @@ const SlotApply = (props) => {
     setErrors({});
     disableInputs(true);
     try {
-      await axiosReq.post(`/lfg_slots_apply/`, formData);
+      await axiosReq.post('/lfg_slots_apply/', formData);
       setSuccessMessage('Application submitted.');
       onUpdate();
     } catch (err) {
@@ -422,6 +423,13 @@ const SlotApply = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+SlotApply.propTypes = {
+  slotData: PropTypes.object.isRequired,
+  slotID: PropTypes.number.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default SlotApply;

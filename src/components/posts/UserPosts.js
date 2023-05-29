@@ -5,6 +5,7 @@ import { axiosReq } from '../../contexts/CurrentUserContext';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 import appStyles from '../../App.module.css';
+import PropTypes from 'prop-types';
 
 const UserPosts = (props) => {
   const { profileId, latestNewPost } = props;
@@ -47,8 +48,7 @@ const UserPosts = (props) => {
         const { data } = await axiosReq.get(`/posts/?owner=${profileId}`);
         // Set received api data to variable.
         setPosts(data);
-      } catch {
-      } finally {
+      } catch { /* empty */ } finally {
         // Remove spinner from DOM.
         setHasLoaded(true);
       }
@@ -83,6 +83,12 @@ const UserPosts = (props) => {
 
   // Render, show spinner until form loaded.
   return <div>{hasLoaded ? ShowMain : <LoadSpinner />}</div>;
+};
+
+// Props validation
+UserPosts.propTypes = {
+  profileId: PropTypes.number.isRequired,
+  latestNewPost: PropTypes.number,
 };
 
 export default UserPosts;

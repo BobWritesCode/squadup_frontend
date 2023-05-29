@@ -9,6 +9,7 @@ import formStyles from '../../styles/Forms.module.css';
 import CreateGroupSlot from './CreateGroupSlot';
 import { axiosReq } from '../../contexts/CurrentUserContext';
 import LoadSpinner from '../Spinner';
+import PropTypes from 'prop-types';
 
 const CreateGroup = (props) => {
   const { onNewGroup } = props;
@@ -72,7 +73,7 @@ const CreateGroup = (props) => {
   };
 
   // Add a player slot to the form
-  const handleAddSlot = (e) => {
+  const handleAddSlot = () => {
     const newSlot = {
       id: slots.length,
       role: 'Any',
@@ -83,7 +84,7 @@ const CreateGroup = (props) => {
   };
 
   //  Remove a player slot to the form
-  const handleRemoveSlot = (e) => {
+  const handleRemoveSlot = () => {
     slots.pop();
     setSlots(slots);
     setCurrentTeamSize(formData.max_team_size - slots.length);
@@ -125,7 +126,7 @@ const CreateGroup = (props) => {
       slots: slots,
     };
     try {
-      const { data } = await axiosReq.post(`/lfg/`, JSON.stringify(ctx));
+      const { data } = await axiosReq.post('/lfg/', JSON.stringify(ctx));
       setSuccessMessage('Group created.');
       onNewGroup(data.slot_id);
     } catch (err) {
@@ -352,6 +353,11 @@ const CreateGroup = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+CreateGroup.propTypes = {
+  onNewGroup: PropTypes.func.isRequired,
 };
 
 export default CreateGroup;

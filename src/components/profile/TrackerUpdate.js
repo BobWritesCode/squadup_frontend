@@ -9,6 +9,7 @@ import { axiosReq } from '../../contexts/CurrentUserContext';
 import modalStyles from '../../styles/Modal.module.css';
 import formStyles from '../../styles/Forms.module.css';
 import LoadSpinner from '../Spinner';
+import PropTypes from 'prop-types';
 
 const TrackerUpdate = (props) => {
   const { onTrackerChange } = props;
@@ -137,6 +138,11 @@ const TrackerUpdate = (props) => {
       </Modal>
     </>
   );
+};
+
+// Props validation
+TrackerUpdate.propTypes = {
+  onTrackerChange: PropTypes.func.isRequired,
 };
 
 export default TrackerUpdate;

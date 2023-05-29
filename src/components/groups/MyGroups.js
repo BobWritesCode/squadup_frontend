@@ -65,11 +65,11 @@ const MyGroups = () => {
           !hasLoaded ? (
             <LoadSpinner />
           ) : // Check user has only one group open
-          groups.results?.length < 1 ? (
-            <CreateGroup onNewGroup={handleNewGroup} />
-          ) : (
-            <p>You can have one open group at a time.</p>
-          )
+            groups.results?.length < 1 ? (
+              <CreateGroup onNewGroup={handleNewGroup} />
+            ) : (
+              <p>You can have one open group at a time.</p>
+            )
         }
         {groups.results.length > 0 &&
           groups.results.map((group) => (

@@ -77,7 +77,7 @@ const HomePage = () => {
         <Col className="d-flex flex-column align-items-center text-center">
           <h1>SQUAD UP</h1>
           <h3>FIND YOUR NEXT TEAM!</h3>
-          <p className={`mb-4`}>
+          <p className={'mb-4'}>
             A site to promote your team or find one to join.
           </p>
           <p style={{ fontWeight: '600', textDecoration: 'underline' }}>
@@ -88,7 +88,7 @@ const HomePage = () => {
               Find a team{' '}
               <span>
                 that requires your skill set by filtering out all the ones that
-                don't.
+                don&apos;t.
               </span>
             </li>
             <li className="list-group-item">
@@ -105,7 +105,7 @@ const HomePage = () => {
               </span>
             </li>
           </ul>
-          <h3 className={`mb-3 mt-0`}>Quick links:</h3>
+          <h3 className={'mb-3 mt-0'}>Quick links:</h3>
           <div className="d-flex flex-column justify-content-center flex-sm-row w-75 align-items-center w-sm-75 w-md-50">
             {ShowButtons}
           </div>
