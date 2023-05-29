@@ -130,10 +130,7 @@ const GroupList = () => {
 
         // Set received api data to variable.
         setGroups(data);
-      } catch (err) {
-        // Show errors to the console.
-        console.log('Error: Unexpected error.');
-      } finally {
+      } catch { /* empty */ } finally {
         // Remove spinner
         setHasLoaded(true);
       }

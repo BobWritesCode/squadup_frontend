@@ -67,7 +67,6 @@ const PostEdit = (props) => {
       onEditPost(data.post);
       handleClose();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
     }
   };

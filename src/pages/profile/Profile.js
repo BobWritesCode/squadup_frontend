@@ -54,9 +54,7 @@ const Profile = () => {
           ...prevState,
           pageProfile: { results: [data] },
         }));
-      } catch (err) {
-        console.log(err);
-      } finally {
+      } catch { /* empty */ } finally {
         setHasLoaded(true);
       }
     };

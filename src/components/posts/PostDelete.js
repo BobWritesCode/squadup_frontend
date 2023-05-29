@@ -47,7 +47,6 @@ const PostDelete = (props) => {
       onDeletePost();
       handleClose();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
     }
   };

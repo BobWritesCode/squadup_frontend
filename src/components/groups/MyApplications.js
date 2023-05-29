@@ -32,9 +32,7 @@ const MyApplications = () => {
           );
           // Set received api data to variable.
           setApplications(data);
-        } catch (err) {
-          console.log('Error: Unexpected error.');
-        } finally {
+        } catch { /* empty */ } finally {
           // Remove spinner
           setHasLoaded(true);
         }

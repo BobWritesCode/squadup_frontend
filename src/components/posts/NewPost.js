@@ -74,7 +74,6 @@ const NewPost = (props) => {
       // Show any success messages received from API.
       setSuccess(data);
     } catch (err) {
-      console.log(err);
       if (err.response?.data !== 401) {
         // Show any error messages received from API.
         setErrors(err.response?.data);

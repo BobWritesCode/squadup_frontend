@@ -67,10 +67,7 @@ const SlotUser = (props) => {
         } else {
           setShowReopenButton(true);
         }
-      } catch (err) {
-        // show errors in console.
-        console.log(err);
-      } finally {
+      } catch { /* empty */ } finally {
         setHasLoaded(true);
       }
     };
@@ -114,10 +111,7 @@ const SlotUser = (props) => {
       apiData.append('status', 'Open');
       await axiosReq.patch(`/lfg_slots_reopen/${slotData.id}/`, apiData);
       onChange('Open Slot');
-    } catch (err) {
-      // log errors to console.
-      console.log(err);
-    } finally { /* empty */ }
+    } catch { /* empty */ } finally { /* empty */ }
   };
 
   /**

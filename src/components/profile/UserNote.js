@@ -34,10 +34,7 @@ const UserNote = () => {
           if (data.results.length > 0) {
             setUserNote(data.results[0]);
           }
-        } catch (err) {
-          // Show errors in console.
-          console.log(err);
-        } finally {
+        } catch { /* empty */ } finally {
           // Remove spinner.
           setHasLoaded(true);
         }

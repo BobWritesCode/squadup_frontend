@@ -31,9 +31,7 @@ const Group = (props) => {
       // Delete group from database
       await axiosReq.delete(`/lfg/${groupID}`);
       setShowGroupDeleted(true);
-    } catch (err) {
-      console.log('Error while deleting group.');
-    } finally {
+    } catch { /* empty */ } finally {
       // Hide spinner
       setShowSpinner(false);
       // Hides self after time expires.

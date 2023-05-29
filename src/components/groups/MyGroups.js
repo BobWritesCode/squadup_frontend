@@ -19,9 +19,7 @@ const MyGroups = () => {
           const { data } = await axiosReq.get(`/lfg/?owner=${currentUser.pk}`);
           // Set received api data to variable.
           setGroups(data);
-        } catch (err) {
-          console.log('Error: Unexpected error.');
-        } finally {
+        } catch { /* empty */ } finally {
           // Remove spinner
           setHasLoaded(true);
         }
@@ -39,9 +37,7 @@ const MyGroups = () => {
         ...prevGroups,
         results: [data, ...prevGroups.results],
       }));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch { /* empty */ } finally { /* empty */ }
   };
 
   const handleDeleteGroup = (groupId) => {

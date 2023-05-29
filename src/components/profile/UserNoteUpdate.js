@@ -94,8 +94,6 @@ const UserNoteUpdate = (props) => {
       // Close modal
       handleClose();
     } catch (err) {
-      // Log error messages to the console.
-      console.log(err);
       // Displayed any expected error messages
       setErrors(err.response?.data);
     } finally {

@@ -33,9 +33,7 @@ const UserPosts = (props) => {
             ...prevPosts,
             results: [newPost, ...prevPosts.results],
           }));
-        } catch {
-          console.log('error');
-        }
+        } catch { /* empty */ } finally { /* empty */ }
       };
       fetchData();
     }

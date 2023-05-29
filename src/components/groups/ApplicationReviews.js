@@ -95,10 +95,7 @@ const ApplicationReviews = (props) => {
         ]);
         // Set received api data to variable.
         setApplications(list);
-      } catch (err) {
-        // show errors in console.
-        console.log(err);
-      } finally {
+      } catch { /* empty */ } finally {
         setButtonSpinner(false);
       }
     };
@@ -134,8 +131,6 @@ const ApplicationReviews = (props) => {
           );
           setPageData(data.results[0]);
         } catch (err) {
-          // display any errors in console.
-          console.log(err);
           // show expected errors in DOM.
           setErrors(err.response?.data);
         } finally {
@@ -201,8 +196,6 @@ const ApplicationReviews = (props) => {
       // hide pagination
       setShowPagination(false);
     } catch (err) {
-      // log errors to console.
-      console.log(err);
       // show any expected errors to user.
       setErrors(err.response?.data);
       // reenable user form controls.
@@ -255,8 +248,6 @@ const ApplicationReviews = (props) => {
         status: 'Rejected',
       });
     } catch (err) {
-      // log errors to console.
-      console.log(err);
       // show any expected errors to user.
       setErrors(err.response?.data);
       // reenable user controls.

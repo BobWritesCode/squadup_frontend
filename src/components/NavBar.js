@@ -38,8 +38,7 @@ const NavBar = () => {
       // Remove token of logged in user.
       removeTokenTimestamp();
     } catch (err) {
-      // Show errors in console.
-      console.log(err);
+      /* empty */
     }
   };
 

@@ -119,7 +119,6 @@ const SlotApply = (props) => {
       }
       setHasLoaded(true);
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
       disableInputs(false);
     }
@@ -135,7 +134,6 @@ const SlotApply = (props) => {
       setSuccessMessage('Application submitted.');
       onUpdate();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
       disableInputs(false);
     }
@@ -151,7 +149,6 @@ const SlotApply = (props) => {
       setDeleted(true);
       onUpdate();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
       disableInputs(false);
     }
@@ -179,7 +176,6 @@ const SlotApply = (props) => {
       disableInputs(false);
       onUpdate();
     } catch (err) {
-      console.log(err);
       setErrors(err.response?.data);
       disableInputs(false);
     }
