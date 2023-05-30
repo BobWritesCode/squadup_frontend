@@ -2291,6 +2291,8 @@ When a bug is identified a user can raise an issue in GitHub to flag it. The use
 
 [Link to unresolved bugs](https://github.com/users/BobWritesCode/projects/5/views/2?filterQuery=label%3Abug+-status%3ADone&visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%2C%22Milestone%22%2C%22Repository%22%5D)
 
+There are a few unresolved bugs around cleaning user input text from malicious code. This "bugs" do not cause any user interference with the application are are purely for site safety. There is already evidence of the code cleaning working throughout the site. This just needs to be implemented into the last few area.
+
 [🔝](#14-table-of-contents)
 
 ---
