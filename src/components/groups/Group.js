@@ -169,6 +169,7 @@ const Group = (props) => {
                 to={`/profile/${group.owner_id}`}
                 preventScrollReset={true}
                 target={'_blank'}
+                className={`${tableStyles.Link}`}
               >
                 {group.owner}
               </Link>
