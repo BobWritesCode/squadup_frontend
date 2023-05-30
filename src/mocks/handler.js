@@ -194,7 +194,7 @@ export const handlers = [
     if (status !== 'Accepted' && slot === 228) {
       return res(ctx.status(404));
     }
-    console.log('found');
+
     return res(
       ctx.json({
         count: 1,
