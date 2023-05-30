@@ -184,7 +184,7 @@ const Profile = () => {
               <span className={`${appStyles.OrangeText} ms-2 text-break`}>
                 {tracker ? (
                   <a
-                    href={`https://tracker.gg/valorant/profile/riot/${tracker}`}
+                    href={`https://tracker.gg/valorant/profile/riot/${tracker.replace('#', '%23')}`}
                     target="blank"
                     className={appStyles.Link}
                   >
