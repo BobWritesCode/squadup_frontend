@@ -99,7 +99,7 @@ const TrackerUpdate = (props) => {
               <br />
               <Form.Text>Format: Name + # + Tag</Form.Text>
               <br />
-              <Form.Text>Name cannot exceed 20 characters.</Form.Text>
+              <Form.Text>Name cannot exceed 30 characters.</Form.Text>
               <br />
               <Form.Text>Tag cannot exceed 5 characters.</Form.Text>
               <br />
