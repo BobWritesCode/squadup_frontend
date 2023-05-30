@@ -14,14 +14,14 @@ import tableStyles from '../../styles/Table.module.css';
 
 const Group = (props) => {
   const { onDelete, group } = props;
+  // Get current user.
   const currentUser = useCurrentUser();
-
+  // Use to store slots array
   const [slots, setSlots] = useState({});
-  // Show spinner while waiting for API result
+  // Use to show spinner while waiting for API result
   const [showSpinner, setShowSpinner] = useState(false);
-  // Show group deleted messaged if deleted
+  // Use to show group deleted messaged if deleted
   const [showGroupDeleted, setShowGroupDeleted] = useState(false);
-
   // Check to see if viewing user is profile owner.
   const is_owner = currentUser?.username === group?.owner;
 
