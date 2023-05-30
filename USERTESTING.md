@@ -33,7 +33,7 @@ These are all the manual tests I did. I logged all errors and fixes, including i
 | Try to create account with email address already taken | Alert shown | AE | Pass |
 | Try to create account with with unique details | Take to log in page | AE | Pass |
 | **Sign Up page** (Logged in) |
-| Load Sign Up page | Get redirect to user profile |Sign Up page loaded| Added logged in user check in commit 85afd54|
+| Load Sign Up page | Get redirect to user profile |Sign Up page loaded| Added logged in user check in commit [85afd54](https://github.com/BobWritesCode/squadup_frontend/commit/85afd54e06b0df1411b668963e827522642bd9f5)|
 | **Sign In page** (Not logged in) |
 | Load Sign In page | Sign In page loads | AE | Pass |
 | Try to login with incorrect Username | Alert shown | AE | Pass |
@@ -64,12 +64,12 @@ These are all the manual tests I did. I logged all errors and fixes, including i
 | Update tracker ID with correct format | Success | AE | Pass |
 | Update Note: Enter over 200 characters | Alert shown | AE | Pass |
 | Update Note: Enter over 0 characters | Success | AE | Pass |
-| Update Note: Enter over `<script>Test</script>` | Should remove malicious code | Allows code to be input on first time, but when edit it cleans the code #75 |
+| Update Note: Enter over `<script>Test</script>` | Should remove malicious code | Allows code to be input on first time, but when edit it cleans the code [#75](https://github.com/BobWritesCode/squadup_frontend/issues/75) |
 | Update Note: Enter over `This should be valid` | Success | AE | Pass |
 | **Other user profile page** (Logged in)|
 | Load other user profile page | Loads other user profile page | AE | Pass |
 |  | Should see: Avatar, Username, member since,Tracker.gg, Note box, post timeline | AE | Pass |
-|  | Should not be able to edit anything except user note box |Could click on edit post, and delete post buttons, though actions were forbidden. #74 |Fixed c73a2fc|
+|  | Should not be able to edit anything except user note box |Could click on edit post, and delete post buttons, though actions were forbidden. [#74](https://github.com/BobWritesCode/squadup_frontend/issues/74) |Fixed [c73a2fc](https://github.com/BobWritesCode/squadup_frontend/commit/c73a2fc821ab90faacba013d9dda79bed50de205)|
 | **Posts** (Logged in)|
 | Goto own profile | Can see new post | AE | Pass |
 | Goto another user profile | Can not see new post | AE | Pass |
@@ -97,9 +97,9 @@ These are all the manual tests I did. I logged all errors and fixes, including i
 | Create group: Try to create a group with no slots | Alert shown | AE | Pass |
 | Create group: Try to create group with max rank lower then min | Alert shown | AE | Pass |
 | Create group: Try to exceed 200 characters in text box | Alert shown | AE | Pass |
-| Create group: Try to enter malicious code in text box i.e `<script>Test</script>` | Input is cleaned and returned safe | Posted but not cleaned #78
-| Create group: Select a larger then, open all slots, then reduce team size below slot amount | Slots are automatically removed so there is never the same or more then team size | Code seems to be behind and wrong amount of slots are being shown # 80 | Fixed 6e20a7a
-| Create group: In slot try to exceed 100 characters| Alert shown | No alert and text was submitted #79 | fixed 6e20494
+| Create group: Try to enter malicious code in text box i.e `<script>Test</script>` | Input is cleaned and returned safe | Posted but not cleaned [#78](https://github.com/BobWritesCode/squadup_frontend/issues/78)
+| Create group: Select a larger then, open all slots, then reduce team size below slot amount | Slots are automatically removed so there is never the same or more then team size | Code seems to be behind and wrong amount of slots are being shown [#80](https://github.com/BobWritesCode/squadup_frontend/issues/80) | Fixed [6e20a7a](https://github.com/BobWritesCode/squadup_frontend/commit/6e20a7a33a9e4e8f39aba83de51483f1332c4abf)
+| Create group: In slot try to exceed 100 characters| Alert shown | No alert and text was submitted [#79](https://github.com/BobWritesCode/squadup_frontend/issues/79) | fixed [6e20494](https://github.com/BobWritesCode/squadup_frontend/commit/6e20494d8cf6eab53c6a6c1d0f01d92627b2212d)
 | Create group: In slot add malicious code i.e `<script>Test</script>` |
 | Create group: Following all rules | Group is created | AE | Pass |
 | Disband group: Try to disband group | Group should be disband, allowing user to create new group | AE | Pass |
